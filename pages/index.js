@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-export default function BlogHome ({ preview, allPosts }) {
+export default function BlogHome () {
   return (
     <>
       <Head>
@@ -9,11 +9,4 @@ export default function BlogHome ({ preview, allPosts }) {
       Hi i am aj
     </>
   )
-}
-
-export async function getServerSideProps ({ preview = false, previewData }) {
-  const allPosts = await getAllPostsForHome(previewData)
-  return {
-    props: { preview, allPosts }
-  }
 }
