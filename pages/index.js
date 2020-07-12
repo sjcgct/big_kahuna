@@ -17,6 +17,7 @@ export default function BlogHome ({ preview, allPosts }) {
           coverImage={heroPost.coverimage}
         />
       )}
+      Hi i am aj
     </>
   )
 }
