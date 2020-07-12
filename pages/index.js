@@ -1,33 +1,29 @@
 import Head from 'next/head'
-import {getAllPostsForHome} from "./api/api"
+import { getAllPostsForHome } from './api/api'
 import HeroPost from './hero-post'
 
-
-export default function BlogHome({preview,allPosts}) {
+export default function BlogHome ({ preview, allPosts }) {
   const heroPost = allPosts[0].node
   const morePosts = allPosts.slice(1)
-  
+
   return (
     <>
-        <Head>
-          <title>Student Journalist Council</title>
-        </Head>
-          {heroPost && (
-            <HeroPost
-              title={heroPost.title}
-              coverImage={heroPost.coverimage}
-            />
-          )}
-            
+      <Head>
+        <title>Student Journalist Council</title>
+      </Head>
+      {heroPost && (
+        <HeroPost
+          title={heroPost.title}
+          coverImage={heroPost.coverimage}
+        />
+      )}
     </>
   )
 }
 
-
-export async function getServerSideProps({ preview = false, previewData }) {
+export async function getServerSideProps ({ preview = false, previewData }) {
   const allPosts = await getAllPostsForHome(previewData)
   return {
-    props: { preview, allPosts },
+    props: { preview, allPosts }
   }
-  
 }

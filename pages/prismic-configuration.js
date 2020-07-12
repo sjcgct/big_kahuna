@@ -1,4 +1,4 @@
-import Prismic from "prismic-javascript"
+import Prismic from 'prismic-javascript'
 
 // Prismic API endpoint
 export const apiEndpoint = process.env.PRISMIC_URL

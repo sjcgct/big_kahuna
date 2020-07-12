@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "standard && node my-tests.js"
   },
   "dependencies": {
     "next": "9.4.4",
@@ -19,6 +20,18 @@
     "react-bootstrap": "^1.2.1"
   },
   "devDependencies": {
-    "prettier": "^1.19.1"
+    "eslint": "^7.4.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-html": "^6.0.2",
+    "standard": "^14.3.4"
+  },
+  "standard.options": {
+    "ignore": [
+      "node_modules/**"
+    ],
+    "plugins": [
+      "html"
+    ],
+    "parser": "babel-eslint"
   }
 }
