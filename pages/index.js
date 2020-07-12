@@ -1,22 +1,12 @@
 import Head from 'next/head'
 import { getAllPostsForHome } from './api/api'
-import HeroPost from './hero-post'
 
 export default function BlogHome ({ preview, allPosts }) {
-  const heroPost = allPosts[0].node
-  const morePosts = allPosts.slice(1)
-
   return (
     <>
       <Head>
         <title>Student Journalist Council</title>
       </Head>
-      {heroPost && (
-        <HeroPost
-          title={heroPost.title}
-          coverImage={heroPost.coverimage}
-        />
-      )}
       Hi i am aj
     </>
   )
