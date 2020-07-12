@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import { getAllPostsForHome } from './api/api'
 
 export default function BlogHome ({ preview, allPosts }) {
   return (
