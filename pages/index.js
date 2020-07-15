@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import HeroPost from '../components/HeroPost'
+import HeroPost from '../components/hero-post'
 import { getAllPostsForHome } from '../prismic-configuration'
 
 export default function BlogHome ({ preview, allPosts }) {
