@@ -8,6 +8,9 @@ export default function RecentBlogs () {
         <BlogPostGrid />
         <BlogPostGrid />
         <BlogPostGrid />
+        <BlogPostGrid />
+        <BlogPostGrid />
+        <BlogPostGrid />
       </div>
     </div>
   )

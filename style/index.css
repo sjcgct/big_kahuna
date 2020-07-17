@@ -3,3 +3,45 @@
 .blog-zone {
     background-color: blue;
 }
+
+footer {
+    background: #FF9999;
+    min-height: 320px;
+    flex-shrink: 0;
+    padding: 5% 5% 100px;
+    position: relative;
+}
+
+footer small{
+    position: absolute;
+    bottom: 20px;
+  }
+  
+  footer p a{
+    display: inline-block;
+    margin-top: 8px;
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: #000000;
+  }
+  
+  footer p a.contact-link {
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.1);
+  }
+  
+  footer p a.contact-link:hover {
+    color: inherit;
+    border-bottom: 1px solid rgba(0,0,0,.2);
+    text-decoration:none; 
+    transition: 0.1s;
+  }
+  
+  footer .social-icon-list{
+    text-align:right;
+  }
+
+  footer .social-icon{
+    color: #000000;
+    
+  }
+  
