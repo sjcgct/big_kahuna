@@ -1,1 +1,5 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
+
+.blog-zone {
+    background-color: blue;
+}
