@@ -1,7 +1,7 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
 .blog-zone {
-    background-color: blue;
+    background-color:rgba(0,0,0,0);
 }
 
 /*Footer section begins*/
@@ -43,8 +43,8 @@ footer small{
 
   footer .social-icon{
     color: #000000;
-    
   }
+<<<<<<< Updated upstream
 
 /*Footer section ends*/
 
@@ -76,8 +76,31 @@ footer small{
   background-position: 2% 0, 98% 0;
 }
 
+  .card-footer {
+      border: 0;
+      width:100%;
+      background-color: rgba(0, 0, 0, 0);
+      border-bottom: 0;
+  }
 
+@font-face {
+    font-family: 'SjcTitle'; /*a name to be used later*/
+    src: url('libel-suit-rg.ttf'); /*URL to font*/
+}
 
+@font-face {
+  font-family: 'SjcNormal'; /*a name to be used later*/
+  src: url('OpenSans-Regular.ttf'); /*URL to font*/
+}
 
+.card-title{
+    font-family: "SjcTitle" !important;
+    font-size: 25px;
+    font-weight: bold;
+}
 
-
+.card-text{
+  font-family: "SjcNormal" !important;
+  font-size: 15px;
+  color: #616161;
+}

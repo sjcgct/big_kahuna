@@ -11,7 +11,7 @@ export default function HeroPost ({
 
         <h1>{RichText.asText(title)}</h1>
         <div className='sm-12'>
-          <img src='https://source.unsplash.com/random/6000*4000' className='card-img' />
+          <img src={coverImage.url} className='card-img' />
         </div>
       </div>
     </section>
