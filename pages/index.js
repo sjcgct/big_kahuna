@@ -1,11 +1,8 @@
 import Head from 'next/head'
 import HeroPost from '../components/hero-post'
 import { getAllPostsForHome } from '../prismic-configuration'
-
-import BlogGrid from '../components/recent-blog-grid'
-import RecentBlogs from '../components/recent-blog-homepage'
-
 import Layout from '../components/Layout'
+import Deck from '../components/deck'
 
 export default function BlogHome ({ preview, allPosts }) {
   const heroPost = allPosts[0].node
@@ -22,11 +19,19 @@ export default function BlogHome ({ preview, allPosts }) {
           coverImage={heroPost.coverimage}
         />
       )}
-      <RecentBlogs>
+
+     {morePosts && (
+        <Deck
+        cards={morePosts}
+        />
+      )}
+
+
+      {/* <RecentBlogs>
         <BlogGrid />
         <BlogGrid />
         <BlogGrid />
-      </RecentBlogs>
+      </RecentBlogs> */}
 
     </Layout>
   )
@@ -38,3 +43,4 @@ export async function getServerSideProps ({ preview = false, previewData }) {
     props: { preview, allPosts }
   }
 }
+
