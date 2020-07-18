@@ -20,12 +20,11 @@ export default function BlogHome ({ preview, allPosts }) {
         />
       )}
 
-     {morePosts && (
-        <Deck
-        cards={morePosts}
+      {morePosts && (
+       <Deck
+          cards={morePosts}
         />
       )}
-
 
       {/* <RecentBlogs>
         <BlogGrid />
@@ -43,4 +42,3 @@ export async function getServerSideProps ({ preview = false, previewData }) {
     props: { preview, allPosts }
   }
 }
-
