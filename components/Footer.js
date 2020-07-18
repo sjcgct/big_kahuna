@@ -14,9 +14,9 @@ export default function Footer () {
         <SocialIcon link='https://www.youtube.com/ApertureBroadcastingChannelGCT' icon='youtube' />
       </ul>
       <p>
-        <a class='contact-link' href='mailto:sjcgct@gmail.com'>sjcgct@gmail.com</a>
+        <a className='contact-link' href='mailto:sjcgct@gmail.com'>sjcgct@gmail.com</a>
         <br />
-        <a class='contact-link' href='tel:918667312273'>+91 86673 12273</a>
+        <a className='contact-link' href='tel:918667312273'>+91 86673 12273</a>
         <br /><br />
                  Government College of Technology,
         <br />
@@ -24,7 +24,7 @@ export default function Footer () {
         <br />
                  Coimbatore - 13.
         <br />
-        <a class='contact-link' target='blank' href='https://goo.gl/maps/h6gGpcoZDw92'>View on
+        <a className='contact-link' target='blank' href='https://goo.gl/maps/h6gGpcoZDw92'>View on
                  map
         </a>
       </p>

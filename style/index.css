@@ -4,6 +4,7 @@
     background-color: blue;
 }
 
+/*Footer section begins*/
 footer {
     background: #FF9999;
     min-height: 320px;
@@ -44,4 +45,39 @@ footer small{
     color: #000000;
     
   }
-  
+
+/*Footer section ends*/
+
+
+/*Humans of GCT Page begins*/
+.poster{
+  padding: 7%;
+  position: relative;
+  box-sizing: border-box;
+  background-color: white;
+  box-shadow: 0 3px 12px alpha(black,.2);
+  filter: saturate(70%) contrast(85%);
+}
+
+.poster:before,
+.poster:after {
+  content: '';
+  width: 100%;
+  left: 0;
+  position: absolute;
+}
+
+.poster:before {
+  height: 4%;
+  bottom: -4%;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(177deg, rgba(0,0,0,0.22) 10%, transparent 50%), linear-gradient(-177deg, rgba(0,0,0,0.22) 10%, transparent 50%);
+  background-size: 49% 100%;
+  background-position: 2% 0, 98% 0;
+}
+
+
+
+
+
+
