@@ -21,7 +21,7 @@ export default function BlogHome ({ preview, allPosts }) {
       )}
 
       {morePosts && (
-       <Deck
+        <Deck
           cards={morePosts}
         />
       )}
