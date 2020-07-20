@@ -4,6 +4,7 @@ import { getAllPostsForHome } from '../prismic-configuration'
 import Layout from '../components/Layout'
 import Deck from '../components/deck'
 
+
 export default function BlogHome ({ preview, allPosts }) {
   const heroPost = allPosts[0].node
   const morePosts = allPosts.slice(1)
@@ -17,6 +18,7 @@ export default function BlogHome ({ preview, allPosts }) {
         <HeroPost
           title={heroPost.title}
           coverImage={heroPost.coverimage}
+          slug={heroPost._meta.uid}
         />
       )}
 
@@ -25,13 +27,6 @@ export default function BlogHome ({ preview, allPosts }) {
         cards={morePosts}
         />
       )}
-
-
-      {/* <RecentBlogs>
-        <BlogGrid />
-        <BlogGrid />
-        <BlogGrid />
-      </RecentBlogs> */}
 
     </Layout>
   )

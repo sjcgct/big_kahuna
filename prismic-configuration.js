@@ -1,4 +1,5 @@
 import Prismic from 'prismic-javascript'
+import { eachDayOfInterval } from 'date-fns'
 const REPOSITORY = process.env.PRISMIC_REPOSITORY_NAME
 const REF_API_URL = `https://${REPOSITORY}.prismic.io/api/v2`
 const GRAPHQL_API_URL = `https://${REPOSITORY}.prismic.io/graphql`
@@ -74,6 +75,33 @@ export async function getAllPostsForHome (previewData) {
     `,
       { previewData }
   )
-
   return data.allPosts.edges
+}
+
+export async function getPostWithSlug(previewData,slug) {
+
+const one=
+`
+ query {
+  
+      allPosts(uid:"`
+      
+const three=`") {
+            edges {         
+              node {
+                date
+                title
+                content
+                coverimage
+                _meta {
+                  uid
+                }
+              }
+            }
+        }
+}
+`  
+var query=one.concat(slug,three)
+const data = await fetchAPI(query,{previewData})
+return data.allPosts.edges
 }
