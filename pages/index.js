@@ -22,12 +22,11 @@ export default function BlogHome ({ preview, allPosts }) {
         />
       )}
 
-     {morePosts && (
+      {morePosts && (
         <Deck
-        cards={morePosts}
+          cards={morePosts}
         />
       )}
-
     </Layout>
   )
 }
@@ -38,4 +37,3 @@ export async function getServerSideProps ({ preview = false, previewData }) {
     props: { preview, allPosts }
   }
 }
-

@@ -1,5 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+
+import React from 'react'
+import ReactDOM from 'react-dom'
 import DeckCard from './deckcard'
 import { RichText } from 'prismic-reactjs'
 
@@ -26,7 +27,7 @@ export default function Deck ({cards}) {
     <div class="row">
         {deckcards}
     </div>
-    )
-} 
+  )
+}
 
-//export default Deck;
+// export default Deck;

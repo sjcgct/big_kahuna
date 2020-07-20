@@ -102,5 +102,39 @@ footer small{
 .card-text{
   font-family: "SjcNormal" !important;
   font-size: 15px;
-  color: #616161;
+  color: #f06262;
+}
+
+
+
+
+
+
+.post-card .entry-thumb-overlay:hover {
+  opacity: 0.14;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=14)";
+  -moz-opacity: 0.14;
+  -khtml-opacity: 0.14;
+}
+
+.post-card:not(.big) .entry-thumb-overlay {
+  bottom: -2.5rem;
+}
+.post-card .entry-thumb-overlay {
+  background-color: #fff;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  -moz-opacity: 0;
+  -khtml-opacity: 0;
+  -webkit-transition: opacity .4s ease;
+  -o-transition: opacity .4s ease;
+  transition: opacity .4s ease;
+}
+.entry-thumb-overlay {
+  position: absolute;
+  z-index: 101;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
