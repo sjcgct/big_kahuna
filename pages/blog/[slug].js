@@ -1,9 +1,11 @@
 import { RichText } from 'prismic-reactjs'
 import { getPostWithSlug } from '../../prismic-configuration'
+import Layout from '../../components/Layout'
 
 export default function Post({slugurl,fetchedpost}) {
   var post=fetchedpost[0].node;
   return (
+    <Layout>
     <section>
     <div className='mb-5'>
       <h1>{RichText.asText(post.title)}</h1>
@@ -13,6 +15,7 @@ export default function Post({slugurl,fetchedpost}) {
       <RichText render={post.content} />
     </div>
   </section>
+  </Layout>
   )
 }
 
