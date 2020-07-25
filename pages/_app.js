@@ -1,4 +1,5 @@
 import '../style/index.css'
+import '../style/navigation.scss'
 import Router from "next/router";
 import Loading from 'react-simple-loading';
 

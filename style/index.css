@@ -1,5 +1,6 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
+
 .blog-zone {
     background-color:rgba(0,0,0,0);
 }
@@ -44,7 +45,6 @@ footer small{
   footer .social-icon{
     color: #000000;
   }
-<<<<<<< Updated upstream
 
 /*Footer section ends*/
 
@@ -138,3 +138,5 @@ footer small{
   bottom: 0;
   left: 0;
 }
+
+
