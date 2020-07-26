@@ -1,5 +1,4 @@
 import '../style/index.css'
-
 import Router from 'next/router'
 import Loading from 'react-simple-loading'
 
