@@ -178,4 +178,4 @@ const PinterestGrid = () => {
   )
 }
 
-  <script src='responsive_waterfall.js' />
+<script src='responsive_waterfall.js' />

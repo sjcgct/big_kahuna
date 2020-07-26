@@ -1,9 +1,8 @@
 import Head from 'next/head'
-import HeroPost from '../components/hero-post'
+import HeroPost from '../components/IndexPage/hero-post'
 import { getAllPostsForHome } from '../prismic-configuration'
 import Layout from '../components/Layout'
 import Deck from '../components/deck'
-
 
 export default function BlogHome ({ preview, allPosts }) {
   const heroPost = allPosts[0].node

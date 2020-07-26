@@ -26,7 +26,8 @@
     "react-bootstrap": "^1.2.1",
     "react-dom": "16.13.1",
     "react-simple-loading": "0.0.3",
-    "react-transition-group": "^1.2.1"
+    "react-transition-group": "^1.2.1",
+    "sass": "^1.26.10"
   },
   "devDependencies": {
     "eslint": "^7.4.0",

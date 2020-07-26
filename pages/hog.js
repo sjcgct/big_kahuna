@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Hogtile from '../components/hogTile-hogpage'
+import Hogtile from '../components/HogListPage/hogTile-hogpage'
 import Layout from '../components/Layout'
 
 const hogPage = () => {

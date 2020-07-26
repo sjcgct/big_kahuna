@@ -61,6 +61,15 @@ class Menu extends React.Component {
           <li className="nav__menu-item">
             <a>About</a>
           </li>
+          <li className="nav__menu-item">
+            <a>About</a>
+          </li>
+          <li className="nav__menu-item">
+            <a>About</a>
+          </li>
+          <li className="nav__menu-item">
+            <a>About</a>
+          </li>
         </ul>
       </nav>
     )
