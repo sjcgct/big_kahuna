@@ -50,32 +50,33 @@ async function fetchAPI (query, { previewData, variables } = {}) {
 export async function getAllPostsForHome (previewData) {
   const data = await fetchAPI(
       `
-      query {
-        allPosts(sortBy: date_DESC) {
-          edges {
-            node {
-              date
+      {
+        allBlogss(sortBy: date_DESC){
+          edges{
+            node{
               title
-              content
-              coverimage
+              date
+              featured_image
               excerpt
               author {
-                ...on Author {
-                  name
-                  picture
-                }
+                _linkType
               }
-              _meta {
+              category {
+                _linkType
+              }
+              _meta{
                 uid
               }
+              excerpt
             }
           }
         }
+        
       }
     `,
       { previewData }
   )
-  return data.allPosts.edges
+  return data.allBlogss.edges
 }
 
 export async function getPostWithSlug(previewData,slug) {
@@ -84,24 +85,32 @@ const one=
 `
  query {
   
-      allPosts(uid:"`
+  allBlogss(uid:"`
       
 const three=`") {
-            edges {         
-              node {
-                date
-                title
-                content
-                coverimage
-                _meta {
-                  uid
-                }
-              }
-            }
-        }
+  edges{
+    node{
+      title
+      date
+      content
+      featured_image
+      excerpt
+      author {
+        _linkType
+      }
+      category {
+        _linkType
+      }
+      _meta {
+        uid
+      }
+      excerpt
+    }
+   }
+  }
 }
 `  
 var query=one.concat(slug,three)
 const data = await fetchAPI(query,{previewData})
-return data.allPosts.edges
+return data.allBlogss.edges
 }

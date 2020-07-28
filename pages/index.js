@@ -16,8 +16,8 @@ export default function BlogHome ({ preview, allPosts }) {
       {heroPost && (
         <HeroPost
           title={heroPost.title}
-          coverImage={heroPost.coverimage}
-          slug={heroPost._meta.uid}
+          coverImage={heroPost.featured_image}
+          slugurl={heroPost._meta.uid}
         />
       )}
 

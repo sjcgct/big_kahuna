@@ -10,7 +10,7 @@ export default function Post({slugurl,fetchedpost}) {
     <div className='mb-5'>
       <h1>{RichText.asText(post.title)}</h1>
       <div className='sm-12'>
-        <img src={post.coverimage.url} className='card-img' />
+        <img src={post.featured_image.url} className='card-img' />
       </div>
       <RichText render={post.content} />
     </div>

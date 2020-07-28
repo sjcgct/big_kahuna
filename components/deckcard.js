@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-export default function DeckCard ({ title, imgurl, slugurl }) {
+export default function DeckCard ({ title, imgurl, slugurl,smallDescription }) {
   var redirect = {
     pathname: '/blog/[slug]',
     state: { slug: slugurl }
@@ -11,7 +11,7 @@ export default function DeckCard ({ title, imgurl, slugurl }) {
     <div className='card mb-4 col-md-4 border-0'>
       <div className='card-body '>
         <h5 className='card-title'>{title}</h5>
-        <p className='card-text'>Small version of the post</p>
+        <p className='card-text'>{smallDescription}</p>
       </div>
       <div className='card-footer'>
         <Link as={`/blog/${slugurl}`} href={redirect}>
