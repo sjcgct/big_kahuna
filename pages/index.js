@@ -11,7 +11,7 @@ export default function BlogHome ({ preview, allPosts }) {
   return (
     <Layout>
       <Head>
-        <title>Student Journalist Council - GCT</title>
+        <title>Student Journalist Gouncil - GCT</title>
       </Head>
       {heroPost && (
         <HeroPost
