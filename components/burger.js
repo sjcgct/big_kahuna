@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import RightNav from './rightNav';
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import RightNav from './rightnav'
 
 const StyledBurger = styled.div`
   width: 2rem;
@@ -33,11 +33,11 @@ const StyledBurger = styled.div`
       transform: ${({ open }) => open ? 'rotate(-45deg)' : 'rotate(0)'};
     }
   }
-`;
+`
 
 const Burger = () => {
   const [open, setOpen] = useState(false)
-  
+
   return (
     <>
       <StyledBurger open={open} onClick={() => setOpen(!open)}>
@@ -45,7 +45,7 @@ const Burger = () => {
         <div />
         <div />
       </StyledBurger>
-      <RightNav open={open}/>
+      <RightNav open={open} />
     </>
   )
 }
