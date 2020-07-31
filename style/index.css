@@ -10,15 +10,16 @@
 /*Footer section begins*/
 footer {
     background: #FF9999;
-    min-height: 320px;
+    min-height: 250px;
     flex-shrink: 0;
     padding: 5% 5% 100px;
     position: relative;
 }
 
 footer small{
+    
     position: absolute;
-    bottom: 20px;
+    bottom: 30px;
   }
   
   footer p a{
@@ -142,3 +143,10 @@ footer small{
 }
 
 
+/*Blog pages*/
+@media screen and (min-width: 1260px) {
+  .blog-container {
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+}

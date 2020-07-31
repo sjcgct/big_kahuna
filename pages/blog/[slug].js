@@ -7,6 +7,7 @@ export default function Post({slugurl,fetchedpost}) {
   return (
     <Layout>
     <section>
+    <div className='blog-container'>
     <div className='mb-5'>
       <h1>{RichText.asText(post.title)}</h1>
       <div className='sm-12'>
@@ -14,8 +15,9 @@ export default function Post({slugurl,fetchedpost}) {
       </div>
       <RichText render={post.content} />
     </div>
-  </section>
-  </Layout>
+    </div>
+    </section>
+    </Layout>
   )
 }
 
