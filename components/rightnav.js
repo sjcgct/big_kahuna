@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 const Ul = styled.ul`
   list-style: none;
@@ -23,7 +23,7 @@ const Ul = styled.ul`
       color: #fff;
     }
   }
-`;
+`
 
 const RightNav = ({ open }) => {
   return (

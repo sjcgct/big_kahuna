@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import Burger from './burger';
+import React from 'react'
+import styled from 'styled-components'
+import Burger from './burger'
 
 const Nav = styled.nav`
   width: 100%;
@@ -17,7 +17,7 @@ const Nav = styled.nav`
 const Navbar = () => {
   return (
     <Nav>
-      <div className="logo">
+      <div className='logo'>
         Student Journalist Council-GCT
       </div>
       <Burger />
