@@ -26,6 +26,7 @@ export default function BlogHome ({ preview, allPosts }) {
           cards={morePosts}
         />
       )}
+      <p>Hi</p>
     </Layout>
   )
 }
