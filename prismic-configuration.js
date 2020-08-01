@@ -48,7 +48,7 @@ async function fetchAPI (query, { previewData, variables } = {}) {
   return json.data
 }
 
-export async function getAllPostsForHome (previewData,lastPostCursor,limitation) {
+export async function getAllBlogsForHome (previewData,lastPostCursor,limitation) {
   const data = await fetchAPI(
       `
       {
@@ -83,7 +83,7 @@ export async function getAllPostsForHome (previewData,lastPostCursor,limitation)
   return data.allBlogss.edges
 }
 
-export async function getPostWithSlug(previewData,slug) {
+export async function getBlogsWithSlug(previewData,slug) {
 
 const query=
 `{

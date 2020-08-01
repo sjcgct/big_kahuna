@@ -1,5 +1,5 @@
 import { RichText } from 'prismic-reactjs'
-import { getPostWithSlug } from '../../prismic-configuration'
+import { getBlogsWithSlug } from '../../prismic-configuration'
 import Layout from '../../components/Layout'
 
 export default function Post({slugurl,fetchedpost}) {
@@ -24,7 +24,7 @@ export default function Post({slugurl,fetchedpost}) {
 export async function getServerSideProps({params,previewData,}) {
   //var slugurl =window.location.pathname.split("/").pop()
   var slugurl=params.slug;
-  const fetchedpost = await getPostWithSlug(previewData,slugurl)
+  const fetchedpost = await getBlogsWithSlug(previewData,slugurl)
   return {
     props: { slugurl,fetchedpost}
   }
