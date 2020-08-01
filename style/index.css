@@ -153,12 +153,17 @@ footer small{
 }
 
 .blog-container .sm-12{
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .blog-container p{
   margin-bottom: 0rem;
 }
+
+.blog-container p strong{
+  margin-bottom: 0.5rem;
+}
+
 .blog-container .image-description {
   font-style: italic;
   font-weight: 500;
