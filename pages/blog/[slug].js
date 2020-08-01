@@ -7,12 +7,12 @@ export default function Post({fetchedpost,postsYouMayLike}) {
   var post=fetchedpost[0].node;
   return (
     <Layout>
-     <h1  className='blog-title text-center'>{RichText.asText(post.title)}</h1>
-     <div className='sm-12 featured-image'>
-        <img src={post.featured_image.url} className='card-img' />
-     </div>
     <section>
     <div className='blog-container'>
+    <h1  className='text-center blog-title'>{RichText.asText(post.title)}</h1>
+     <div className='sm-12'>
+        <img src={post.featured_image.url} className='card-img' />
+     </div>
     <div className='mb-5'>
       <RichText render={post.content} />
     </div>
