@@ -8,7 +8,7 @@ export default function Post({fetchedpost,postsYouMayLike}) {
   return (
     <Layout>
      <h1  className='mb-3 text-center'>{RichText.asText(post.title)}</h1>
-     <div className='sm-12 mb-3'>
+     <div className='sm-12'>
         <img src={post.featured_image.url} className='card-img' />
      </div>
     <section>

@@ -152,6 +152,15 @@ footer small{
   }
 }
 
+@media (min-width: 768px){
+.blog-title {
+    margin-bottom:80px;
+}
+}
+.blog-title {
+  margin-bottom:80px;
+}
+
 .blog-container .sm-12{
   margin-bottom: 1rem;
 }
