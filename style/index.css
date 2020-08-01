@@ -160,10 +160,6 @@ footer small{
   margin-bottom: 0rem;
 }
 
-.blog-container p:strong{
-  margin-bottom: 1rem;
-}
-
 .blog-container .image-description {
   font-style: italic;
   font-weight: 500;
@@ -183,6 +179,7 @@ footer small{
 .block-img img{
   width:100%;
   height:auto;
+  margin-top: 0.5rem;
 }
 
 .blog-container {
