@@ -160,7 +160,7 @@ footer small{
   margin-bottom: 0rem;
 }
 
-.blog-container p strong{
+.blog-container p:strong{
   margin-bottom: 0.5rem;
 }
 
