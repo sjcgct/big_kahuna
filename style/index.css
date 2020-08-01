@@ -144,6 +144,7 @@ footer small{
 
 
 /*Blog pages*/
+
 @media screen and (min-width: 1260px) {
   .blog-container {
     padding-left: 150px;
@@ -151,7 +152,36 @@ footer small{
   }
 }
 
-.blog-image img{
+.blog-container .sm-12{
+  margin-bottom: 2rem;
+}
+.blog-container p{
+  margin-bottom: 0rem;
+}
+.blog-container .image-description {
+  font-style: italic;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #888888	;
+  display: block;
+  text-align: center;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+}
+
+.blog-container p:empty{
+  margin-top: 0.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.block-img img{
   width:100%;
   height:auto;
 }
+
+.blog-container {
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+}
+
+
