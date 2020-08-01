@@ -9,7 +9,6 @@ export default function Deck ({ cards }) {
   var cardarray = cards
 
   var arrayLength = cardarray.length
-
   for (var j = 0; j < arrayLength; j++) {
     var post = cardarray[j].node
     deckcards[j] = <DeckCard title={RichText.asText(post.title)} imgurl={post.featured_image.url} slugurl={post._meta.uid} smallDescription={post.excerpt} />

@@ -16,7 +16,7 @@ export const accessToken = process.env.PRISMIC_TOKEN
 // Client method to query Prismic
 export const client = Prismic.client(apiEndpoint, { accessToken })
 
-export const PrismicClient = Prismic.client(REF_API_URL, {
+export const PrismicClient = Prismic.client(REF_API_URL,{
   accessToken: API_TOKEN
 })
 
@@ -31,6 +31,7 @@ async function fetchAPI (query, { previewData, variables } = {}) {
           'Accept-Language': API_LOCALE,
           Authorization: `Token ${API_TOKEN}`
         }
+       
       }
   )
 
@@ -47,11 +48,15 @@ async function fetchAPI (query, { previewData, variables } = {}) {
   return json.data
 }
 
-export async function getAllPostsForHome (previewData) {
+export async function getAllBlogsForHome (previewData,lastPostCursor,limitation) {
   const data = await fetchAPI(
       `
       {
-        allBlogss(sortBy: date_DESC){
+        allBlogss(sortBy: date_DESC, after:"${lastPostCursor}",first:${limitation}){
+          pageInfo{
+            endCursor
+            hasNextPage
+          }
           edges{
             node{
               title
@@ -71,7 +76,6 @@ export async function getAllPostsForHome (previewData) {
             }
           }
         }
-        
       }
     `,
       { previewData }
@@ -79,15 +83,11 @@ export async function getAllPostsForHome (previewData) {
   return data.allBlogss.edges
 }
 
-export async function getPostWithSlug(previewData,slug) {
+export async function getBlogsWithSlug(previewData,slug) {
 
-const one=
-`
- query {
-  
-  allBlogss(uid:"`
-      
-const three=`") {
+const query=
+`{
+  allBlogss(uid:"${slug}") {
   edges{
     node{
       title
@@ -110,7 +110,6 @@ const three=`") {
   }
 }
 `  
-var query=one.concat(slug,three)
 const data = await fetchAPI(query,{previewData})
 return data.allBlogss.edges
 }
