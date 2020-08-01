@@ -7,7 +7,6 @@ import Deck from '../components/deck'
 export default function BlogHome ({ preview, allPosts }) {
   const heroPost = allPosts[0].node
   const morePosts = allPosts.slice(1)
-
   return (
     <Layout>
       <Head>
@@ -28,13 +27,12 @@ export default function BlogHome ({ preview, allPosts }) {
           cards={morePosts}
         />
       )}
-      <p>Hi ba</p>
     </Layout>
   )
 }
 
 export async function getServerSideProps ({ preview = false, previewData }) {
-  const allPosts = await getAllPostsForHome(previewData)
+  const allPosts = await getAllPostsForHome(previewData," ",7)
   return {
     props: { preview, allPosts }
   }

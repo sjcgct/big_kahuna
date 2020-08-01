@@ -15,7 +15,7 @@ export default function DeckCard ({ title, imgurl, slugurl,smallDescription }) {
       </div>
       <div className='card-footer'>
         <Link as={`/blog/${slugurl}`} href={redirect}>
-          <small className='text-danger stretched-link'>Read</small>
+          <small className='text-danger stretched-link'></small>
         </Link>
         {/* <a href={slugurl} className="stretched-link"></a>
                 <small className="text-danger" >Read</small> */}
