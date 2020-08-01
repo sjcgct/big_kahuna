@@ -150,3 +150,8 @@ footer small{
     padding-right: 150px;
   }
 }
+
+.blog-image{
+  width:100%;
+  height:auto;
+}

@@ -21,6 +21,8 @@ export default function BlogHome ({ preview, allPosts }) {
         />
       )}
 
+
+      <h2>More Posts</h2>
       {morePosts && (
         <Deck
           cards={morePosts}
