@@ -8,11 +8,11 @@ export default function Post({post,postsYouMayLike}) {
     <Layout>
     <section>
     <div className='blog-container'>
-    <div className='mb-5'>
-      <h1>{RichText.asText(post.title)}</h1>
-      <div className='sm-12'>
+    <h1  className='text-center blog-title'>{RichText.asText(post.title)}</h1>
+     <div className='sm-12'>
         <img src={post.featured_image.url} className='card-img' />
-      </div>
+     </div>
+    <div className='mb-5'>
       <RichText render={post.content} />
     </div>
     </div>

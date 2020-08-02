@@ -152,16 +152,13 @@ footer small{
   }
 }
 
+
 .blog-container .sm-12{
   margin-bottom: 1rem;
 }
 
 .blog-container p{
   margin-bottom: 0rem;
-}
-
-.blog-container p:strong{
-  margin-bottom: 1rem;
 }
 
 .blog-container .image-description {
@@ -183,6 +180,7 @@ footer small{
 .block-img img{
   width:100%;
   height:auto;
+  margin-top: 0.5rem;
 }
 
 .blog-container {
