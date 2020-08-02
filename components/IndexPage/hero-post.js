@@ -14,9 +14,8 @@ export default function HeroPost ({
   return (
     <section>
       <div className='mb-5'>
-        <h1>{RichText.asText(title)}</h1>
         <Link as={`/blog/${slugurl}`} href={redirect}>
-          <small className='text-danger stretched-link'></small>
+        <a className="card-title">{RichText.asText(title)}</a>
         </Link>
         <div className='sm-12'>
           <img src={coverImage.url} className='card-img' />

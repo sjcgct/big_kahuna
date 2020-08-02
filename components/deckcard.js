@@ -10,13 +10,13 @@ export default function DeckCard ({ title, imgurl, slugurl,smallDescription }) {
   return (
     <div className='card mb-4 col-md-4 border-0'>
       <div className='card-body '>
-        <h5 className='card-title'>{title}</h5>
+      <Link as={`/blog/${slugurl}`} href={redirect}>
+        <a className="card-title">{title}</a>
+        </Link>
         <p className='card-text'>{smallDescription}</p>
       </div>
       <div className='card-footer'>
-        <Link as={`/blog/${slugurl}`} href={redirect}>
-          <small className='text-danger stretched-link'></small>
-        </Link>
+        
       </div>
       <img className='card-img-top' src={imgurl} alt='Card image cap' />
     </div>
