@@ -1,10 +1,9 @@
 import { RichText } from 'prismic-reactjs'
-import { getBlogsWithSlug,getAllBlogsForHome } from '../../prismic-configuration'
+import { getBlogsWithSlug,getBlogsWithSameCategory } from '../../prismic-configuration'
 import Layout from '../../components/Layout'
 import Deck from '../../components/deck'
 
-export default function Post({fetchedpost,postsYouMayLike}) {
-  var post=fetchedpost[0].node;
+export default function Post({post,postsYouMayLike}) {
   return (
     <Layout>
     <section>
@@ -30,12 +29,14 @@ export default function Post({fetchedpost,postsYouMayLike}) {
   )
 }
 
-export async function getServerSideProps({params,previewData,}) {
+export async function getServerSideProps({params,previewData}) {
   //var slugurl =window.location.pathname.split("/").pop()
   var slugurl=params.slug;
   const fetchedpost = await getBlogsWithSlug(previewData,slugurl)
-  const postsYouMayLike=await getAllBlogsForHome(previewData," ",3)
+  const post=fetchedpost[0].node;
+  const categoryId=post.category._meta.id;
+  const postsYouMayLike=await getBlogsWithSameCategory(previewData,categoryId,3)
   return {
-    props: {fetchedpost,postsYouMayLike}
+    props: {post,postsYouMayLike,}
   }
 }

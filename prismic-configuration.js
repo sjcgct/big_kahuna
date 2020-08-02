@@ -67,7 +67,12 @@ export async function getAllBlogsForHome (previewData,lastPostCursor,limitation)
                 _linkType
               }
               category {
-                _linkType
+                ... on Category{
+                  name
+                  _meta {
+                    id
+                  }
+                }
               }
               _meta{
                 uid
@@ -99,7 +104,12 @@ const query=
         _linkType
       }
       category {
-        _linkType
+        ... on Category{
+          name
+          _meta {
+            id
+          }
+        }
       }
       _meta {
         uid
@@ -110,6 +120,44 @@ const query=
   }
 }
 `  
+const data = await fetchAPI(query,{previewData})
+return data.allBlogss.edges
+}
+
+
+export async function getBlogsWithSameCategory(previewData,categoryId,limitation,lastPostCursor){
+  const query=
+  `{
+    allBlogss(where:{category:"${categoryId}"},sortBy: date_DESC, after:"${lastPostCursor}",first:${limitation}){
+      pageInfo{
+        endCursor
+        hasNextPage
+      }
+      edges{
+        node{
+          title
+          date
+          featured_image
+          excerpt
+          author {
+            _linkType
+          }
+          category {
+            ... on Category{
+              name
+              _meta {
+                id
+              }
+            }
+          }
+          _meta{
+            uid
+          }
+          excerpt
+        }
+      }
+    }
+}`
 const data = await fetchAPI(query,{previewData})
 return data.allBlogss.edges
 }
