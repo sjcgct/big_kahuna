@@ -1,11 +1,6 @@
 import '../style/index.css'
-<<<<<<< Updated upstream
-import Router from 'next/router'
-import Loading from 'react-simple-loading'
-=======
 import Router from "next/router";
 import Loading from 'react-simple-loading';
->>>>>>> Stashed changes
 
 export default function App ({ Component, pageProps }) {
   const [loading, setLoading] = React.useState(false)
