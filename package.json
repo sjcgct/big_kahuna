@@ -24,7 +24,11 @@
     "react-dom": "16.13.1",
     "react-simple-loading": "0.0.3",
     "react-transition-group": "^1.2.1",
+<<<<<<< Updated upstream
     "sass": "^1.26.10",
+=======
+    "responsive-nav": "^1.0.39",
+>>>>>>> Stashed changes
     "styled-components": "^5.1.1"
   },
   "devDependencies": {
