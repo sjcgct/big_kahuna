@@ -4,17 +4,19 @@ import Link from 'next/link'
 export default function HeroPost ({
   title,
   coverImage,
-  slugurl
+  slugurl,
+  type
 }) {
+  var t=type
   var redirect = {
-    pathname: '/blog/[slug]',
+    pathname: `/${type}/[slug]`,
     state: { slug: slugurl }
   }
 
   return (
     <section>
       <div className='mb-5'>
-        <Link as={`/blog/${slugurl}`} href={redirect}>
+        <Link as={`/${type}/${slugurl}`} href={redirect}>
         <a className="card-title">{RichText.asText(title)}</a>
         </Link>
         <div className='sm-12'>

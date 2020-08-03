@@ -22,6 +22,7 @@ export default function Post({post,postsYouMayLike}) {
       {postsYouMayLike && (
         <Deck
           cards={postsYouMayLike}
+          type='blog'
         />
       )}
 

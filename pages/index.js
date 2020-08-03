@@ -17,6 +17,7 @@ export default function BlogHome ({ preview, allPosts }) {
           title={heroPost.title}
           coverImage={heroPost.featured_image}
           slugurl={heroPost._meta.uid}
+          type='blog'
         />
       )}
 
@@ -25,6 +26,7 @@ export default function BlogHome ({ preview, allPosts }) {
       {morePosts && (
         <Deck
           cards={morePosts}
+          type='blog'
         />
       )}
     </Layout>
