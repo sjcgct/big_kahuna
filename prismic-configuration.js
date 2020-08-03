@@ -1,5 +1,9 @@
 import Prismic from 'prismic-javascript'
-import { eachDayOfInterval } from 'date-fns'
+
+
+import {queryBlogsWithSameCategory, queryBlogsWithSlug, queryAllBlogsForHome} from './blog-api'
+
+
 const REPOSITORY = process.env.PRISMIC_REPOSITORY_NAME
 const REF_API_URL = `https://${REPOSITORY}.prismic.io/api/v2`
 const GRAPHQL_API_URL = `https://${REPOSITORY}.prismic.io/graphql`
@@ -49,115 +53,23 @@ async function fetchAPI (query, { previewData, variables } = {}) {
 }
 
 export async function getAllBlogsForHome (previewData,lastPostCursor,limitation) {
-  const data = await fetchAPI(
-      `
-      {
-        allBlogss(sortBy: date_DESC, after:"${lastPostCursor}",first:${limitation}){
-          pageInfo{
-            endCursor
-            hasNextPage
-          }
-          edges{
-            node{
-              title
-              date
-              featured_image
-              excerpt
-              author {
-                _linkType
-              }
-              category {
-                ... on Category{
-                  name
-                  _meta {
-                    id
-                  }
-                }
-              }
-              _meta{
-                uid
-              }
-              excerpt
-            }
-          }
-        }
-      }
-    `,
-      { previewData }
-  )
-  return data.allBlogss.edges
+  const query=queryAllBlogsForHome({lastPostCursor,limitation});
+  console.log(query);
+  
+  const data = await fetchAPI(query,{ previewData });
+  return data.allBlogss.edges;
 }
 
 export async function getBlogsWithSlug(previewData,slug) {
 
-const query=
-`{
-  allBlogss(uid:"${slug}") {
-  edges{
-    node{
-      title
-      date
-      content
-      featured_image
-      excerpt
-      author {
-        _linkType
-      }
-      category {
-        ... on Category{
-          name
-          _meta {
-            id
-          }
-        }
-      }
-      _meta {
-        uid
-      }
-      excerpt
-    }
-   }
-  }
-}
-`  
+const query=queryBlogsWithSlug({slug});
 const data = await fetchAPI(query,{previewData})
-return data.allBlogss.edges
+return data.allBlogss.edges;
 }
 
 
 export async function getBlogsWithSameCategory(previewData,categoryId,limitation,lastPostCursor){
-  const query=
-  `{
-    allBlogss(where:{category:"${categoryId}"},sortBy: date_DESC, after:"${lastPostCursor}",first:${limitation}){
-      pageInfo{
-        endCursor
-        hasNextPage
-      }
-      edges{
-        node{
-          title
-          date
-          featured_image
-          excerpt
-          author {
-            _linkType
-          }
-          category {
-            ... on Category{
-              name
-              _meta {
-                id
-              }
-            }
-          }
-          _meta{
-            uid
-          }
-          excerpt
-        }
-      }
-    }
-}`
+const query=queryBlogsWithSameCategory({categoryId,limitation,lastPostCursor});
 const data = await fetchAPI(query,{previewData})
-return data.allBlogss.edges
+return data.allBlogss.edges;
 }
