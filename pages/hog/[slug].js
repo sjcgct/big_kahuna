@@ -1,9 +1,9 @@
 import { RichText } from 'prismic-reactjs'
-import {getHogWithSlug } from '../../prismic-configuration'
+import {getHogWithSlug ,getAllHogsForHome} from '../../prismic-configuration'
 import Layout from '../../components/Layout'
 import Deck from '../../components/deck'
 
-export default function Post({post}) {
+export default function Post({post,morePosts}) {
   return (
     <Layout>
     <section>
@@ -18,6 +18,14 @@ export default function Post({post}) {
     </div>
     </section>
 
+    <h2>More Posts</h2>
+      {morePosts && (
+        <Deck
+          cards={morePosts}
+          type='hog'
+        />
+      )}
+
     </Layout>
   )
 }
@@ -27,7 +35,8 @@ export async function getServerSideProps({params,previewData}) {
   var slugurl=params.slug;
   const fetchedpost = await getHogWithSlug(previewData,slugurl)
   const post=fetchedpost[0].node;
+  const morePosts=await getAllHogsForHome(previewData," ",3)
   return {
-    props: {post}
+    props: {post,morePosts}
   }
 }
