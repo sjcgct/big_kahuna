@@ -2,7 +2,7 @@ import Prismic from 'prismic-javascript'
 
 
 import {queryBlogsWithSameCategory, queryBlogsWithSlug, queryAllBlogsForHome} from './blog-api'
-
+import {queryHOGwithSlug,queryAllHOGs} from './hog-api'
 
 const REPOSITORY = process.env.PRISMIC_REPOSITORY_NAME
 const REF_API_URL = `https://${REPOSITORY}.prismic.io/api/v2`
@@ -54,8 +54,6 @@ async function fetchAPI (query, { previewData, variables } = {}) {
 
 export async function getAllBlogsForHome (previewData,lastPostCursor,limitation) {
   const query=queryAllBlogsForHome({lastPostCursor,limitation});
-  console.log(query);
-  
   const data = await fetchAPI(query,{ previewData });
   return data.allBlogss.edges;
 }
@@ -72,4 +70,16 @@ export async function getBlogsWithSameCategory(previewData,categoryId,limitation
 const query=queryBlogsWithSameCategory({categoryId,limitation,lastPostCursor});
 const data = await fetchAPI(query,{previewData})
 return data.allBlogss.edges;
+}
+
+export async function getAllHogsForHome (previewData,lastPostCursor,limitation) {
+  const query=queryAllHOGs({lastPostCursor,limitation});
+  const data = await fetchAPI(query,{ previewData });
+  return data.allHogs.edges;
+}
+
+export async function getHogWithSlug(previewData,slug) {
+const query=queryHOGwithSlug({slug});
+const data = await fetchAPI(query,{previewData})
+return data.allHogs.edges;
 }

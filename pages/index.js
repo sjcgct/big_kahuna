@@ -1,10 +1,10 @@
 import Head from 'next/head'
 import HeroPost from '../components/IndexPage/hero-post'
-import { getAllBlogsForHome } from '../prismic-configuration'
+import { getAllBlogsForHome,getAllHogsForHome } from '../prismic-configuration'
 import Layout from '../components/Layout'
 import Deck from '../components/deck'
 
-export default function BlogHome ({ preview, allPosts }) {
+export default function BlogHome ({ preview, allPosts,allHogs}) {
   const heroPost = allPosts[0].node
   const morePosts = allPosts.slice(1)
   return (
@@ -21,12 +21,23 @@ export default function BlogHome ({ preview, allPosts }) {
         />
       )}
 
-
       <h2>Blog</h2>
       {morePosts && (
         <Deck
           cards={morePosts}
           type='blog'
+        />
+      )}
+
+      <br></br>
+      <br></br>
+
+      <h2>Humans of GCT</h2>
+
+      {allHogs && (
+        <Deck
+          cards={allHogs}
+          type='hog'
         />
       )}
     </Layout>
@@ -35,7 +46,8 @@ export default function BlogHome ({ preview, allPosts }) {
 
 export async function getServerSideProps ({ preview = false, previewData }) {
   const allPosts = await getAllBlogsForHome(previewData," ",7)
+  const allHogs=await getAllHogsForHome(previewData," ",6)
   return {
-    props: { preview, allPosts }
+    props: { preview, allPosts,allHogs}
   }
 }

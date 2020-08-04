@@ -33,7 +33,7 @@ export const queryAllBlogsForHome=({lastPostCursor,limitation})=>{
           }
         }
       `
-      return (query);
+      return query;
   }
   
   export const queryBlogsWithSlug=({slug})=>{
