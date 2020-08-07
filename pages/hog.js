@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Hogtile from '../components/HogListPage/hogTile-hogpage'
-import Layout from '../components/Layout'
+import { RichText } from 'prismic-reactjs'
+import { getHogWithSlug , getAllHogsForHome } from '../../prismic-configuration'
+import Layout from '../../components/Layout'
 
 const hogPage = () => {
   return (

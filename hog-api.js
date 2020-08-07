@@ -1,7 +1,6 @@
 
-
-export const queryAllHOGs=({lastPostCursor,limitation})=>{
-    const query=`
+export const queryAllHOGs = ({ lastPostCursor, limitation }) => {
+  const query = `
     {
         allHogs (sortBy:date_DESC,after:"${lastPostCursor}",first:${limitation}){
           pageInfo{
@@ -20,11 +19,11 @@ export const queryAllHOGs=({lastPostCursor,limitation})=>{
           }
         }
       }`
-      return query;
+  return query
 }
 
-export const queryHOGwithSlug=({slug})=>{
-    const query=`
+export const queryHOGwithSlug = ({ slug }) => {
+  const query = `
     {
         allHogs (uid:"${slug}"){
           edges{
@@ -41,10 +40,7 @@ export const queryHOGwithSlug=({slug})=>{
           }
         }
       }`
-      return query;
+  return query
 }
 
-export default {queryHOGwithSlug,queryAllHOGs}
-
-
-
+export default { queryHOGwithSlug, queryAllHOGs }
