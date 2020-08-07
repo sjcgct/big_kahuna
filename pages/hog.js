@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import HogList from '../components/HogListPage/hogList.js'
 import { RichText } from 'prismic-reactjs'
-import { getHogWithSlug, getAllHogsForHome } from '../prismic-configuration'
+import { getAllHogsForHome } from '../prismic-configuration'
 import Layout from '../components/Layout'
 
 const hogPage = ({ preview, allHogs }) => {
@@ -20,7 +20,12 @@ const hogPage = ({ preview, allHogs }) => {
 export default hogPage
 
 export async function getServerSideProps ({ preview = false, previewData }) {
+<<<<<<< HEAD
   const allHogs = await getAllHogsForHome(previewData, ' ', 12)
+=======
+  var allHogs = await getAllHogsForHome(previewData, ' ', 10)
+  allHogs=allHogs.edges
+>>>>>>> b429bea150e2ed8403516fab9644599f6d2d1436
   return {
     props: { preview, allHogs }
   }
