@@ -3,8 +3,8 @@ import Deck from '../components/deck'
 import { getAllBlogsForHome } from '../prismic-configuration'
 import Layout from '../components/Layout'
 
-var cursor=''
-var isNextPageExists=false
+var cursor = ''
+var isNextPageExists = false
 
 const blogPage = ({ preview, allBlogs }) => {
   return (
@@ -15,7 +15,7 @@ const blogPage = ({ preview, allBlogs }) => {
       <h1>
           Blogs
       </h1>
-        <Deck cards={allBlogs} type='blog'/>
+      <Deck cards={allBlogs} type='blog' />
     </Layout>
   )
 }
@@ -24,7 +24,7 @@ export default blogPage
 
 export async function getServerSideProps ({ preview = false, previewData }) {
   var allBlogs = await getAllBlogsForHome(previewData, cursor, 12)
-  allBlogs=allBlogs.edges
+  allBlogs = allBlogs.edges
   return {
     props: { preview, allBlogs }
   }

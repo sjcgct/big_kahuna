@@ -20,12 +20,8 @@ const hogPage = ({ preview, allHogs }) => {
 export default hogPage
 
 export async function getServerSideProps ({ preview = false, previewData }) {
-<<<<<<< HEAD
-  const allHogs = await getAllHogsForHome(previewData, ' ', 12)
-=======
-  var allHogs = await getAllHogsForHome(previewData, ' ', 10)
-  allHogs=allHogs.edges
->>>>>>> b429bea150e2ed8403516fab9644599f6d2d1436
+  var allHogs = await getAllHogsForHome(previewData, ' ', 12)
+  allHogs = allHogs.edges
   return {
     props: { preview, allHogs }
   }

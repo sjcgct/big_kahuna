@@ -10,12 +10,12 @@ export default function HogTile ({ title, imgurl, slugurl, name }) {
   return (
     <div className='col-md-4'>
       <div className='poster mb-5'>
-        <h2>
+        <h4>
           <Link as={`/${'hog'}/${slugurl}`} href={redirect}>
             <a className='text-center'>{title}</a>
           </Link>
-        </h2>
-        <img src={imgurl} className='img-fluid hog-tile-img' />      
+        </h4>
+        <img src={imgurl} className='img-fluid hog-tile-img' />
       </div>
     </div>
   )
