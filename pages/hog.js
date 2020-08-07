@@ -1,23 +1,29 @@
 import Head from 'next/head'
-import Hogtile from '../components/HogListPage/hogTile-hogpage'
+import HogList from '../components/HogListPage/hogList.js'
 import { RichText } from 'prismic-reactjs'
 import { getHogWithSlug, getAllHogsForHome } from '../prismic-configuration'
 import Layout from '../components/Layout'
 
-const hogPage = () => {
+var hogphotos = []
+
+const hogPage = ({ preview, allHogs }) => {
   return (
     <Layout>
       <Head>
         <title>Student Council - GCT</title>
       </Head>
       <div className='HoGPosts row'>
-        <Hogtile />
-        <Hogtile />
-        <Hogtile />
-        <Hogtile />
+        <HogList cards={allHogs} />
       </div>
     </Layout>
   )
 }
 
 export default hogPage
+
+export async function getServerSideProps ({ preview = false, previewData }) {
+  const allHogs = await getAllHogsForHome(previewData, ' ', 10)
+  return {
+    props: { preview, allHogs }
+  }
+}
