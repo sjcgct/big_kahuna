@@ -1,9 +1,12 @@
 import React from 'react'
 import { RichText } from 'prismic-reactjs'
 import HogTile from './hogTile'
+import { getAllHogsForHome } from '../../prismic-configuration'
 
-const HogList = (cards) => {
+const HogList = ({cards}) => {
   var hogphotos = []
+  console.log('here')
+  console.log(cards.length)
   for (var i = 0; i < cards.length; i++) {
     var post = cards[i].node
     var image = post.featured_image.thumbnail.url

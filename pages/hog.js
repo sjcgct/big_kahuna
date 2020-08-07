@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import HogList from '../components/HogListPage/hogList.js'
 import { RichText } from 'prismic-reactjs'
-import { getHogWithSlug, getAllHogsForHome } from '../prismic-configuration'
+import { getAllHogsForHome } from '../prismic-configuration'
 import Layout from '../components/Layout'
 
 var hogphotos = []
