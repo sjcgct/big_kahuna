@@ -2,7 +2,7 @@ import React from 'react'
 import { RichText } from 'prismic-reactjs'
 import HogTile from './hogTile'
 
-const HogList = (cards) => {
+const HogList = ({ cards }) => {
   var hogphotos = []
   for (var i = 0; i < cards.length; i++) {
     var post = cards[i].node

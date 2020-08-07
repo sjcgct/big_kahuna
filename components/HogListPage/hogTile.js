@@ -15,9 +15,7 @@ export default function HogTile ({ title, imgurl, slugurl, name }) {
             <a className='text-center'>{title}</a>
           </Link>
         </h2>
-        <h2 className='text-center'>{title}</h2>
-        <img src={imgurl} className='img-fluid hog-tile-img' />
-        <small className='text-center'>{name}</small>
+        <img src={imgurl} className='img-fluid hog-tile-img' />      
       </div>
     </div>
   )

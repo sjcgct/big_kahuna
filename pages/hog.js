@@ -4,8 +4,6 @@ import { RichText } from 'prismic-reactjs'
 import { getHogWithSlug, getAllHogsForHome } from '../prismic-configuration'
 import Layout from '../components/Layout'
 
-var hogphotos = []
-
 const hogPage = ({ preview, allHogs }) => {
   return (
     <Layout>
@@ -22,7 +20,7 @@ const hogPage = ({ preview, allHogs }) => {
 export default hogPage
 
 export async function getServerSideProps ({ preview = false, previewData }) {
-  const allHogs = await getAllHogsForHome(previewData, ' ', 10)
+  const allHogs = await getAllHogsForHome(previewData, ' ', 12)
   return {
     props: { preview, allHogs }
   }
