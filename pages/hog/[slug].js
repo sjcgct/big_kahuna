@@ -35,7 +35,8 @@ export async function getServerSideProps({params,previewData}) {
   var slugurl=params.slug;
   const fetchedpost = await getHogWithSlug(previewData,slugurl)
   const post=fetchedpost[0].node;
-  const morePosts=await getAllHogsForHome(previewData," ",3)
+  const posts=await getAllHogsForHome(previewData," ",3)
+  var morePosts=posts.edges
   return {
     props: {post,morePosts}
   }

@@ -4,9 +4,9 @@ import { getAllBlogsForHome, getAllHogsForHome } from '../prismic-configuration'
 import Layout from '../components/Layout'
 import Deck from '../components/deck'
 
-export default function BlogHome ({ preview, allPosts, allHogs }) {
-  const heroPost = allPosts[0].node
-  const morePosts = allPosts.slice(1)
+export default function BlogHome ({ preview, allBlogs, allHogs }) {
+  const heroPost = allBlogs[0].node
+  const morePosts = allBlogs.slice(1)
   return (
     <Layout>
       <Head>
@@ -45,9 +45,11 @@ export default function BlogHome ({ preview, allPosts, allHogs }) {
 }
 
 export async function getServerSideProps ({ preview = false, previewData }) {
-  const allPosts = await getAllBlogsForHome(previewData, ' ', 7)
-  const allHogs = await getAllHogsForHome(previewData, ' ', 6)
+  const blogs = await getAllBlogsForHome(previewData, ' ', 7)
+  const hogs = await getAllHogsForHome(previewData, ' ', 6)
+  var allBlogs=blogs.edges
+  var allHogs=hogs.edges
   return {
-    props: { preview, allPosts, allHogs }
+    props: { preview, allBlogs, allHogs }
   }
 }

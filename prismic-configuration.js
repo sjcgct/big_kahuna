@@ -54,7 +54,7 @@ async function fetchAPI (query, { previewData, variables } = {}) {
 export async function getAllBlogsForHome (previewData, lastPostCursor, limitation) {
   const query = queryAllBlogsForHome({ lastPostCursor, limitation })
   const data = await fetchAPI(query, { previewData })
-  return data.allBlogss.edges
+  return data.allBlogss
 }
 
 export async function getBlogsWithSlug (previewData, slug) {
@@ -66,13 +66,13 @@ export async function getBlogsWithSlug (previewData, slug) {
 export async function getBlogsWithSameCategory (previewData, categoryId, limitation, lastPostCursor) {
   const query = queryBlogsWithSameCategory({ categoryId, limitation, lastPostCursor })
   const data = await fetchAPI(query, { previewData })
-  return data.allBlogss.edges
+  return data.allBlogss
 }
 
 export async function getAllHogsForHome (previewData, lastPostCursor, limitation) {
   const query = queryAllHOGs({ lastPostCursor, limitation })
   const data = await fetchAPI(query, { previewData })
-  return data.allHogs.edges
+  return data.allHogs
 }
 
 export async function getHogWithSlug (previewData, slug) {
