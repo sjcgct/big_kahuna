@@ -37,22 +37,7 @@ const Profile = () => {
       </div>
 
       <div className='profile-body container'>
-
-        <div className='  px-2 py-2 profile-post'>
-          <div className='row'>
-            <div className='col-xs-2 col-md-3'>
-              <img className='img-fluid p' src='https://source.unsplash.com/random/300x200' />
-            </div>
-            <div className='col-xs-10 col-md-9 my-auto'>
-              <h3 className='bold'>Gods please don't play with me</h3>
-              <br />
-              <p>Lorem gipsum dabdab dubdub huehue fuk fuk alo ees</p>
-              <br />
-              <small>FEB 30, 2020</small>
-            </div>
-          </div>
-        </div>
-
+          Insert deckcard header
       </div>
     </Layout>
   )
