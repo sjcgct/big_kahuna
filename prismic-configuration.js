@@ -5,7 +5,7 @@ import { queryHOGwithSlug, queryAllHOGs } from './hog-api'
 
 const REPOSITORY = process.env.PRISMIC_REPOSITORY_NAME
 const REF_API_URL = `https://${REPOSITORY}.prismic.io/api/v2`
-const GRAPHQL_API_URL = `https://${REPOSITORY}.prismic.io/graphql`
+var GRAPHQL_API_URL = `https://${REPOSITORY}.prismic.io/graphql`
 // export const API_URL = 'https://your-repo-name.cdn.prismic.io/api/v2'
 export const API_TOKEN = process.env.PRISMIC_TOKEN
 export const API_LOCALE = process.env.PRISMIC_LOCALE
@@ -23,13 +23,14 @@ export const PrismicClient = Prismic.client(REF_API_URL, {
   accessToken: API_TOKEN
 })
 
-async function fetchAPI (query, { previewData, variables } = {}) {
+async function fetchAPI (query, { variables } = {}) {
   const prismicAPI = await PrismicClient.getApi()
+  console.log(`${prismicAPI}`);
   const res = await fetch(
       `${GRAPHQL_API_URL}?query=${query}&variables=${JSON.stringify(variables)}`,
       {
         headers: {
-          'Prismic-Ref': previewData?.ref || prismicAPI.masterRef.ref,
+          'Prismic-Ref': prismicAPI.masterRef.ref,
           'Content-Type': 'application/json',
           'Accept-Language': API_LOCALE,
           Authorization: `Token ${API_TOKEN}`
@@ -51,32 +52,33 @@ async function fetchAPI (query, { previewData, variables } = {}) {
   return json.data
 }
 
-export async function getAllBlogsForHome (previewData, lastPostCursor, limitation) {
+export async function getAllBlogsForHome (lastPostCursor, limitation) {
+  console.log("here man ")
   const query = queryAllBlogsForHome({ lastPostCursor, limitation })
-  const data = await fetchAPI(query, { previewData })
+  const data = await fetchAPI(query)
   return data.allBlogss
 }
 
-export async function getBlogsWithSlug (previewData, slug) {
+export async function getBlogsWithSlug (slug) {
   const query = queryBlogsWithSlug({ slug })
-  const data = await fetchAPI(query, { previewData })
+  const data = await fetchAPI(query)
   return data.allBlogss.edges
 }
 
-export async function getBlogsWithSameCategory (previewData, categoryId, limitation, lastPostCursor) {
+export async function getBlogsWithSameCategory (categoryId, limitation, lastPostCursor) {
   const query = queryBlogsWithSameCategory({ categoryId, limitation, lastPostCursor })
-  const data = await fetchAPI(query, { previewData })
+  const data = await fetchAPI(query)
   return data.allBlogss
 }
 
-export async function getAllHogsForHome (previewData, lastPostCursor, limitation) {
+export async function getAllHogsForHome (lastPostCursor, limitation) {
   const query = queryAllHOGs({ lastPostCursor, limitation })
-  const data = await fetchAPI(query, { previewData })
+  const data = await fetchAPI(query)
   return data.allHogs
 }
 
-export async function getHogWithSlug (previewData, slug) {
+export async function getHogWithSlug (slug) {
   const query = queryHOGwithSlug({ slug })
-  const data = await fetchAPI(query, { previewData })
+  const data = await fetchAPI(query)
   return data.allHogs.edges
 }

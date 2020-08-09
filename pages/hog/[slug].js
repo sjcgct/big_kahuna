@@ -33,9 +33,9 @@ export default function Post({post,morePosts}) {
 export async function getServerSideProps({params,previewData}) {
   //var slugurl =window.location.pathname.split("/").pop()
   var slugurl=params.slug;
-  const fetchedpost = await getHogWithSlug(previewData,slugurl)
+  const fetchedpost = await getHogWithSlug(slugurl)
   const post=fetchedpost[0].node;
-  const posts=await getAllHogsForHome(previewData," ",3)
+  const posts=await getAllHogsForHome(" ",3)
   var morePosts=posts.edges
   return {
     props: {post,morePosts}

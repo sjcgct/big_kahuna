@@ -33,10 +33,10 @@ export default function Post({post,postsYouMayLike}) {
 export async function getServerSideProps({params,previewData}) {
   //var slugurl =window.location.pathname.split("/").pop()
   var slugurl=params.slug;
-  const fetchedpost = await getBlogsWithSlug(previewData,slugurl)
+  const fetchedpost = await getBlogsWithSlug(slugurl)
   const post=fetchedpost[0].node;
   const categoryId=post.category._meta.id;
-  var postsYouMayLike=await getBlogsWithSameCategory(previewData,categoryId,3)
+  var postsYouMayLike=await getBlogsWithSameCategory(categoryId,3)
   postsYouMayLike=postsYouMayLike.edges
   return {
     props: {post,postsYouMayLike,}
