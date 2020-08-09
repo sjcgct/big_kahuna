@@ -71,7 +71,6 @@ class BlogPage extends Component {
 
   handlePageChange(pageNumber) {
     console.log(`active page is ${pageNumber}`);
-    //this.renderRedirect()
     //this.loadNextPage(pageNumber)
     this.setState({activePage: pageNumber});
   }
