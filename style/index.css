@@ -203,3 +203,18 @@ a:after {
 a:hover:after {
   transform: scaleX(0);
 }
+
+/* Profile Page */
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  border-width: 0px 0px 2px 0px;
+  border-style: solid;
+  border-color: #F2F2F2;
+}
+
+.profile-body {
+  display: flex;
+}
