@@ -25,7 +25,7 @@ export const PrismicClient = Prismic.client(REF_API_URL, {
 
 async function fetchAPI (query, { variables } = {}) {
   const prismicAPI = await PrismicClient.getApi()
-  console.log(`${prismicAPI}`);
+  console.log(`${prismicAPI}`)
   const res = await fetch(
       `${GRAPHQL_API_URL}?query=${query}&variables=${JSON.stringify(variables)}`,
       {
@@ -53,7 +53,7 @@ async function fetchAPI (query, { variables } = {}) {
 }
 
 export async function getAllBlogsForHome (lastPostCursor, limitation) {
-  console.log("here man ")
+  console.log('here man ')
   const query = queryAllBlogsForHome({ lastPostCursor, limitation })
   const data = await fetchAPI(query)
   return data.allBlogss

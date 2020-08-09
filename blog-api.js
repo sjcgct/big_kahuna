@@ -1,5 +1,5 @@
-export const queryAllBlogsForHome=({lastPostCursor,limitation})=>{
-    const query =
+export const queryAllBlogsForHome = ({ lastPostCursor, limitation }) => {
+  const query =
         `
         {
           allBlogss(sortBy: date_DESC, after:"${lastPostCursor}",first:${limitation}){
@@ -33,12 +33,11 @@ export const queryAllBlogsForHome=({lastPostCursor,limitation})=>{
           }
         }
       `
-      return query;
+  return query
   }
-  
-  export const queryBlogsWithSlug=({slug})=>{
-  
-  const query=
+
+export const queryBlogsWithSlug = ({ slug }) => {
+  const query =
   `{
     allBlogss(uid:"${slug}") {
     edges{
@@ -69,11 +68,11 @@ export const queryAllBlogsForHome=({lastPostCursor,limitation})=>{
   }
   `
   return query
-  }
-  
-  
-  export const queryBlogsWithSameCategory=({categoryId,limitation,lastPostCursor})=>{
-    const query=
+}
+
+
+export const queryBlogsWithSameCategory = ({ categoryId, limitation, lastPostCursor }) => {
+  const query =
     `{
       allBlogss(where:{category:"${categoryId}"},sortBy: date_DESC, after:"${lastPostCursor}",first:${limitation}){
         pageInfo{
@@ -106,6 +105,6 @@ export const queryAllBlogsForHome=({lastPostCursor,limitation})=>{
       }
   }`
   return query
-  }
+}
 
-  export default {queryBlogsWithSameCategory, queryBlogsWithSlug, queryAllBlogsForHome}
+export default { queryBlogsWithSameCategory, queryBlogsWithSlug, queryAllBlogsForHome }

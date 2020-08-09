@@ -206,18 +206,151 @@ a:hover:after {
 
 /* Profile Page */
 .profile-header {
+  max-width: 93.5rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.profile {
+  padding: 5rem 0;
+}
+
+.profile::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.profile-image {
+  float: left;
+  width: calc(33.333% - 1rem);
   display: flex;
-  flex-direction: column;
-  padding-top: 60px;
-  padding-bottom: 60px;
-  border-width: 0px 0px 2px 0px;
-  border-style: solid;
-  border-color: #F2F2F2;
+  justify-content: center;
+  align-items: center;
+  margin-right: 3rem;
+}
+
+.profile-image img {
+  border-radius: 50%;
+}
+
+.profile-user-settings,
+.profile-bio {
+  float: left;
+  width: calc(66.666% - 2rem);
+}
+
+.profile-user-settings {
+  margin-top: 1.1rem;
+}
+
+.profile-user-name {
+  display: inline-block;
+  font-size: 3.2rem;
+  font-weight: 300;
+}
+
+
+.profile-bio {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-top: 2.3rem;
+}
+@media screen and (max-width: 50rem) {
+  .profile {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 4rem 0;
+  }
+
+  .profile::after {
+      display: none;
+  }
+
+  .profile-image,
+  .profile-user-settings,
+  .profile-bio {
+      float: none;
+      width: auto;
+  }
+
+  .profile-image img {
+      width: 7.7rem;
+  }
+
+  .profile-user-settings {
+      flex-basis: calc(100% - 10.7rem);
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+  }
+
+  .profile-user-name {
+      font-size: 2.2rem;
+  }
+
+  .profile-bio {
+      font-size: 1.4rem;
+      margin-top: 1.5rem;
+  }
+
+  .profile-bio {
+      flex-basis: 100%;
+  }
+}
+
+@supports (display: grid) {
+  .profile {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      grid-template-rows: repeat(3, auto);
+      grid-column-gap: 3rem;
+      align-items: center;
+  }
+
+  .profile-image {
+      grid-row: 1 / -1;
+  }
+
+  .profile-image,
+  .profile-user-settings,
+  .profile-bio {
+      width: auto;
+      margin: 0;
+  }
+
+  @media (max-width: 50rem) {
+      .profile {
+          grid-template-columns: auto 1fr;
+          grid-row-gap: 1.5rem;
+      }
+
+      .profile-image {
+          grid-row: 1 / 2;
+      }
+
+      .profile-user-settings {
+          display: grid;
+          grid-template-columns: auto 1fr;
+          grid-gap: 1rem;
+      }
+
+      
+      .profile-bio {
+          grid-column: 1 / -1;
+      }
+
+      .profile-user-settings,
+      .profile-bio {
+          margin: 0;
+      }
+  }
 }
 
 .profile-body {
   display: block;
-  margin-top: -2rem;
+  margin-top: -4rem;
 }
 
 .profile-post-card-container {
