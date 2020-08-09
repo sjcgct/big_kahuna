@@ -222,7 +222,7 @@ a:hover:after {
 
 .profile-post-card-container {
   width: 45rem;
-  height: 13.625rem;
+  height: auto;
 }
 .profile-post-card {
   display: flex;
@@ -234,6 +234,12 @@ a:hover:after {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+
+.profile-blog-card {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .card-link {
   position: relative;
   display: block;
@@ -283,10 +289,11 @@ a:hover:after {
   padding: 1.125rem 0 0 0;
   border-top: 0.0625rem solid #ebebeb;
 }
+
 @media (max-width: 40rem) {
   .profile-post-card-container {
     width: 18rem;
-    height: 27.25rem;
+    height: auto;
   }
   .profile-blog-card {
     flex-wrap: wrap;
@@ -312,5 +319,4 @@ a:hover:after {
       grid-template-rows: 12rem 1fr;
     }
   }
-
 

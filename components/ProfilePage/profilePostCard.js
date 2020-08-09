@@ -9,7 +9,7 @@ const ProfilePostCard = () => {
             <div className='profile-article-details'>
               <h4 className='profile-post-category'>category</h4>
               <h3 className='profile-post-title'>name</h3>
-              <p className='profile-post-description'>desc</p>
+              <p className='profile-post-description'>Hi I am AJ. I used to be a good guy, then I turned into a Devil. Now I suck up the blood of people kek.. Just kidding, i am a miserable human being who doesnt like to exist in this world.</p>
               <p className='profile-post-author'>By author</p>
             </div>
           </article>
