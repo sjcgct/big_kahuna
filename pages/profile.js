@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Layout from '../components/Layout'
+import ProfilePostCard from '../components/ProfilePage/profilePostCard'
 
 const Profile = () => {
   return (
@@ -36,8 +37,10 @@ const Profile = () => {
 
       </div>
 
-      <div className='profile-body container'>
-          Insert deckcard header
+      <div className='profile-body'>
+        <ProfilePostCard />
+        <ProfilePostCard />
+        <ProfilePostCard />
       </div>
     </Layout>
   )
