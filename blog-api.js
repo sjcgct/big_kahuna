@@ -3,6 +3,7 @@ export const queryAllBlogsForHome = ({ lastPostCursor, limitation }) => {
         `
         {
           allBlogss(sortBy: date_DESC, after:"${lastPostCursor}",first:${limitation}){
+            totalCount
             pageInfo{
               endCursor
               hasNextPage

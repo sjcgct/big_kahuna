@@ -1,83 +1,99 @@
-// import Head from 'next/head'
-// import Deck from '../components/deck'
- //import { getAllBlogsForHome } from '../prismic-configuration'
-// import Layout from '../components/Layout'
-// import Footer from '../components/Footer'
-
-// var cursor = ''
-// var isNextPageExists = false
-
-
-// export async function getServerSideProps ({ preview = false, previewData }) {
-//     var allBlogs = await getAllBlogsForHome(previewData, cursor, 12)
-//     cursor=allBlogs.pageInfo.endCursor
-//     allBlogs=allBlogs.edges
-//     return {
-//       props: { preview, allBlogs,previewData }
-//     }
-//   }
-
-// const blogPage = ({ preview, allBlogs}) => {
-//   return (
-//     <Layout>
-//       <Head>
-//         <title>Student Council - GCT</title>
-//       </Head>
-//       <h1>
-//           Blogs
-//       </h1>
-//         <Deck cards={allBlogs} type='blog'/>
-//     </Layout>
-//   )
-// }
-
-// export default blogPage
-
-// export async function getServerSideProps ({ preview = false, previewData }) {
-//   var allBlogs = await getAllBlogsForHome(previewData, cursor, 12)
-//   allBlogs = allBlogs.edges
-//   return {
-//     props: { preview, allBlogs }
-//   }
-// }
-
 import React, { Component } from "react";
 import { getAllBlogsForHome} from '../prismic-configuration'
 import Pagination from "react-js-pagination";
 import Layout from '../components/Layout'
 import Deck from '../components/deck' 
-import { Redirect } from 'react-dom'
+import { PrismicLink } from 'apollo-link-prismic';
+import ApolloClient from "apollo-client";
+import { InMemoryCache } from "apollo-cache-inmemory";
+import gql from "graphql-tag";
 
 
 
+
+const apolloClient = new ApolloClient({
+  link: PrismicLink({
+    uri: `https://sjcgctrepo.prismic.io/graphql`,
+    accessToken: process.env.PRISMIC_TOKEN,
+  }),
+  cache: new InMemoryCache()
+});
 
 class BlogPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       activePage: 1,
+      total:props.totalCount,
       blogs:props.blogs,
       rediret:false,
       cursor:props.cursor
     };
+
   }
 
-  async loadNextPage(pageno){
-    const posts=await getAllBlogsForHome(" ",6)
-    var blogs=posts.edges
-    var cursor=posts.pageInfo.endCursor
-    this.setState({blogs:blogs,cursor:cursor,pageNumber:pageno})
+  async loadNextPage(cursor,limit,pageno){
+    console.log(this.getBlogForNextPage(cursor,limit));
+    var blogs=''
+    var curs=''
+    apolloClient.query({
+      query:this.getBlogForNextPage(cursor,limit)
+    }).then(response => {
+      console.log("success");
+      blogs=response.data.allBlogss.edges
+      curs=response.data.allBlogss.pageInfo.endCursor
+      this.setState({blogs:blogs,cursor:curs,pageNumber:pageno})
+    }).catch(error => {
+      console.error("error");
+      alert(error)
+    });
+    
   }
 
-  handlePageChange(pageNumber) {
+  getBlogForNextPage(lastPostCursor,limitation){
+    const query =gql`
+        {
+          allBlogss(sortBy: date_DESC, after:"${lastPostCursor}",first:${limitation}){
+            totalCount
+            pageInfo{
+              endCursor
+              hasNextPage
+            }
+            edges{
+              node{
+                title
+                date
+                featured_image
+                excerpt
+                author {
+                  _linkType
+                }
+                category {
+                  ... on Category{
+                    name
+                    _meta {
+                      id
+                    }
+                  }
+                }
+                _meta{
+                  uid
+                }
+                excerpt
+              }
+            }
+          }
+        }
+      `
+  return query
+  }
+  async handlePageChange(pageNumber) {
     console.log(`active page is ${pageNumber}`);
-    //this.loadNextPage(pageNumber)
-    this.setState({activePage: pageNumber});
+    await this.loadNextPage(this.state.cursor,6,pageNumber)
   }
 
   render() {
     return (
-     
         <Layout>
            {this.state.blogs && (
         <Deck
@@ -86,30 +102,24 @@ class BlogPage extends Component {
         />
       )}
 
-        <Pagination
-          activePage={this.state.activePage}
-          itemsCountPerPage={10}
-          totalItemsCount={450}
-          pageRangeDisplayed={5}
-          onChange={this.handlePageChange.bind(this)}
-        />
+        <button onClick={() => this.handlePageChange(this.state.activePage+1)}>
+          Next
+        </button>
         </Layout>
 
     );
   }
 }
 
-
 export default BlogPage
 
 export async function getServerSideProps({params,previewData}) {
-  console.log("loading");
-  
   const posts=await getAllBlogsForHome(" ",6)
   var blogs=posts.edges
   var cursor=posts.pageInfo.endCursor
+  var totalCount=posts.totalCount
   return {
-    props: {blogs,cursor}
+    props: {blogs,cursor,totalCount}
   }
 }
 
