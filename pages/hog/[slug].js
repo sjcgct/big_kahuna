@@ -9,8 +9,8 @@ export default function Post({post,morePosts}) {
     <section>
     <div className='blog-container'>
     <h1  className='text-center blog-title'>{RichText.asText(post.title)}</h1>
-     <div className='sm-12'>
-        <img src={post.featured_image.url} className='card-img' />
+     <div className='row'>
+        <img src={post.featured_image.url} className='justify-content-center' />
      </div>
     <div className='mb-5'>
       <a>{post.content}</a>
