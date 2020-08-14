@@ -6,7 +6,7 @@ import Deck from '../components/deck'
 import { PrismicLink } from 'apollo-link-prismic';
 import ApolloClient from "apollo-client";
 import { InMemoryCache } from "apollo-cache-inmemory";
-import gql from "graphql-tag";
+import gql, { disableExperimentalFragmentVariables } from "graphql-tag";
 
 
 
@@ -22,42 +22,75 @@ const apolloClient = new ApolloClient({
 class BlogPage extends Component {
   constructor(props) {
     super(props);
+    var page_arr = [];
+    page_arr[0]=props.cursor
     this.state = {
-      activePage: 1,
+      activePage: 0,
       total:props.totalCount,
       blogs:props.blogs,
       rediret:false,
-      cursor:props.cursor
+      cursor:props.cursor,
+      hasnext:props.hasnext,
+      page_arr:page_arr,
+      loadedtill:0
     };
+    console.log(this.state.loadedtill)
 
   }
 
-  async loadNextPage(cursor,limit,pageno){
-    console.log(this.getBlogForNextPage(cursor,limit));
+  async loadPage(action,cursor,limit,page){
+    //console.log(this.getBlogForNextOrPrevPage(action,cursor,limit));
     var blogs=''
     var curs=''
+    var hasnext=''
+    this.state.activePage=page
+    //alert(this.state.activePage)
+
+    var shallWeStore=true
+    if(this.state.loadedtill>=page){
+      //alert("alread loaded")
+      shallWeStore=false
+      cursor=this.state.page_arr[page-1]
+    }
+    else{
+      //alert("newly loading")
+      this.state.loadedtill=this.state.loadedtill+1
+    }
+
     apolloClient.query({
-      query:this.getBlogForNextPage(cursor,limit)
+      query:this.getBlogForNextOrPrevPage(action,cursor,limit)
     }).then(response => {
       console.log("success");
       blogs=response.data.allBlogss.edges
       curs=response.data.allBlogss.pageInfo.endCursor
-      this.setState({blogs:blogs,cursor:curs,pageNumber:pageno})
+      hasnext=response.data.allBlogss.pageInfo.hasNextPage
+      if(shallWeStore==true){
+        this.state.page_arr[this.state.loadedtill]=curs
+      }
+      this.setState({blogs:blogs,cursor:curs,hasnext:hasnext})
     }).catch(error => {
       console.error("error");
       alert(error)
     });
     
+    //alert(this.state.loadedtill+" max")
+    for(var i=0;i<this.state.loadedtill;i++){
+      //alert(this.state.page_arr[i])
+      console.log("hi")
+    }
+
   }
 
-  getBlogForNextPage(lastPostCursor,limitation){
+   getBlogForNextOrPrevPage(action,lastPostCursor,limitation){
     const query =gql`
         {
-          allBlogss(sortBy: date_DESC, after:"${lastPostCursor}",first:${limitation}){
+          allBlogss(sortBy: date_DESC, ${action}:"${lastPostCursor}",first:${limitation}){
             totalCount
             pageInfo{
               endCursor
               hasNextPage
+              hasPreviousPage
+              startCursor
             }
             edges{
               node{
@@ -87,9 +120,15 @@ class BlogPage extends Component {
       `
   return query
   }
-  async handlePageChange(pageNumber) {
-    console.log(`active page is ${pageNumber}`);
-    await this.loadNextPage(this.state.cursor,6,pageNumber)
+
+  async nextPage() {
+    await this.loadPage('after',this.state.cursor,6,this.state.activePage+1)
+  }
+  async prevPage() {
+    if(this.state.activePage-1==0){
+      this.state.hasprev=false
+    }
+    await this.loadPage('after',this.state.cursor,6,this.state.activePage-1)
   }
 
   render() {
@@ -100,11 +139,19 @@ class BlogPage extends Component {
           cards={this.state.blogs}
           type='blog'
         />
-      )}
+         )}
 
-        <button onClick={() => this.handlePageChange(this.state.activePage+1)}>
+
+        <button disabled={this.state.activePage==0} onClick={() => this.prevPage()}>
+         Previous
+        </button>
+
+        <p> </p>
+
+        <button disabled={!this.state.hasnext} onClick={() => this.nextPage()}>
           Next
         </button>
+
         </Layout>
 
     );
@@ -118,8 +165,9 @@ export async function getServerSideProps({params,previewData}) {
   var blogs=posts.edges
   var cursor=posts.pageInfo.endCursor
   var totalCount=posts.totalCount
+  var hasnext=posts.pageInfo.hasNextPage
   return {
-    props: {blogs,cursor,totalCount}
+    props: {blogs,cursor,totalCount,hasnext}
   }
 }
 

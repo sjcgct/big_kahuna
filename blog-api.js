@@ -7,6 +7,8 @@ export const queryAllBlogsForHome = ({ lastPostCursor, limitation }) => {
             pageInfo{
               endCursor
               hasNextPage
+              hasPreviousPage
+              startCursor
             }
             edges{
               node{
@@ -79,6 +81,8 @@ export const queryBlogsWithSameCategory = ({ categoryId, limitation, lastPostCur
         pageInfo{
           endCursor
           hasNextPage
+          hasPreviousPage
+          startCursor
         }
         edges{
           node{
