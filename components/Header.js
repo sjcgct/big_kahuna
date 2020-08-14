@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import Navigation from './navigation'
+import NavBar from './navigation'
 const Header = () => (
-  <Navigation />
+  <NavBar />
 
 )
 export default Header
