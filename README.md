@@ -1,6 +1,8 @@
 
 ## Student Journalist Council
 
+![sjc](sjc_logo_black.png)
+
 A web application for Student Journalist Council, Government college of technology, coimbatore
 
 [sjc-gct-vercel2.vercel.app](https://sjc-gct-vercel2.vercel.app/ "https://sjc-gct-vercel2.vercel.app")
@@ -27,4 +29,5 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 **Contribution**
+
   Feel free to rise issues, and for contribute please contact, sjcgct@gmail.com
