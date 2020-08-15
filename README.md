@@ -1,7 +1,7 @@
 
 ## Student Journalist Council
 
-![alt text](sjc_logo_black.png)
+![sjc](sjc_logo_black.png)
 
 A web application for Student Journalist Council, Government college of technology, coimbatore
 
