@@ -5,7 +5,7 @@ import Link from 'next/link'
 class NavBar extends Component {
   render () {
     return (
-      <Navbar bg='light' expand='lg'>
+      <Navbar className='navbar' expand='lg'>
         <Navbar.Brand href='/'>SJC</Navbar.Brand>
 
         <Navbar.Toggle aria-controls='basic-navbar-nav' />

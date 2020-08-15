@@ -63,7 +63,7 @@ class BlogPage extends Component {
       blogs = response.data.allBlogss.edges
       curs = response.data.allBlogss.pageInfo.endCursor
       hasnext = response.data.allBlogss.pageInfo.hasNextPage
-      if (shallWeStore == true) {
+      if (shallWeStore === true) {
         this.state.page_arr[this.state.loadedtill] = curs
       }
       this.setState({ blogs: blogs, cursor: curs, hasnext: hasnext, loading: false })
@@ -128,7 +128,7 @@ class BlogPage extends Component {
   }
 
   async prevPage () {
-    if (this.state.activePage - 1 == 0) {
+    if (this.state.activePage - 1 === 0) {
       this.state.hasprev = false
     }
     await this.loadPage(this.state.activePage - 1)
@@ -156,7 +156,7 @@ class BlogPage extends Component {
           />
         )}
 
-        <button disabled={this.state.activePage == 0} onClick={() => this.prevPage()}>
+        <button disabled={this.state.activePage === 0} onClick={() => this.prevPage()}>
          Previous
         </button>
 
