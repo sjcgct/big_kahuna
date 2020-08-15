@@ -7,6 +7,7 @@ import { PrismicLink } from 'apollo-link-prismic';
 import ApolloClient from "apollo-client";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import gql from "graphql-tag";
+import LoadingOverlay from 'react-loading-overlay';
 
 const apolloClient = new ApolloClient({
   link: PrismicLink({
@@ -29,7 +30,8 @@ class HogPage extends Component {
       cursor:props.cursor,
       hasnext:props.hasnext,
       page_arr:page_arr,
-      loadedtill:0
+      loadedtill:0,
+      loading:false
     };
     console.log(this.state.loadedtill)
 
@@ -57,6 +59,7 @@ class HogPage extends Component {
       this.state.loadedtill=this.state.loadedtill+1
     }
 
+    this.setState({loading:true})
     apolloClient.query({
       query:this.getHog(cursor,limit)
     }).then(response => {
@@ -67,7 +70,7 @@ class HogPage extends Component {
       if(shallWeStore==true){
         this.state.page_arr[this.state.loadedtill]=curs
       }
-      this.setState({hogs:hogs,cursor:curs,hasnext:hasnext})
+      this.setState({hogs:hogs,cursor:curs,hasnext:hasnext,loading:false})
     }).catch(error => {
       console.error("error");
       alert(error)
@@ -121,10 +124,23 @@ class HogPage extends Component {
   }
 
   render() {
-
+    if(this.state.loading){
+      
+      return(
+        <Layout>
+           <LoadingOverlay
+               active={this.state.loading}
+               spinner
+               text='Loading'
+             >
+           </LoadingOverlay>
+         </Layout>
+      )
+    }
 
          
  return (
+   
   <Layout>
       <Head>
         <title>Student Council - GCT</title>
