@@ -7,6 +7,7 @@ import ApolloClient from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
 import LoadingOverlay from 'react-loading-overlay'
+import Loading from 'react-simple-loading';
 
 const apolloClient = new ApolloClient({
   link: PrismicLink({
@@ -138,11 +139,11 @@ class BlogPage extends Component {
     if (this.state.loading) {
       return (
         <Layout>
-          <LoadingOverlay
-            active={this.state.loading}
-            spinner
-            text='Loading'
-          />
+          <Loading
+          color='firebrick'
+          stroke='10px'
+          size='100px'
+        />
         </Layout>
       )
     }
@@ -174,7 +175,7 @@ class BlogPage extends Component {
 
 export default BlogPage
 
-export async function getServerSideProps ({ params, previewData }) {
+export async function getServerSideProps () {
   const posts = await getAllBlogsForHome(' ', 6)
   var blogs = posts.edges
   var cursor = posts.pageInfo.endCursor
