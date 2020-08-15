@@ -1,8 +1,6 @@
 @import './bootstrap.min.css';
 
-.blog-zone {
-    background-color:rgba(0,0,0,0);
-}
+
 
 /*Footer section begins*/
 footer {
@@ -430,11 +428,3 @@ footer small{
       grid-template-rows: 12rem 1fr;
     }
   }
-
-
-.canvas {
-    background-color: #1A1A1A;
-    display: block;
-    width: 100%;
-    height: 100%;
-}

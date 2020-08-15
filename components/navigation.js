@@ -1,34 +1,78 @@
 import { Nav, NavDropdown, Navbar, Button, Form, FormControl } from 'react-bootstrap'
 import React, { Component } from 'react'
+import Link from 'next/link'
 
 class NavBar extends Component {
   render () {
     return (
-      <Navbar className='navue' bg='light' expand='lg'>
-        <Navbar.Brand href='#home'>SJC</Navbar.Brand>
+      <Navbar bg='light' expand='lg'>
+        <Navbar.Brand href='/'>SJC</Navbar.Brand>
+
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
+
         <Navbar.Collapse id='basic-navbar-nav'>
+
           <Nav className='mr-auto'>
-            <Nav.Link href='/'>Home</Nav.Link>
-            <Nav.Link href='/news'>Campus News</Nav.Link>
-            <NavDropdown title='Blog' href='/blog' id='basic-nav-dropdown'>
-              <NavDropdown.Item href='/openpage'>Open Page</NavDropdown.Item>
-              <NavDropdown.Item href='/celluloid'>Celluloid</NavDropdown.Item>
-              <NavDropdown.Item href='/hello'>Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href='/huehue'>Separated link</NavDropdown.Item>
+
+            <Link href='/' passHref>
+              <Nav.Link>Home</Nav.Link>
+            </Link>
+
+            <Link href='/news' passHref>
+              <Nav.Link>Campus News</Nav.Link>
+            </Link>
+
+            <NavDropdown title='Blog' id='basic-nav-dropdown'>
+
+              <Link href='/openpage' passHref>
+                <NavDropdown.Item>Open Page</NavDropdown.Item>
+              </Link>
+
+              <Link href='/celluloid' passHref>
+                <NavDropdown.Item>Celluloid</NavDropdown.Item>
+              </Link>
+
+              <Link href='/scitech' passHref>
+                <NavDropdown.Item>SciTech</NavDropdown.Item>
+              </Link>
+
+              <Link href='/alumspace' passHref>
+                <NavDropdown.Item>AlumSpace</NavDropdown.Item>
+              </Link>
+
+              <Link href='/tete-a-tete' passHref>
+                <NavDropdown.Item>Tete-a-Tete with Interns</NavDropdown.Item>
+              </Link>
+
             </NavDropdown>
-            <Nav.Link href='/hog'>Humans of GCT</Nav.Link>
-            <Nav.Link href='/podcast'>Podcast</Nav.Link>
-            <Nav.Link href='/'>ABC Channel</Nav.Link>
-            <Nav.Link href='/'>Aperture</Nav.Link>
-            <Nav.Link href='/about'>About Us</Nav.Link>
+
+            <Link href='/hog' passHref>
+              <Nav.Link>Humans of GCT</Nav.Link>
+            </Link>
+
+            <Link href='/aperture' passHref>
+              <Nav.Link>Aperture Newsletter</Nav.Link>
+            </Link>
+
+            <Link href='/podcast' passHref>
+              <Nav.Link>Podcast</Nav.Link>
+            </Link>
+
+            <Nav.Link href='https://www.youtube.com/ApertureBroadcastingChannelGCT'>ABC Channel</Nav.Link>
+
+            <Link href='/about' passHref>
+              <Nav.Link>About</Nav.Link>
+            </Link>
+
           </Nav>
+
           <Form inline>
             <FormControl type='text' placeholder='Search' className='mr-sm-2' />
             <Button variant='outline-success'>Search</Button>
           </Form>
+
         </Navbar.Collapse>
+
       </Navbar>
     )
   }
