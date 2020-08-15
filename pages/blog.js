@@ -1,90 +1,86 @@
-import React, { Component } from "react";
-import { getAllBlogsForHome} from '../prismic-configuration'
+import React, { Component } from 'react'
+import { getAllBlogsForHome } from '../prismic-configuration'
 import Layout from '../components/Layout'
-import Deck from '../components/deck' 
-import { PrismicLink } from 'apollo-link-prismic';
-import ApolloClient from "apollo-client";
-import { InMemoryCache } from "apollo-cache-inmemory";
-import gql from "graphql-tag";
-import LoadingOverlay from 'react-loading-overlay';
-
+import Deck from '../components/deck'
+import { PrismicLink } from 'apollo-link-prismic'
+import ApolloClient from 'apollo-client'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import gql from 'graphql-tag'
+import LoadingOverlay from 'react-loading-overlay'
 
 const apolloClient = new ApolloClient({
   link: PrismicLink({
-    uri: `https://sjcgctrepo.prismic.io/graphql`,
-    accessToken: process.env.PRISMIC_TOKEN,
+    uri: 'https://sjcgctrepo.prismic.io/graphql',
+    accessToken: process.env.PRISMIC_TOKEN
   }),
   cache: new InMemoryCache()
-});
+})
 
 class BlogPage extends Component {
-  constructor(props) {
-    super(props);
-    var page_arr = [];
-    page_arr[0]=props.cursor
+  constructor (props) {
+    super(props)
+    var page_arr = []
+    page_arr[0] = props.cursor
     this.state = {
       activePage: 0,
-      total:props.totalCount,
-      blogs:props.blogs,
-      rediret:false,
-      cursor:props.cursor,
-      hasnext:props.hasnext,
-      page_arr:page_arr,
-      loadedtill:0,
-      loading:false
-    };
+      total: props.totalCount,
+      blogs: props.blogs,
+      rediret: false,
+      cursor: props.cursor,
+      hasnext: props.hasnext,
+      page_arr: page_arr,
+      loadedtill: 0,
+      loading: false
+    }
     console.log(this.state.loadedtill)
-
   }
 
-  async loadPage(page){
-    //console.log(this.getBlogForNextOrPrevPage(action,cursor,limit));
-    var cursor=this.state.cursor
-    var limit=6
+  async loadPage (page) {
+    // console.log(this.getBlogForNextOrPrevPage(action,cursor,limit));
+    var cursor = this.state.cursor
+    var limit = 6
 
-    var blogs=''
-    var curs=''
-    var hasnext=''
-    this.state.activePage=page
-    //alert(this.state.activePage)
+    var blogs = ''
+    var curs = ''
+    var hasnext = ''
+    this.state.activePage = page
+    // alert(this.state.activePage)
 
-    var shallWeStore=true
-    if(this.state.loadedtill>=page){
-      //alert("alread loaded")
-      shallWeStore=false
-      cursor=this.state.page_arr[page-1]
+    var shallWeStore = true
+    if (this.state.loadedtill >= page) {
+      // alert("alread loaded")
+      shallWeStore = false
+      cursor = this.state.page_arr[page - 1]
+    } else {
+      // alert("newly loading")
+      this.state.loadedtill = this.state.loadedtill + 1
     }
-    else{
-      //alert("newly loading")
-      this.state.loadedtill=this.state.loadedtill+1
-    }
-    this.setState({loading:true})
+    this.setState({ loading: true })
     apolloClient.query({
-      query:this.getBlogForNextOrPrevPage(cursor,limit)
+      query: this.getBlogForNextOrPrevPage(cursor, limit)
     }).then(response => {
-      console.log("success");
-      blogs=response.data.allBlogss.edges
-      curs=response.data.allBlogss.pageInfo.endCursor
-      hasnext=response.data.allBlogss.pageInfo.hasNextPage
-      if(shallWeStore==true){
-        this.state.page_arr[this.state.loadedtill]=curs
+      console.log('success')
+      blogs = response.data.allBlogss.edges
+      curs = response.data.allBlogss.pageInfo.endCursor
+      hasnext = response.data.allBlogss.pageInfo.hasNextPage
+      if (shallWeStore == true) {
+        this.state.page_arr[this.state.loadedtill] = curs
       }
-      this.setState({blogs:blogs,cursor:curs,hasnext:hasnext,loading:false})
+      this.setState({ blogs: blogs, cursor: curs, hasnext: hasnext, loading: false })
     }).catch(error => {
-      console.error("error");
+      console.error('error')
       alert(error)
-    });
-    
-    //alert(this.state.loadedtill+" max")
-    for(var i=0;i<this.state.loadedtill;i++){
-      //alert(this.state.page_arr[i])
-      console.log("hi")
-    }
+    })
 
+    // alert(this.state.loadedtill+" max")
+    for (var i = 0; i < this.state.loadedtill; i++) {
+      // alert(this.state.page_arr[i])
+      console.log('hi')
+    }
   }
 
-   getBlogForNextOrPrevPage(lastPostCursor,limitation){
-    const query =gql`
+  getBlogForNextOrPrevPage (lastPostCursor, limitation) {
+    const query = gql`
         {
           allBlogss(sortBy: date_DESC, after:"${lastPostCursor}",first:${limitation}){
             totalCount
@@ -120,49 +116,47 @@ class BlogPage extends Component {
           }
         }
       `
-  return query
+    return query
   }
 
-  async nextPage() {
-    await this.loadPage(this.state.activePage+1)
+  async nextPage () {
+    await this.loadPage(this.state.activePage + 1)
   }
-  query(){
+
+  query () {
     alert(this.state.email)
   }
-  async prevPage() {
-    if(this.state.activePage-1==0){
-      this.state.hasprev=false
+
+  async prevPage () {
+    if (this.state.activePage - 1 == 0) {
+      this.state.hasprev = false
     }
-    await this.loadPage(this.state.activePage-1)
+    await this.loadPage(this.state.activePage - 1)
   }
 
-  render() {
-
-    if(this.state.loading){
-      
-      return(
+  render () {
+    if (this.state.loading) {
+      return (
         <Layout>
-           <LoadingOverlay
-               active={this.state.loading}
-               spinner
-               text='Loading'
-             >
-           </LoadingOverlay>
-         </Layout>
+          <LoadingOverlay
+            active={this.state.loading}
+            spinner
+            text='Loading'
+          />
+        </Layout>
       )
     }
     return (
-        <Layout>
+      <Layout>
 
-           {this.state.blogs && (
-        <Deck
-          cards={this.state.blogs}
-          type='blog'
-        />
-         )}
+        {this.state.blogs && (
+          <Deck
+            cards={this.state.blogs}
+            type='blog'
+          />
+        )}
 
-
-        <button disabled={this.state.activePage==0} onClick={() => this.prevPage()}>
+        <button disabled={this.state.activePage == 0} onClick={() => this.prevPage()}>
          Previous
         </button>
 
@@ -172,22 +166,21 @@ class BlogPage extends Component {
           Next
         </button>
 
-        </Layout>
+      </Layout>
 
-    );
+    )
   }
 }
 
 export default BlogPage
 
-export async function getServerSideProps({params,previewData}) {
-  const posts=await getAllBlogsForHome(" ",6)
-  var blogs=posts.edges
-  var cursor=posts.pageInfo.endCursor
-  var totalCount=posts.totalCount
-  var hasnext=posts.pageInfo.hasNextPage
+export async function getServerSideProps ({ params, previewData }) {
+  const posts = await getAllBlogsForHome(' ', 6)
+  var blogs = posts.edges
+  var cursor = posts.pageInfo.endCursor
+  var totalCount = posts.totalCount
+  var hasnext = posts.pageInfo.hasNextPage
   return {
-    props: {blogs,cursor,totalCount,hasnext}
+    props: { blogs, cursor, totalCount, hasnext }
   }
 }
-

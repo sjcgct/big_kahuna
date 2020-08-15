@@ -1,4 +1,7 @@
+
+
 @import './bootstrap.min.css';
+/*Navigation Bar*/
 
 
 
@@ -49,12 +52,19 @@ footer small{
 
 /*Humans of GCT Page begins*/
 .poster{
+  transform: rotate(0.5deg);
   padding: 7%;
   position: relative;
   box-sizing: border-box;
   background-color: white;
   box-shadow: 0 3px 12px alpha(black,.2);
   filter: saturate(70%) contrast(85%);
+}
+
+.hog-tile-img{
+  width: 100%;
+  display: block;
+  z-index: 1;
 }
 
 .poster:before,
@@ -74,7 +84,11 @@ footer small{
   background-position: 2% 0, 98% 0;
 }
 
-  .card-footer {
+
+
+
+
+.card-footer {
       border: 0;
       width:100%;
       background-color: rgba(0, 0, 0, 0);
@@ -428,3 +442,4 @@ footer small{
       grid-template-rows: 12rem 1fr;
     }
   }
+
