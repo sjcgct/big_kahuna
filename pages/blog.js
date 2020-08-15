@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { getAllBlogsForHome} from '../prismic-configuration'
-import Pagination from "react-js-pagination";
 import Layout from '../components/Layout'
 import Deck from '../components/deck' 
 import { PrismicLink } from 'apollo-link-prismic';
 import ApolloClient from "apollo-client";
 import { InMemoryCache } from "apollo-cache-inmemory";
-import gql, { disableExperimentalFragmentVariables } from "graphql-tag";
+import gql from "graphql-tag";
 
 
 
@@ -38,8 +37,11 @@ class BlogPage extends Component {
 
   }
 
-  async loadPage(action,cursor,limit,page){
+  async loadPage(page){
     //console.log(this.getBlogForNextOrPrevPage(action,cursor,limit));
+    var cursor=this.state.cursor
+    var limit=6
+
     var blogs=''
     var curs=''
     var hasnext=''
@@ -58,7 +60,7 @@ class BlogPage extends Component {
     }
 
     apolloClient.query({
-      query:this.getBlogForNextOrPrevPage(action,cursor,limit)
+      query:this.getBlogForNextOrPrevPage(cursor,limit)
     }).then(response => {
       console.log("success");
       blogs=response.data.allBlogss.edges
@@ -81,10 +83,10 @@ class BlogPage extends Component {
 
   }
 
-   getBlogForNextOrPrevPage(action,lastPostCursor,limitation){
+   getBlogForNextOrPrevPage(lastPostCursor,limitation){
     const query =gql`
         {
-          allBlogss(sortBy: date_DESC, ${action}:"${lastPostCursor}",first:${limitation}){
+          allBlogss(sortBy: date_DESC, after:"${lastPostCursor}",first:${limitation}){
             totalCount
             pageInfo{
               endCursor
@@ -122,18 +124,22 @@ class BlogPage extends Component {
   }
 
   async nextPage() {
-    await this.loadPage('after',this.state.cursor,6,this.state.activePage+1)
+    await this.loadPage(this.state.activePage+1)
+  }
+  query(){
+    alert(this.state.email)
   }
   async prevPage() {
     if(this.state.activePage-1==0){
       this.state.hasprev=false
     }
-    await this.loadPage('after',this.state.cursor,6,this.state.activePage-1)
+    await this.loadPage(this.state.activePage-1)
   }
 
   render() {
     return (
         <Layout>
+
            {this.state.blogs && (
         <Deck
           cards={this.state.blogs}

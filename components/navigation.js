@@ -5,14 +5,13 @@ class NavBar extends Component {
   render () {
     return (
       <Navbar className='navue' bg='light' expand='lg'>
-        <Navbar.Brand href='#home'>React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand href='#home'>SJC</Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='mr-auto'>
             <Nav.Link href='/'>Home</Nav.Link>
             <Nav.Link href='/news'>Campus News</Nav.Link>
             <NavDropdown title='Blog' href='/blog' id='basic-nav-dropdown'>
-              <Nav.Link href='/news'>Campus News</Nav.Link>
               <NavDropdown.Item href='/openpage'>Open Page</NavDropdown.Item>
               <NavDropdown.Item href='/celluloid'>Celluloid</NavDropdown.Item>
               <NavDropdown.Item href='/hello'>Something</NavDropdown.Item>

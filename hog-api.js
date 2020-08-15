@@ -3,9 +3,12 @@ export const queryAllHOGs = ({ lastPostCursor, limitation }) => {
   const query = `
     {
         allHogs (sortBy:date_DESC,after:"${lastPostCursor}",first:${limitation}){
+          totalCount
           pageInfo{
-            hasNextPage
             endCursor
+            hasNextPage
+            hasPreviousPage
+            startCursor
           }
           edges{
             node{
