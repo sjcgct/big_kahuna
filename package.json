@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "predev": "vercel",
     "build": "next build",
     "start": "next start",
     "test": "standard && node my-tests.js"
@@ -35,7 +36,8 @@
     "react-simple-loading": "0.0.3",
     "react-transition-group": "^1.2.1",
     "responsive-nav": "^1.0.39",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.1.1",
+    "vercel": "^19.2.0"
   },
   "devDependencies": {
     "eslint": "^7.4.0",
