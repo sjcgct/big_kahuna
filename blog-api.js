@@ -37,7 +37,7 @@ export const queryAllBlogsForHome = ({ lastPostCursor, limitation }) => {
         }
       `
   return query
-  }
+}
 
 export const queryBlogsWithSlug = ({ slug }) => {
   const query =
@@ -72,7 +72,6 @@ export const queryBlogsWithSlug = ({ slug }) => {
   `
   return query
 }
-
 
 export const queryBlogsWithSameCategory = ({ categoryId, limitation, lastPostCursor }) => {
   const query =
