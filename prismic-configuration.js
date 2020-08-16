@@ -2,6 +2,7 @@ import Prismic from 'prismic-javascript'
 
 import { queryBlogsWithSameCategory, queryBlogsWithSlug, queryAllBlogsForHome ,queryGetCategoryIdByName} from './blog-api'
 import { queryHOGwithSlug, queryAllHOGs } from './hog-api'
+import {queryAllPodCasts} from './podcast-api'
 
 const REPOSITORY = process.env.PRISMIC_REPOSITORY_NAME
 const REF_API_URL = `https://${REPOSITORY}.prismic.io/api/v2`
@@ -87,4 +88,10 @@ export async function getCategoryIdByName(categoryName){
   const query = queryGetCategoryIdByName({ categoryName })
   const data=await fetchAPI(query)
   return data.allCategorys.edges
+}
+
+export async function getAllPodCasts(cursor,limit){
+  const query = queryAllPodCasts({ cursor,limit })
+  const data=await fetchAPI(query)
+  return data.allPodcasts
 }
