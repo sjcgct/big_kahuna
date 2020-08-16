@@ -444,3 +444,11 @@ footer small{
     }
   }
 
+
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    }
+  .navbar-brand>img {
+ 
+   }

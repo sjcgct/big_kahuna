@@ -16,7 +16,7 @@ export default function DeckCard ({ title, imgurl, slugurl, smallDescription, ty
         <p className='card-text'>{smallDescription}</p>
       </div>
       <div className='card-footer' />
-      <img className='card-img-top' src={imgurl} alt='Card image cap' />
+      <img className='card-img-top' src={imgurl} alt='Card image cap'/>
     </div>
   )
 }

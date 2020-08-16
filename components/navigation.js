@@ -9,7 +9,11 @@ class NavBar extends Component {
 
     return (
       <Navbar className='navbar' expand='lg'>
-        <Navbar.Brand href='/'>SJC</Navbar.Brand>
+        <Navbar.Brand href='/'>
+        <a href="/">
+           <img src='https://raw.githubusercontent.com/sjcgct/sjc_gct_web/master/sjc_logo_black.png' style={{width:50}} />
+        </a>
+        </Navbar.Brand>
 
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
 
