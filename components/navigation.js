@@ -27,6 +27,11 @@ class NavBar extends Component {
 
             <NavDropdown title='Blog' id='basic-nav-dropdown'>
 
+              <Link href='/blog' passHref>
+                <NavDropdown.Item>All</NavDropdown.Item>
+              </Link>
+
+
               <Link href='/openpage' passHref>
                 <NavDropdown.Item>Open Page</NavDropdown.Item>
               </Link>
