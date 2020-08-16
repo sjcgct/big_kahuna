@@ -1,6 +1,6 @@
 import Prismic from 'prismic-javascript'
 
-import { queryBlogsWithSameCategory, queryBlogsWithSlug, queryAllBlogsForHome } from './blog-api'
+import { queryBlogsWithSameCategory, queryBlogsWithSlug, queryAllBlogsForHome ,queryGetCategoryIdByName} from './blog-api'
 import { queryHOGwithSlug, queryAllHOGs } from './hog-api'
 
 const REPOSITORY = process.env.PRISMIC_REPOSITORY_NAME
@@ -81,4 +81,10 @@ export async function getHogWithSlug (slug) {
   const query = queryHOGwithSlug({ slug })
   const data = await fetchAPI(query)
   return data.allHogs.edges
+}
+
+export async function getCategoryIdByName(categoryName){
+  const query = queryGetCategoryIdByName({ categoryName })
+  const data=await fetchAPI(query)
+  return data.allCategorys.edges
 }

@@ -124,10 +124,6 @@ class BlogPage extends Component {
     await this.loadPage(this.state.activePage + 1)
   }
 
-  query () {
-    alert(this.state.email)
-  }
-
   async prevPage () {
     if (this.state.activePage - 1 === 0) {
       this.state.hasprev = false

@@ -3,7 +3,10 @@ import React, { Component } from 'react'
 import Link from 'next/link'
 
 class NavBar extends Component {
+
   render () {
+
+
     return (
       <Navbar className='navbar' expand='lg'>
         <Navbar.Brand href='/'>SJC</Navbar.Brand>

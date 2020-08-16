@@ -77,6 +77,7 @@ export const queryBlogsWithSameCategory = ({ categoryId, limitation, lastPostCur
   const query =
     `{
       allBlogss(where:{category:"${categoryId}"},sortBy: date_DESC, after:"${lastPostCursor}",first:${limitation}){
+        totalCount
         pageInfo{
           endCursor
           hasNextPage
@@ -111,4 +112,23 @@ export const queryBlogsWithSameCategory = ({ categoryId, limitation, lastPostCur
   return query
 }
 
-export default { queryBlogsWithSameCategory, queryBlogsWithSlug, queryAllBlogsForHome }
+export const queryGetCategoryIdByName = ({ categoryName })=>{
+
+  const query=
+  `{
+    allCategorys(where:{name:"${categoryName}"}){
+      edges{
+        node{
+          name
+          _meta {
+            id
+          }
+        }
+      }
+    }
+  }`
+
+  return query
+}
+
+export default { queryBlogsWithSameCategory, queryBlogsWithSlug, queryAllBlogsForHome , queryGetCategoryIdByName}
