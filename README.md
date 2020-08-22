@@ -6,18 +6,7 @@
 A web application for Student Journalist Council-GCT, the student media body of Government college of technology, Coimbatore
 
 [sjc-gct-vercel2.vercel.app](https://sjc-gct-vercel2.vercel.app/ "https://sjc-gct-vercel2.vercel.app")
-## Getting Started
 
-First, run the development server:
-
-```bash
-npm install
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## For Contribution
 **Technological References**
