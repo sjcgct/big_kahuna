@@ -25,9 +25,9 @@ const Profile = () => {
       </div>
       <hr />
       <div className='profile-body'>
-        <ProfilePostCard />
-        <ProfilePostCard />
-        <ProfilePostCard />
+        <ProfilePostCard name="Ajay" imgurl="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/pike-place.jpg" about="Hi I am AJ. I used to be a good guy, then I turned into a Devil. Now I suck up the blood of people kek.. Just kidding, i am a miserable human being who doesnt like to exist in this world."></ProfilePostCard> />
+        <ProfilePostCard name="Amuthan" imgurl="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/pike-place.jpg" about="Hi man"/>
+        <ProfilePostCard name="Nolan" imgurl="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/pike-place.jpg" about="Christopher Edward Nolan CBE is a British-American filmmaker known for making personal, distinctive films within the Hollywood mainstream. His directorial efforts have grossed more than US$4.7 billion in theatres worldwide and garnered a total of 34 Oscar nominations and ten wins."/>
       </div>
     </Layout>
   )

@@ -51,7 +51,14 @@ export const queryBlogsWithSlug = ({ slug }) => {
         featured_image
         excerpt
         author {
-          _linkType
+          ... on Author{
+            name
+            picture
+            about
+            _meta {
+              id
+            }
+          }
         }
         category {
           ... on Category{

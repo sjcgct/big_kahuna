@@ -2,6 +2,7 @@ import { RichText } from 'prismic-reactjs'
 import { getBlogsWithSlug,getBlogsWithSameCategory } from '../../prismic-configuration'
 import Layout from '../../components/Layout'
 import Deck from '../../components/deck'
+import ProfilePostCard from '../../components/ProfilePage/profilePostCard'
 
 export default function Post({post,postsYouMayLike}) {
   return (
@@ -17,6 +18,8 @@ export default function Post({post,postsYouMayLike}) {
     </div>
     </div>
     </section>
+    
+    <ProfilePostCard name={post.author.name} about={post.author.about} imgurl={post.author.picture.url}></ProfilePostCard>/>
 
     <h2>Posts You May Like</h2>
       {postsYouMayLike && (
