@@ -31,6 +31,7 @@ class NavBar extends Component {
 
             <NavDropdown title='Blog' id='basic-nav-dropdown'>
 
+
               <Link href='/blog' passHref>
                 <NavDropdown.Item>All</NavDropdown.Item>
               </Link>
@@ -56,6 +57,10 @@ class NavBar extends Component {
                 <NavDropdown.Item>Tete-a-Tete with Interns</NavDropdown.Item>
               </Link>
 
+              <Link href='/blog/search' passHref>
+                <NavDropdown.Item>Search</NavDropdown.Item>
+              </Link>
+              
             </NavDropdown>
 
             <Link href='/hog' passHref>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Nav, NavDropdown, Navbar, Button, Form, FormControl } from 'react-bootstrap'
 import { getAllBlogsForHome } from '../../prismic-configuration'
 import {queryAllBlogsForHome,queryByKeyWord} from '../../blog-api'
 import Layout from '../../components/Layout'
@@ -133,8 +134,12 @@ class BlogPage extends Component {
     if (this.state.loading) {
       return (
         <Layout>
-          <input name="text" type="text" placeholder="Search"/>
-          <button class="button" onClick={() => this.search()} >Search</button>
+          <Form inline>
+          <FormControl name="text" type="text" placeholder="Search Blog" onChange={(e) =>this.handleChange(e.target.value)} className='mr-sm-2'/>
+          <Button class="button" onClick={() => this.search()} variant='outline-success'>Search</Button>
+          </Form>
+
+
 
           <Loading
           color='firebrick'
@@ -146,8 +151,10 @@ class BlogPage extends Component {
     }
     return (
       <Layout>
-       <input name="text" type="text" placeholder="Search" class="input" onChange={(e) =>this.handleChange(e.target.value)}/>
-        <button class="button" onClick={() => this.search()}>Search</button>
+          <Form inline>
+          <FormControl name="text" type="text" placeholder="Search Blog" onChange={(e) =>this.handleChange(e.target.value)} className='mr-sm-2'/>
+          <Button class="button" onClick={() => this.search()} variant='outline-success'>Search</Button>
+          </Form>
 
         {this.state.blogs && (
           <Deck
