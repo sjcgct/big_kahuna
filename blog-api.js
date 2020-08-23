@@ -138,4 +138,43 @@ export const queryGetCategoryIdByName = ({ categoryName })=>{
   return query
 }
 
-export default { queryBlogsWithSameCategory, queryBlogsWithSlug, queryAllBlogsForHome , queryGetCategoryIdByName}
+export const queryByKeyWord =({keyword,lastPostCursor,limitation}) =>{
+  const query=`{
+    allBlogss(where:{title_fulltext:"${keyword}"},sortBy: date_DESC,after:"${lastPostCursor}",first:${limitation}){
+      totalCount
+      pageInfo{
+        endCursor
+        hasNextPage
+      }
+      edges{
+        node{
+          title
+          date
+          featured_image
+          excerpt
+          author {
+            ... on Author{
+              name
+              picture
+              about
+              _meta {
+                id
+              }
+            }
+          }
+          
+          category {
+            _linkType
+          }
+          _meta{
+            uid
+          }
+          excerpt
+        }
+      }
+    }
+}`
+return query
+}
+
+export default { queryBlogsWithSameCategory, queryBlogsWithSlug, queryAllBlogsForHome , queryGetCategoryIdByName,queryByKeyWord}
