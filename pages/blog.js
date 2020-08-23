@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { getAllBlogsForHome } from '../prismic-configuration'
+import {queryAllBlogsForHome} from '../blog-api'
 import Layout from '../components/Layout'
 import Deck from '../components/deck'
 import { PrismicLink } from 'apollo-link-prismic'
@@ -81,42 +82,7 @@ class BlogPage extends Component {
   }
 
   getBlogForNextOrPrevPage (lastPostCursor, limitation) {
-    const query = gql`
-        {
-          allBlogss(sortBy: date_DESC, after:"${lastPostCursor}",first:${limitation}){
-            totalCount
-            pageInfo{
-              endCursor
-              hasNextPage
-              hasPreviousPage
-              startCursor
-            }
-            edges{
-              node{
-                title
-                date
-                featured_image
-                excerpt
-                author {
-                  _linkType
-                }
-                category {
-                  ... on Category{
-                    name
-                    _meta {
-                      id
-                    }
-                  }
-                }
-                _meta{
-                  uid
-                }
-                excerpt
-              }
-            }
-          }
-        }
-      `
+    const query = gql`${queryAllBlogsForHome({lastPostCursor, limitation})}`
     return query
   }
 

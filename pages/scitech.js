@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {getCategoryIdByName,getBlogsWithSameCategory} from '../prismic-configuration'
 import Layout from '../components/Layout'
+import {queryBlogsWithSameCategory} from '../blog-api'
 import Deck from '../components/deck'
 import { PrismicLink } from 'apollo-link-prismic'
 import ApolloClient from 'apollo-client'
@@ -81,39 +82,7 @@ class BlogCategoryPage extends Component {
   }
 
   getBlogsForCategory (categoryId,lastPostCursor, limitation) {
-    const query = gql`{
-        allBlogss(where:{category:"${categoryId}"},sortBy: date_DESC, after:"${lastPostCursor}",first:${limitation}){
-          pageInfo{
-            endCursor
-            hasNextPage
-            hasPreviousPage
-            startCursor
-          }
-          edges{
-            node{
-              title
-              date
-              featured_image
-              excerpt
-              author {
-                _linkType
-              }
-              category {
-                ... on Category{
-                  name
-                  _meta {
-                    id
-                  }
-                }
-              }
-              _meta{
-                uid
-              }
-              excerpt
-            }
-          }
-        }
-    }`
+    const query = gql`${queryBlogsWithSameCategory({categoryId,lastPostCursor, limitation})}`
     return query
   }
 

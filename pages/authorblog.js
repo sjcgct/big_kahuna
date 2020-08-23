@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import {getCategoryIdByName,getBlogsWithSameCategory} from '../prismic-configuration'
-import {queryBlogsWithSameCategory} from '../blog-api'
+import {getCategoryIdByName,getBlogsWithSameCategory,getBlogsForAuthor} from '../prismic-configuration'
 import Layout from '../components/Layout'
 import Deck from '../components/deck'
 import { PrismicLink } from 'apollo-link-prismic'
@@ -17,7 +16,7 @@ const apolloClient = new ApolloClient({
   cache: new InMemoryCache()
 })
 
-class BlogCategoryPage extends Component {
+class AuthorBlogPage extends Component {
   constructor (props) {
     super(props)
     var page_arr = []
@@ -82,7 +81,39 @@ class BlogCategoryPage extends Component {
   }
 
   getBlogsForCategory (categoryId,lastPostCursor, limitation) {
-    const query = gql`${queryBlogsWithSameCategory({categoryId,lastPostCursor, limitation})}`
+    const query = gql`{
+        allBlogss(where:{category:"${categoryId}"},sortBy: date_DESC, after:"${lastPostCursor}",first:${limitation}){
+          pageInfo{
+            endCursor
+            hasNextPage
+            hasPreviousPage
+            startCursor
+          }
+          edges{
+            node{
+              title
+              date
+              featured_image
+              excerpt
+              author {
+                _linkType
+              }
+              category {
+                ... on Category{
+                  name
+                  _meta {
+                    id
+                  }
+                }
+              }
+              _meta{
+                uid
+              }
+              excerpt
+            }
+          }
+        }
+    }`
     return query
   }
 
@@ -135,17 +166,13 @@ class BlogCategoryPage extends Component {
   }
 }
 
-export default BlogCategoryPage
+export default AuthorBlogPage
 
 export async function getServerSideProps () {
  var itemsPerPage=6
- var categories=await getCategoryIdByName('Tete-a-Tete with Interns')
- var post=categories[0].node;
- var categoryId=post._meta.id;
- const posts = await getBlogsWithSameCategory(categoryId,itemsPerPage, '')
+ const posts = await getBlogsForAuthor(authorId,'',itemsPerPage)
  var blogs = posts.edges
- console.log(blogs.length);
-  
+ console.log(blogs.length); 
  var cursor = posts.pageInfo.endCursor
  var totalCount = posts.totalCount
  var hasnext = posts.pageInfo.hasNextPage

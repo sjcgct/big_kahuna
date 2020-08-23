@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
-import {getCategoryIdByName,getBlogsWithSameCategory} from '../prismic-configuration'
-import {queryBlogsWithSameCategory} from '../blog-api'
-import Layout from '../components/Layout'
-import Deck from '../components/deck'
+import { getBlogsForAuthor } from '../../prismic-configuration'
+import {queryAllPostsByAuthor} from '../../author-api'
+import Layout from '../../components/Layout'
+import Deck from '../../components/deck'
 import { PrismicLink } from 'apollo-link-prismic'
 import ApolloClient from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
-import Loading from 'react-simple-loading';
+import Loading from 'react-simple-loading'
+import ProfilePostCard from '../../components/ProfilePage/profilePostCard'
 
 const apolloClient = new ApolloClient({
   link: PrismicLink({
@@ -17,11 +18,12 @@ const apolloClient = new ApolloClient({
   cache: new InMemoryCache()
 })
 
-class BlogCategoryPage extends Component {
-  constructor (props) {
+class AuthorBlogPage extends Component {
+  constructor(props) {
     super(props)
     var page_arr = []
     page_arr[0] = props.cursor
+    console.log(props.name);
     this.state = {
       activePage: 0,
       total: props.totalCount,
@@ -32,13 +34,16 @@ class BlogCategoryPage extends Component {
       page_arr: page_arr,
       loadedtill: 0,
       loading: false,
-      categoryId:props.categoryId,
-      itemsPerPage:props.itemsPerPage
+      itemsPerPage: props.itemsPerPage,
+      name: props.name,
+      about: props.about,
+      id:props.id,
+      imgurl:props.imgurl
     }
     console.log(this.state.loadedtill)
   }
 
-  async loadPage (page) {
+  async loadPage(page) {
     // console.log(this.getBlogForNextOrPrevPage(action,cursor,limit));
     var cursor = this.state.cursor
 
@@ -46,20 +51,17 @@ class BlogCategoryPage extends Component {
     var curs = ''
     var hasnext = ''
     this.state.activePage = page
-    // alert(this.state.activePage)
 
     var shallWeStore = true
     if (this.state.loadedtill >= page) {
-      // alert("alread loaded")
       shallWeStore = false
       cursor = this.state.page_arr[page - 1]
     } else {
-      // alert("newly loading")
       this.state.loadedtill = this.state.loadedtill + 1
     }
     this.setState({ loading: true })
     apolloClient.query({
-      query: this.getBlogsForCategory(this.state.categoryId,cursor, this.state.itemsPerPage)
+      query: this.getBlogsForAuthor(this.state.id, cursor, this.state.itemsPerPage)
     }).then(response => {
       console.log('success')
       blogs = response.data.allBlogss.edges
@@ -73,44 +75,49 @@ class BlogCategoryPage extends Component {
       console.error('error')
       alert(error)
     })
-
-    // alert(this.state.loadedtill+" max")
-    for (var i = 0; i < this.state.loadedtill; i++) {
-      // alert(this.state.page_arr[i])
-      console.log('hi')
-    }
   }
 
-  getBlogsForCategory (categoryId,lastPostCursor, limitation) {
-    const query = gql`${queryBlogsWithSameCategory({categoryId,lastPostCursor, limitation})}`
+  getBlogsForAuthor(authorId, lastPostCursor, limitation) {
+    const query = gql`${queryAllPostsByAuthor({authorId, lastPostCursor, limitation})}`
     return query
   }
 
-  async nextPage () {
+  async nextPage() {
     await this.loadPage(this.state.activePage + 1)
   }
 
-  async prevPage () {
+  async prevPage() {
     if (this.state.activePage - 1 === 0) {
       this.state.hasprev = false
     }
     await this.loadPage(this.state.activePage - 1)
   }
 
-  render () {
+  render() {
     if (this.state.loading) {
       return (
         <Layout>
+        <div className='profile-header'>
+          <ProfilePostCard name={this.state.name} imgurl={this.state.imgurl}  about={this.state.about}></ProfilePostCard>
+        </div>
+
+        <h2>{this.state.name}'s posts</h2>
+
           <Loading
-          color='firebrick'
-          stroke='10px'
-          size='100px'
-        />
+            color='firebrick'
+            stroke='10px'
+            size='100px'
+          />
         </Layout>
       )
     }
     return (
       <Layout>
+
+        <div className='profile-header'>
+        <ProfilePostCard name={this.state.name} imgurl={this.state.imgurl}  about={this.state.about}></ProfilePostCard>
+        </div>
+        <h2>{this.state.name}'s posts</h2>
 
         {this.state.blogs && (
           <Deck
@@ -120,10 +127,8 @@ class BlogCategoryPage extends Component {
         )}
 
         <button disabled={this.state.activePage === 0} onClick={() => this.prevPage()}>
-         Previous
+          Previous
         </button>
-
-        <p> </p>
 
         <button disabled={!this.state.hasnext} onClick={() => this.nextPage()}>
           Next
@@ -135,21 +140,22 @@ class BlogCategoryPage extends Component {
   }
 }
 
-export default BlogCategoryPage
+export default AuthorBlogPage
 
-export async function getServerSideProps () {
- var itemsPerPage=6
- var categories=await getCategoryIdByName('Tete-a-Tete with Interns')
- var post=categories[0].node;
- var categoryId=post._meta.id;
- const posts = await getBlogsWithSameCategory(categoryId,itemsPerPage, '')
- var blogs = posts.edges
- console.log(blogs.length);
-  
- var cursor = posts.pageInfo.endCursor
- var totalCount = posts.totalCount
- var hasnext = posts.pageInfo.hasNextPage
+export async function getServerSideProps({params,previewData}) {
+  var id=params.slug;
+  var itemsPerPage =6 
+  const posts = await getBlogsForAuthor(id, itemsPerPage,'')
+  var blogs = posts.edges
+  var cursor = posts.pageInfo.endCursor
+  var totalCount = posts.totalCount
+  var hasnext = posts.pageInfo.hasNextPage
+  var name=blogs[0].node.author.name
+  var about=blogs[0].node.author.about
+  var imgurl=blogs[0].node.author.picture.url
   return {
-    props: { blogs, cursor, totalCount, hasnext,categoryId,itemsPerPage}
+    props: { blogs, cursor, totalCount, hasnext, itemsPerPage,id,name,about,imgurl}
   }
 }
+
+

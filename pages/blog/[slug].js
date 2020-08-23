@@ -5,6 +5,7 @@ import Deck from '../../components/deck'
 import ProfilePostCard from '../../components/ProfilePage/profilePostCard'
 
 export default function Post({post,postsYouMayLike}) {
+
   return (
     <Layout>
     <section>
@@ -19,8 +20,7 @@ export default function Post({post,postsYouMayLike}) {
     </div>
     </section>
     
-    <ProfilePostCard name={post.author.name} about={post.author.about} imgurl={post.author.picture.url}></ProfilePostCard>/>
-
+    <ProfilePostCard name={post.author.name} about={post.author.about} imgurl={post.author.picture.url} id={post.author._meta.id}></ProfilePostCard>/>
     <h2>Posts You May Like</h2>
       {postsYouMayLike && (
         <Deck
@@ -28,7 +28,6 @@ export default function Post({post,postsYouMayLike}) {
           type='blog'
         />
       )}
-
     </Layout>
   )
 }

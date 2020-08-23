@@ -2,6 +2,7 @@ import Prismic from 'prismic-javascript'
 
 import { queryBlogsWithSameCategory, queryBlogsWithSlug, queryAllBlogsForHome ,queryGetCategoryIdByName} from './blog-api'
 import { queryHOGwithSlug, queryAllHOGs } from './hog-api'
+import {queryAllPostsByAuthor} from './author-api'
 import {queryAllPodCasts} from './podcast-api'
 
 const REPOSITORY = process.env.PRISMIC_REPOSITORY_NAME
@@ -68,6 +69,12 @@ export async function getBlogsWithSlug (slug) {
 
 export async function getBlogsWithSameCategory (categoryId, limitation, lastPostCursor) {
   const query = queryBlogsWithSameCategory({ categoryId, limitation, lastPostCursor })
+  const data = await fetchAPI(query)
+  return data.allBlogss
+}
+
+export async function getBlogsForAuthor (authorId, limitation, lastPostCursor) {
+  const query = queryAllPostsByAuthor({authorId,limitation,lastPostCursor})
   const data = await fetchAPI(query)
   return data.allBlogss
 }

@@ -1,19 +1,26 @@
 import React from 'react'
+import Link from 'next/link'
 
-export default function ProfilePostCard ({name,about,imgurl}) {
+export default function ProfilePostCard({ name, about, imgurl,id }) {
+  var redirect = {
+    pathname: `/profile/[slug]`,
+    state: { slug: id }
+  }
   return (
     <div className='profile-post-card-container mx-auto'>
       <div className='profile-post-card'>
-        <a className='card-link' href='#'>
-          <article className='profile-blog-card'>
-            <img className='profile-post-image' src={imgurl} />
-            <div className='profile-article-details'>
-              <h4 className='profile-post-category'>Author</h4>
-              <h3 className='profile-post-title'>{name}</h3>
-               <p className='profile-post-description'>{about}</p>
-            </div>
-          </article>
-        </a>
+        <Link as={`/profile/${id}`} href={redirect}>
+          <a className='card-link'>
+            <article className='profile-blog-card'>
+              <img className='profile-post-image' src={imgurl} />
+              <div className='profile-article-details'>
+                <h4 className='profile-post-category'>Author</h4>
+                <h3 className='profile-post-title'>{name}</h3>
+                <p className='profile-post-description'>{about}</p>
+              </div>
+            </article>
+          </a>
+        </Link>
       </div>
       <br />
     </div>
