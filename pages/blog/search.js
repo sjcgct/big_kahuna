@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Nav, NavDropdown, Navbar, Button, Form, FormControl } from 'react-bootstrap'
 import { getAllBlogsForHome } from '../../prismic-configuration'
-import {queryAllBlogsForHome,queryByKeyWord} from '../../blog-api'
+import {queryAllBlogsForHome,queryByKeyWord,queryByYear} from '../../blog-api'
 import Layout from '../../components/Layout'
 import Deck from '../../components/deck'
 import { PrismicLink } from 'apollo-link-prismic'
@@ -9,6 +9,7 @@ import ApolloClient from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
 import Loading from 'react-simple-loading';
+
 
 const apolloClient = new ApolloClient({
   link: PrismicLink({
@@ -24,6 +25,11 @@ class BlogPage extends Component {
     var page_arr = []
     page_arr[0] = props.cursor
     var keyword=''
+
+    var year_options = ['2019','2020'];
+ 
+
+
     this.state = {
       activePage: 0,
       total: props.totalCount,
@@ -34,12 +40,14 @@ class BlogPage extends Component {
       page_arr: page_arr,
       loadedtill: 0,
       loading: false,
-      keyword:keyword
+      keyword:keyword,
+      years:year_options,
+      year:props.latest_year,
+      isYearSearch:false
     }
-    console.log(this.state.loadedtill)
   }
 
-  async loadPage (page,keyword) {
+  async loadPage (page,keyword,year) {
     // console.log(this.getBlogForNextOrPrevPage(action,cursor,limit));
     var cursor = this.state.cursor
     var limit = 6
@@ -60,10 +68,15 @@ class BlogPage extends Component {
       this.state.loadedtill = this.state.loadedtill + 1
     }
     this.setState({ loading: true })
+    if(this.state.isYearSearch==false){
+      var query=this.getBlogForKeyword(keyword,cursor,limit)
+    }
+    else{
+      var query=this.getBlogForYear(year,cursor,limit)
+    }
     apolloClient.query({
-      query: this.getBlogForKeyword(keyword,cursor, limit)
+      query: query
     }).then(response => {
-      console.log('success')
       blogs = response.data.allBlogss.edges
       curs = response.data.allBlogss.pageInfo.endCursor
       hasnext = response.data.allBlogss.pageInfo.hasNextPage
@@ -75,12 +88,6 @@ class BlogPage extends Component {
       console.error('error')
       alert(error)
     })
-
-    // alert(this.state.loadedtill+" max")
-    for (var i = 0; i < this.state.loadedtill; i++) {
-      // alert(this.state.page_arr[i])
-      console.log('hi')
-    }
   }
 
   getBlogForKeyword (keyword,lastPostCursor, limitation) {
@@ -88,11 +95,24 @@ class BlogPage extends Component {
     return query
   }
 
-  async nextPage () {
-    await this.loadPage(this.state.activePage + 1,this.state.keyword)
+  getBlogForYear(year,lastPostCursor, limitation) {
+    const query = gql`${queryByYear({year,lastPostCursor, limitation})}`
+    return query
   }
+
+  async nextPage () {
+    await this.loadPage(this.state.activePage + 1,this.state.keyword,this.state.year)
+  }
+
+  async prevPage () {
+    if (this.state.activePage - 1 === 0) {
+      this.state.hasprev = false
+    }
+    await this.loadPage(this.state.activePage - 1,this.state.keyword,this.state.year)
+  }
+
   async search () {
-    this.setState({ loading: true })  
+    this.setState({ loading: true ,isYearSearch:false}) 
     var keyword=this.state.keyword
     var loadedtill= 0
     var page_arr = []
@@ -108,7 +128,7 @@ class BlogPage extends Component {
         curs = response.data.allBlogss.pageInfo.endCursor
         hasnext = response.data.allBlogss.pageInfo.hasNextPage
         page_arr[0]=curs
-        this.setState({ blogs: blogs, cursor: curs, hasnext: hasnext, loading: false,loadedtill:loadedtill,page_arr:page_arr,keyword:keyword,activePage:0})
+        this.setState({ blogs: blogs, cursor: curs, hasnext: hasnext, loading: false,loadedtill:loadedtill,page_arr:page_arr,keyword:keyword,activePage:0,isYearSearch:false})
       }).catch(error => {
         console.error('error')
         alert(error)
@@ -116,19 +136,46 @@ class BlogPage extends Component {
 
   }
 
-  async prevPage () {
-    if (this.state.activePage - 1 === 0) {
-      this.state.hasprev = false
-    }
-    await this.loadPage(this.state.activePage - 1,this.state.keyword)
+  async searchByYear(year) {
+    console.log("selected : "+year);
+    this.setState({ loading: true ,isYearSearch:true}) 
+    var loadedtill= 0
+    var page_arr = []
+    var limit=6
+    var blogs = ''
+    var curs = ''
+    var hasnext = ''
+    apolloClient.query({
+        query: this.getBlogForYear(year,'', limit)
+      }).then(response => {
+        blogs = response.data.allBlogss.edges
+        curs = response.data.allBlogss.pageInfo.endCursor
+        hasnext = response.data.allBlogss.pageInfo.hasNextPage
+        page_arr[0]=curs
+        this.setState({ blogs: blogs, cursor: curs, hasnext: hasnext, loading: false,loadedtill:loadedtill,page_arr:page_arr,year:year,activePage:0,isYearSearch:true})
+      }).catch(error => {
+        console.error('error')
+        alert(error)
+      })
   }
+
+
 
   handleChange(value) {
     console.log(value);
     this.setState({
         keyword: value
     });
-}
+
+  }
+
+  handleDropDownChange(value){
+    console.log(value);
+    this.setState({
+      year: value
+    }
+  );
+  }
 
   render () {
     if (this.state.loading) {
@@ -139,8 +186,11 @@ class BlogPage extends Component {
           <Button class="button" onClick={() => this.search()} variant='outline-success'>Search</Button>
           </Form>
 
-
-
+          <NavDropdown title='Year' id='nav-dropdown'>
+          <NavDropdown.Item onClick={() =>this.searchByYear(2019)}>2019</NavDropdown.Item>
+          <NavDropdown.Item onClick={() =>this.searchByYear(2020)}>2020</NavDropdown.Item>
+          </NavDropdown>
+   
           <Loading
           color='firebrick'
           stroke='10px'
@@ -155,6 +205,11 @@ class BlogPage extends Component {
           <FormControl name="text" type="text" placeholder="Search Blog" onChange={(e) =>this.handleChange(e.target.value)} className='mr-sm-2'/>
           <Button class="button" onClick={() => this.search()} variant='outline-success'>Search</Button>
           </Form>
+
+          <NavDropdown title='Year' id='nav-dropdown'>
+          <NavDropdown.Item onClick={() =>this.searchByYear(2019)}>2019</NavDropdown.Item>
+          <NavDropdown.Item onClick={() =>this.searchByYear(2020)}>2020</NavDropdown.Item>
+          </NavDropdown>
 
         {this.state.blogs && (
           <Deck
@@ -187,7 +242,8 @@ export async function getServerSideProps () {
   var cursor = posts.pageInfo.endCursor
   var totalCount = posts.totalCount
   var hasnext = posts.pageInfo.hasNextPage
+  var latest_year='2020'
   return {
-    props: { blogs, cursor, totalCount, hasnext }
+    props: { blogs, cursor, totalCount, hasnext,latest_year }
   }
 }

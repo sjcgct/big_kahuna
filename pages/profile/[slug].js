@@ -9,6 +9,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
 import Loading from 'react-simple-loading'
 import ProfilePostCard from '../../components/ProfilePage/profilePostCard'
+import ProfileBanner from '../../components/ProfilePage/profileBanner'
 
 const apolloClient = new ApolloClient({
   link: PrismicLink({
@@ -98,7 +99,7 @@ class AuthorBlogPage extends Component {
       return (
         <Layout>
         <div className='profile-header'>
-          <ProfilePostCard name={this.state.name} imgurl={this.state.imgurl}  about={this.state.about}></ProfilePostCard>
+          <ProfileBanner name={this.state.name} imgurl={this.state.imgurl}  about={this.state.about}></ProfileBanner>
         </div>
 
         <h2>{this.state.name}'s posts</h2>
@@ -115,7 +116,7 @@ class AuthorBlogPage extends Component {
       <Layout>
 
         <div className='profile-header'>
-        <ProfilePostCard name={this.state.name} imgurl={this.state.imgurl}  about={this.state.about}></ProfilePostCard>
+        <ProfileBanner name={this.state.name} imgurl={this.state.imgurl}  about={this.state.about}></ProfileBanner>
         </div>
         <h2>{this.state.name}'s posts</h2>
 

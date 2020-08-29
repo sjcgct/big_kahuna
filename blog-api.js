@@ -177,4 +177,44 @@ export const queryByKeyWord =({keyword,lastPostCursor,limitation}) =>{
 return query
 }
 
-export default { queryBlogsWithSameCategory, queryBlogsWithSlug, queryAllBlogsForHome , queryGetCategoryIdByName,queryByKeyWord}
+export const queryByYear=({year,lastPostCursor,limitation})=>{
+  var prevyear=year-1
+  const query=`{
+    allBlogss(where:{date_before:"${year}-12-31",date_after:"${prevyear}-12-31"},sortBy: date_DESC,after:"${lastPostCursor}",first:${limitation}){
+      totalCount
+      pageInfo{
+        endCursor
+        hasNextPage
+      }
+      edges{
+        node{
+          title
+          date
+          featured_image
+          excerpt
+          author {
+            ... on Author{
+              name
+              picture
+              about
+              _meta {
+                id
+              }
+            }
+          }
+          
+          category {
+            _linkType
+          }
+          _meta{
+            uid
+          }
+          excerpt
+        }
+      }
+    }
+}`
+return query
+}
+
+export default { queryBlogsWithSameCategory, queryBlogsWithSlug, queryAllBlogsForHome , queryGetCategoryIdByName,queryByKeyWord,queryByYear}
