@@ -199,6 +199,23 @@ class BlogPage extends Component {
         </Layout>
       )
     }
+    if (this.state.blogs.length == 0) {
+      console.log("blogs size " + this.state.blogs.length);
+      return (
+        <Layout>
+          <Form inline>
+          <FormControl name="text" type="text" placeholder="Search Blog" onChange={(e) =>this.handleChange(e.target.value)} className='mr-sm-2'/>
+          <Button class="button" onClick={() => this.search()} variant='outline-success'>Search</Button>
+          </Form>
+
+          <NavDropdown title='Year' id='nav-dropdown'>
+          <NavDropdown.Item onClick={() =>this.searchByYear(2019)}>2019</NavDropdown.Item>
+          <NavDropdown.Item onClick={() =>this.searchByYear(2020)}>2020</NavDropdown.Item>
+          </NavDropdown>
+          <h1>No results found</h1>
+        </Layout>
+      )
+    }
     return (
       <Layout>
           <Form inline>

@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 import DeckCard from './deckcard'
 import { RichText } from 'prismic-reactjs'
 
-export default function Deck ({ cards, type }) {
+export default function Deck({ cards, type }) {
   var deckcards = []
   var cardarray = cards
 

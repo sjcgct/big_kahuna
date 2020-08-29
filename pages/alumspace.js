@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import {getCategoryIdByName,getBlogsWithSameCategory} from '../prismic-configuration'
-import {queryBlogsWithSameCategory} from '../blog-api'
+import { getCategoryIdByName, getBlogsWithSameCategory } from '../prismic-configuration'
+import { queryBlogsWithSameCategory } from '../blog-api'
 import Layout from '../components/Layout'
 import Deck from '../components/deck'
 import { PrismicLink } from 'apollo-link-prismic'
@@ -18,7 +18,7 @@ const apolloClient = new ApolloClient({
 })
 
 class BlogCategoryPage extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     var page_arr = []
     page_arr[0] = props.cursor
@@ -32,13 +32,13 @@ class BlogCategoryPage extends Component {
       page_arr: page_arr,
       loadedtill: 0,
       loading: false,
-      categoryId:props.categoryId,
-      itemsPerPage:props.itemsPerPage
+      categoryId: props.categoryId,
+      itemsPerPage: props.itemsPerPage
     }
     console.log(this.state.loadedtill)
   }
 
-  async loadPage (page) {
+  async loadPage(page) {
     // console.log(this.getBlogForNextOrPrevPage(action,cursor,limit));
     var cursor = this.state.cursor
 
@@ -59,7 +59,7 @@ class BlogCategoryPage extends Component {
     }
     this.setState({ loading: true })
     apolloClient.query({
-      query: this.getBlogsForCategory(this.state.categoryId,cursor, this.state.itemsPerPage)
+      query: this.getBlogsForCategory(this.state.categoryId, cursor, this.state.itemsPerPage)
     }).then(response => {
       console.log('success')
       blogs = response.data.allBlogss.edges
@@ -81,34 +81,35 @@ class BlogCategoryPage extends Component {
     }
   }
 
-  getBlogsForCategory (categoryId,lastPostCursor, limitation) {
-    const query = gql`${queryBlogsWithSameCategory({categoryId,lastPostCursor, limitation})}`
+  getBlogsForCategory(categoryId, lastPostCursor, limitation) {
+    const query = gql`${queryBlogsWithSameCategory({ categoryId, lastPostCursor, limitation })}`
     return query
   }
 
-  async nextPage () {
+  async nextPage() {
     await this.loadPage(this.state.activePage + 1)
   }
 
-  async prevPage () {
+  async prevPage() {
     if (this.state.activePage - 1 === 0) {
       this.state.hasprev = false
     }
     await this.loadPage(this.state.activePage - 1)
   }
 
-  render () {
+  render() {
     if (this.state.loading) {
       return (
         <Layout>
           <Loading
-          color='firebrick'
-          stroke='10px'
-          size='100px'
-        />
+            color='firebrick'
+            stroke='10px'
+            size='100px'
+          />
         </Layout>
       )
     }
+    
     return (
       <Layout>
 
@@ -120,7 +121,7 @@ class BlogCategoryPage extends Component {
         )}
 
         <button disabled={this.state.activePage === 0} onClick={() => this.prevPage()}>
-         Previous
+          Previous
         </button>
 
         <p> </p>
@@ -137,19 +138,19 @@ class BlogCategoryPage extends Component {
 
 export default BlogCategoryPage
 
-export async function getServerSideProps () {
- var itemsPerPage=6
- var categories=await getCategoryIdByName('AlumSpace')
- var post=categories[0].node;
- var categoryId=post._meta.id;
- const posts = await getBlogsWithSameCategory(categoryId,itemsPerPage, '')
- var blogs = posts.edges
- console.log(blogs.length);
-  
- var cursor = posts.pageInfo.endCursor
- var totalCount = posts.totalCount
- var hasnext = posts.pageInfo.hasNextPage
+export async function getServerSideProps() {
+  var itemsPerPage = 6
+  var categories = await getCategoryIdByName('AlumSpace')
+  var post = categories[0].node;
+  var categoryId = post._meta.id;
+  const posts = await getBlogsWithSameCategory(categoryId, itemsPerPage, '')
+  var blogs = posts.edges
+  console.log(blogs.length);
+
+  var cursor = posts.pageInfo.endCursor
+  var totalCount = posts.totalCount
+  var hasnext = posts.pageInfo.hasNextPage
   return {
-    props: { blogs, cursor, totalCount, hasnext,categoryId,itemsPerPage}
+    props: { blogs, cursor, totalCount, hasnext, categoryId, itemsPerPage }
   }
 }
