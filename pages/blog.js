@@ -7,8 +7,8 @@ import { PrismicLink } from 'apollo-link-prismic'
 import ApolloClient from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
-import LoadingOverlay from 'react-loading-overlay'
 import Loading from 'react-simple-loading';
+import MyLoader from '../components/loaders/contentLoader'
 
 const apolloClient = new ApolloClient({
   link: PrismicLink({
