@@ -8,6 +8,9 @@ export default function Aperture() {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+  const scale=3.2
+  const height=141.142*scale
+  const width=100*scale
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
     setPageNumber(1);
@@ -32,13 +35,14 @@ export default function Aperture() {
         file="./sample.pdf"
         onLoadSuccess={onDocumentLoadSuccess}
       >
-        <Page pageNumber={pageNumber} scale={0.6} loading={ <Layout>
+        <Page pageNumber={pageNumber} width={width} height={height} loading={
           <Loading
           color='firebrick'
-          stroke='10px'
-          size='100px'
-        />
-        </Layout>}/>
+          stroke='0px'
+          size={height*1.5}
+          ></Loading>}>
+         </Page>
+        
       </Document>
       <div>
         <p>
