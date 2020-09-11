@@ -31,4 +31,3 @@ export default function Deck({ cards, type }) {
   )
 }
 
-// export default Deck;

@@ -33,6 +33,7 @@
     "react-dropdown": "^1.8.0",
     "react-js-pagination": "^3.0.3",
     "react-loading-overlay": "^1.0.1",
+    "react-pdf": "^5.0.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-simple-dropdown": "^3.2.3",
