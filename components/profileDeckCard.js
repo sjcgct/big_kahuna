@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-export default function ProfilePostCard({ name, about, imgurl,id }) {
+export default function ProfilePostCard({ title, about, imgurl,id,sub_head}) {
   var redirect = {
     pathname: `/profile/[slug]`,
     state: { slug: id }
@@ -14,8 +14,8 @@ export default function ProfilePostCard({ name, about, imgurl,id }) {
             <article className='profile-blog-card'>
               <img className='profile-post-image' src={imgurl} />
               <div className='profile-article-details'>
-                <h4 className='profile-post-category'>Author</h4>
-                <h3 className='profile-post-title'>{name}</h3>
+                <h4 className='profile-post-category'>{sub_head}</h4>
+                <h3 className='profile-post-title'>{title}</h3>
                 <p className='profile-post-description'>{about}</p>
               </div>
             </article>

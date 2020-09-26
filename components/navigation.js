@@ -25,10 +25,6 @@ class NavBar extends Component {
               <Nav.Link>Home</Nav.Link>
             </Link>
 
-            <Link href='/news' passHref>
-              <Nav.Link>Campus News</Nav.Link>
-            </Link>
-
             <NavDropdown title='Blog' id='basic-nav-dropdown'>
 
 

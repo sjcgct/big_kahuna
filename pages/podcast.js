@@ -114,7 +114,6 @@ class PodcostPage extends Component {
                    </div>              
     }
 
-    
     if (this.state.loading) {
       return (
         <Layout>

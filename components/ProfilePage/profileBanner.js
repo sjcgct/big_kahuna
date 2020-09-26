@@ -1,21 +1,26 @@
 
 
-export default function ProfileBanner({ name, about, imgurl}) {
+export default function ProfileBanner({ name, about, imgurl }) {
 
     return (
 
+        <div>
+            <div className='profile-header'>
+                <div className='profile'>
+                    <div className='profile-image'>
+                        <img src={imgurl} alt='' />
+                    </div>
+                    <div className='profile-user-settings'>
+                        <h1 className='profile-user-name'>{name}</h1>
+                    </div>
+                    <div className='profile-bio'>
+                        <p> {about} </p>
+                    </div>
+                </div>
 
-            <div class='profile'>
-                <div class='profile-image'>
-                    <img src={imgurl} alt='' />
-                </div>
-                <div class='profile-user-settings'>
-                    <h1 class='profile-user-name'>{name}</h1>
-                </div>
-                <div class='profile-bio'>
-                    <p>{about}</p>
-                </div>
             </div>
+            <hr />
+        </div>
 
     )
 }

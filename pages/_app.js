@@ -1,6 +1,7 @@
 import '../style/index.css'
 import Router from "next/router";
 import Loading from 'react-simple-loading';
+import './../style/cardstyle.scss';
 
 export default function App ({ Component, pageProps }) {
   const [loading, setLoading] = React.useState(false)

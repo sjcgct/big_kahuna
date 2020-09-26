@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
 import { getBlogsForAuthor } from '../../prismic-configuration'
-import {queryAllPostsByAuthor} from '../../author-api'
+import { queryAllPostsByAuthor } from '../../author-api'
 import Layout from '../../components/Layout'
-import Deck from '../../components/deck'
 import { PrismicLink } from 'apollo-link-prismic'
 import ApolloClient from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
 import Loading from 'react-simple-loading'
-import ProfilePostCard from '../../components/ProfilePage/profilePostCard'
 import ProfileBanner from '../../components/ProfilePage/profileBanner'
+import ProfileDeck from '../../components/profileDeck'
 
 const apolloClient = new ApolloClient({
   link: PrismicLink({
@@ -38,8 +37,8 @@ class AuthorBlogPage extends Component {
       itemsPerPage: props.itemsPerPage,
       name: props.name,
       about: props.about,
-      id:props.id,
-      imgurl:props.imgurl
+      id: props.id,
+      imgurl: props.imgurl
     }
     console.log(this.state.loadedtill)
   }
@@ -79,7 +78,7 @@ class AuthorBlogPage extends Component {
   }
 
   getBlogsForAuthor(authorId, lastPostCursor, limitation) {
-    const query = gql`${queryAllPostsByAuthor({authorId, lastPostCursor, limitation})}`
+    const query = gql`${queryAllPostsByAuthor({ authorId, lastPostCursor, limitation })}`
     return query
   }
 
@@ -98,11 +97,11 @@ class AuthorBlogPage extends Component {
     if (this.state.loading) {
       return (
         <Layout>
-        <div className='profile-header'>
-          <ProfileBanner name={this.state.name} imgurl={this.state.imgurl}  about={this.state.about}></ProfileBanner>
-        </div>
 
-        <h2>{this.state.name}'s posts</h2>
+          <ProfileBanner name={this.state.name} imgurl={this.state.imgurl} about={this.state.about}></ProfileBanner>
+
+
+          <h2>{this.state.name}'s posts</h2>
 
           <Loading
             color='firebrick'
@@ -115,13 +114,13 @@ class AuthorBlogPage extends Component {
     return (
       <Layout>
 
-        <div className='profile-header'>
-        <ProfileBanner name={this.state.name} imgurl={this.state.imgurl}  about={this.state.about}></ProfileBanner>
-        </div>
+
+        <ProfileBanner name={this.state.name} imgurl={this.state.imgurl} about={this.state.about}></ProfileBanner>
+
         <h2>{this.state.name}'s posts</h2>
 
         {this.state.blogs && (
-          <Deck
+          <ProfileDeck
             cards={this.state.blogs}
             type='blog'
           />
@@ -143,19 +142,19 @@ class AuthorBlogPage extends Component {
 
 export default AuthorBlogPage
 
-export async function getServerSideProps({params,previewData}) {
-  var id=params.slug;
-  var itemsPerPage =6 
-  const posts = await getBlogsForAuthor(id, itemsPerPage,'')
+export async function getServerSideProps({ params, previewData }) {
+  var id = params.slug;
+  var itemsPerPage = 6
+  const posts = await getBlogsForAuthor(id, itemsPerPage, '')
   var blogs = posts.edges
   var cursor = posts.pageInfo.endCursor
   var totalCount = posts.totalCount
   var hasnext = posts.pageInfo.hasNextPage
-  var name=blogs[0].node.author.name
-  var about=blogs[0].node.author.about
-  var imgurl=blogs[0].node.author.picture.url
+  var name = blogs[0].node.author.name
+  var about = blogs[0].node.author.about
+  var imgurl = blogs[0].node.author.picture.url
   return {
-    props: { blogs, cursor, totalCount, hasnext, itemsPerPage,id,name,about,imgurl}
+    props: { blogs, cursor, totalCount, hasnext, itemsPerPage, id, name, about, imgurl }
   }
 }
 

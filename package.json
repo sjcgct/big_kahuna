@@ -14,6 +14,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.14.0",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
+    "@zeit/next-sass": "^1.0.1",
     "apollo-cache-inmemory": "^1.6.6",
     "apollo-client": "^2.6.10",
     "apollo-link-prismic": "^1.0.7",
@@ -41,6 +42,7 @@
     "react-spinners": "^0.9.0",
     "react-transition-group": "^1.2.1",
     "responsive-nav": "^1.0.39",
+    "sass": "^1.26.11",
     "styled-components": "^5.1.1",
     "vercel": "^19.2.0"
   },
