@@ -101,10 +101,7 @@ class BlogPage extends Component {
     if (this.state.loading) {
       return (
         <Layout>
-          <Loading
-          color='firebrick'
-          stroke='10px'
-          size='100px'
+          <MyLoader
         />
         </Layout>
       )

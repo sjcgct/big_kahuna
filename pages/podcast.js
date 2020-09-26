@@ -133,13 +133,13 @@ class PodcostPage extends Component {
         </div>
         </div>
 
-        <button disabled={this.state.activePage === 0} onClick={() => this.prevPage()}>
+        <button hidden={this.state.activePage === 0} onClick={() => this.prevPage()}>
          Previous
         </button>
 
         <p> </p>
 
-        <button disabled={!this.state.hasnext} onClick={() => this.nextPage()}>
+        <button hidden={!this.state.hasnext} onClick={() => this.nextPage()}>
           Next
         </button>
 
