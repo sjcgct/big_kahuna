@@ -19,4 +19,4 @@ To learn more about Next.js, have a look at the following resources:
 
 **Contribution**
 
-  Feel free to raise issues, and if you wish to contribute, please contact sjcgct@gmail.com
+  Feel free to raise issues, and if you wish to contribute to the project, please contact sjcgct@gmail.com .
