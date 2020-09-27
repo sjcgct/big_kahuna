@@ -8,7 +8,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
 import LoadingOverlay from 'react-loading-overlay'
 import Deck from '../components/deck'
-import Loading from 'react-simple-loading';
+import Loading from 'react-simple-loading'
 
 const apolloClient = new ApolloClient({
   link: PrismicLink({
@@ -124,14 +124,14 @@ class HogPage extends Component {
       return (
         <Layout>
           <Loading
-          color='firebrick'
-          stroke='10px'
-          size='100px'
-        />
+            color='firebrick'
+            stroke='10px'
+            size='100px'
+          />
         </Layout>
       )
-    } 
-     
+    }
+
     return (
 
       <Layout>

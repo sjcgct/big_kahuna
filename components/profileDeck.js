@@ -3,15 +3,15 @@ import React from 'react'
 import ProfileDeckCard from './profileDeckCard'
 import { RichText } from 'prismic-reactjs'
 
-var parseDate = function(date){
-    console.log(date);
-    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
-    var year_month_date=date.split("-");
-    var month=months[parseInt(year_month_date[1])-1];
-    console.log(year_month_date);
-    return month+" "+year_month_date[2]+","+year_month_date[0]
+var parseDate = function (date) {
+  console.log(date)
+  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
+  var year_month_date = date.split('-')
+  var month = months[parseInt(year_month_date[1]) - 1]
+  console.log(year_month_date)
+  return month + ' ' + year_month_date[2] + ',' + year_month_date[0]
 }
-export default function ProfileDeck({ cards, type }) {
+export default function ProfileDeck ({ cards, type }) {
   var deckcards = []
   var cardarray = cards
 
@@ -20,15 +20,15 @@ export default function ProfileDeck({ cards, type }) {
     var post = cardarray[j].node
     var smallDescription = ''
     var image = ''
-    var date= ''
+    var date = ''
     if (type === 'blog') {
       smallDescription = post.excerpt
       image = post.featured_image.thumbnail.url
-      date= parseDate(post.date)
+      date = parseDate(post.date)
     }
-    console.log(date);
-    deckcards[j] = <ProfileDeckCard title={RichText.asText(post.title)} about={smallDescription} imgurl={image} id={post._meta.uid} sub_head={date}/>
-    //deckcards[j] = <DeckCard title={RichText.asText(post.title)} imgurl={image} slugurl={post._meta.uid} smallDescription={smallDescription} type={type} />
+    console.log(date)
+    deckcards[j] = <ProfileDeckCard title={RichText.asText(post.title)} about={smallDescription} imgurl={image} id={post._meta.uid} sub_head={date} />
+    // deckcards[j] = <DeckCard title={RichText.asText(post.title)} imgurl={image} slugurl={post._meta.uid} smallDescription={smallDescription} type={type} />
   }
 
   return (
@@ -37,4 +37,3 @@ export default function ProfileDeck({ cards, type }) {
     </div>
   )
 }
-

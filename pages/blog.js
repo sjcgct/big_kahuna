@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { getAllBlogsForHome } from '../prismic-configuration'
-import {queryAllBlogsForHome} from '../blog-api'
+import { queryAllBlogsForHome } from '../blog-api'
 import Layout from '../components/Layout'
 import Deck from '../components/deck'
 import { PrismicLink } from 'apollo-link-prismic'
 import ApolloClient from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
-import Loading from 'react-simple-loading';
+import Loading from 'react-simple-loading'
 import MyLoader from '../components/loaders/contentLoader'
 
 const apolloClient = new ApolloClient({
@@ -82,7 +82,7 @@ class BlogPage extends Component {
   }
 
   getBlogForNextOrPrevPage (lastPostCursor, limitation) {
-    const query = gql`${queryAllBlogsForHome({lastPostCursor, limitation})}`
+    const query = gql`${queryAllBlogsForHome({ lastPostCursor, limitation })}`
     return query
   }
 
@@ -101,8 +101,7 @@ class BlogPage extends Component {
     if (this.state.loading) {
       return (
         <Layout>
-          <MyLoader
-        />
+          <MyLoader />
         </Layout>
       )
     }

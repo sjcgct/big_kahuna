@@ -7,7 +7,7 @@ export default function HeroPost ({
   slugurl,
   type
 }) {
-  var t=type
+  var t = type
   var redirect = {
     pathname: `/${type}/[slug]`,
     state: { slug: slugurl }
@@ -17,7 +17,7 @@ export default function HeroPost ({
     <section>
       <div className='mb-5'>
         <Link as={`/${type}/${slugurl}`} href={redirect}>
-        <a className="card-title">{RichText.asText(title)}</a>
+          <a className='card-title'>{RichText.asText(title)}</a>
         </Link>
         <div className='sm-12'>
           <img src={coverImage.url} className='card-img' />

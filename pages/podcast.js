@@ -1,11 +1,11 @@
 import Layout from '../components/Layout'
-import {getAllPodCasts} from '../prismic-configuration'
+import { getAllPodCasts } from '../prismic-configuration'
 import React, { Component } from 'react'
 import { PrismicLink } from 'apollo-link-prismic'
 import ApolloClient from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
-import Loading from 'react-simple-loading';
+import Loading from 'react-simple-loading'
 
 const apolloClient = new ApolloClient({
   link: PrismicLink({
@@ -30,8 +30,8 @@ class PodcostPage extends Component {
       page_arr: page_arr,
       loadedtill: 0,
       loading: false,
-      categoryId:props.categoryId,
-      itemsPerPage:props.itemsPerPage
+      categoryId: props.categoryId,
+      itemsPerPage: props.itemsPerPage
     }
   }
 
@@ -72,7 +72,7 @@ class PodcostPage extends Component {
     })
   }
 
-  getAllPods (cursor,limit) {
+  getAllPods (cursor, limit) {
     const query = gql`{
       allPodcasts(sortBy:date_DESC,after:"${cursor}",first:${limit}){
         totalCount
@@ -104,33 +104,33 @@ class PodcostPage extends Component {
   }
 
   render () {
-    var podcasts=this.state.pods
-    var len=podcasts.length
-    var templateHTML=[]
-    for(var i=0;i<len;i++){
-       var episode_link=podcasts[i].node.episode_link
-       templateHTML[i]=<div className='col-sm-12 mt-1 mb-1'>
-                   <iframe src={episode_link} height='auto' width='100%' frameborder='0' scrolling='no' />
-                   </div>              
+    var podcasts = this.state.pods
+    var len = podcasts.length
+    var templateHTML = []
+    for (var i = 0; i < len; i++) {
+      var episode_link = podcasts[i].node.episode_link
+      templateHTML[i] = <div className='col-sm-12 mt-1 mb-1'>
+        <iframe src={episode_link} height='auto' width='100%' frameborder='0' scrolling='no' />
+                        </div>
     }
 
     if (this.state.loading) {
       return (
         <Layout>
           <Loading
-          color='firebrick'
-          stroke='10px'
-          size='100px'
-        />
+            color='firebrick'
+            stroke='10px'
+            size='100px'
+          />
         </Layout>
       )
     }
     return (
       <Layout>
         <div className='container'>
-        <div className='row'>
-          {templateHTML}
-        </div>
+          <div className='row'>
+            {templateHTML}
+          </div>
         </div>
 
         <button hidden={this.state.activePage === 0} onClick={() => this.prevPage()}>
@@ -152,13 +152,13 @@ class PodcostPage extends Component {
 export default PodcostPage
 
 export async function getServerSideProps () {
-  var itemsPerPage=10
-  var podsresponse=await getAllPodCasts(' ',itemsPerPage)
-  var pods=podsresponse.edges
-  var cursor=podsresponse.pageInfo.endCursor
-  var hasnext= podsresponse.pageInfo.hasNextPage
-  var totalCount=podsresponse.totalCount
-   return {
-     props: {pods, cursor, totalCount, hasnext,itemsPerPage }
-   }
- }
+  var itemsPerPage = 10
+  var podsresponse = await getAllPodCasts(' ', itemsPerPage)
+  var pods = podsresponse.edges
+  var cursor = podsresponse.pageInfo.endCursor
+  var hasnext = podsresponse.pageInfo.hasNextPage
+  var totalCount = podsresponse.totalCount
+  return {
+    props: { pods, cursor, totalCount, hasnext, itemsPerPage }
+  }
+}

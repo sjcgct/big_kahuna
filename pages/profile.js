@@ -25,9 +25,9 @@ const Profile = () => {
       </div>
       <hr />
       <div className='profile-body'>
-        <ProfilePostCard name="Man" about="Simple man" imgurl='https://source.unsplash.com/random/200x200' id="id"/>
-        <ProfilePostCard name="Man" about="Simple man" imgurl='https://source.unsplash.com/random/200x200' id="id"/>
-        <ProfilePostCard name="Man" about="Simple man" imgurl='https://source.unsplash.com/random/200x200' id="id"/>
+        <ProfilePostCard name='Man' about='Simple man' imgurl='https://source.unsplash.com/random/200x200' id='id' />
+        <ProfilePostCard name='Man' about='Simple man' imgurl='https://source.unsplash.com/random/200x200' id='id' />
+        <ProfilePostCard name='Man' about='Simple man' imgurl='https://source.unsplash.com/random/200x200' id='id' />
       </div>
     </Layout>
   )

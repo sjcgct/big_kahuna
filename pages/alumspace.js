@@ -7,7 +7,7 @@ import { PrismicLink } from 'apollo-link-prismic'
 import ApolloClient from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
-import Loading from 'react-simple-loading';
+import Loading from 'react-simple-loading'
 
 const apolloClient = new ApolloClient({
   link: PrismicLink({
@@ -18,7 +18,7 @@ const apolloClient = new ApolloClient({
 })
 
 class BlogCategoryPage extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     var page_arr = []
     page_arr[0] = props.cursor
@@ -38,7 +38,7 @@ class BlogCategoryPage extends Component {
     console.log(this.state.loadedtill)
   }
 
-  async loadPage(page) {
+  async loadPage (page) {
     // console.log(this.getBlogForNextOrPrevPage(action,cursor,limit));
     var cursor = this.state.cursor
 
@@ -81,23 +81,23 @@ class BlogCategoryPage extends Component {
     }
   }
 
-  getBlogsForCategory(categoryId, lastPostCursor, limitation) {
+  getBlogsForCategory (categoryId, lastPostCursor, limitation) {
     const query = gql`${queryBlogsWithSameCategory({ categoryId, lastPostCursor, limitation })}`
     return query
   }
 
-  async nextPage() {
+  async nextPage () {
     await this.loadPage(this.state.activePage + 1)
   }
 
-  async prevPage() {
+  async prevPage () {
     if (this.state.activePage - 1 === 0) {
       this.state.hasprev = false
     }
     await this.loadPage(this.state.activePage - 1)
   }
 
-  render() {
+  render () {
     if (this.state.loading) {
       return (
         <Layout>
@@ -109,7 +109,7 @@ class BlogCategoryPage extends Component {
         </Layout>
       )
     }
-    
+
     return (
       <Layout>
 
@@ -138,14 +138,14 @@ class BlogCategoryPage extends Component {
 
 export default BlogCategoryPage
 
-export async function getServerSideProps() {
+export async function getServerSideProps () {
   var itemsPerPage = 6
   var categories = await getCategoryIdByName('AlumSpace')
-  var post = categories[0].node;
-  var categoryId = post._meta.id;
+  var post = categories[0].node
+  var categoryId = post._meta.id
   const posts = await getBlogsWithSameCategory(categoryId, itemsPerPage, '')
   var blogs = posts.edges
-  console.log(blogs.length);
+  console.log(blogs.length)
 
   var cursor = posts.pageInfo.endCursor
   var totalCount = posts.totalCount

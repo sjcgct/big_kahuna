@@ -3,16 +3,13 @@ import React, { Component } from 'react'
 import Link from 'next/link'
 
 class NavBar extends Component {
-
   render () {
-
-
     return (
       <Navbar className='navbar' expand='lg'>
         <Navbar.Brand href='/'>
-        <a href="/">
-           <img src='https://raw.githubusercontent.com/sjcgct/sjc_gct_web/master/sjc_logo_black.png' style={{width:50, marginTop: -7, marginLeft:-5}} />
-        </a>
+          <a href='/'>
+            <img src='https://raw.githubusercontent.com/sjcgct/sjc_gct_web/master/sjc_logo_black.png' style={{ width: 50, marginTop: -7, marginLeft: -5 }} />
+          </a>
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -27,11 +24,9 @@ class NavBar extends Component {
 
             <NavDropdown title='Blog' id='basic-nav-dropdown'>
 
-
               <Link href='/blog' passHref>
                 <NavDropdown.Item>All</NavDropdown.Item>
               </Link>
-
 
               <Link href='/openpage' passHref>
                 <NavDropdown.Item>Open Page</NavDropdown.Item>
@@ -56,7 +51,7 @@ class NavBar extends Component {
               <Link href='/blog/search' passHref>
                 <NavDropdown.Item>Search</NavDropdown.Item>
               </Link>
-              
+
             </NavDropdown>
 
             <Link href='/hog' passHref>

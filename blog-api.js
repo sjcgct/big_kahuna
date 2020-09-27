@@ -48,6 +48,7 @@ export const queryBlogsWithSlug = ({ slug }) => {
         title
         date
         content
+        quote
         featured_image
         excerpt
         author {
@@ -119,9 +120,8 @@ export const queryBlogsWithSameCategory = ({ categoryId, limitation, lastPostCur
   return query
 }
 
-export const queryGetCategoryIdByName = ({ categoryName })=>{
-
-  const query=
+export const queryGetCategoryIdByName = ({ categoryName }) => {
+  const query =
   `{
     allCategorys(where:{name:"${categoryName}"}){
       edges{
@@ -138,8 +138,8 @@ export const queryGetCategoryIdByName = ({ categoryName })=>{
   return query
 }
 
-export const queryByKeyWord =({keyword,lastPostCursor,limitation}) =>{
-  const query=`{
+export const queryByKeyWord = ({ keyword, lastPostCursor, limitation }) => {
+  const query = `{
     allBlogss(where:{title_fulltext:"${keyword}"},sortBy: date_DESC,after:"${lastPostCursor}",first:${limitation}){
       totalCount
       pageInfo{
@@ -174,12 +174,12 @@ export const queryByKeyWord =({keyword,lastPostCursor,limitation}) =>{
       }
     }
 }`
-return query
+  return query
 }
 
-export const queryByYear=({year,lastPostCursor,limitation})=>{
-  var prevyear=year-1
-  const query=`{
+export const queryByYear = ({ year, lastPostCursor, limitation }) => {
+  var prevyear = year - 1
+  const query = `{
     allBlogss(where:{date_before:"${year}-12-31",date_after:"${prevyear}-12-31"},sortBy: date_DESC,after:"${lastPostCursor}",first:${limitation}){
       totalCount
       pageInfo{
@@ -214,7 +214,7 @@ export const queryByYear=({year,lastPostCursor,limitation})=>{
       }
     }
 }`
-return query
+  return query
 }
 
-export default { queryBlogsWithSameCategory, queryBlogsWithSlug, queryAllBlogsForHome , queryGetCategoryIdByName,queryByKeyWord,queryByYear}
+export default { queryBlogsWithSameCategory, queryBlogsWithSlug, queryAllBlogsForHome, queryGetCategoryIdByName, queryByKeyWord, queryByYear }

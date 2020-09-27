@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import {getCategoryIdByName,getBlogsWithSameCategory,getBlogsForAuthor} from '../prismic-configuration'
+import { getCategoryIdByName, getBlogsWithSameCategory, getBlogsForAuthor } from '../prismic-configuration'
 import Layout from '../components/Layout'
 import Deck from '../components/deck'
 import { PrismicLink } from 'apollo-link-prismic'
 import ApolloClient from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
-import Loading from 'react-simple-loading';
+import Loading from 'react-simple-loading'
 
 const apolloClient = new ApolloClient({
   link: PrismicLink({
@@ -31,8 +31,8 @@ class AuthorBlogPage extends Component {
       page_arr: page_arr,
       loadedtill: 0,
       loading: false,
-      categoryId:props.categoryId,
-      itemsPerPage:props.itemsPerPage
+      categoryId: props.categoryId,
+      itemsPerPage: props.itemsPerPage
     }
     console.log(this.state.loadedtill)
   }
@@ -58,7 +58,7 @@ class AuthorBlogPage extends Component {
     }
     this.setState({ loading: true })
     apolloClient.query({
-      query: this.getBlogsForCategory(this.state.categoryId,cursor, this.state.itemsPerPage)
+      query: this.getBlogsForCategory(this.state.categoryId, cursor, this.state.itemsPerPage)
     }).then(response => {
       console.log('success')
       blogs = response.data.allBlogss.edges
@@ -80,7 +80,7 @@ class AuthorBlogPage extends Component {
     }
   }
 
-  getBlogsForCategory (categoryId,lastPostCursor, limitation) {
+  getBlogsForCategory (categoryId, lastPostCursor, limitation) {
     const query = gql`{
         allBlogss(where:{category:"${categoryId}"},sortBy: date_DESC, after:"${lastPostCursor}",first:${limitation}){
           pageInfo{
@@ -133,10 +133,10 @@ class AuthorBlogPage extends Component {
       return (
         <Layout>
           <Loading
-          color='firebrick'
-          stroke='10px'
-          size='100px'
-        />
+            color='firebrick'
+            stroke='10px'
+            size='100px'
+          />
         </Layout>
       )
     }
@@ -169,14 +169,14 @@ class AuthorBlogPage extends Component {
 export default AuthorBlogPage
 
 export async function getServerSideProps () {
- var itemsPerPage=6
- const posts = await getBlogsForAuthor(authorId,'',itemsPerPage)
- var blogs = posts.edges
- console.log(blogs.length); 
- var cursor = posts.pageInfo.endCursor
- var totalCount = posts.totalCount
- var hasnext = posts.pageInfo.hasNextPage
+  var itemsPerPage = 6
+  const posts = await getBlogsForAuthor(authorId, '', itemsPerPage)
+  var blogs = posts.edges
+  console.log(blogs.length)
+  var cursor = posts.pageInfo.endCursor
+  var totalCount = posts.totalCount
+  var hasnext = posts.pageInfo.hasNextPage
   return {
-    props: { blogs, cursor, totalCount, hasnext,categoryId,itemsPerPage}
+    props: { blogs, cursor, totalCount, hasnext, categoryId, itemsPerPage }
   }
 }

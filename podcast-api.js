@@ -1,7 +1,6 @@
 
-export const queryAllPodCasts = ({ cursor,limit })=>{
-
-    const query=
+export const queryAllPodCasts = ({ cursor, limit }) => {
+  const query =
     `{
         allPodcasts(sortBy:date_DESC,after:"${cursor}",first:${limit}){
           totalCount
@@ -18,7 +17,7 @@ export const queryAllPodCasts = ({ cursor,limit })=>{
           }
         }
       }`
-    return query
-  }
+  return query
+}
 
-  export default {queryAllPodCasts}
+export default { queryAllPodCasts }

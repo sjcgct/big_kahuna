@@ -150,21 +150,87 @@ footer small{
 
 
 
-/*Blog pages*/
+                                                     /*Blog Post pages*/
 
-@media screen and (min-width: 1260px) {
-  .blog-container {
-    padding-left: 150px;
-    padding-right: 150px;
+/*Blog Title*/
+
+.blog-post-title {
+  letter-spacing: -.04em;
+  line-height: 1;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 1024px){
+  .blog-post-title {
+    font-size: 6.25rem;
+  }
+}
+
+@media (max-width: 1024px){
+  .blog-post-title {
+    font-size: 4.5rem;
+  }
+}
+
+@media (max-width: 768px){
+  .blog-post-title {
+    font-size: 2.75rem;
+    margin-bottom: 1.5rem;
   }
 }
 
 
-.blog-container .sm-12{
-  margin-bottom: 1rem;
+@media screen and (min-width: 1260px) {
+  .blog-container {
+    padding-left: 185px;
+    padding-right: 185px;
+  }
+
+  .featured-img {
+    width: 100%;
+    height: auto;
+    box-shadow: 0 5px 10px rgba(0,0,0,.12);
+    margin-bottom: 50px;
+  }
 }
 
-.blog-container p{
+.blog-post-author-reveal{
+  display: flex;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 768px){
+  .blog-post-author-reveal {
+    margin-bottom: 1.5rem;
+  }
+}
+
+a.profile-thumb-link:hover {
+  text-decoration: none;
+}
+
+.blogpost-author-thumb {
+  width: 60px;
+  height: auto;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.blogpost-author-name {
+  margin-left: 5px;
+  margin-right: 10px;
+  font-size: 14pt;
+  font-weight: 700;
+}
+
+.blog-post-date {
+  margin-left: 5px;
+  font-size: 14pt;
+}
+
+
+p.blog-container{
   margin-bottom: 0rem;
 }
 
@@ -175,13 +241,13 @@ footer small{
   color: #888888	;
   display: block;
   text-align: center;
-  margin-top: 0.3rem;
-  margin-bottom: 0.3rem;
 }
 
-.blog-container p:empty{
-  margin-top: 0.5rem;
-  margin-bottom: 2.5rem;
+.blog-container p{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 21px;
+  line-height: 32px;
 }
 
 .block-img img{
@@ -189,12 +255,6 @@ footer small{
   height:auto;
   margin-top: 0.5rem;
 }
-
-.blog-container {
-  font-size: 1.2rem;
-  line-height: 1.8rem;
-}
-
 
 /* Profile Page */
 .profile-header {

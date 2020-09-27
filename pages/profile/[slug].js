@@ -19,11 +19,11 @@ const apolloClient = new ApolloClient({
 })
 
 class AuthorBlogPage extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     var page_arr = []
     page_arr[0] = props.cursor
-    console.log(props.name);
+    console.log(props.name)
     this.state = {
       activePage: 0,
       total: props.totalCount,
@@ -43,7 +43,7 @@ class AuthorBlogPage extends Component {
     console.log(this.state.loadedtill)
   }
 
-  async loadPage(page) {
+  async loadPage (page) {
     // console.log(this.getBlogForNextOrPrevPage(action,cursor,limit));
     var cursor = this.state.cursor
 
@@ -77,29 +77,28 @@ class AuthorBlogPage extends Component {
     })
   }
 
-  getBlogsForAuthor(authorId, lastPostCursor, limitation) {
+  getBlogsForAuthor (authorId, lastPostCursor, limitation) {
     const query = gql`${queryAllPostsByAuthor({ authorId, lastPostCursor, limitation })}`
     return query
   }
 
-  async nextPage() {
+  async nextPage () {
     await this.loadPage(this.state.activePage + 1)
   }
 
-  async prevPage() {
+  async prevPage () {
     if (this.state.activePage - 1 === 0) {
       this.state.hasprev = false
     }
     await this.loadPage(this.state.activePage - 1)
   }
 
-  render() {
+  render () {
     if (this.state.loading) {
       return (
         <Layout>
 
-          <ProfileBanner name={this.state.name} imgurl={this.state.imgurl} about={this.state.about}></ProfileBanner>
-
+          <ProfileBanner name={this.state.name} imgurl={this.state.imgurl} about={this.state.about} />
 
           <h2>{this.state.name}'s posts</h2>
 
@@ -114,8 +113,7 @@ class AuthorBlogPage extends Component {
     return (
       <Layout>
 
-
-        <ProfileBanner name={this.state.name} imgurl={this.state.imgurl} about={this.state.about}></ProfileBanner>
+        <ProfileBanner name={this.state.name} imgurl={this.state.imgurl} about={this.state.about} />
 
         <h2>{this.state.name}'s posts</h2>
 
@@ -142,8 +140,8 @@ class AuthorBlogPage extends Component {
 
 export default AuthorBlogPage
 
-export async function getServerSideProps({ params, previewData }) {
-  var id = params.slug;
+export async function getServerSideProps ({ params, previewData }) {
+  var id = params.slug
   var itemsPerPage = 6
   const posts = await getBlogsForAuthor(id, itemsPerPage, '')
   var blogs = posts.edges
@@ -157,5 +155,3 @@ export async function getServerSideProps({ params, previewData }) {
     props: { blogs, cursor, totalCount, hasnext, itemsPerPage, id, name, about, imgurl }
   }
 }
-
-

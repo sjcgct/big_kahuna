@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import {getCategoryIdByName,getBlogsWithSameCategory} from '../prismic-configuration'
-import {queryBlogsWithSameCategory} from '../blog-api'
+import { getCategoryIdByName, getBlogsWithSameCategory } from '../prismic-configuration'
+import { queryBlogsWithSameCategory } from '../blog-api'
 import Layout from '../components/Layout'
 import Deck from '../components/deck'
 import { PrismicLink } from 'apollo-link-prismic'
 import ApolloClient from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
-import Loading from 'react-simple-loading';
+import Loading from 'react-simple-loading'
 
 const apolloClient = new ApolloClient({
   link: PrismicLink({
@@ -32,8 +32,8 @@ class BlogCategoryPage extends Component {
       page_arr: page_arr,
       loadedtill: 0,
       loading: false,
-      categoryId:props.categoryId,
-      itemsPerPage:props.itemsPerPage
+      categoryId: props.categoryId,
+      itemsPerPage: props.itemsPerPage
     }
     console.log(this.state.loadedtill)
   }
@@ -59,7 +59,7 @@ class BlogCategoryPage extends Component {
     }
     this.setState({ loading: true })
     apolloClient.query({
-      query: this.getBlogsForCategory(this.state.categoryId,cursor, this.state.itemsPerPage)
+      query: this.getBlogsForCategory(this.state.categoryId, cursor, this.state.itemsPerPage)
     }).then(response => {
       console.log('success')
       blogs = response.data.allBlogss.edges
@@ -81,8 +81,8 @@ class BlogCategoryPage extends Component {
     }
   }
 
-  getBlogsForCategory (categoryId,lastPostCursor, limitation) {
-    const query = gql`${queryBlogsWithSameCategory({categoryId,lastPostCursor, limitation})}`
+  getBlogsForCategory (categoryId, lastPostCursor, limitation) {
+    const query = gql`${queryBlogsWithSameCategory({ categoryId, lastPostCursor, limitation })}`
     return query
   }
 
@@ -102,10 +102,10 @@ class BlogCategoryPage extends Component {
       return (
         <Layout>
           <Loading
-          color='firebrick'
-          stroke='10px'
-          size='100px'
-        />
+            color='firebrick'
+            stroke='10px'
+            size='100px'
+          />
         </Layout>
       )
     }
@@ -138,18 +138,18 @@ class BlogCategoryPage extends Component {
 export default BlogCategoryPage
 
 export async function getServerSideProps () {
- var itemsPerPage=6
- var categories=await getCategoryIdByName('Celluloid')
- var post=categories[0].node;
- var categoryId=post._meta.id;
- const posts = await getBlogsWithSameCategory(categoryId,itemsPerPage, '')
- var blogs = posts.edges
- console.log(blogs.length);
-  
- var cursor = posts.pageInfo.endCursor
- var totalCount = posts.totalCount
- var hasnext = posts.pageInfo.hasNextPage
+  var itemsPerPage = 6
+  var categories = await getCategoryIdByName('Celluloid')
+  var post = categories[0].node
+  var categoryId = post._meta.id
+  const posts = await getBlogsWithSameCategory(categoryId, itemsPerPage, '')
+  var blogs = posts.edges
+  console.log(blogs.length)
+
+  var cursor = posts.pageInfo.endCursor
+  var totalCount = posts.totalCount
+  var hasnext = posts.pageInfo.hasNextPage
   return {
-    props: { blogs, cursor, totalCount, hasnext,categoryId,itemsPerPage}
+    props: { blogs, cursor, totalCount, hasnext, categoryId, itemsPerPage }
   }
 }

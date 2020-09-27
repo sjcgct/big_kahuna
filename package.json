@@ -47,9 +47,14 @@
     "vercel": "^19.2.0"
   },
   "devDependencies": {
-    "eslint": "^7.4.0",
+    "eslint": "^7.10.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-html": "^6.0.2",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.21.2",
+    "eslint-plugin-standard": "^4.0.1",
     "standard": "^14.3.4"
   },
   "standard.options": {

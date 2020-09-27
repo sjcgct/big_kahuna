@@ -1,9 +1,9 @@
 import Prismic from 'prismic-javascript'
 
-import { queryBlogsWithSameCategory, queryBlogsWithSlug, queryAllBlogsForHome ,queryGetCategoryIdByName} from './blog-api'
+import { queryBlogsWithSameCategory, queryBlogsWithSlug, queryAllBlogsForHome, queryGetCategoryIdByName } from './blog-api'
 import { queryHOGwithSlug, queryAllHOGs } from './hog-api'
-import {queryAllPostsByAuthor} from './author-api'
-import {queryAllPodCasts} from './podcast-api'
+import { queryAllPostsByAuthor } from './author-api'
+import { queryAllPodCasts } from './podcast-api'
 
 const REPOSITORY = process.env.PRISMIC_REPOSITORY_NAME
 const REF_API_URL = `https://${REPOSITORY}.prismic.io/api/v2`
@@ -74,7 +74,7 @@ export async function getBlogsWithSameCategory (categoryId, limitation, lastPost
 }
 
 export async function getBlogsForAuthor (authorId, limitation, lastPostCursor) {
-  const query = queryAllPostsByAuthor({authorId,limitation,lastPostCursor})
+  const query = queryAllPostsByAuthor({ authorId, limitation, lastPostCursor })
   const data = await fetchAPI(query)
   return data.allBlogss
 }
@@ -91,14 +91,14 @@ export async function getHogWithSlug (slug) {
   return data.allHogs.edges
 }
 
-export async function getCategoryIdByName(categoryName){
+export async function getCategoryIdByName (categoryName) {
   const query = queryGetCategoryIdByName({ categoryName })
-  const data=await fetchAPI(query)
+  const data = await fetchAPI(query)
   return data.allCategorys.edges
 }
 
-export async function getAllPodCasts(cursor,limit){
-  const query = queryAllPodCasts({ cursor,limit })
-  const data=await fetchAPI(query)
+export async function getAllPodCasts (cursor, limit) {
+  const query = queryAllPodCasts({ cursor, limit })
+  const data = await fetchAPI(query)
   return data.allPodcasts
 }

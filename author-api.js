@@ -1,5 +1,5 @@
 export const queryAllAuthors = () => {
-    const query =
+  const query =
           `{
             allAuthors{
               totalCount
@@ -20,11 +20,11 @@ export const queryAllAuthors = () => {
             }
           }
         `
-    return query
-  }
+  return query
+}
 
-  export const queryAllPostsByAuthor= ({authorId,limitation,lastPostCursor}) =>{
-      const query=
+export const queryAllPostsByAuthor = ({ authorId, limitation, lastPostCursor }) => {
+  const query =
       `{
         allBlogss(where:{author:"${authorId}"},sortBy: date_DESC, after:"${lastPostCursor}",first:${limitation}){
           totalCount
@@ -59,7 +59,7 @@ export const queryAllAuthors = () => {
           }
         }
      }`
-     return query
-  }
-  
-  export default {queryAllAuthors,queryAllPostsByAuthor}
+  return query
+}
+
+export default { queryAllAuthors, queryAllPostsByAuthor }

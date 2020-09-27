@@ -1,9 +1,9 @@
 import React from 'react'
 import Link from 'next/link'
 
-export default function ProfilePostCard({ title, about, imgurl,id,sub_head}) {
+export default function ProfilePostCard ({ title, about, imgurl, id, sub_head }) {
   var redirect = {
-    pathname: `/profile/[slug]`,
+    pathname: '/profile/[slug]',
     state: { slug: id }
   }
   return (
