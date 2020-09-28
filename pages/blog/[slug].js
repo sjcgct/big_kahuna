@@ -5,7 +5,7 @@ import Deck from '../../components/deck'
 import ProfileDeckCard from '../../components/profileDeckCard'
 import Link from 'next/link'
 
-export default function Post ({ post, postsYouMayLike }) {
+export default function Post({ post, postsYouMayLike }) {
   var parseDate = function (date) {
     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
     var year_month_date = date.split('-')
@@ -13,28 +13,25 @@ export default function Post ({ post, postsYouMayLike }) {
     return month + ' ' + year_month_date[2] + ',' + year_month_date[0]
   }
 
-  const propsWithUniqueKey = function (props, key) {
-    return Object.assign(props || {}, { key })
+  var htmlcontent;
+  if (post.body == null) {
+    htmlcontent = RichText.render(post.content);
   }
-
-  // -- HTML Serializer
-  // This function will be used to change the way the HTML is loaded
-  const htmlSerializer = function (type, element, content, children, key) {
-    var props = {}
-    switch (type) {
-      // Add a class to paragraph elements
-      case Elements.paragraph:
-        props = { className: 'blockquote' }
-        return React.createElement('blockquote', propsWithUniqueKey(props, key), children)
-
-      // Return null to stick with the default behavior
-      default:
-        return null
-    }
+  else {
+    htmlcontent = post.body.map(slice => {
+      if (slice.type == "quote") {
+        return RichText.render(slice.primary.quote);
+      }
+      if (slice.type == "paragraph") {
+        return RichText.render(slice.primary.paragraph);
+      }
+      if (slice.type == "image") {
+        return <img src={slice.primary.image.url} />
+      }
+    });
   }
 
   return (
-
     <Layout>
       <section>
         <h1 className='blog-post-title'>{RichText.asText(post.title)}</h1>
@@ -55,7 +52,7 @@ export default function Post ({ post, postsYouMayLike }) {
         </div>
 
         <div className='blog-container'>
-          <RichText render={post.content} />
+          {htmlcontent}
         </div>
       </section>
 
@@ -72,7 +69,7 @@ export default function Post ({ post, postsYouMayLike }) {
   )
 }
 
-export async function getServerSideProps ({ params, previewData }) {
+export async function getServerSideProps({ params, previewData }) {
   // var slugurl =window.location.pathname.split("/").pop()
   var slugurl = params.slug
   const fetchedpost = await getBlogsWithSlug(slugurl)

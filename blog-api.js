@@ -50,6 +50,27 @@ export const queryBlogsWithSlug = ({ slug }) => {
         content
         featured_image
         excerpt
+        body{
+          ... on BlogsBodyQuote{
+            primary {
+              quote
+            } 
+            type
+          }
+          ... on BlogsBodyImage{
+            primary {
+              image
+              imageDescription
+            }
+            type
+          }
+          ... on BlogsBodyParagraph{
+            primary {
+              paragraph
+            }
+            type
+          }
+        }
         author {
           ... on Author{
             name
