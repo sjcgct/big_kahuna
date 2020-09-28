@@ -48,7 +48,6 @@ export const queryBlogsWithSlug = ({ slug }) => {
         title
         date
         content
-        quote
         featured_image
         excerpt
         author {
