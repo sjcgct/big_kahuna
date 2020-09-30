@@ -1,3 +1,4 @@
+import { React } from 'react'
 import { RichText, Elements } from 'prismic-reactjs'
 import { getBlogsWithSlug, getBlogsWithSameCategory } from '../../prismic-configuration'
 import Layout from '../../components/Layout'
