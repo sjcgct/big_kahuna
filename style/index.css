@@ -148,8 +148,6 @@ footer small{
   left: 0;
 }
 
-
-
                                                      /*Blog Post pages*/
 
 /*Blog Title*/
@@ -178,7 +176,6 @@ footer small{
     margin-bottom: 1.5rem;
   }
 }
-
 
 @media screen and (min-width: 1260px) {
   .blog-container {
@@ -229,6 +226,37 @@ a.profile-thumb-link:hover {
   font-size: 14pt;
 }
 
+blockquote {
+	font-size: 1.25em;
+	width: 80%;
+	margin: 3rem auto;
+	font-family: Open Sans;
+	font-style: italic;
+	color: #555555;
+	padding: 1.2em 30px 1.2em 75px;
+	border-left: 6px solid lightgray;
+	line-height: 1.6;
+	position: relative;
+	background: ghostwhite;
+  border-radius: 4px;
+  margin-bottom: 3rem;
+}
+
+blockquote p {
+  margin-bottom: 0.5rem !important;
+  margin-top: 0.5rem !important;
+}
+
+@media (max-width: 768px){
+  blockquote {
+    margin: 20px auto;
+    padding:10px 30px 1.2em 15px;
+  }
+  blockquote p {
+    margin-bottom: 1rem !important;
+    margin-top: 1rem !important;
+  }
+}
 
 p.blog-container{
   margin-bottom: 0rem;
@@ -250,7 +278,7 @@ p.blog-container{
   line-height: 32px;
 }
 
-.block-img img{
+.blog-container img{
   width:100%;
   height:auto;
   margin-top: 0.5rem;
@@ -302,13 +330,13 @@ p.blog-container{
   font-weight: 300;
 }
 
-
 .profile-bio {
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 1.5;
   margin-top: 2.3rem;
 }
+
 @media screen and (max-width: 50rem) {
   .profile {
       display: flex;

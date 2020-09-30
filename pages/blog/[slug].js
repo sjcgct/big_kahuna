@@ -5,7 +5,7 @@ import Deck from '../../components/deck'
 import ProfileDeckCard from '../../components/profileDeckCard'
 import Link from 'next/link'
 
-export default function Post({ post, postsYouMayLike }) {
+export default function Post ({ post, postsYouMayLike }) {
   var parseDate = function (date) {
     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
     var year_month_date = date.split('-')
@@ -13,22 +13,21 @@ export default function Post({ post, postsYouMayLike }) {
     return month + ' ' + year_month_date[2] + ',' + year_month_date[0]
   }
 
-  var htmlcontent;
+  var htmlcontent
   if (post.body == null) {
-    htmlcontent = RichText.render(post.content);
-  }
-  else {
+    htmlcontent = RichText.render(post.content)
+  } else {
     htmlcontent = post.body.map(slice => {
-      if (slice.type == "quote") {
-        return <blockquote className="'blockquote"> {RichText.render(slice.primary.quote)} </blockquote >
+      if (slice.type === 'quote') {
+        return <blockquote className='text-justify mx-auto'> {RichText.render(slice.primary.quote)} </blockquote>
       }
-      if (slice.type == "paragraph") {
-        return RichText.render(slice.primary.paragraph);
+      if (slice.type === 'paragraph') {
+        return RichText.render(slice.primary.paragraph)
       }
-      if (slice.type == "image") {
+      if (slice.type === 'image') {
         return <img src={slice.primary.image.url} />
       }
-    });
+    })
   }
 
   return (
@@ -41,7 +40,7 @@ export default function Post({ post, postsYouMayLike }) {
             <a className='profile-thumb-link'>
               <img className='blogpost-author-thumb' src={post.author.picture.url} />
               <span className='blogpost-author-name'>{post.author.name}</span>
-              <span class='text-muted blog-post-date'>{parseDate(post.date)}</span>
+              <span className='text-muted blog-post-date'>{parseDate(post.date)}</span>
             </a>
           </Link>
 
@@ -69,7 +68,7 @@ export default function Post({ post, postsYouMayLike }) {
   )
 }
 
-export async function getServerSideProps({ params, previewData }) {
+export async function getServerSideProps ({ params, previewData }) {
   // var slugurl =window.location.pathname.split("/").pop()
   var slugurl = params.slug
   const fetchedpost = await getBlogsWithSlug(slugurl)
