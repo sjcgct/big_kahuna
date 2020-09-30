@@ -20,7 +20,7 @@ export default function Post({ post, postsYouMayLike }) {
   else {
     htmlcontent = post.body.map(slice => {
       if (slice.type == "quote") {
-        return RichText.render(slice.primary.quote);
+        return <blockquote className="'blockquote"> {RichText.render(slice.primary.quote)} </blockquote >
       }
       if (slice.type == "paragraph") {
         return RichText.render(slice.primary.paragraph);
