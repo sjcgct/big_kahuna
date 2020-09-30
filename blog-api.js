@@ -55,6 +55,7 @@ export const queryBlogsWithSlug = ({ slug }) => {
             primary {
               quote
             } 
+            label
             type
           }
           ... on BlogsBodyImage{
@@ -62,12 +63,14 @@ export const queryBlogsWithSlug = ({ slug }) => {
               image
               imageDescription
             }
+            label
             type
           }
           ... on BlogsBodyParagraph{
             primary {
               paragraph
             }
+            label
             type
           }
         }

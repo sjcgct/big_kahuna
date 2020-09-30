@@ -2,7 +2,6 @@ import Head from 'next/head'
 import { getAllBlogsForHome, getAllHogsForHome } from '../prismic-configuration'
 import Layout from '../components/Layout'
 import Deck from '../components/deck'
-import React from 'react'
 
 export default function BlogHome ({ preview, allBlogs, allHogs }) {
   const morePosts = allBlogs
