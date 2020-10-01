@@ -40,7 +40,7 @@ class BlogPage extends Component {
   async loadPage (page) {
     // console.log(this.getBlogForNextOrPrevPage(action,cursor,limit));
     var cursor = this.state.cursor
-    var limit = 6
+    var limit = 9
 
     var blogs = ''
     var curs = ''
@@ -134,7 +134,7 @@ class BlogPage extends Component {
 export default BlogPage
 
 export async function getServerSideProps () {
-  const posts = await getAllBlogsForHome(' ', 6)
+  const posts = await getAllBlogsForHome(' ', 9)
   var blogs = posts.edges
   var cursor = posts.pageInfo.endCursor
   var totalCount = posts.totalCount

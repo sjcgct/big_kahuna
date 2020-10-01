@@ -13,15 +13,20 @@ export default function Deck ({ cards, type }) {
     var post = cardarray[j].node
     var smallDescription = ''
     var image = ''
+    var date = ''
+    var avatar = ''
+    var category = ''
     if (type === 'blog') {
-      smallDescription = post.excerpt
       image = post.featured_image.thumbnail.url
+      date = post.date
+      avatar = post.author.picture.url
+      category = post.category.name
     } else if (type === 'hog') {
-      smallDescription = post.name
       image = post.featured_image.homethumb.url
+      date = post.date
     }
 
-    deckcards[j] = <DeckCard title={RichText.asText(post.title)} imgurl={image} slugurl={post._meta.uid} smallDescription={smallDescription} type={type} />
+    deckcards[j] = <DeckCard title={RichText.asText(post.title)} imgurl={image} slugurl={post._meta.uid} profileUrl={avatar} postDate={date} postCategory={category} type={type} />
   }
 
   return (

@@ -14,6 +14,7 @@ export const queryAllHOGs = ({ lastPostCursor, limitation }) => {
             node{
               title
               name
+              date
               featured_image
               _meta{
                 uid

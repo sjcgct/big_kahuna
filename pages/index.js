@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import React from 'react'
 import { getAllBlogsForHome, getAllHogsForHome } from '../prismic-configuration'
 import Layout from '../components/Layout'
 import Deck from '../components/deck'

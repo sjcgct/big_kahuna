@@ -1,3 +1,4 @@
+import React from 'react'
 import { RichText, Elements } from 'prismic-reactjs'
 import { getBlogsWithSlug, getBlogsWithSameCategory } from '../../prismic-configuration'
 import Layout from '../../components/Layout'
@@ -5,30 +6,26 @@ import Deck from '../../components/deck'
 import ProfileDeckCard from '../../components/profileDeckCard'
 import Link from 'next/link'
 
-export default function Post({ post, postsYouMayLike }) {
+export default function Post ({ post, postsYouMayLike }) {
   var parseDate = function (date) {
     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
     var year_month_date = date.split('-')
     var month = months[parseInt(year_month_date[1]) - 1]
     return month + ' ' + year_month_date[2] + ',' + year_month_date[0]
-  }
+}
 
   var htmlcontent
   if (post.body == null) {
     htmlcontent = RichText.render(post.content)
   } else {
     htmlcontent = post.body.map(slice => {
-      console.log(slice);
       if (slice.type === 'quote') {
         return <blockquote className='text-justify mx-auto'> {RichText.render(slice.primary.quote)} </blockquote>
       }
-      else if (slice.type === 'paragraph') {
+      if (slice.type === 'paragraph') {
         return RichText.render(slice.primary.paragraph)
       }
-      else if (slice.label === 'image-description' && slice.type === 'image') {
-        return <div><img src={slice.primary.image.url} /> <p className="paragraph">{RichText.render(slice.primary.imageDescription)} </p></div>
-      }
-      else if (slice.type === 'image') {
+      if (slice.type === 'image') {
         return <img src={slice.primary.image.url} />
       }
     })
@@ -72,7 +69,7 @@ export default function Post({ post, postsYouMayLike }) {
   )
 }
 
-export async function getServerSideProps({ params, previewData }) {
+export async function getServerSideProps ({ params, previewData }) {
   // var slugurl =window.location.pathname.split("/").pop()
   var slugurl = params.slug
   const fetchedpost = await getBlogsWithSlug(slugurl)
