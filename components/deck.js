@@ -16,17 +16,19 @@ export default function Deck ({ cards, type }) {
     var date = ''
     var avatar = ''
     var category = ''
+    var profileId=''
     if (type === 'blog') {
       image = post.featured_image.thumbnail.url
       date = post.date
       avatar = post.author.picture.url
       category = post.category.name
+      profileId=post.author._meta.id
     } else if (type === 'hog') {
       image = post.featured_image.homethumb.url
       date = post.date
     }
 
-    deckcards[j] = <DeckCard title={RichText.asText(post.title)} imgurl={image} slugurl={post._meta.uid} profileUrl={avatar} postDate={date} postCategory={category} type={type} />
+    deckcards[j] = <DeckCard title={RichText.asText(post.title)} imgurl={image} slugurl={post._meta.uid} profileImgUrl={avatar} profileUrl={profileId}postDate={date} postCategory={category} type={type} />
   }
 
   return (

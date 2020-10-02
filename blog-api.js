@@ -139,6 +139,16 @@ export const queryBlogsWithSameCategory = ({ categoryId, limitation, lastPostCur
                 }
               }
             }
+            author {
+              ... on Author{
+                name
+                picture
+                about
+                _meta {
+                  id
+                }
+              }
+            }
             _meta{
               uid
             }

@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { RichText } from 'prismic-reactjs'
 
-export default function DeckCard ({ title, imgurl, slugurl, profileUrl, postDate, postCategory, type }) {
+export default function DeckCard ({ title, imgurl, slugurl,profileUrl,profileImgUrl, postDate, postCategory,type}) {
   var redirect = {
     pathname: `/${type}/[slug]`,
     state: { slug: slugurl }
@@ -14,6 +14,10 @@ export default function DeckCard ({ title, imgurl, slugurl, profileUrl, postDate
     var month = months[parseInt(year_month_date[1]) - 1]
     return month + ' ' + year_month_date[2] + ',' + year_month_date[0]
   }
+
+    var category_map={"Celluloid":"/celluloid","SciTech":"/scitech",
+    "AlumSpace":"/alumspace","Open Page":"openpage","Tete-a-Tete with Interns":"tete-a-tete"}
+
   if (type === 'blog') {
     return (
       <>
@@ -25,12 +29,12 @@ export default function DeckCard ({ title, imgurl, slugurl, profileUrl, postDate
           </div>
           <div className='grid-card-author-holder'>
             <div className='grid-card-avatar-holder'>
-              <Link href='/'>
-                <a><img className='grid-card-avatar-image' src={profileUrl} /></a>
+              <Link href={`/profile/${profileUrl}`} passHref>
+                <a><img className='grid-card-avatar-image' src={profileImgUrl} /></a>
               </Link>
             </div>
             <div className='grid-card-category-holder'>
-              <Link href='/'>
+              <Link href={category_map[postCategory]}>
                 <a><span className='grid-card-category'>{postCategory}</span></a>
               </Link>
             </div>
@@ -74,14 +78,3 @@ export default function DeckCard ({ title, imgurl, slugurl, profileUrl, postDate
     )
   }
 }
-
-//  <div className='card mb-4 col-md-4 border-0'>
-// <div className='card-body '>
-// <Link as={`/${type}/${slugurl}`} href={redirect}>
-//   <a className='card-title'>{title}</a>
-// </Link>
-// <p className='card-text'>{smallDescription}</p>
-// </div>
-// <div className='card-footer' />
-// <img className='card-img-top' src={imgurl} alt='Card image cap'/>
-// </div>
