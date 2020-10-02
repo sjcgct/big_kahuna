@@ -8,6 +8,7 @@ export default function Post ({ post, morePosts }) {
   return (
     <Layout>
       <section>
+        <h4 className='page-name'>Humans of GCT</h4>
         <h1 className='blog-post-title text-center'>{RichText.asText(post.title)}</h1>
         <div className='hog-container'>
           <div className='row'>

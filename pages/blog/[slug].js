@@ -12,7 +12,7 @@ export default function Post ({ post, postsYouMayLike }) {
     var year_month_date = date.split('-')
     var month = months[parseInt(year_month_date[1]) - 1]
     return month + ' ' + year_month_date[2] + ',' + year_month_date[0]
-}
+  }
 
   var htmlcontent
   if (post.body == null) {

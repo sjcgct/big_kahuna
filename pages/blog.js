@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { getAllBlogsForHome } from '../prismic-configuration'
+import { Nav, NavDropdown, Navbar, Button, Form, FormControl } from 'react-bootstrap'
 import { queryAllBlogsForHome } from '../blog-api'
 import Layout from '../components/Layout'
+import CategoryNavBar from '../components/blogsubmenu'
 import Deck from '../components/deck'
 import { PrismicLink } from 'apollo-link-prismic'
 import ApolloClient from 'apollo-client'
@@ -105,9 +107,18 @@ class BlogPage extends Component {
         </Layout>
       )
     }
+
     return (
       <Layout>
-
+        <div className='search-container container'>
+          <form className='search-form' id='SearchForm'>
+            <div className='search-bar-holder container mx-auto'>
+              <input className='searchbar ml-3' type='text' placeholder='Search articles' id='addInput' title='Search' />
+              <a href='#'> <img className='search-icon' src='/search.svg' title='Search by Voice' /></a>
+            </div>
+          </form>
+        </div>
+        <CategoryNavBar />
         {this.state.blogs && (
           <Deck
             cards={this.state.blogs}
