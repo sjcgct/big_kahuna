@@ -1,4 +1,5 @@
 import { RichText } from 'prismic-reactjs'
+import React from 'react'
 import { getHogWithSlug, getAllHogsForHome } from '../../prismic-configuration'
 import Layout from '../../components/Layout'
 import Deck from '../../components/deck'
@@ -7,13 +8,16 @@ export default function Post ({ post, morePosts }) {
   return (
     <Layout>
       <section>
-        <div className='blog-container'>
-          <h1 className='text-center blog-title'>{RichText.asText(post.title)}</h1>
+        <h1 className='blog-post-title text-center'>{RichText.asText(post.title)}</h1>
+        <div className='hog-container'>
           <div className='row'>
-            <img src={post.featured_image.url} className='mx-auto' />
+            <img src={post.featured_image.url} className='hog-featured-img mx-auto' />
           </div>
           <div className='mb-5'>
-            <a>{post.content}</a>
+            <p className='text-justify'>{RichText.render(post.story)}</p>
+            <span className='human'>
+              {'- ' + post.name + '.'}
+            </span>
           </div>
         </div>
       </section>

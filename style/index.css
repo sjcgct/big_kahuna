@@ -292,14 +292,31 @@ footer small{
   .blog-container {
     padding-left: 185px;
     padding-right: 185px;
-  }
-
+  }  
+  .hog-container {
+    padding-left: 185px;
+    padding-right: 185px;
+  }  
   .featured-img {
-    width: 100%;
-    height: auto;
-    box-shadow: 0 5px 10px rgba(0,0,0,.12);
     margin-bottom: 50px;
   }
+  .hog-featured-img {
+    margin-bottom: 30px;
+  }
+}
+
+.featured-img {
+  width: 100%;
+  height: auto;
+  box-shadow: 0 5px 10px rgba(0,0,0,.12);  
+}
+
+img.hog-featured-img {
+  max-width: 90% !important;
+  height: auto !important;
+  box-shadow: 0 5px 10px rgba(0,0,0,.12);
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .blog-post-author-reveal{
@@ -373,6 +390,10 @@ p.blog-container{
   margin-bottom: 0rem;
 }
 
+p.hog-container{
+  margin-bottom: 0rem;
+}
+
 .blog-container .image-description {
   font-style: italic;
   font-weight: 500;
@@ -383,6 +404,13 @@ p.blog-container{
 }
 
 .blog-container p{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 21px;
+  line-height: 32px;
+}
+
+.hog-container p{
   margin-top: 2rem;
   margin-bottom: 2rem;
   font-size: 21px;

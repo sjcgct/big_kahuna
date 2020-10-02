@@ -37,6 +37,7 @@ export const queryHOGwithSlug = ({ slug }) => {
               featured_image
               date
               content
+              story
               _meta{
                 uid
               }
