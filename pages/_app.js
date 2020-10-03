@@ -1,36 +1,21 @@
 import '../style/index.css'
-import Router from 'next/router'
-import Loading from 'react-simple-loading'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
+import * as gtag from '../lib/gtag'
 
-export default function App ({ Component, pageProps }) {
-  const [loading, setLoading] = React.useState(false)
-  React.useEffect(() => {
-    const start = () => {
-      setLoading(true)
+const App = ({ Component, pageProps }) => {
+  const router = useRouter()
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      gtag.pageview(url)
     }
-    const end = () => {
-      setLoading(false)
-    }
-    Router.events.on('routeChangeStart', start)
-    Router.events.on('routeChangeComplete', end)
-    Router.events.on('routeChangeError', end)
+    router.events.on('routeChangeComplete', handleRouteChange)
     return () => {
-      Router.events.off('routeChangeStart', start)
-      Router.events.off('routeChangeComplete', end)
-      Router.events.off('routeChangeError', end)
+      router.events.off('routeChangeComplete', handleRouteChange)
     }
-  }, [])
-  return (
-    <>
-      {loading ? (
-        <Loading
-          color='firebrick'
-          stroke='10px'
-          size='100px'
-        />
-      ) : (
-        <Component {...pageProps} />
-      )}
-    </>
-  )
+  }, [router.events])
+
+  return <Component {...pageProps} />
 }
+
+export default App

@@ -55,8 +55,10 @@ export default function Post ({ post, postsYouMayLike }) {
           {htmlcontent}
         </div>
       </section>
-
-      <ProfileDeckCard title={post.author.name} about={post.author.about} imgurl={post.author.picture.url} id={post.author._meta.id} sub_head='Author' />
+      <section>
+        <h2 className='text-center'>About the Author</h2>
+        <ProfileDeckCard title={post.author.name} about={post.author.about} imgurl={post.author.picture.url} id={post.author._meta.id} sub_head='Author' />
+      </section>
 
       <h2>Posts You May Like</h2>
       {postsYouMayLike && (
