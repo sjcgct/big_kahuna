@@ -12,5 +12,5 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: dev
-        run: vercel
+      - name: test
+        run: vercel login
