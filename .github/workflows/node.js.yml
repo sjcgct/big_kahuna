@@ -13,4 +13,4 @@ jobs:
         run: npm install
 
       - name: dev
-        run: vercel --token ${{ secrets.VERCEL_TOKEN }}
+        run: vercel --token ${{ secrets.VERCEL_TOKEN }} --confirm
