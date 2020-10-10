@@ -43,6 +43,7 @@
     "react-spinners": "^0.9.0",
     "react-transition-group": "^1.2.1",
     "react-web-share-api": "0.0.2",
+    "react-web-share-button": "^1.0.1",
     "responsive-nav": "^1.0.39",
     "sass": "^1.26.11",
     "styled-components": "^5.1.1",

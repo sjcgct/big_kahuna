@@ -7,7 +7,7 @@ import ProfileDeckCard from '../../components/profileDeckCard'
 import Link from 'next/link'
 import webShare from 'react-web-share-api';
 import dynamic from 'next/dynamic';
-import ShareButton from '../../components/ShareButton'
+import ShareButton from 'react-web-share-button';
 
 
 export default function Post ({ post, postsYouMayLike }) {
@@ -45,14 +45,15 @@ export default function Post ({ post, postsYouMayLike }) {
       <section>
         <h1 className='blog-post-title'>{RichText.asText(post.title)}</h1>
         <div className='blog-post-author-reveal align-items-center ml-3'>
-        <ShareButton config={{
+        <ShareButton title="My Great Page" text="A really great page" url="http://www.greatpage.com" />
+        {/* <ShareButton config={{
           params: {
             title: RichText.asText(post.title),
             text: RichText.asText(post.title),
-            url: 'http://localhost:3000/blog/ideologies-of-toxic-masculinity-in-cinema',
+            url: 'https://sjcgct.in/profile/ideologies-of-toxic-masculinity-in-cinema',
           }
-        }} isSupported={true}
-        />
+        }}
+        /> */}
 
           <Link href={`/profile/${post.author._meta.id}`} passHref>
             <a className='profile-thumb-link'>
