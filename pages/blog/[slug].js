@@ -5,14 +5,21 @@ import Layout from '../../components/Layout'
 import Deck from '../../components/deck'
 import ProfileDeckCard from '../../components/profileDeckCard'
 import Link from 'next/link'
+import webShare from 'react-web-share-api';
+import dynamic from 'next/dynamic';
+import ShareButton from '../../components/ShareButton'
+
 
 export default function Post ({ post, postsYouMayLike }) {
+
   var parseDate = function (date) {
     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
     var year_month_date = date.split('-')
     var month = months[parseInt(year_month_date[1]) - 1]
     return month + ' ' + year_month_date[2] + ',' + year_month_date[0]
   }
+  
+
 
   var htmlcontent
   if (post.body == null) {
@@ -31,11 +38,21 @@ export default function Post ({ post, postsYouMayLike }) {
     })
   }
 
+  
+
   return (
     <Layout>
       <section>
         <h1 className='blog-post-title'>{RichText.asText(post.title)}</h1>
         <div className='blog-post-author-reveal align-items-center ml-3'>
+        <ShareButton config={{
+          params: {
+            title: RichText.asText(post.title),
+            text: RichText.asText(post.title),
+            url: 'http://localhost:3000/blog/ideologies-of-toxic-masculinity-in-cinema',
+          }
+        }}
+        />
 
           <Link href={`/profile/${post.author._meta.id}`} passHref>
             <a className='profile-thumb-link'>
