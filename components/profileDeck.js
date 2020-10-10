@@ -28,7 +28,6 @@ export default function ProfileDeck ({ cards, type }) {
     }
     console.log(date)
     deckcards[j] = <ProfileDeckCard title={RichText.asText(post.title)} about={smallDescription} imgurl={image} id={post._meta.uid} sub_head={date} />
-    // deckcards[j] = <DeckCard title={RichText.asText(post.title)} imgurl={image} slugurl={post._meta.uid} smallDescription={smallDescription} type={type} />
   }
 
   return (

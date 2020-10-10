@@ -7,7 +7,7 @@ export default function DeckCard ({ title, imgurl, slugurl, profileUrl, profileI
     state: { slug: slugurl }
   }
 
-  var parseDate = function (date) { 
+  var parseDate = function (date) {
     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
     var year_month_date = date.split('-')
     var month = months[parseInt(year_month_date[1]) - 1]

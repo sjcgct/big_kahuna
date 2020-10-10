@@ -5,25 +5,16 @@ import Layout from '../../components/Layout'
 import Deck from '../../components/deck'
 import ProfileDeckCard from '../../components/profileDeckCard'
 import Link from 'next/link'
-import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic'
 import SharePanel from '../../components/sharePanel'
 
-
-
 export default function Post ({ post, postsYouMayLike }) {
-
   var parseDate = function (date) {
     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
     var year_month_date = date.split('-')
     var month = months[parseInt(year_month_date[1]) - 1]
     return month + ' ' + year_month_date[2] + ',' + year_month_date[0]
   }
-
-  var doNothing=function(){
-    console.log("Not supoorted");
-  }
-  
-
 
   var htmlcontent
   if (post.body == null) {
@@ -42,15 +33,11 @@ export default function Post ({ post, postsYouMayLike }) {
     })
   }
 
-  
-
   return (
     <Layout>
       <section>
         <h1 className='blog-post-title'>{RichText.asText(post.title)}</h1>
         <div className='blog-post-author-reveal align-items-center ml-3'>
-        
-        
           <Link href={`/profile/${post.author._meta.id}`} passHref>
             <a className='profile-thumb-link'>
               <img className='blogpost-author-thumb' src={post.author.picture.url} />
@@ -58,13 +45,10 @@ export default function Post ({ post, postsYouMayLike }) {
               <span className='text-muted blog-post-date'>{parseDate(post.date)}</span>
             </a>
           </Link>
-
-          
-  
         </div>
 
-        <div className="blog-share-tray">
-        <SharePanel url={post.author.picture.url} cation={RichText.asText(post.title)}></SharePanel>
+        <div className='post-share-tray'>
+        <SharePanel url={post.author.picture.url} caption={RichText.asText(post.title)} />
         </div>
 
         <div className='sm-12'>

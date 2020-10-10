@@ -5,7 +5,7 @@ export default function LoaderDeckCard ({ type }) {
   var profileRound
   if (type === undefined) {
     profileRound = <div className='loading-card-avatar-holder shine' />
-    console.log("Type is undefined");
+    console.log('Type is undefined')
   }
   return (
     <div className='grid-card mb-4 col-md-6 col-lg-4'>

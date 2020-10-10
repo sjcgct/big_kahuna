@@ -1,53 +1,58 @@
 import React, { Component } from 'react'
 import {
-    FacebookShareButton,
-    FacebookIcon,
-    WhatsappIcon,
-    WhatsappShareButton,
-    LinkedinShareButton,
-    LinkedinIcon,
-    TwitterShareButton,
-    TwitterIcon
-  } from "react-share";
+  FacebookShareButton,
+  FacebookIcon,
+  WhatsappIcon,
+  WhatsappShareButton,
+  LinkedinShareButton,
+  LinkedinIcon,
+  TwitterShareButton,
+  TwitterIcon
+} from 'react-share'
 
 class SharePanel extends Component {
   constructor (props) {
     super(props)
     this.state = {
       url: props.url,
-      caption:props.caption
+      caption: props.caption
     }
   }
 
   render () {
     return (
-        <div>
+      <div className='ml-3'>
         <FacebookShareButton
-        url={this.state.url}
-        quote={this.state.caption}
-      >
-        <FacebookIcon size={32} round />
-      </FacebookShareButton>
+          url={this.state.url}
+          quote={this.state.caption}
+          className='share-button'
+        >
+          <FacebookIcon size={40} round />
+        </FacebookShareButton>
 
-      <WhatsappShareButton
-        url={this.state.url}
-        title={this.state.caption}
-        separator=":: "
-      >
-        <WhatsappIcon size={32} round />
-      </WhatsappShareButton>
+        <WhatsappShareButton
+          url={this.state.url}
+          title={this.state.caption}
+          separator=':: '
+          className='share-button'
+        >
+          <WhatsappIcon size={40} round />
+        </WhatsappShareButton>
 
-      <LinkedinShareButton 
-        url={this.state.url}>
-        <LinkedinIcon size={32} round />
-      </LinkedinShareButton>
+        <LinkedinShareButton
+          url={this.state.url}
+          className='share-button'
+        >
+          <LinkedinIcon size={40} round />
+        </LinkedinShareButton>
 
-      <TwitterShareButton
-        url={this.state.url}
-        title={this.state.caption}
-          >
-      <TwitterIcon size={32} round />
-    </TwitterShareButton>
+        <TwitterShareButton
+          url={this.state.url}
+          title={this.state.caption}
+          className='share-button'
+        >
+          <TwitterIcon size={40} round />
+        </TwitterShareButton>
 
       </div>
     )

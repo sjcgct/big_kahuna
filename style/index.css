@@ -535,7 +535,15 @@ img.hog-featured-img {
 
 .blog-post-author-reveal{
   display: flex;
+  margin-bottom: 2rem;
+}
+
+.post-share-tray {
   margin-bottom: 3rem;
+}
+
+.post-share-tray .share-button {
+  margin-left: 10px;
 }
 
 @media (max-width: 768px){

@@ -125,7 +125,7 @@ class HogPage extends Component {
     if (this.state.loading) {
       return (
         <Layout>
-          <LoaderDeck type='hog'/>
+          <LoaderDeck type='hog' />
         </Layout>
       )
     }
