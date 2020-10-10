@@ -10,7 +10,7 @@ import ApolloClient from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
 import Loading from 'react-simple-loading'
-import MyLoader from '../components/loaders/contentLoader'
+import LoaderDeck from '../components/loaders/loaderDeck'
 
 const apolloClient = new ApolloClient({
   link: PrismicLink({
@@ -103,7 +103,16 @@ class BlogPage extends Component {
     if (this.state.loading) {
       return (
         <Layout>
-          <MyLoader />
+          <div className='search-container container'>
+            <form className='search-form' id='SearchForm'>
+              <div className='search-bar-holder container mx-auto'>
+                <input className='searchbar ml-3' type='text' placeholder='Search articles' id='addInput' title='Search' />
+                <a href='#'> <img className='search-icon' src='/search.svg' title='Search by Voice' /></a>
+              </div>
+            </form>
+          </div>
+          <CategoryNavBar />
+          <LoaderDeck />
         </Layout>
       )
     }

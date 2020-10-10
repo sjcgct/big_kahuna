@@ -9,6 +9,7 @@ import gql from 'graphql-tag'
 import LoadingOverlay from 'react-loading-overlay'
 import Deck from '../components/deck'
 import Loading from 'react-simple-loading'
+import LoaderDeck from '../components/loaders/loaderDeck'
 
 const apolloClient = new ApolloClient({
   link: PrismicLink({
@@ -97,6 +98,7 @@ class HogPage extends Component {
             node{
               title
               name
+              date
               featured_image
               _meta{
                 uid
@@ -123,11 +125,7 @@ class HogPage extends Component {
     if (this.state.loading) {
       return (
         <Layout>
-          <Loading
-            color='firebrick'
-            stroke='10px'
-            size='100px'
-          />
+          <LoaderDeck type='hog'/>
         </Layout>
       )
     }

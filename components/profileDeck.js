@@ -32,7 +32,7 @@ export default function ProfileDeck ({ cards, type }) {
   }
 
   return (
-    <div className='row'>
+    <div className='row profile-body'>
       {deckcards}
     </div>
   )

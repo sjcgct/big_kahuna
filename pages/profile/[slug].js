@@ -100,8 +100,6 @@ class AuthorBlogPage extends Component {
 
           <ProfileBanner name={this.state.name} imgurl={this.state.imgurl} about={this.state.about} />
 
-          <h2>{this.state.name}'s posts</h2>
-
           <Loading
             color='firebrick'
             stroke='10px'
@@ -114,8 +112,6 @@ class AuthorBlogPage extends Component {
       <Layout>
 
         <ProfileBanner name={this.state.name} imgurl={this.state.imgurl} about={this.state.about} />
-
-        <h2>{this.state.name}'s posts</h2>
 
         {this.state.blogs && (
           <ProfileDeck
