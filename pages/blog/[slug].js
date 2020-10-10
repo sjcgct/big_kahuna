@@ -51,7 +51,7 @@ export default function Post ({ post, postsYouMayLike }) {
             text: RichText.asText(post.title),
             url: 'http://localhost:3000/blog/ideologies-of-toxic-masculinity-in-cinema',
           }
-        }}
+        }} isSupported={true}
         />
 
           <Link href={`/profile/${post.author._meta.id}`} passHref>
