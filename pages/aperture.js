@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Document, Page, pdfjs, Outline } from 'react-pdf'
 import Layout from '../components/Layout'
-import Loading from 'react-simple-loading'
+
 
 export default function Aperture () {
   const [numPages, setNumPages] = useState(null)
@@ -10,6 +10,12 @@ export default function Aperture () {
   const scale = 3.2
   const height = 141.142 * scale
   const width = 100 * scale
+
+  const options = {
+    cMapUrl: 'cmaps/',
+    cMapPacked: true,
+  };
+
   function onDocumentLoadSuccess ({ numPages }) {
     setNumPages(numPages)
     setPageNumber(1)
@@ -20,11 +26,11 @@ export default function Aperture () {
   }
 
   function previousPage () {
-    changePage(-1)
+    changePage(-2)
   }
 
   function nextPage () {
-    changePage(1)
+    changePage(2)
   }
 
   return (
@@ -32,32 +38,34 @@ export default function Aperture () {
       <Layout>
         <Document
           file='./sample.pdf'
+          className='pdfframe'
           onLoadSuccess={onDocumentLoadSuccess}
-          loading={
-            <Loading
-              color='firebrick'
-              stroke='10px'
-              size='100px'
-            />
-          }
+          options={options}
         >
+          
+
+          <div className="row">
+
           <Page
-            pageNumber={pageNumber} width={width} height={height} loading={
-              <Loading
-                color='firebrick'
-                stroke='0px'
-                size={height * 1.5}
-              />
-            }
+            pageNumber={pageNumber} className='pdfpage' width={width} height={height} loading={<div></div>} error={<div/>} onLoadProgress={<div/>}
           />
 
+          <Page
+            pageNumber={pageNumber+1} className='pdfpage' width={width} height={height} loading={<div></div>} error={<div/>} onLoadProgress={<div/>}
+          /> 
+
+          </div>
+          
+
         </Document>
-        <div>
-          <p>
+
+        <div className='centered-content'>
+          {/* <p>
                         Page {pageNumber || (numPages ? 1 : '--')} of {numPages || '--'}
-          </p>
+          </p> */}
           <button
             type='button'
+            className='button'
             disabled={pageNumber <= 1}
             onClick={previousPage}
           >
@@ -65,6 +73,7 @@ export default function Aperture () {
           </button>
           <button
             type='button'
+            className='button'
             disabled={pageNumber >= numPages}
             onClick={nextPage}
           >

@@ -58,7 +58,7 @@ class NavBar extends Component {
               <Nav.Link>Humans of GCT</Nav.Link>
             </Link>
 
-            <Link href='/aperture' passHref>
+            <Link href='/aperturetry' passHref>
               <Nav.Link>Aperture Newsletter</Nav.Link>
             </Link>
 

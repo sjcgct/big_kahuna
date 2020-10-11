@@ -19,6 +19,7 @@
     "apollo-client": "^2.6.10",
     "apollo-link-prismic": "^1.0.7",
     "classnames": "2.2.6",
+    "css-loader": "^4.3.0",
     "date-fns": "2.10.0",
     "graphql": "^15.3.0",
     "graphql-tag": "^2.11.0",
@@ -45,6 +46,7 @@
     "react-transition-group": "^1.2.1",
     "responsive-nav": "^1.0.39",
     "sass": "^1.26.11",
+    "style-loader": "^2.0.0",
     "styled-components": "^5.1.1",
     "vercel": "^19.2.0"
   },
