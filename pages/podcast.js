@@ -31,7 +31,8 @@ class PodcostPage extends Component {
       loadedtill: 0,
       loading: false,
       categoryId: props.categoryId,
-      itemsPerPage: props.itemsPerPage
+      itemsPerPage: props.itemsPerPage,
+      isFrameLoading:true
     }
   }
 
@@ -103,15 +104,20 @@ class PodcostPage extends Component {
     await this.loadPage(this.state.activePage - 1)
   }
 
+  iframeDidLoad(){
+    this.setState({ isFrameLoading: false })
+    console.log('loaded if')
+ }
+
   render () {
     var podcasts = this.state.pods
     var len = podcasts.length
     var templateHTML = []
     for (var i = 0; i < len; i++) {
       var episode_link = podcasts[i].node.episode_link
-      templateHTML[i] = <div className='col-sm-12 mt-1 mb-1'>
-        <iframe src={episode_link} height='auto' width='100%' frameborder='0' scrolling='no' />
-                        </div>
+      templateHTML[i] = <div className='col-sm-12 mt-1 mb-3'>
+        <iframe src={episode_link} height='110%' width='100%'  frameborder='0' scrolling='no' />
+                        </div>               
     }
 
     if (this.state.loading) {
@@ -125,6 +131,7 @@ class PodcostPage extends Component {
         </Layout>
       )
     }
+
     return (
       <Layout>
         <div className='container'>
