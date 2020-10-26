@@ -4,6 +4,7 @@ import { queryBlogsWithSameCategory, queryBlogsWithSlug, queryAllBlogsForHome, q
 import { queryHOGwithSlug, queryAllHOGs } from './hog-api'
 import { queryAllPostsByAuthor } from './author-api'
 import { queryAllPodCasts } from './podcast-api'
+import { queryAllApertures } from './aperture-api'
 
 const REPOSITORY = process.env.PRISMIC_REPOSITORY_NAME
 const REF_API_URL = `https://${REPOSITORY}.prismic.io/api/v2`
@@ -101,4 +102,10 @@ export async function getAllPodCasts (cursor, limit) {
   const query = queryAllPodCasts({ cursor, limit })
   const data = await fetchAPI(query)
   return data.allPodcasts
+}
+
+export async function getAllApertures (cursor, limit) {
+  const query = queryAllApertures({ cursor, limit })
+  const data = await fetchAPI(query)
+  return data.allAperturess
 }

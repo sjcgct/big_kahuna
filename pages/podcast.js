@@ -6,6 +6,8 @@ import ApolloClient from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
 import Loading from 'react-simple-loading'
+import Head from 'next/head'
+import ApertureCard from '../components/AperturePage/aperturecard'
 
 const apolloClient = new ApolloClient({
   link: PrismicLink({
@@ -113,13 +115,15 @@ class PodcostPage extends Component {
     var podcasts = this.state.pods
     var len = podcasts.length
     var templateHTML = []
+    var temp=<ApertureCard></ApertureCard>
+
     for (var i = 0; i < len; i++) {
       var episode_link = podcasts[i].node.episode_link
       templateHTML[i] = <div className='col-sm-12 mt-1 mb-3'>
         <iframe src={episode_link} height='110%' width='100%'  frameborder='0' scrolling='no' />
                         </div>               
     }
-
+    templateHTML.push(temp)
     if (this.state.loading) {
       return (
         <Layout>
@@ -134,6 +138,9 @@ class PodcostPage extends Component {
 
     return (
       <Layout>
+        <Head>
+        <script src="//static.fliphtml5.com/web/js/plugin/LightBox/js/fliphtml5-light-box-api-min.js"></script>
+        </Head>
         <div className='container'>
           <div className='row'>
             {templateHTML}
