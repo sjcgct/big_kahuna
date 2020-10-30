@@ -34,7 +34,7 @@ class AperturePage extends Component {
       loading: false,
       categoryId: props.categoryId,
       itemsPerPage: props.itemsPerPage,
-      isFrameLoading:true
+      isFrameLoading: true
     }
   }
 
@@ -77,7 +77,7 @@ class AperturePage extends Component {
 
   getAllApertures (cursor, limit) {
     const query = gql`{
-      allAperturess(after:"${cursor}",first:${limit}) {
+      allApertures(after:"${cursor}",first:${limit}) {
         totalCount
         pageInfo {
           hasNextPage
@@ -106,10 +106,10 @@ class AperturePage extends Component {
     await this.loadPage(this.state.activePage - 1)
   }
 
-  iframeDidLoad(){
+  iframeDidLoad () {
     this.setState({ isFrameLoading: false })
     console.log('loaded if')
- }
+  }
 
   render () {
     if (this.state.loading) {
@@ -127,7 +127,7 @@ class AperturePage extends Component {
     return (
       <Layout>
         <Head>
-        <script src="//static.fliphtml5.com/web/js/plugin/LightBox/js/fliphtml5-light-box-api-min.js"></script>
+          <script src='//static.fliphtml5.com/web/js/plugin/LightBox/js/fliphtml5-light-box-api-min.js' />
         </Head>
 
         {this.state.apertures && (
