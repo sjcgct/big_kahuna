@@ -1,7 +1,7 @@
 export const queryAllApertures = ({ cursor, limit }) => {
   const query =
       `{
-        allApertures(after:"${cursor}",first:${limit}) {
+        allAperturess(after:"${cursor}",first:${limit}) {
           totalCount
           pageInfo {
             hasNextPage
@@ -20,4 +20,3 @@ export const queryAllApertures = ({ cursor, limit }) => {
 }
 
 export default { queryAllApertures }
-

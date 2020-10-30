@@ -77,7 +77,7 @@ class AperturePage extends Component {
 
   getAllApertures (cursor, limit) {
     const query = gql`{
-      allApertures(after:"${cursor}",first:${limit}) {
+      allAperturess(after:"${cursor}",first:${limit}) {
         totalCount
         pageInfo {
           hasNextPage
