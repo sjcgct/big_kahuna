@@ -54,7 +54,6 @@ export const queryBlogsWithSlug = ({ slug }) => {
       node{
         title
         date
-        content
         featured_image
         excerpt
         body{
