@@ -1,41 +1,82 @@
-import React from 'react'
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable no-inner-declarations */
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
-export default function ApertureCard ({ title, url,description}) {
-    var fliphtmlLink="https://online.fliphtml5.com/"
-    var endShot="/files/shot.jpg"
-    var src=fliphtmlLink.concat(url).concat(endShot)
-    var data_href=fliphtmlLink.concat(url)
-    const aperturestyle = {
-      height: "250px",
-      width: "auto"
-    };
+// Hook
+function useWindowSize () {
+  // Initialize state with undefined width/height so server and client renders match
+  // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+  var [windowSize, setWindowSize] = useState({
+    width: undefined,
+    height: undefined
+  })
 
-    console.log(src)
-    console.log(data_href)
-    return (
-        <>
-          <div class="col-sm-12 col-md-3">
-          <div class="card"></div>
+  useEffect(() => {
+    // only execute all the code below in client side
+    if (typeof window !== 'undefined') {
+      // Handler to call on window resize
+      function handleResize () {
+        // Set window width/height to state
+        setWindowSize({
+          width: window.innerWidth,
+          height: window.innerHeight
+        })
+      }
 
-        <div class="d-none d-md-block d-lg-block">
-        <img class="img-stretch" src={src}
-          data-rel="fh5-light-box-demo" data-href={data_href} data-width="900"
-          data-height="500" data-title={title} style={aperturestyle}/> </div>
+      // Add event listener
+      window.addEventListener('resize', handleResize)
 
-        <div class="d-block d-md-none d-lg-none">
-        <img class="img-fluid" src={src}
-          data-rel="fh5-light-box-demo" data-href={data_href} data-width="400"
-          data-height="250" data-title={title} style={aperturestyle}/> </div>
-       </div>
+      // Call handler right away so state gets updated with initial window size
+      handleResize()
 
-       <div class="card-body">
-        <h3 class="card-title mb-1">{title}</h3>
-          <p class="text-center">{description}</p></div>
-
-      </>
-
-    )
-  
+      // Remove event listener on cleanup
+      return () => window.removeEventListener('resize', handleResize)
+    }
+  }, []) // Empty array ensures that effect is only run on mount
+  return windowSize
 }
 
+export default function ApertureCard ({ title, url, description }) {
+  var fliphtmlLink = 'https://online.fliphtml5.com/'
+  var endShot = '/files/shot.jpg'
+  var src = fliphtmlLink.concat(url).concat(endShot)
+  var data_href = fliphtmlLink.concat(url)
+  const size = useWindowSize()
+  console.log(size.width)
+
+  var screenClass = {}
+
+  if (size.width < 768) {
+    screenClass.element = 'd-block d-md-none d-lg-none'
+    screenClass.high = 250
+    screenClass.wide = 400
+  } else if (size.width >= 768 && size.width < 992) {
+    screenClass.element = 'd-none d-md-block d-lg-block'
+    screenClass.high = 500
+    screenClass.wide = 900
+  }
+
+  return (
+    <>
+      <div className='col-sm-12 col-md-3'>
+        <div className='card aperture-card'>
+          <div className={screenClass.element}>
+            <img
+              className='aperture-image' src={src}
+              data-rel='fh5-light-box-demo' data-href={data_href} data-width={screenClass.wide}
+              data-height={screenClass.high} data-title={title}
+            />
+          </div>
+          <div className='card-body'>
+            <h3 className='card-title text-center mb-1'>{title}</h3>
+            <p className='text-center'> {description} </p>
+          </div>
+
+        </div>
+      </div>
+
+    </>
+
+  )
+}

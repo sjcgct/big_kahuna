@@ -943,3 +943,16 @@ p.hog-container{
 .pdfpage{
   box-shadow: 10px 10px 63px 0px rgba(0,0,0,0.75);
 }
+
+/*Aperture Page*/
+.newsletters .aperture-card{
+  border: none;
+  margin-bottom: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.aperture-image {
+  width: 100%;
+  height: auto;
+}
