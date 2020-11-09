@@ -4,6 +4,10 @@ import Link from 'next/link'
 
 class NavBar extends Component {
   render () {
+    var redirect = {
+      pathname: `/blogs/[slug]`,
+      state: { slug: 'recent' }
+    }
     return (
       <Navbar className='navbar' expand='lg'>
         <Navbar.Brand href='/'>
@@ -24,7 +28,7 @@ class NavBar extends Component {
 
             <NavDropdown title='Blog' id='basic-nav-dropdown'>
 
-              <Link href='/blog' passHref>
+              <Link href='/blogs/[category]' as={`/blogs/recent`} passHref>
                 <NavDropdown.Item>All</NavDropdown.Item>
               </Link>
 
@@ -58,7 +62,7 @@ class NavBar extends Component {
               <Nav.Link>Humans of GCT</Nav.Link>
             </Link>
 
-            <Link href='/aperturetry' passHref>
+            <Link href='/aperture' passHref>
               <Nav.Link>Aperture Newsletter</Nav.Link>
             </Link>
 

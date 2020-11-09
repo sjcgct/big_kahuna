@@ -15,27 +15,27 @@ class CategoryNavBar extends Component {
         <Navbar.Collapse id='basic-navbar-nav'>
 
           <Nav className='mx-auto'>
-            <Link href='/blog' passHref>
+            <Link href='[category]' as={`/blogs/recent`}  passHref>
               <Nav.Link>Recent</Nav.Link>
             </Link>
 
-            <Link href='/openpage' passHref>
+            <Link href='[category]' as={`/blogs/openpage`} passHref>
               <Nav.Link>Open Page</Nav.Link>
             </Link>
 
-            <Link href='/celluloid' passHref>
+            <Link href='[category]' as={`/blogs/celluloid`} passHref>
               <Nav.Link>Celluloid</Nav.Link>
             </Link>
 
-            <Link href='/scitech' passHref>
-              <Nav.Link>SciTech</Nav.Link>
+            <Link href='[category]' as={`/blogs/scitech`} passHref>
+              <Nav.Link >SciTech</Nav.Link>
             </Link>
 
-            <Link href='/alumspace' passHref>
+            <Link href='[category]' as={`/blogs/alumspace`} passHref>
               <Nav.Link>AlumSpace</Nav.Link>
             </Link>
 
-            <Link href='/tete-a-tete' passHref>
+            <Link href='[category]' as={`/blogs/tete`} passHref>
               <Nav.Link>Tete-a-Tete with Interns</Nav.Link>
             </Link>
           </Nav>

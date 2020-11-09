@@ -56,7 +56,6 @@ async function fetchAPI (query, { variables } = {}) {
 }
 
 export async function getAllBlogsForHome (lastPostCursor, limitation) {
-  console.log('here man ')
   const query = queryAllBlogsForHome({ lastPostCursor, limitation })
   const data = await fetchAPI(query)
   return data.allBlogss

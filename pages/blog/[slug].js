@@ -76,7 +76,6 @@ export default function Post ({ post, postsYouMayLike }) {
 }
 
 export async function getServerSideProps ({ params, previewData }) {
-  // var slugurl =window.location.pathname.split("/").pop()
   var slugurl = params.slug
   const fetchedpost = await getBlogsWithSlug(slugurl)
   const post = fetchedpost[0].node
