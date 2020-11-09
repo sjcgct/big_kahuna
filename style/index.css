@@ -14,6 +14,40 @@ a:hover {
 
                                                             /*Common Components*/
 /*Grid Card*/
+.zoom-effect-container:hover .image-card img {
+  -webkit-transform: scale(1.08);
+  transform: scale(1.08);
+}
+
+/* smartphones, touchscreens */
+@media (hover: none) and (pointer: coarse) {
+  .grid-card-image-holder .grid-card-image:focus {
+    -webkit-transform: scale(1.08);
+    transform: scale(1.08);
+  }
+}
+/* stylus-based screens */
+@media (hover: none) and (pointer: fine) {
+  .grid-card-image-holder .grid-card-image:hover {
+    -webkit-transform: scale(1.08);
+    transform: scale(1.08);
+  }
+}
+/* Nintendo Wii controller, Microsoft Kinect */
+@media (hover: hover) and (pointer: coarse) {
+  .grid-card-image-holder .grid-card-image:hover {
+    -webkit-transform: scale(1.08);
+    transform: scale(1.08);
+  }
+}
+/* mouse, touch pad */
+@media (hover: hover) and (pointer: fine) {
+  .grid-card-image-holder .grid-card-image:hover {
+    -webkit-transform: scale(1.08);
+    transform: scale(1.08);
+  }
+}
+
 .grid-card {
   border: none;
 }
@@ -23,6 +57,7 @@ a:hover {
   padding-bottom: calc(100% * 2 / 3);
   position: relative;
   background-color: #edeef1de;
+  overflow: hidden;
 }
 
 .grid-card-image-holder .grid-card-image{
@@ -30,14 +65,12 @@ a:hover {
   height: auto;
   opacity: 0.95;
   position: absolute;
-	-webkit-transition: opacity 0.35s;
-	transition: opacity 0.35s;
+  -webkit-transition: 0.35s ease-in;
+  -webkit-transition: 0.70s ease-out;
+  transition: 0.35s ease-in;
+  transition: 0.70s ease-out;
 }
 
-
-.grid-card-image-holder .grid-card-image:hover {
-  opacity: 0.8;
-}
 
 .grid-card-author-holder {
   display: -webkit-flex;
