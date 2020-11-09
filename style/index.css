@@ -14,39 +14,8 @@ a:hover {
 
                                                             /*Common Components*/
 /*Grid Card*/
-.zoom-effect-container:hover .image-card img {
-  -webkit-transform: scale(1.08);
-  transform: scale(1.08);
-}
 
-/* smartphones, touchscreens */
-@media (hover: none) and (pointer: coarse) {
-  .grid-card-image-holder .grid-card-image:focus {
-    -webkit-transform: scale(1.08);
-    transform: scale(1.08);
-  }
-}
-/* stylus-based screens */
-@media (hover: none) and (pointer: fine) {
-  .grid-card-image-holder .grid-card-image:hover {
-    -webkit-transform: scale(1.08);
-    transform: scale(1.08);
-  }
-}
-/* Nintendo Wii controller, Microsoft Kinect */
-@media (hover: hover) and (pointer: coarse) {
-  .grid-card-image-holder .grid-card-image:hover {
-    -webkit-transform: scale(1.08);
-    transform: scale(1.08);
-  }
-}
-/* mouse, touch pad */
-@media (hover: hover) and (pointer: fine) {
-  .grid-card-image-holder .grid-card-image:hover {
-    -webkit-transform: scale(1.08);
-    transform: scale(1.08);
-  }
-}
+
 
 .grid-card {
   border: none;
@@ -71,6 +40,13 @@ a:hover {
   transition: 0.70s ease-out;
 }
 
+/* mouse, touch pad */
+@media (hover: hover) and (pointer: fine) {
+  .grid-card-image-holder .grid-card-image:hover {
+    -webkit-transform: scale(1.08);
+    transform: scale(1.08);
+  }
+}
 
 .grid-card-author-holder {
   display: -webkit-flex;
@@ -106,9 +82,10 @@ a:hover {
   transition: opacity 0.35s;
 }
 
+@media (hover: hover) and (pointer: fine) {
 .grid-card-avatar-image:hover {
   opacity: 0.8;
-  
+ }
 }
 
 .grid-card-category-holder {
@@ -121,9 +98,10 @@ a:hover {
   transition: 0.35s;
 }
 
+@media (hover: hover) and (pointer: fine) {
 .grid-card-category-holder a:hover {
   color: #ff9999;
-  
+ }
 }
 
 .grid-card-category {
@@ -145,9 +123,12 @@ a:hover {
   transition: 0.35s;
 }
 
+@media (hover: hover) and (pointer: fine) {
 .grid-card-title a:hover{
   color: #777;
+ }
 }
+
 
 .grid-card-date {
   color: #7b8994;
