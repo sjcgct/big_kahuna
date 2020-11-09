@@ -22,6 +22,7 @@ a:hover {
   width: 100%;
   padding-bottom: calc(100% * 2 / 3);
   position: relative;
+  background-color: #edeef1de;
 }
 
 .grid-card-image-holder .grid-card-image{
@@ -580,6 +581,7 @@ footer small{
   width: 100%;
   padding-bottom: calc(100% * 1 / 2);
   position: relative;
+  background-color: #edeef1de;
 }
 
 .featured-img-holder .featured-img {
@@ -1016,8 +1018,16 @@ p.hog-container{
   padding-right: 5%;
 }
 
-.aperture-image {
+.aperture-img-holder {
+  width: 100%;
+  padding-bottom: calc(100% * 480 / 339);
+  background-color: #edeef1de;
+  position: relative;
+}
+
+.aperture-img-holder .aperture-img {
   width: 100%;
   height: auto;
+  position: absolute;
 }
 
