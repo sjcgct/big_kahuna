@@ -51,11 +51,13 @@ export default function ApertureCard ({ title, url, description }) {
     screenClass.element = 'd-block d-md-none d-lg-none'
     screenClass.high = 250
     screenClass.wide = 400
-  } else if (size.width >= 768 && size.width < 992) {
+  } else if (size.width >= 768) {
     screenClass.element = 'd-none d-md-block d-lg-block'
     screenClass.high = 500
     screenClass.wide = 900
   }
+
+  console.log(screenClass)
 
   return (
     <>
