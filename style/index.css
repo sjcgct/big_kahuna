@@ -19,19 +19,22 @@ a:hover {
 }
 
 .grid-card-image-holder {
-  background: #FF9999;
+  width: 100%;
+  padding-bottom: calc(100% * 2 / 3);
+  position: relative;
 }
 
-.grid-card-image{
+.grid-card-image-holder .grid-card-image{
   width: 100%;
   height: auto;
   opacity: 0.95;
+  position: absolute;
 	-webkit-transition: opacity 0.35s;
 	transition: opacity 0.35s;
 }
 
 
-.grid-card-image:hover {
+.grid-card-image-holder .grid-card-image:hover {
   opacity: 0.8;
 }
 
@@ -124,9 +127,14 @@ a:hover {
     height: 253px;
     max-width: 380px;
   }
-  .loading-card-content-holder {
+  .loading-card-content-holder-1 {
     width: 380px;
     max-width: 380px;
+    height: 18px;
+  }
+  .loading-card-content-holder-2 {
+    width: 190px;
+    max-width: 190px;
     height: 18px;
   }
 }
@@ -137,9 +145,14 @@ a:hover {
     height: 200px;
     max-width: 300px;
   }
-  .loading-card-content-holder {
+  .loading-card-content-holder-1 {
     width: 300px;
     max-width: 300px;
+    height: 18px;
+  }
+  .loading-card-content-holder-2 {
+    width: 150px;
+    max-width: 150px;
     height: 18px;
   }
 }
@@ -150,9 +163,14 @@ a:hover {
     height: 220px;
     max-width: 330px;
   }
-  .loading-card-content-holder {
+  .loading-card-content-holder-1 {
     width: 330px;
     max-width: 330px;
+    height: 18px;
+  }
+  .loading-card-content-holder-2 {
+    width: 115px;
+    max-width: 115px;
     height: 18px;
   }
 }
@@ -163,9 +181,14 @@ a:hover {
     height: 340px;
     max-width: 510px;
   }
-  .loading-card-content-holder {
+  .loading-card-content-holder-1 {
     width: 505px;
     max-width: 505px;
+    height: 18px;
+  }
+  .loading-card-content-holder-2 {
+    width: 252px;
+    max-width: 252px;
     height: 18px;
   }
 }
@@ -176,9 +199,14 @@ a:hover {
     height: 256px;
     max-width: 384px;
   }
-  .loading-card-content-holder {
+  .loading-card-content-holder-1 {
     width: 379px;
     max-width: 379px;
+    height: 18px;
+  }
+  .loading-card-content-holder-2 {
+    width: 190px;
+    max-width: 190px;
     height: 18px;
   }
 }
@@ -189,9 +217,14 @@ a:hover {
     height: 220px;
     max-width: 330px;
   }
-  .loading-card-content-holder {
+  .loading-card-content-holder-1 {
     width: 325px;
     max-width: 325px;
+    height: 16px;
+  }
+  .loading-card-content-holder-2 {
+    width: 160px;
+    max-width: 160px;
     height: 16px;
   }
 }
@@ -202,9 +235,14 @@ a:hover {
     height: 193.33px;
     max-width: 290px;
   }
-  .loading-card-content-holder {
+  .loading-card-content-holder-1 {
     width: 285px;
     max-width: 285px;
+    height: 14px;
+  }
+  .loading-card-content-holder-2 {
+    width: 140px;
+    max-width: 140px;
     height: 14px;
   }
 }
@@ -215,9 +253,14 @@ a:hover {
     height: 150px;
     max-width: 210px;
   }
-  .loading-card-content-holder {
+  .loading-card-content-holder-1 {
     width: 205px;
     max-width: 205px;
+    height: 14px;
+  }
+  .loading-card-content-holder-2 {
+    width: 102px;
+    max-width: 102px;
     height: 14px;
   }
 }
@@ -228,6 +271,7 @@ a:hover {
   flex-basis: 60px;
   width: 60px;
   height: 60px;
+  margin-top:-20px;
   margin-left: 12.5px;
   margin-right: 12.5px;
   text-align: center;
@@ -238,7 +282,7 @@ a:hover {
 
 .shine {
   background: #f6f7f8;
-  background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+  background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1de 40%, #f6f7f8 80%, #f6f7f8 100%);
   background-repeat: no-repeat;
   background-size: 800px 300px; 
   display: inline-block;
@@ -487,13 +531,30 @@ footer small{
   .blog-post-title {
     font-size: 6.25rem;
   }
+
+  .featured-img-holder {
+    margin-bottom: 80px;
+  }
+
+  .hog-featured-img-holder {
+    margin-bottom: 80px;
+  }
 }
 
 @media (max-width: 1024px){
   .blog-post-title {
     font-size: 4.5rem;
   }
+
+  .featured-img-holder {
+    margin-bottom: 40px;
+  }
+
+  .hog-featured-img-holder {
+    margin-bottom: 40px;
+  }
 }
+
 
 @media (max-width: 768px){
   .blog-post-title {
@@ -507,25 +568,28 @@ footer small{
     padding-left: 185px;
     padding-right: 185px;
   }  
+
   .hog-container {
     padding-left: 185px;
     padding-right: 185px;
   }  
-  .featured-img {
-    margin-bottom: 50px;
-  }
-  .hog-featured-img {
-    margin-bottom: 30px;
-  }
 }
 
-.featured-img {
+
+.featured-img-holder {
+  width: 100%;
+  padding-bottom: calc(100% * 1 / 2);
+  position: relative;
+}
+
+.featured-img-holder .featured-img {
   width: 100%;
   height: auto;
-  box-shadow: 0 5px 10px rgba(0,0,0,.12);  
+  position: absolute;
+  box-shadow: 0 5px 10px rgba(0,0,0,.12);
 }
 
-img.hog-featured-img {
+.hog-featured-img {
   max-width: 90% !important;
   height: auto !important;
   box-shadow: 0 5px 10px rgba(0,0,0,.12);

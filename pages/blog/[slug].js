@@ -48,11 +48,11 @@ export default function Post ({ post, postsYouMayLike }) {
         </div>
 
         <div className='post-share-tray'>
-        <SharePanel url={post.author.picture.url} caption={RichText.asText(post.title)} />
+          <SharePanel url={post.author.picture.url} caption={RichText.asText(post.title)} />
         </div>
 
-        <div className='sm-12'>
-          <img src={post.featured_image.hero.url} className='card-img featured-img' />
+        <div className='sm-12 featured-img-holder'>
+          <img src={post.featured_image.hero.url} className='card-img featured-img' width='1200' height='600' />
         </div>
 
         <div className='blog-container'>
