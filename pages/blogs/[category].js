@@ -39,6 +39,7 @@ class BlogPage extends Component {
     
     this.state = {
       categoryId:props.categoryId,
+      categoryName:props.categoryName,
       activePage: 0,
       total: props.totalCount,
       blogs: props.blogs,
@@ -90,12 +91,12 @@ class BlogPage extends Component {
     })
   }
 
-getBlogForNextOrPrevPageForRecent (lastPostCursor, limitation) {
+  getBlogForNextOrPrevPageForRecent (lastPostCursor, limitation) {
     const query = gql`${queryAllBlogsForHome({ lastPostCursor, limitation })}`
     return query
   }
   
-getBlogForNextOrPrevPageForCategory (categoryId, lastPostCursor, limitation) {
+  getBlogForNextOrPrevPageForCategory (categoryId, lastPostCursor, limitation) {
     const query = gql`${queryBlogsWithSameCategory({ categoryId, lastPostCursor, limitation })}`
     return query
   }
@@ -123,7 +124,7 @@ getBlogForNextOrPrevPageForCategory (categoryId, lastPostCursor, limitation) {
               </div>
             </form>
           </div>
-          <CategoryNavBar />
+          <CategoryNavBar category={this.state.categoryName}/>
           <LoaderDeck />
         </Layout>
       )
@@ -138,7 +139,7 @@ getBlogForNextOrPrevPageForCategory (categoryId, lastPostCursor, limitation) {
             </div>
           </form>
         </div>
-        <CategoryNavBar />
+        <CategoryNavBar category={this.state.categoryName}/>
         {this.state.blogs && (
           <Deck
             cards={this.state.blogs}
@@ -182,8 +183,9 @@ export async function getStaticProps ({ params }) {
   var cursor = posts.pageInfo.endCursor
   var totalCount = posts.totalCount
   var hasnext = posts.pageInfo.hasNextPage
+  var categoryName=category
   return {
-    props: { blogs, cursor, totalCount, hasnext , categoryId}
+    props: { blogs, cursor, totalCount, hasnext , categoryId,categoryName}
   }
 }
 
