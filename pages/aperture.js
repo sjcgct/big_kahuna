@@ -5,7 +5,6 @@ import { PrismicLink } from 'apollo-link-prismic'
 import ApolloClient from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
-import Loading from 'react-simple-loading'
 import Head from 'next/head'
 import ApertureDeck from '../components/AperturePage/aperturedeck'
 
@@ -106,24 +105,7 @@ class AperturePage extends Component {
     await this.loadPage(this.state.activePage - 1)
   }
 
-  iframeDidLoad () {
-    this.setState({ isFrameLoading: false })
-    console.log('loaded if')
-  }
-
   render () {
-    if (this.state.loading) {
-      return (
-        <Layout>
-          <Loading
-            color='firebrick'
-            stroke='10px'
-            size='100px'
-          />
-        </Layout>
-      )
-    }
-
     return (
       <Layout>
         <Head>

@@ -12,8 +12,8 @@ export default function Post ({ post, morePosts }) {
         <h4 className='page-name'>Humans of GCT</h4>
         <h1 className='blog-post-title text-center'>{RichText.asText(post.title)}</h1>        
         <div className='hog-container'>
-          <div className='row'>
-            <img src={post.featured_image.url} className='hog-featured-img mx-auto' />
+          <div className='row hog-featured-img-holder'>
+            <img src={post.featured_image.url} className='hog-featured-img mb-5' />
           </div>
           <div className='mb-3'>
             <p className='text-justify'>{RichText.render(post.story)}</p>

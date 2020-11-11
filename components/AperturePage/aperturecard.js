@@ -48,14 +48,16 @@ export default function ApertureCard ({ title, url, description }) {
   var screenClass = {}
 
   if (size.width < 768) {
-    screenClass.element = 'd-block d-md-none d-lg-none'
+    screenClass.element = 'd-block d-md-none d-lg-none aperture-img-holder'
     screenClass.high = 250
     screenClass.wide = 400
-  } else if (size.width >= 768 && size.width < 992) {
-    screenClass.element = 'd-none d-md-block d-lg-block'
+  } else if (size.width >= 768) {
+    screenClass.element = 'd-none d-md-block d-lg-block aperture-img-holder'
     screenClass.high = 500
     screenClass.wide = 900
   }
+
+  console.log(screenClass)
 
   return (
     <>
@@ -63,7 +65,7 @@ export default function ApertureCard ({ title, url, description }) {
         <div className='card aperture-card'>
           <div className={screenClass.element}>
             <img
-              className='aperture-image' src={src}
+              className='aperture-img' src={src}
               data-rel='fh5-light-box-demo' data-href={data_href} data-width={screenClass.wide}
               data-height={screenClass.high} data-title={title}
             />

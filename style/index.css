@@ -14,25 +14,38 @@ a:hover {
 
                                                             /*Common Components*/
 /*Grid Card*/
+
+
+
 .grid-card {
   border: none;
 }
 
 .grid-card-image-holder {
-  background: #FF9999;
+  width: 100%;
+  padding-bottom: calc(100% * 2 / 3);
+  position: relative;
+  background-color: #edeef1de;
+  overflow: hidden;
 }
 
-.grid-card-image{
+.grid-card-image-holder .grid-card-image{
   width: 100%;
   height: auto;
   opacity: 0.95;
-	-webkit-transition: opacity 0.35s;
-	transition: opacity 0.35s;
+  position: absolute;
+  -webkit-transition: 0.35s ease-in;
+  -webkit-transition: 0.70s ease-out;
+  transition: 0.35s ease-in;
+  transition: 0.70s ease-out;
 }
 
-
-.grid-card-image:hover {
-  opacity: 0.8;
+/* mouse, touch pad */
+@media (hover: hover) and (pointer: fine) {
+  .grid-card-image-holder .grid-card-image:hover {
+    -webkit-transform: scale(1.08);
+    transform: scale(1.08);
+  }
 }
 
 .grid-card-author-holder {
@@ -69,9 +82,10 @@ a:hover {
   transition: opacity 0.35s;
 }
 
+@media (hover: hover) and (pointer: fine) {
 .grid-card-avatar-image:hover {
   opacity: 0.8;
-  
+ }
 }
 
 .grid-card-category-holder {
@@ -84,9 +98,10 @@ a:hover {
   transition: 0.35s;
 }
 
+@media (hover: hover) and (pointer: fine) {
 .grid-card-category-holder a:hover {
   color: #ff9999;
-  
+ }
 }
 
 .grid-card-category {
@@ -108,9 +123,12 @@ a:hover {
   transition: 0.35s;
 }
 
+@media (hover: hover) and (pointer: fine) {
 .grid-card-title a:hover{
   color: #777;
+ }
 }
+
 
 .grid-card-date {
   color: #7b8994;
@@ -124,9 +142,14 @@ a:hover {
     height: 253px;
     max-width: 380px;
   }
-  .loading-card-content-holder {
+  .loading-card-content-holder-1 {
     width: 380px;
     max-width: 380px;
+    height: 18px;
+  }
+  .loading-card-content-holder-2 {
+    width: 190px;
+    max-width: 190px;
     height: 18px;
   }
 }
@@ -137,9 +160,14 @@ a:hover {
     height: 200px;
     max-width: 300px;
   }
-  .loading-card-content-holder {
+  .loading-card-content-holder-1 {
     width: 300px;
     max-width: 300px;
+    height: 18px;
+  }
+  .loading-card-content-holder-2 {
+    width: 150px;
+    max-width: 150px;
     height: 18px;
   }
 }
@@ -150,9 +178,14 @@ a:hover {
     height: 220px;
     max-width: 330px;
   }
-  .loading-card-content-holder {
+  .loading-card-content-holder-1 {
     width: 330px;
     max-width: 330px;
+    height: 18px;
+  }
+  .loading-card-content-holder-2 {
+    width: 115px;
+    max-width: 115px;
     height: 18px;
   }
 }
@@ -163,9 +196,14 @@ a:hover {
     height: 340px;
     max-width: 510px;
   }
-  .loading-card-content-holder {
+  .loading-card-content-holder-1 {
     width: 505px;
     max-width: 505px;
+    height: 18px;
+  }
+  .loading-card-content-holder-2 {
+    width: 252px;
+    max-width: 252px;
     height: 18px;
   }
 }
@@ -176,9 +214,14 @@ a:hover {
     height: 256px;
     max-width: 384px;
   }
-  .loading-card-content-holder {
+  .loading-card-content-holder-1 {
     width: 379px;
     max-width: 379px;
+    height: 18px;
+  }
+  .loading-card-content-holder-2 {
+    width: 190px;
+    max-width: 190px;
     height: 18px;
   }
 }
@@ -189,9 +232,14 @@ a:hover {
     height: 220px;
     max-width: 330px;
   }
-  .loading-card-content-holder {
+  .loading-card-content-holder-1 {
     width: 325px;
     max-width: 325px;
+    height: 16px;
+  }
+  .loading-card-content-holder-2 {
+    width: 160px;
+    max-width: 160px;
     height: 16px;
   }
 }
@@ -202,9 +250,14 @@ a:hover {
     height: 193.33px;
     max-width: 290px;
   }
-  .loading-card-content-holder {
+  .loading-card-content-holder-1 {
     width: 285px;
     max-width: 285px;
+    height: 14px;
+  }
+  .loading-card-content-holder-2 {
+    width: 140px;
+    max-width: 140px;
     height: 14px;
   }
 }
@@ -215,9 +268,14 @@ a:hover {
     height: 150px;
     max-width: 210px;
   }
-  .loading-card-content-holder {
+  .loading-card-content-holder-1 {
     width: 205px;
     max-width: 205px;
+    height: 14px;
+  }
+  .loading-card-content-holder-2 {
+    width: 102px;
+    max-width: 102px;
     height: 14px;
   }
 }
@@ -228,6 +286,7 @@ a:hover {
   flex-basis: 60px;
   width: 60px;
   height: 60px;
+  margin-top:-20px;
   margin-left: 12.5px;
   margin-right: 12.5px;
   text-align: center;
@@ -238,7 +297,7 @@ a:hover {
 
 .shine {
   background: #f6f7f8;
-  background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+  background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1de 40%, #f6f7f8 80%, #f6f7f8 100%);
   background-repeat: no-repeat;
   background-size: 800px 300px; 
   display: inline-block;
@@ -487,13 +546,30 @@ footer small{
   .blog-post-title {
     font-size: 6.25rem;
   }
+
+  .featured-img-holder {
+    margin-bottom: 80px;
+  }
+
+  .hog-featured-img-holder {
+    margin-bottom: 80px;
+  }
 }
 
 @media (max-width: 1024px){
   .blog-post-title {
     font-size: 4.5rem;
   }
+
+  .featured-img-holder {
+    margin-bottom: 40px;
+  }
+
+  .hog-featured-img-holder {
+    margin-bottom: 40px;
+  }
 }
+
 
 @media (max-width: 768px){
   .blog-post-title {
@@ -507,25 +583,29 @@ footer small{
     padding-left: 185px;
     padding-right: 185px;
   }  
+
   .hog-container {
     padding-left: 185px;
     padding-right: 185px;
   }  
-  .featured-img {
-    margin-bottom: 50px;
-  }
-  .hog-featured-img {
-    margin-bottom: 30px;
-  }
 }
 
-.featured-img {
+
+.featured-img-holder {
+  width: 100%;
+  padding-bottom: calc(100% * 1 / 2);
+  position: relative;
+  background-color: #edeef1de;
+}
+
+.featured-img-holder .featured-img {
   width: 100%;
   height: auto;
-  box-shadow: 0 5px 10px rgba(0,0,0,.12);  
+  position: absolute;
+  box-shadow: 0 5px 10px rgba(0,0,0,.12);
 }
 
-img.hog-featured-img {
+.hog-featured-img {
   max-width: 90% !important;
   height: auto !important;
   box-shadow: 0 5px 10px rgba(0,0,0,.12);
@@ -952,7 +1032,16 @@ p.hog-container{
   padding-right: 5%;
 }
 
-.aperture-image {
+.aperture-img-holder {
+  width: 100%;
+  padding-bottom: calc(100% * 480 / 339);
+  background-color: #edeef1de;
+  position: relative;
+}
+
+.aperture-img-holder .aperture-img {
   width: 100%;
   height: auto;
+  position: absolute;
 }
+
