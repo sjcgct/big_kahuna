@@ -10,7 +10,6 @@ import { PrismicLink } from 'apollo-link-prismic'
 import ApolloClient from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
-import Loading from 'react-simple-loading'
 import LoaderDeck from '../../components/loaders/loaderDeck'
 
 var name_map={
@@ -32,10 +31,12 @@ const apolloClient = new ApolloClient({
 })
 
 class BlogPage extends Component {
+  
   constructor (props) {
     super(props)
     var page_arr = []
     page_arr[0] = props.cursor
+    
     this.state = {
       categoryId:props.categoryId,
       activePage: 0,
@@ -127,7 +128,6 @@ getBlogForNextOrPrevPageForCategory (categoryId, lastPostCursor, limitation) {
         </Layout>
       )
     }
-
     return (
       <Layout>
         <div className='search-container container'>
@@ -168,13 +168,11 @@ export async function getStaticProps ({ params }) {
   var category=params.category;
   var categoryId;
   var posts;
-  console.log(category)
   if(category==='recent'){
     var categoryId='recent'
     posts = await getAllBlogsForHome(' ', 9)
   }
   else {
-    console.log(name_map[category]);
     var categories = await getCategoryIdByName(name_map[category])
     var post = categories[0].node
     categoryId = post._meta.id
