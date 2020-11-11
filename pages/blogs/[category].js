@@ -165,7 +165,7 @@ class BlogPage extends Component {
 
 export default BlogPage
 
-export async function getStaticProps ({ params }) {
+export async function getServerSideProps ({ params }) {
   var category=params.category;
   var categoryId;
   var posts;
@@ -189,17 +189,17 @@ export async function getStaticProps ({ params }) {
   }
 }
 
-export async function getStaticPaths() {
+// export async function getStaticPaths() {
 
-  return {
-    paths: [
-      { params: { category: 'celluloid'} },
-      { params: { category: 'scitech'} },
-      { params: { category: 'alumspace'} },
-      { params: { category: 'openpage'} },
-      { params: { category: 'tete'} },
-      { params: { category: 'recent'} }
-     ],
-   fallback: true // fallback is set to false because we already know the slugs ahead of time
- }  
-}
+//   return {
+//     paths: [
+//       { params: { category: 'celluloid'} },
+//       { params: { category: 'scitech'} },
+//       { params: { category: 'alumspace'} },
+//       { params: { category: 'openpage'} },
+//       { params: { category: 'tete'} },
+//       { params: { category: 'recent'} }
+//      ],
+//    fallback: true // fallback is set to false because we already know the slugs ahead of time
+//  }  
+// }
