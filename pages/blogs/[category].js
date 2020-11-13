@@ -116,14 +116,6 @@ class BlogPage extends Component {
     if (this.state.loading) {
       return (
         <Layout>
-          <div className='search-container container'>
-            <form className='search-form' id='SearchForm'>
-              <div className='search-bar-holder container mx-auto'>
-                <input className='searchbar ml-3' type='text' placeholder='Search articles' id='addInput' title='Search' />
-                <a href='#'> <img className='search-icon' src='/search.svg' title='Search by Voice' /></a>
-              </div>
-            </form>
-          </div>
           <CategoryNavBar category={this.state.categoryName}/>
           <LoaderDeck />
         </Layout>
@@ -131,14 +123,6 @@ class BlogPage extends Component {
     }
     return (
       <Layout>
-        <div className='search-container container'>
-          <form className='search-form' id='SearchForm'>
-            <div className='search-bar-holder container mx-auto'>
-              <input className='searchbar ml-3' type='text' placeholder='Search articles' id='addInput' title='Search' />
-              <a href='#'> <img className='search-icon' src='/search.svg' title='Search by Voice' /></a>
-            </div>
-          </form>
-        </div>
         <CategoryNavBar category={this.state.categoryName}/>
         {this.state.blogs && (
           <Deck

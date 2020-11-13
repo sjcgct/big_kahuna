@@ -115,7 +115,6 @@ class PodcostPage extends Component {
     var podcasts = this.state.pods
     var len = podcasts.length
     var templateHTML = []
-    var temp=<ApertureCard></ApertureCard>
 
     for (var i = 0; i < len; i++) {
       var episode_link = podcasts[i].node.episode_link
@@ -123,7 +122,7 @@ class PodcostPage extends Component {
         <iframe src={episode_link} height='110%' width='100%'  frameborder='0' scrolling='no' />
                         </div>               
     }
-    templateHTML.push(temp)
+    
     if (this.state.loading) {
       return (
         <Layout>

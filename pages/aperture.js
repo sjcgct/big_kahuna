@@ -137,7 +137,7 @@ class AperturePage extends Component {
 export default AperturePage
 
 export async function getServerSideProps () {
-  var itemsPerPage = 6
+  var itemsPerPage = 12
   var apertureResponse = await getAllApertures(' ', itemsPerPage)
   var apertures = apertureResponse.edges
   var cursor = apertureResponse.pageInfo.endCursor

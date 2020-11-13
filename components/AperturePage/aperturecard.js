@@ -57,8 +57,6 @@ export default function ApertureCard ({ title, url, description }) {
     screenClass.wide = 900
   }
 
-  console.log(screenClass)
-
   return (
     <>
       <div className='col-sm-12 col-md-3'>
