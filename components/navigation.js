@@ -26,37 +26,9 @@ class NavBar extends Component {
               <Nav.Link>Home</Nav.Link>
             </Link>
 
-            <NavDropdown title='Blog' id='basic-nav-dropdown'>
-
-              <Link href='/blogs/[category]' as={`/blogs/recent`} passHref>
-                <NavDropdown.Item>All</NavDropdown.Item>
-              </Link>
-
-              <Link href='/openpage' passHref>
-                <NavDropdown.Item>Open Page</NavDropdown.Item>
-              </Link>
-
-              <Link href='/celluloid' passHref>
-                <NavDropdown.Item>Celluloid</NavDropdown.Item>
-              </Link>
-
-              <Link href='/scitech' passHref>
-                <NavDropdown.Item>SciTech</NavDropdown.Item>
-              </Link>
-
-              <Link href='/alumspace' passHref>
-                <NavDropdown.Item>AlumSpace</NavDropdown.Item>
-              </Link>
-
-              <Link href='/tete-a-tete' passHref>
-                <NavDropdown.Item>Tete-a-Tete with Interns</NavDropdown.Item>
-              </Link>
-
-              <Link href='/blog/search' passHref>
-                <NavDropdown.Item>Search</NavDropdown.Item>
-              </Link>
-
-            </NavDropdown>
+            <Link href='/blogs/[category]' as={`/blogs/recent`} passHref>
+              <Nav.Link>Blogs</Nav.Link>
+            </Link>
 
             <Link href='/hog' passHref>
               <Nav.Link>Humans of GCT</Nav.Link>
@@ -77,11 +49,6 @@ class NavBar extends Component {
             </Link>
 
           </Nav>
-
-          {/* <Form inline>
-            <FormControl type='text' placeholder='Search' className='mr-sm-2' />
-            <Button variant='outline-success'>Search</Button>
-          </Form> */}
 
         </Navbar.Collapse>
 
