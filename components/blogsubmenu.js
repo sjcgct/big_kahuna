@@ -36,11 +36,18 @@ class CategoryNavBar extends Component {
 
           <Nav className='mx-auto'>
             
-            <Link href={`/blogs/recent`}  passHref>
+            {/* <Link href={`/blogs/recent`}  passHref>
               <Nav.Link active={this.state.active_map['recent']}>Recent</Nav.Link>
-            </Link>
+            </Link> */}
 
-            <Link href={`/blogs/openpage`} passHref>
+            <a href={`/blogs/recent`} > Recent </a>
+            <a href={`/blogs/openpage`} > Open Page </a>
+            <a href={`/blogs/celluloid`} > Celluloid </a>
+            <a href={`/blogs/scitech`} > Scitech </a>
+            <a href={`/blogs/alumspace`} > Alumspace </a>
+            <a href={`/blogs/tete`} > Tete </a>
+
+            {/* <Link href={`/blogs/openpage`} passHref>
               <Nav.Link active={this.state.active_map['openpage']}>Open Page</Nav.Link>
             </Link>
 
@@ -58,7 +65,8 @@ class CategoryNavBar extends Component {
 
             <Link href={`/blogs/tete`} passHref>
               <Nav.Link active={this.state.active_map['tete']}>Tete-a-Tete with Interns</Nav.Link>
-            </Link>
+            </Link> */}
+
           </Nav>
         </Navbar.Collapse>
 
