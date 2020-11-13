@@ -1044,3 +1044,13 @@ p.hog-container{
   height: auto;
   position: absolute;
 }
+
+.link { 
+  color: #000000;
+  margin: 10px;
+}
+
+.active-link{
+  color: #2757b1;
+  margin: 10px; 
+}
