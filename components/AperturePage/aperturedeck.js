@@ -11,7 +11,10 @@ export default function ApertureDeck ({ cards }) {
     var post = cardarray[j].node
     console.log(RichText.asText(post.title))
     console.log(post.link)
-    aperturecards[j] = <ApertureCard title={RichText.asText(post.title)} url={post.link} description={post.description} />
+    aperturecards[j] = <ApertureCard 
+                          title={RichText.asText(post.title)} 
+                          url={post.link} 
+                          description={post.description} />
   }
   console.log(aperturecards)
 

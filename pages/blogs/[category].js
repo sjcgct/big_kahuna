@@ -11,6 +11,11 @@ import ApolloClient from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
 import LoaderDeck from '../../components/loaders/loaderDeck'
+import Button from '@material-ui/core/Button'
+import IconButton from '@material-ui/core/IconButton';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+
 
 var name_map={
   celluloid: 'Celluloid',
@@ -19,8 +24,6 @@ var name_map={
   openpage: 'Open Page',
   tete: 'Tete-a-Tete with Interns' 
 }
-
-
 
 const apolloClient = new ApolloClient({
   link: PrismicLink({
@@ -131,15 +134,34 @@ class BlogPage extends Component {
           />
         )}
 
-        <button hidden={this.state.activePage === 0} onClick={() => this.prevPage()}>
+        {/* <Button  variant="contained" color="primary" hidden={this.state.activePage === 0} onClick={() => this.prevPage()}>
          Previous
-        </button>
+        </Button> */}
 
-        <p> </p>
 
-        <button hidden={!this.state.hasnext} onClick={() => this.nextPage()}>
-          Next
-        </button>
+      <Button
+        style={{
+          color: "#e04f62",
+        }}
+        size="large"
+        hidden={this.state.activePage === 0}  
+        onClick={() => this.prevPage()}
+        startIcon={<ArrowBackIcon />}
+        >
+          Previous
+        </Button>
+
+      <Button
+        style={{
+          color: "#e04f62",
+        }}
+        size="large"
+        hidden={!this.state.hasnext} 
+        onClick={() => this.nextPage()}
+        startIcon={<ArrowForwardIcon />}
+        >
+          NEXT
+        </Button>
 
       </Layout>
 

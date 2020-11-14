@@ -28,7 +28,15 @@ export default function Deck ({ cards, type }) {
       date = post.date
     }
 
-    deckcards[j] = <DeckCard title={RichText.asText(post.title)} imgurl={image} slugurl={post._meta.uid} profileImgUrl={avatar} profileUrl={profileId} postDate={date} postCategory={category} type={type} />
+    deckcards[j] = <DeckCard 
+                      title={RichText.asText(post.title)} 
+                      imgurl={image} 
+                      slugurl={post._meta.uid} 
+                      profileImgUrl={avatar} 
+                      profileUrl={profileId} 
+                      postDate={date} 
+                      postCategory={category} 
+                      type={type} />
   }
 
   return (
