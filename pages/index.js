@@ -12,7 +12,7 @@ export default function BlogHome ({ preview, allBlogs, allHogs }) {
         <title>Student Journalist Gouncil - GCT</title>
       </Head>
 
-      <h2>Blog</h2>
+      <h2>Blog[preview]</h2>
       {morePosts && (
         <Deck
           cards={morePosts}
