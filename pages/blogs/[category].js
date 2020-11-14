@@ -11,10 +11,9 @@ import ApolloClient from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
 import LoaderDeck from '../../components/loaders/loaderDeck'
-import Button from '@material-ui/core/Button'
-import IconButton from '@material-ui/core/IconButton';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import IconButton from '../../components/IconButton'
 
 
 var name_map={
@@ -134,34 +133,8 @@ class BlogPage extends Component {
           />
         )}
 
-        {/* <Button  variant="contained" color="primary" hidden={this.state.activePage === 0} onClick={() => this.prevPage()}>
-         Previous
-        </Button> */}
-
-
-      <Button
-        style={{
-          color: "#e04f62",
-        }}
-        size="large"
-        hidden={this.state.activePage === 0}  
-        onClick={() => this.prevPage()}
-        startIcon={<ArrowBackIcon />}
-        >
-          Previous
-        </Button>
-
-      <Button
-        style={{
-          color: "#e04f62",
-        }}
-        size="large"
-        hidden={!this.state.hasnext} 
-        onClick={() => this.nextPage()}
-        startIcon={<ArrowForwardIcon />}
-        >
-          NEXT
-        </Button>
+      <IconButton text="Previous" icon={<ArrowBackIcon></ArrowBackIcon>} isHidden={this.state.activePage === 0} onClick={() => this.prevPage()}> </IconButton>
+      <IconButton text="Next" icon={<ArrowForwardIcon></ArrowForwardIcon>} isHidden={!this.state.hasnext} onClick={() => this.nextPage()}> </IconButton>
 
       </Layout>
 
