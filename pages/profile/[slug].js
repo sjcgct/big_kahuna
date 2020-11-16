@@ -9,6 +9,9 @@ import gql from 'graphql-tag'
 import Loading from 'react-simple-loading'
 import ProfileBanner from '../../components/ProfilePage/profileBanner'
 import ProfileDeck from '../../components/profileDeck'
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack'
+import IconButton from '../../components/IconButton'
 
 const apolloClient = new ApolloClient({
   link: PrismicLink({
@@ -23,7 +26,7 @@ class AuthorBlogPage extends Component {
     super(props)
     var page_arr = []
     page_arr[0] = props.cursor
-    console.log(props.name)
+    console.log(props.blogs);
     this.state = {
       activePage: 0,
       total: props.totalCount,
@@ -40,7 +43,6 @@ class AuthorBlogPage extends Component {
       id: props.id,
       imgurl: props.imgurl
     }
-    console.log(this.state.loadedtill)
   }
 
   async loadPage (page) {
@@ -116,17 +118,12 @@ class AuthorBlogPage extends Component {
         {this.state.blogs && (
           <ProfileDeck
             cards={this.state.blogs}
-            type='blog'
+            type='blogs'
           />
         )}
 
-        <button hidden={this.state.activePage === 0} onClick={() => this.prevPage()}>
-          Previous
-        </button>
-
-        <button hidden={!this.state.hasnext} onClick={() => this.nextPage()}>
-          Next
-        </button>
+      <IconButton text="Previous" icon={<ArrowBackIcon></ArrowBackIcon>} isHidden={this.state.activePage === 0} onClick={() => this.prevPage()}> </IconButton>
+      <IconButton text="Next" icon={<ArrowForwardIcon></ArrowForwardIcon>} isHidden={!this.state.hasnext} onClick={() => this.nextPage()}> </IconButton>
 
       </Layout>
 
@@ -136,7 +133,7 @@ class AuthorBlogPage extends Component {
 
 export default AuthorBlogPage
 
-export async function getServerSideProps ({ params, previewData }) {
+export async function getServerSideProps ({ params }) {
   var id = params.slug
   var itemsPerPage = 6
   const posts = await getBlogsForAuthor(id, itemsPerPage, '')

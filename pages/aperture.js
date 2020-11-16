@@ -7,6 +7,9 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
 import Head from 'next/head'
 import ApertureDeck from '../components/AperturePage/aperturedeck'
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import IconButton from '../components/IconButton'
 
 const apolloClient = new ApolloClient({
   link: PrismicLink({
@@ -38,22 +41,18 @@ class AperturePage extends Component {
   }
 
   async loadPage (page) {
-    // console.log(this.getBlogForNextOrPrevPage(action,cursor,limit));
     var cursor = this.state.cursor
 
     var apertures = ''
     var curs = ''
     var hasnext = ''
     this.state.activePage = page
-    // alert(this.state.activePage)
 
     var shallWeStore = true
     if (this.state.loadedtill >= page) {
-      // alert("alread loaded")
       shallWeStore = false
       cursor = this.state.page_arr[page - 1]
     } else {
-      // alert("newly loading")
       this.state.loadedtill = this.state.loadedtill + 1
     }
     this.setState({ loading: true })
@@ -118,15 +117,8 @@ class AperturePage extends Component {
           />
         )}
 
-        <button hidden={this.state.activePage === 0} onClick={() => this.prevPage()}>
-         Previous
-        </button>
-
-        <p> </p>
-
-        <button hidden={!this.state.hasnext} onClick={() => this.nextPage()}>
-          Next
-        </button>
+      <IconButton text="Previous" icon={<ArrowBackIcon></ArrowBackIcon>} isHidden={this.state.activePage === 0} onClick={() => this.prevPage()}> </IconButton>
+      <IconButton text="Next" icon={<ArrowForwardIcon></ArrowForwardIcon>} isHidden={!this.state.hasnext} onClick={() => this.nextPage()}> </IconButton>
 
       </Layout>
 
@@ -137,7 +129,7 @@ class AperturePage extends Component {
 export default AperturePage
 
 export async function getServerSideProps () {
-  var itemsPerPage = 12
+  var itemsPerPage = 4
   var apertureResponse = await getAllApertures(' ', itemsPerPage)
   var apertures = apertureResponse.edges
   var cursor = apertureResponse.pageInfo.endCursor

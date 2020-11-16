@@ -19,7 +19,7 @@ export default function Deck ({ cards, type }) {
     var avataralt = ''
     var category = ''
     var profileId = ''
-    if (type === 'blog') {
+    if (type === 'blogs') {
       image = post.featured_image.thumbnail.url
       imagealt = post.featured_image.thumbnail.alt
       date = post.date

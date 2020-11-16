@@ -49,7 +49,12 @@ export const queryAllPostsByAuthor = ({ authorId, limitation, lastPostCursor }) 
                 }
               }
               category {
-                _linkType
+                ... on Category{
+                  name
+                  _meta {
+                    id
+                  }
+                }
               }
               _meta{
                 uid

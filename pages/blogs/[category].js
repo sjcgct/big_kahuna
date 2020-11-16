@@ -129,7 +129,7 @@ class BlogPage extends Component {
         {this.state.blogs && (
           <Deck
             cards={this.state.blogs}
-            type='blog'
+            type='blogs'
           />
         )}
 

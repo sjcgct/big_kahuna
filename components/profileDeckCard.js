@@ -3,13 +3,20 @@ import Link from 'next/link'
 
 export default function ProfilePostCard ({ title, about, imgurl, imgalt, id, sub_head }) {
   var redirect = {
-    pathname: '/profile/[slug]',
+    pathname: `/blogs/${category}/[slug]`,
     state: { slug: id }
+  }
+  var category_map = {
+    Celluloid: 'celluloid',
+    SciTech: 'scitech',
+    AlumSpace: 'alumspace',
+    'Open Page': 'openpage',
+    'Tete-a-Tete with Interns': 'tete-a-tete'
   }
   return (
     <div className='profile-post-card-container mx-auto'>
       <div className='profile-post-card'>
-        <Link as={`/profile/${id}`} href={redirect}>
+        <Link href={`/blogs/${category_map[category]}/${id}`}>
           <a className='card-link'>
             <article className='profile-blog-card'>
               <img className='profile-post-image' src={imgurl} alt={imgalt} />

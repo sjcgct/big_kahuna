@@ -6,6 +6,20 @@ export default function DeckCard ({ title, imgurl, imgalt, slugurl, profileUrl, 
     pathname: `/${type}/[slug]`,
     state: { slug: slugurl }
   }
+
+  var category_map = {
+    Celluloid: 'celluloid',
+    SciTech: 'scitech',
+    AlumSpace: 'alumspace',
+    'Open Page': 'openpage',
+    'Tete-a-Tete with Interns': 'tete-a-tete'
+  }
+
+  var redirect_blog = {
+    pathname: `/${type}/${category_map[postCategory]}/[slug]`,
+    state: { slug: slugurl }
+  }
+
   var parseDate = function (date) {
     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
     var year_month_date = date.split('-')
@@ -13,19 +27,11 @@ export default function DeckCard ({ title, imgurl, imgalt, slugurl, profileUrl, 
     return month + ' ' + year_month_date[2] + ',' + year_month_date[0]
   }
 
-  var category_map = {
-    Celluloid: '/celluloid',
-    SciTech: '/scitech',
-    AlumSpace: '/alumspace',
-    'Open Page': 'openpage',
-    'Tete-a-Tete with Interns': 'tete-a-tete'
-  }
-
-  if (type === 'blog') {
+  if (type === 'blogs') {
     return (
       <div className=' grid-card mb-4 col-md-6 col-lg-4'>
         <div className='grid-card-image-holder'>
-          <Link as={`/${type}/${slugurl}`} href={redirect}>
+          <Link as={`/${type}/${category_map[postCategory]}/${slugurl}`} href={redirect_blog}>
             <a><img className='grid-card-image' src={imgurl} alt={imgalt} /></a>
           </Link>
         </div>
@@ -36,14 +42,14 @@ export default function DeckCard ({ title, imgurl, imgalt, slugurl, profileUrl, 
             </Link>
           </div>
           <div className='grid-card-category-holder'>
-            <Link href={category_map[postCategory]}>
+            <a href={'/blogs/' + category_map[postCategory]}>
               <a><span className='grid-card-category'>{postCategory}</span></a>
-            </Link>
+            </a>
           </div>
         </div>
         <div className='grid-card-content-holder'>
           <h3 className='grid-card-title'>
-            <Link href={`/${type}/${slugurl}`} passHref>
+            <Link href={`/${type}/${category_map[postCategory]}/${slugurl}`} passHref>
               <a>{title}</a>
             </Link>
           </h3>
