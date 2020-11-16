@@ -3,9 +3,11 @@ import Footer from './Footer'
 import Header from './Header'
 const Layout = props => {
   return (
-    <div className='Layout'>
+    // eslint-disable-next-line react/react-in-jsx-scope
+    <div className='layout'>
+      <Header />
       <div className='container'>
-        <Header />
+
         <div>
           {props.children}
         </div>

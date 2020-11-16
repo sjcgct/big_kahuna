@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import NavBar from './navigation'
 const Header = () => (
-  <NavBar />
+  <div className='nav-bg'>
+    <NavBar />
+  </div>
 
 )
 export default Header

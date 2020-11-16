@@ -13,7 +13,7 @@ export default function Post ({ post, morePosts }) {
         <h1 className='blog-post-title text-center'>{RichText.asText(post.title)}</h1>        
         <div className='hog-container'>
           <div className='row hog-featured-img-holder'>
-            <img src={post.featured_image.url} className='hog-featured-img mb-5' />
+            <img src={post.featured_image.url} className='hog-featured-img mb-5' alt={post.featured_image.alt}/>
           </div>
           <div className='mb-3'>
             <p className='text-justify'>{RichText.render(post.story)}</p>

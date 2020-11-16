@@ -28,7 +28,7 @@ export default function Post ({ post, postsYouMayLike }) {
         return RichText.render(slice.primary.paragraph)
       }
       if (slice.type === 'image') {
-        return <img src={slice.primary.image.url} />
+        return <img src={slice.primary.image.url} alt={slice.primary.image.alt} />
       }
     })
   }
@@ -40,7 +40,7 @@ export default function Post ({ post, postsYouMayLike }) {
         <div className='blog-post-author-reveal align-items-center ml-3'>
           <Link href={`/profile/${post.author._meta.id}`} passHref>
             <a className='profile-thumb-link'>
-              <img className='blogpost-author-thumb' src={post.author.picture.url} />
+              <img className='blogpost-author-thumb' src={post.author.picture.url} alt={post.author.picture.alt} />
               <span className='blogpost-author-name'>{post.author.name}</span>
               <span className='text-muted blog-post-date'>{parseDate(post.date)}</span>
             </a>
@@ -52,7 +52,7 @@ export default function Post ({ post, postsYouMayLike }) {
         </div>
 
         <div className='sm-12 featured-img-holder'>
-          <img src={post.featured_image.hero.url} className='card-img featured-img' width='1200' height='600' />
+          <img src={post.featured_image.hero.url} className='card-img featured-img' width='1200' height='600' alt = {post.featured_image.hero.alt}/>
         </div>
 
         <div className='blog-container'>
@@ -61,7 +61,7 @@ export default function Post ({ post, postsYouMayLike }) {
       </section>
       <section>
         <h2 className='text-center'>About the Author</h2>
-        <ProfileDeckCard title={post.author.name} about={post.author.about} imgurl={post.author.picture.url} id={post.author._meta.id} sub_head='Author' />
+        <ProfileDeckCard title={post.author.name} about={post.author.about} imgurl={post.author.picture.url} imgalt={post.author.picture.alt} id={post.author._meta.id} sub_head='Author' />
       </section>
 
       <h2>Posts You May Like</h2>

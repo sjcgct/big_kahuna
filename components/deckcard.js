@@ -1,12 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
 
-export default function DeckCard ({ title, imgurl, slugurl, profileUrl, profileImgUrl, postDate, postCategory, type }) {
+export default function DeckCard ({ title, imgurl, imgalt, slugurl, profileUrl, profileImgUrl, profilealt, postDate, postCategory, type }) {
   var redirect = {
     pathname: `/${type}/[slug]`,
     state: { slug: slugurl }
   }
-
   var parseDate = function (date) {
     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
     var year_month_date = date.split('-')
@@ -27,13 +26,13 @@ export default function DeckCard ({ title, imgurl, slugurl, profileUrl, profileI
       <div className=' grid-card mb-4 col-md-6 col-lg-4'>
         <div className='grid-card-image-holder'>
           <Link as={`/${type}/${slugurl}`} href={redirect}>
-            <a><img className='grid-card-image' src={imgurl} /></a>
+            <a><img className='grid-card-image' src={imgurl} alt={imgalt} /></a>
           </Link>
         </div>
         <div className='grid-card-author-holder'>
           <div className='grid-card-avatar-holder'>
             <Link href={`/profile/${profileUrl}`} passHref>
-              <a><img className='grid-card-avatar-image' src={profileImgUrl} /></a>
+              <a><img className='grid-card-avatar-image' src={profileImgUrl} alt={profilealt} /></a>
             </Link>
           </div>
           <div className='grid-card-category-holder'>
@@ -59,7 +58,7 @@ export default function DeckCard ({ title, imgurl, slugurl, profileUrl, profileI
       <div className=' grid-card mb-4 col-md-6 col-lg-4'>
         <div className='grid-card-image-holder'>
           <Link as={`/${type}/${slugurl}`} href={redirect}>
-            <a><img className='grid-card-image' src={imgurl} /></a>
+            <a><img className='grid-card-image' src={imgurl} alt={imgalt} /></a>
           </Link>
         </div>
         <div className='grid-card-content-holder'>

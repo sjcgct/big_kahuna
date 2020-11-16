@@ -98,7 +98,7 @@ class AuthorBlogPage extends Component {
       return (
         <Layout>
 
-          <ProfileBanner name={this.state.name} imgurl={this.state.imgurl} about={this.state.about} />
+          <ProfileBanner name={this.state.name} imgurl={this.state.imgurl} imgalt={this.state.imgalt} about={this.state.about} />
 
           <Loading
             color='firebrick'
@@ -111,7 +111,7 @@ class AuthorBlogPage extends Component {
     return (
       <Layout>
 
-        <ProfileBanner name={this.state.name} imgurl={this.state.imgurl} about={this.state.about} />
+        <ProfileBanner name={this.state.name} imgurl={this.state.imgurl} imgalt={this.state.imgalt} about={this.state.about} />
 
         {this.state.blogs && (
           <ProfileDeck
@@ -147,7 +147,8 @@ export async function getServerSideProps ({ params, previewData }) {
   var name = blogs[0].node.author.name
   var about = blogs[0].node.author.about
   var imgurl = blogs[0].node.author.picture.url
+  var imgalt = blogs[0].node.author.picture.alt
   return {
-    props: { blogs, cursor, totalCount, hasnext, itemsPerPage, id, name, about, imgurl }
+    props: { blogs, cursor, totalCount, hasnext, itemsPerPage, id, name, about, imgurl, imgalt }
   }
 }
