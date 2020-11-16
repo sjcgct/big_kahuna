@@ -7,7 +7,9 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
 import Loading from 'react-simple-loading'
 import Head from 'next/head'
-import ApertureCard from '../components/AperturePage/aperturecard'
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack'
+import IconButton from '../components/IconButton'
 
 const apolloClient = new ApolloClient({
   link: PrismicLink({
@@ -146,15 +148,8 @@ class PodcostPage extends Component {
           </div>
         </div>
 
-        <button hidden={this.state.activePage === 0} onClick={() => this.prevPage()}>
-         Previous
-        </button>
-
-        <p> </p>
-
-        <button hidden={!this.state.hasnext} onClick={() => this.nextPage()}>
-          Next
-        </button>
+      <IconButton text="Previous" icon={<ArrowBackIcon></ArrowBackIcon>} isHidden={this.state.activePage === 0} onClick={() => this.prevPage()}> </IconButton>
+      <IconButton text="Next" icon={<ArrowForwardIcon></ArrowForwardIcon>} isHidden={!this.state.hasnext} onClick={() => this.nextPage()}> </IconButton>
 
       </Layout>
 

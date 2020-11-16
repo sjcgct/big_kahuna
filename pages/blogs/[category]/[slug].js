@@ -1,12 +1,12 @@
 import React from 'react'
 import { RichText, Elements } from 'prismic-reactjs'
-import { getBlogsWithSlug, getBlogsWithSameCategory } from '../../prismic-configuration'
-import Layout from '../../components/Layout'
-import Deck from '../../components/deck'
-import ProfileDeckCard from '../../components/profileDeckCard'
+import { getBlogsWithSlug, getBlogsWithSameCategory } from '../../../prismic-configuration'
+import Layout from '../../../components/Layout'
+import Deck from '../../../components/deck'
+import ProfileDeckCard from '../../../components/profileDeckCard'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
-import SharePanel from '../../components/sharePanel'
+import SharePanel from '../../../components/sharePanel'
 
 export default function Post ({ post, postsYouMayLike }) {
   var parseDate = function (date) {
@@ -68,7 +68,7 @@ export default function Post ({ post, postsYouMayLike }) {
       {postsYouMayLike && (
         <Deck
           cards={postsYouMayLike}
-          type='blog'
+          type='blogs'
         />
       )}
     </Layout>

@@ -16,7 +16,7 @@ export default function BlogHome ({ preview, allBlogs, allHogs }) {
       {morePosts && (
         <Deck
           cards={morePosts}
-          type='blog'
+          type='blogs'
         />
       )}
 

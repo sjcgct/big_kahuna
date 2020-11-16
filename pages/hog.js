@@ -6,10 +6,11 @@ import { PrismicLink } from 'apollo-link-prismic'
 import ApolloClient from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
-import LoadingOverlay from 'react-loading-overlay'
 import Deck from '../components/deck'
-import Loading from 'react-simple-loading'
 import LoaderDeck from '../components/loaders/loaderDeck'
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack'
+import IconButton from '../components/IconButton'
 
 const apolloClient = new ApolloClient({
   link: PrismicLink({
@@ -142,13 +143,8 @@ class HogPage extends Component {
           type='hog'
         />
 
-        <button hidden={this.state.activePage === 0} onClick={() => this.prevPage()}>
-          Previous
-        </button>
-
-        <button hidden={!this.state.hasnext} onClick={() => this.nextPage()}>
-            Next
-        </button>
+      <IconButton text="Previous" icon={<ArrowBackIcon></ArrowBackIcon>} isHidden={this.state.activePage === 0} onClick={() => this.prevPage()}> </IconButton>
+      <IconButton text="Next" icon={<ArrowForwardIcon></ArrowForwardIcon>} isHidden={!this.state.hasnext} onClick={() => this.nextPage()}> </IconButton>
 
       </Layout>
 
