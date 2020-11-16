@@ -44,7 +44,7 @@ export default function Deck ({ cards, type }) {
       postDate={date}
       postCategory={category}
       type={type}
-    />
+                   />
   }
 
   return (
