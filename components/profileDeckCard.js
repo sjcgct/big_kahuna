@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-export default function ProfilePostCard ({ title, about, imgurl, imgalt, id, sub_head }) {
+export default function ProfilePostCard ({ title, about, imgurl, imgalt, id, sub_head, category }) {
   var redirect = {
     pathname: `/blogs/${category}/[slug]`,
     state: { slug: id }
