@@ -7,6 +7,7 @@ a {
 a:hover {
   text-decoration: none;
 }
+
 /*Navigation Bar*/
 .navbar-toggler:focus {
   outline: none;
@@ -17,9 +18,7 @@ a:hover {
                                                             /*Common Components */
 
 /*Layout*/
-.layout {
-  background-color: #FAEFEE;
-}
+
 
 /*Grid Card*/
 .grid-card {
@@ -32,6 +31,7 @@ a:hover {
   position: relative;
   background-color: #edeef1de;
   overflow: hidden;
+  border-radius: 8px;
 }
 
 .grid-card-image-holder .grid-card-image{
@@ -141,29 +141,31 @@ a:hover {
 
 /*Loader*/
 
-@media screen and (min-width: 1240px){
+@media screen and (min-width: 1200px){
   .loading-image-holder {
-    width: 380px;
-    height: 253px;
+    width: 362px;
+    height: 241px;
     max-width: 380px;
+    border-radius: 8px;
   }
   .loading-card-content-holder-1 {
-    width: 380px;
-    max-width: 380px;
+    width: 362px;
+    max-width: 362px;
     height: 18px;
   }
   .loading-card-content-holder-2 {
-    width: 190px;
-    max-width: 190px;
+    width: 180px;
+    max-width: 180px;
     height: 18px;
   }
 }
 
-@media screen and (min-width: 992px) and (max-width: 1240px){
+@media screen and (min-width: 992px) and (max-width: 1200px){
   .loading-image-holder {
     width: 300px;
     height: 200px;
     max-width: 300px;
+    border-radius: 8px;
   }
   .loading-card-content-holder-1 {
     width: 300px;
@@ -182,6 +184,7 @@ a:hover {
     width: 330px;
     height: 220px;
     max-width: 330px;
+    border-radius: 8px;
   }
   .loading-card-content-holder-1 {
     width: 330px;
@@ -200,6 +203,7 @@ a:hover {
     width: 510px;
     height: 340px;
     max-width: 510px;
+    border-radius: 8px;
   }
   .loading-card-content-holder-1 {
     width: 505px;
@@ -218,6 +222,7 @@ a:hover {
     width: 384px;
     height: 256px;
     max-width: 384px;
+    border-radius: 8px;
   }
   .loading-card-content-holder-1 {
     width: 379px;
@@ -236,6 +241,7 @@ a:hover {
     width: 330px;
     height: 220px;
     max-width: 330px;
+    border-radius: 8px;
   }
   .loading-card-content-holder-1 {
     width: 325px;
@@ -254,6 +260,7 @@ a:hover {
     width: 290px;
     height: 193.33px;
     max-width: 290px;
+    border-radius: 8px;
   }
   .loading-card-content-holder-1 {
     width: 285px;
@@ -272,6 +279,7 @@ a:hover {
     width: 210px;
     height: 150px;
     max-width: 210px;
+    border-radius: 8px;
   }
   .loading-card-content-holder-1 {
     width: 205px;
@@ -291,7 +299,7 @@ a:hover {
   flex-basis: 60px;
   width: 60px;
   height: 60px;
-  margin-top:-20px;
+  margin-top:-25px;
   margin-left: 12.5px;
   margin-right: 12.5px;
   text-align: center;
@@ -328,7 +336,7 @@ a:hover {
   align-items: flex-end;
   position: relative;
   z-index: 10;
-  margin-top: -25px;
+  margin-top: -20px;
 }
 
 /*Footer section begins*/
@@ -378,7 +386,6 @@ footer small{
 /*Homepage*/
 .home-blog-section, .home-hog-section {
   background-color: #fff;
-  padding: 0rem 1.5rem 0rem 1.5rem;
   border-style: solid;
   border-radius: 0.25rem;
   border-width: 5px 0 0 0;
