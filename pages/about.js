@@ -6,7 +6,7 @@ class About extends Component {
   render () {
     return (
       <Layout>
-          ji
+          ji broooo
       </Layout>
 
     )
