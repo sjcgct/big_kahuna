@@ -37,8 +37,8 @@ export default function BlogHome ({ preview, allBlogs, allHogs }) {
 }
 
 export async function getStaticProps ({ preview = false, previewData }) {
-  const blogs = await getAllBlogsForHome(' ', 6)
-  const hogs = await getAllHogsForHome(' ', 6)
+  const blogs = await getAllBlogsForHome(' ', 8)
+  const hogs = await getAllHogsForHome(' ', 8)
   var allBlogs = blogs.edges
   var allHogs = hogs.edges
   return {

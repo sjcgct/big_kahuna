@@ -7,7 +7,6 @@ import ApolloClient from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
 import Deck from '../components/deck'
-import LoaderDeck from '../components/loaders/loaderDeck'
 import IconButton from '../components/IconButton'
 
 const apolloClient = new ApolloClient({
@@ -121,16 +120,7 @@ class HogPage extends Component {
   }
 
   render () {
-    if (this.state.loading) {
-      return (
-        <Layout>
-          <LoaderDeck type='hog' />
-        </Layout>
-      )
-    }
-
     return (
-
       <Layout>
         <Head>
           <title>Student Council - GCT</title>
@@ -141,8 +131,8 @@ class HogPage extends Component {
           type='hog'
         />
 
-      <IconButton text="Previous" next={false} isHidden={this.state.activePage === 0} onClick={() => this.prevPage()}> </IconButton>
-      <IconButton text="Next" next={true}  isHidden={!this.state.hasnext} onClick={() => this.nextPage()}> </IconButton>
+        <IconButton text='Previous' next={false} isHidden={this.state.activePage === 0} onClick={() => this.prevPage()}> </IconButton>
+        <IconButton text='Next' next isHidden={!this.state.hasnext} onClick={() => this.nextPage()}> </IconButton>
 
       </Layout>
 

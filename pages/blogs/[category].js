@@ -10,7 +10,6 @@ import { PrismicLink } from 'apollo-link-prismic'
 import ApolloClient from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
-import LoaderDeck from '../../components/loaders/loaderDeck'
 import IconButton from '../../components/IconButton'
 
 
@@ -54,7 +53,7 @@ class BlogPage extends Component {
 
   async loadPage (page) {
     var cursor = this.state.cursor
-    var limit = 9
+    var limit = 12
      
     var blogs = ''
     var curs = ''
@@ -140,13 +139,13 @@ export async function getStaticProps ({ params }) {
   var posts;
   if(category==='recent'){
     var categoryId='recent'
-    posts = await getAllBlogsForHome(' ', 9)
+    posts = await getAllBlogsForHome(' ', 12)
   }
   else {
     var categories = await getCategoryIdByName(name_map[category])
     var post = categories[0].node
     categoryId = post._meta.id
-    posts = await getBlogsWithSameCategory(categoryId, 6, '')
+    posts = await getBlogsWithSameCategory(categoryId, 12, '')
   }
   var blogs = posts.edges
   var cursor = posts.pageInfo.endCursor
