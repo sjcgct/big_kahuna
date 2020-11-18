@@ -5,6 +5,7 @@ import { queryHOGwithSlug, queryAllHOGs } from './hog-api'
 import { queryAllPostsByAuthor } from './author-api'
 import { queryAllPodCasts } from './podcast-api'
 import { queryAllApertures } from './aperture-api'
+import { queryAllTeams , queryByYear } from './team-api'
 
 const REPOSITORY = process.env.PRISMIC_REPOSITORY_NAME
 const REF_API_URL = `https://${REPOSITORY}.prismic.io/api/v2`
@@ -107,4 +108,16 @@ export async function getAllApertures (cursor, limit) {
   const query = queryAllApertures({ cursor, limit })
   const data = await fetchAPI(query)
   return data.allAperturess
+}
+
+export async function getAllTeams () {
+  const query = queryAllTeams()
+  const data = await fetchAPI(query)
+  return data.allTeams
+}
+
+export async function getByYear (year) {
+  const query = queryByYear({year})
+  const data = await fetchAPI(query)
+  return data.allTeams
 }

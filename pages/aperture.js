@@ -7,8 +7,6 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
 import Head from 'next/head'
 import ApertureDeck from '../components/AperturePage/aperturedeck'
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
-import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import IconButton from '../components/IconButton'
 
 const apolloClient = new ApolloClient({
@@ -117,8 +115,8 @@ class AperturePage extends Component {
           />
         )}
 
-        <IconButton text='Previous' icon={<ArrowBackIcon />} isHidden={this.state.activePage === 0} onClick={() => this.prevPage()}> </IconButton>
-        <IconButton text='Next' icon={<ArrowForwardIcon />} isHidden={!this.state.hasnext} onClick={() => this.nextPage()}> </IconButton>
+      <IconButton text="Previous" next={false} isHidden={this.state.activePage === 0} onClick={() => this.prevPage()}> </IconButton>
+      <IconButton text="Next" next={true} isHidden={!this.state.hasnext} onClick={() => this.nextPage()}> </IconButton>
 
       </Layout>
 
