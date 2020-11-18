@@ -22,7 +22,8 @@ a:hover {
 
 /*Grid Card*/
 .grid-card {
-  border: none;
+  background-color: #F6F7F9;
+  border-radius: 0 0 4px 4px;
 }
 
 .grid-card-image-holder {
@@ -31,7 +32,7 @@ a:hover {
   position: relative;
   background-color: #edeef1de;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 8px 8px 0 0;
 }
 
 .grid-card-image-holder .grid-card-image{
@@ -53,6 +54,13 @@ a:hover {
   }
 }
 
+@media (hover: none){
+  .grid-card-image-holder .grid-card-image:active {
+    -webkit-transform: scale(1.08);
+    transform: scale(1.08);
+  }
+}
+
 .grid-card-author-holder {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -66,10 +74,10 @@ a:hover {
 }
 
 .grid-card-avatar-holder {
-  -webkit-flex-basis: 60px;
-  -ms-flex-preferred-size: 60px;
-  flex-basis: 60px;
-  max-width: 60px;
+  -webkit-flex-basis: 48px;
+  -ms-flex-preferred-size: 48px;
+  flex-basis: 48px;
+  max-width: 48px;
   margin-left: 12.5px;
   margin-right: 12.5px;
   text-align: center;
@@ -79,8 +87,8 @@ a:hover {
 }
 
 .grid-card-avatar-image {
-  width: 60px;
-  height: 60px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   opacity: 1;
 	-webkit-transition: opacity 0.35s;
@@ -91,6 +99,11 @@ a:hover {
 .grid-card-avatar-image:hover {
   opacity: 0.8;
  }
+}
+@media (hover: none) {
+  .grid-card-avatar-image:active {
+    opacity: 0.8;
+   }
 }
 
 .grid-card-category-holder {
@@ -108,35 +121,50 @@ a:hover {
   color: #ff9999;
  }
 }
+@media (hover: none) {
+  .grid-card-category-holder a:active {
+    color: #ff9999;
+   }
+}
 
 .grid-card-category {
-  font-size: 1.15rem;
+  font-size: 14px;
 }
 
 .grid-card-content-holder {
   padding: 5px 10px;
+  border-radius: 0 0 4px 4px;
+}
+
+.grid-card-title {
+  line-height: 24px;
+  font-size: 16px;
 }
 
 .grid-card-title a{
   font-weight: 500;
   padding-bottom: 5px;
-  font-size: 1.6rem;
   color: #333;
   letter-spacing: -.05em;
-  line-height: 1;
   -webkit-transition: 0.35s;
   transition: 0.35s;
 }
 
 @media (hover: hover) and (pointer: fine) {
 .grid-card-title a:hover{
-  color: #777;
+  color: #FF9999;
  }
+}
+@media (hover: none) {
+  .grid-card-title a:active{
+    color: #FF9999;
+   }
 }
 
 
 .grid-card-date {
   color: #7b8994;
+  font-size: 12px;
 }
 
 /*Loader*/
@@ -294,11 +322,11 @@ a:hover {
 }
 
 .loading-card-avatar-holder {
-  -webkit-flex-basis: 60px;
-  -ms-flex-preferred-size: 60px;
-  flex-basis: 60px;
-  width: 60px;
-  height: 60px;
+  -webkit-flex-basis: 48px;
+  -ms-flex-preferred-size: 48px;
+  flex-basis: 48px;
+  width: 48px;
+  height: 48px;
   margin-top:-25px;
   margin-left: 12.5px;
   margin-right: 12.5px;

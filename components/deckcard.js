@@ -29,53 +29,57 @@ export default function DeckCard ({ title, imgurl, imgalt, slugurl, profileUrl, 
 
   if (type === 'blogs') {
     return (
-      <div className=' grid-card mb-4 col-md-6 col-lg-4'>
-        <div className='grid-card-image-holder'>
-          <Link as={`/${type}/${category_map[postCategory]}/${slugurl}`} href={redirect_blog}>
-            <a><img className='grid-card-image' src={imgurl} alt={imgalt} /></a>
-          </Link>
-        </div>
-        <div className='grid-card-author-holder'>
-          <div className='grid-card-avatar-holder'>
-            <Link href={`/profile/${profileUrl}`} passHref>
-              <a><img className='grid-card-avatar-image' src={profileImgUrl} alt={profilealt} /></a>
+      <div className='mb-4 col-md-6 col-lg-3'>
+        <div className='grid-card'>
+          <div className='grid-card-image-holder'>
+            <Link as={`/${type}/${category_map[postCategory]}/${slugurl}`} href={redirect_blog}>
+              <a><img className='grid-card-image' src={imgurl} alt={imgalt} /></a>
             </Link>
           </div>
-          <div className='grid-card-category-holder'>
-            <a href={'/blogs/' + category_map[postCategory]}>
-              <a><span className='grid-card-category'>{postCategory}</span></a>
-            </a>
+          <div className='grid-card-author-holder'>
+            <div className='grid-card-avatar-holder'>
+              <Link href={`/profile/${profileUrl}`} passHref>
+                <a><img className='grid-card-avatar-image' src={profileImgUrl} alt={profilealt} /></a>
+              </Link>
+            </div>
+            <div className='grid-card-category-holder'>
+              <a href={'/blogs/' + category_map[postCategory]}>
+                <a><span className='grid-card-category'>{postCategory}</span></a>
+              </a>
+            </div>
           </div>
-        </div>
-        <div className='grid-card-content-holder'>
-          <h3 className='grid-card-title'>
-            <Link href={`/${type}/${category_map[postCategory]}/${slugurl}`} passHref>
-              <a>{title}</a>
-            </Link>
-          </h3>
-          <span className='grid-card-date'>
-            {parseDate(postDate)}
-          </span>
+          <div className='grid-card-content-holder'>
+            <h3 className='grid-card-title'>
+              <Link href={`/${type}/${category_map[postCategory]}/${slugurl}`} passHref>
+                <a>{title}</a>
+              </Link>
+            </h3>
+            <span className='grid-card-date'>
+              {parseDate(postDate)}
+            </span>
+          </div>
         </div>
       </div>
     )
   } else if (type === 'hog') {
     return (
-      <div className=' grid-card mb-4 col-md-6 col-lg-4'>
-        <div className='grid-card-image-holder'>
-          <Link as={`/${type}/${slugurl}`} href={redirect}>
-            <a><img className='grid-card-image' src={imgurl} alt={imgalt} /></a>
-          </Link>
-        </div>
-        <div className='grid-card-content-holder'>
-          <h3 className='grid-card-title'>
+      <div className='mb-4 col-md-6 col-lg-3'>
+        <div className='grid-card'>
+          <div className='grid-card-image-holder'>
             <Link as={`/${type}/${slugurl}`} href={redirect}>
-              <a>{title}</a>
+              <a><img className='grid-card-image' src={imgurl} alt={imgalt} /></a>
             </Link>
-          </h3>
-          <span className='grid-card-date'>
-            {parseDate(postDate)}
-          </span>
+          </div>
+          <div className='grid-card-content-holder'>
+            <h3 className='grid-card-title'>
+              <Link as={`/${type}/${slugurl}`} href={redirect}>
+                <a>{title}</a>
+              </Link>
+            </h3>
+            <span className='grid-card-date'>
+              {parseDate(postDate)}
+            </span>
+          </div>
         </div>
       </div>
     )

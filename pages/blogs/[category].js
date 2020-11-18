@@ -115,14 +115,6 @@ class BlogPage extends Component {
   }
 
   render () {
-    if (this.state.loading) {
-      return (
-        <Layout>
-          <CategoryNavBar category={this.state.categoryName}/>
-          <LoaderDeck />
-        </Layout>
-      )
-    }
     return (
       <Layout>
         <CategoryNavBar category={this.state.categoryName}/>
