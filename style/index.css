@@ -8,7 +8,11 @@ a:hover {
   text-decoration: none;
 }
 /*Navigation Bar*/
-
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
 
                                                             /*Common Components */
 
@@ -16,6 +20,7 @@ a:hover {
 .layout {
   background-color: #FAEFEE;
 }
+
 /*Grid Card*/
 .grid-card {
   border: none;
@@ -370,7 +375,21 @@ footer small{
 
 /*Footer section ends*/
 
-
+/*Homepage*/
+.home-blog-section, .home-hog-section {
+  background-color: #fff;
+  padding: 0rem 1.5rem 0rem 1.5rem;
+  border-style: solid;
+  border-radius: 0.25rem;
+  border-width: 5px 0 0 0;
+  border-top-color: #FF9999;
+}
+.home-blog-section {
+  margin-top: 3rem;
+}
+.home-hog-section {
+  margin-top: 1.5rem;
+}
 /*Humans of GCT Page begins*/
 .poster{
   transform: rotate(0.5deg);

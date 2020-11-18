@@ -12,25 +12,26 @@ export default function BlogHome ({ preview, allBlogs, allHogs }) {
         <title>Student Journalist Gouncil - GCT</title>
       </Head>
 
-      <h2>Blog</h2>
-      {morePosts && (
-        <Deck
-          cards={morePosts}
-          type='blogs'
-        />
-      )}
+      <div className='home-blog-section'>
+        <h2>Blog</h2>
+        {morePosts && (
+          <Deck
+            cards={morePosts}
+            type='blogs'
+          />
+        )}
+      </div>
 
-      <br />
-      <br />
+      <section className='home-hog-section'>
+        <h2>Humans of GCT</h2>
 
-      <h2>Humans of GCT</h2>
-
-      {allHogs && (
-        <Deck
-          cards={allHogs}
-          type='hog'
-        />
-      )}
+        {allHogs && (
+          <Deck
+            cards={allHogs}
+            type='hog'
+          />
+        )}
+      </section>
     </Layout>
   )
 }
