@@ -116,7 +116,7 @@ export async function getAllTeams () {
   return data.allTeams
 }
 
-export async function getAllTeams (year) {
+export async function getByYear (year) {
   const query = queryByYear({year})
   const data = await fetchAPI(query)
   return data.allTeams

@@ -7,8 +7,6 @@ import ApolloClient from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
 import Loading from 'react-simple-loading'
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import IconButton from '../components/IconButton'
 
 const apolloClient = new ApolloClient({
