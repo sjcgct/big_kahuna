@@ -7,8 +7,8 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
 import Head from 'next/head'
 import ApertureDeck from '../components/AperturePage/aperturedeck'
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import IconButton from '../components/IconButton'
 
 const apolloClient = new ApolloClient({
@@ -117,8 +117,8 @@ class AperturePage extends Component {
           />
         )}
 
-      <IconButton text="Previous" icon={<ArrowBackIcon></ArrowBackIcon>} isHidden={this.state.activePage === 0} onClick={() => this.prevPage()}> </IconButton>
-      <IconButton text="Next" icon={<ArrowForwardIcon></ArrowForwardIcon>} isHidden={!this.state.hasnext} onClick={() => this.nextPage()}> </IconButton>
+        <IconButton text='Previous' icon={<ArrowBackIcon />} isHidden={this.state.activePage === 0} onClick={() => this.prevPage()}> </IconButton>
+        <IconButton text='Next' icon={<ArrowForwardIcon />} isHidden={!this.state.hasnext} onClick={() => this.nextPage()}> </IconButton>
 
       </Layout>
 
@@ -128,7 +128,7 @@ class AperturePage extends Component {
 
 export default AperturePage
 
-export async function getServerSideProps () {
+export async function getStaticProps () {
   var itemsPerPage = 4
   var apertureResponse = await getAllApertures(' ', itemsPerPage)
   var apertures = apertureResponse.edges
@@ -136,6 +136,7 @@ export async function getServerSideProps () {
   var hasnext = apertureResponse.pageInfo.hasNextPage
   var totalCount = apertureResponse.totalCount
   return {
-    props: { apertures, cursor, totalCount, hasnext, itemsPerPage }
+    props: { apertures, cursor, totalCount, hasnext, itemsPerPage },
+    revalidate: 1
   }
 }
