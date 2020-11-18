@@ -13,7 +13,7 @@ class NavBar extends Component {
         <Navbar className='navbar' expand='lg'>
           <Navbar.Brand href='/'>
             <a href='/'>
-              <img src='https://raw.githubusercontent.com/sjcgct/sjc_gct_web/master/sjc_logo_black.png' style={{ width: 50, marginTop: -7, marginLeft: -5 }} />
+              <img src='/public/search.svg' style={{ width: 50, marginTop: -7, marginLeft: -5 }} />
             </a>
           </Navbar.Brand>
 
