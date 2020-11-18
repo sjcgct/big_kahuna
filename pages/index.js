@@ -36,12 +36,13 @@ export default function BlogHome ({ preview, allBlogs, allHogs }) {
   )
 }
 
-export async function getServerSideProps ({ preview = false, previewData }) {
+export async function getStaticProps ({ preview = false, previewData }) {
   const blogs = await getAllBlogsForHome(' ', 6)
   const hogs = await getAllHogsForHome(' ', 6)
   var allBlogs = blogs.edges
   var allHogs = hogs.edges
   return {
-    props: { preview, allBlogs, allHogs }
+    props: { preview, allBlogs, allHogs },
+    revalidate: 1
   }
 }
