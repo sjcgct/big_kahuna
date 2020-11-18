@@ -75,7 +75,7 @@ export default function Post ({ post, postsYouMayLike }) {
   )
 }
 
-export async function getServerSideProps ({ params, previewData }) {
+export async function getStaticProps ({ params, previewData }) {
   var slugurl = params.slug
   const fetchedpost = await getBlogsWithSlug(slugurl)
   const post = fetchedpost[0].node
@@ -83,6 +83,7 @@ export async function getServerSideProps ({ params, previewData }) {
   var postsYouMayLike = await getBlogsWithSameCategory(categoryId, 3)
   postsYouMayLike = postsYouMayLike.edges
   return {
-    props: { post, postsYouMayLike }
+    props: { post, postsYouMayLike },
+    revalidate: 1
   }
 }
