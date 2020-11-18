@@ -11,8 +11,6 @@ import ApolloClient from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
 import LoaderDeck from '../../components/loaders/loaderDeck'
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import IconButton from '../../components/IconButton'
 
 
@@ -133,8 +131,8 @@ class BlogPage extends Component {
           />
         )}
 
-      <IconButton text="Previous" icon={<ArrowBackIcon></ArrowBackIcon>} isHidden={this.state.activePage === 0} onClick={() => this.prevPage()}> </IconButton>
-      <IconButton text="Next" icon={<ArrowForwardIcon></ArrowForwardIcon>} isHidden={!this.state.hasnext} onClick={() => this.nextPage()}> </IconButton>
+      <IconButton text="Previous" next={false} isHidden={this.state.activePage === 0} onClick={() => this.prevPage()}> </IconButton>
+      <IconButton text="Next" next={true} isHidden={!this.state.hasnext} onClick={() => this.nextPage()}> </IconButton>
 
       </Layout>
 
