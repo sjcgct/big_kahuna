@@ -80,7 +80,7 @@ export async function getServerSideProps ({ params, previewData }) {
   const fetchedpost = await getBlogsWithSlug(slugurl)
   const post = fetchedpost[0].node
   const categoryId = post.category._meta.id
-  var postsYouMayLike = await getBlogsWithSameCategory(categoryId, 3)
+  var postsYouMayLike = await getBlogsWithSameCategory(categoryId, 4)
   postsYouMayLike = postsYouMayLike.edges
   return {
     props: { post, postsYouMayLike }
