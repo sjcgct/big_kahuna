@@ -24,29 +24,29 @@ class NavBar extends Component {
             <Nav className='mr-auto'>
 
               <Link href='/' passHref>
-                <Nav.Link>Home</Nav.Link>
+                <Nav.Link aria_label='Home'>Home</Nav.Link>
               </Link>
 
               <Link href='/blogs/[category]' as='/blogs/recent' passHref>
-                <Nav.Link>Blogs</Nav.Link>
+                <Nav.Link aria_label='Blog'>Blog</Nav.Link>
               </Link>
 
               <Link href='/hog' passHref>
-                <Nav.Link>Humans of GCT</Nav.Link>
+                <Nav.Link aria_label='Humans of GCT'>Humans of GCT</Nav.Link>
               </Link>
 
               <Link href='/aperture' passHref>
-                <Nav.Link>Aperture Newsletter</Nav.Link>
+                <Nav.Link aria_label='Aperture Newsletter'>Aperture Newsletter</Nav.Link>
               </Link>
 
               <Link href='/podcast' passHref>
-                <Nav.Link>Podcast</Nav.Link>
+                <Nav.Link aria_label='Podcast'>Podcast</Nav.Link>
               </Link>
 
-              <Nav.Link href='https://www.youtube.com/ApertureBroadcastingChannelGCT'>ABC Channel</Nav.Link>
+              <Nav.Link href='https://www.youtube.com/ApertureBroadcastingChannelGCT' aria_label='ABC Channel'>ABC Channel</Nav.Link>
 
               <Link href='/about' passHref>
-                <Nav.Link>About</Nav.Link>
+                <Nav.Link aria_label='About'>About</Nav.Link>
               </Link>
 
             </Nav>

@@ -17,7 +17,7 @@ export default function ProfilePostCard ({ title, about, imgurl, imgalt, id, sub
     <div className='profile-post-card-container mx-auto'>
       <div className='profile-post-card'>
         <Link href={`/blogs/${category_map[category]}/${id}`}>
-          <a className='card-link'>
+          <a className='card-link' aria_label={title}>
             <article className='profile-blog-card'>
               <img className='profile-post-image' src={imgurl} alt={imgalt} />
               <div className='profile-article-details'>

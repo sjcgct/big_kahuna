@@ -25,19 +25,18 @@ class CategoryNavBar extends Component {
     return (
       <Navbar className='navbar' expand='lg'>
 
-
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
 
         <Navbar.Collapse id='basic-navbar-nav'>
 
           <Nav className='mx-auto'>
 
-            <a className={this.state.active_map.recent} href="/blogs/recent"> Recent </a>
-            <a className={this.state.active_map.openpage} href="/blogs/openpage"> Open Page </a>
-            <a className={this.state.active_map.celluloid} href="/blogs/celluloid"> Celluloid </a>
-            <a className={this.state.active_map.scitech} href="/blogs/scitech"> Scitech </a>
-            <a className={this.state.active_map.alumspace} href="/blogs/alumspace"> Alumspace </a>
-            <a className={this.state.active_map.tete} href="/blogs/tete"> Tete </a>
+            <a className={this.state.active_map.recent} href='/blogs/recent' aria_label='Recent'> Recent </a>
+            <a className={this.state.active_map.openpage} href='/blogs/openpage' aria_label='Open Page'> Open Page </a>
+            <a className={this.state.active_map.celluloid} href='/blogs/celluloid' aria_label='Celluloid'> Celluloid </a>
+            <a className={this.state.active_map.scitech} href='/blogs/scitech' aria_label='Scitech'> Scitech </a>
+            <a className={this.state.active_map.alumspace} href='/blogs/alumspace' aria_label='Alumspace'> Alumspace </a>
+            <a className={this.state.active_map.tete} href='/blogs/tete' aria_label='Tete'> Tete </a>
 
           </Nav>
         </Navbar.Collapse>

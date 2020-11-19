@@ -121,8 +121,8 @@ class PodcostPage extends Component {
 
       templateHTML[i] =
         <div className='col-sm-12 mt-1 mb-3'>
-        <iframe src={episode_link} height='110%' width='100%' frameborder='0' scrolling='no' />
-      </div>
+          <iframe src={episode_link} height='110%' width='100%' frameborder='0' scrolling='no' />
+        </div>
     }
 
     if (this.state.loading) {
@@ -168,7 +168,7 @@ class PodcostPage extends Component {
 
 export default PodcostPage
 
-export async function getServerSideProps () {
+export async function getStaticProps () {
   var itemsPerPage = 10
   var podsresponse = await getAllPodCasts(' ', itemsPerPage)
   var pods = podsresponse.edges
@@ -176,6 +176,7 @@ export async function getServerSideProps () {
   var hasnext = podsresponse.pageInfo.hasNextPage
   var totalCount = podsresponse.totalCount
   return {
-    props: { pods, cursor, totalCount, hasnext, itemsPerPage }
+    props: { pods, cursor, totalCount, hasnext, itemsPerPage },
+    revalidate: 1
   }
 }
