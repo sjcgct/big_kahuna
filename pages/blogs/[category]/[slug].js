@@ -3,10 +3,11 @@ import { RichText, Elements } from 'prismic-reactjs'
 import { getBlogsWithSlug, getBlogsWithSameCategory } from '../../../prismic-configuration'
 import Layout from '../../../components/Layout'
 import Deck from '../../../components/deck'
-import ProfileDeckCard from '../../../components/profileDeckCard'
+import ProfilePostCard from '../../../components/profileDeckCard'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import SharePanel from '../../../components/sharePanel'
+import Head from 'next/head'
 
 export default function Post ({ post, postsYouMayLike }) {
   var parseDate = function (date) {
@@ -35,6 +36,19 @@ export default function Post ({ post, postsYouMayLike }) {
 
   return (
     <Layout>
+      <Head>
+        <title>{RichText.asText(post.title) + ' | Student Journalist Council - GCT'}</title>
+        <meta charset='utf-8' />
+        <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
+        <meta
+          name='Keywords'
+          content={RichText.asText(post.title) + ' ' + post.author.name + ' Government College of Technology, GCT, Coimbatore, SJC, Student Journalist Council, Student Journalist Council-GCT, SJCGCT, Aperture, Humans of GCT, ABC Channel, GCT News, GCT Updates'}
+        />
+        <meta
+          name='Description'
+          content={RichText.asText(post.title) + ', an article written by ' + post.author.name + ', published by Student Journalist Council - GCT.'}
+        />
+      </Head>
       <section>
         <h1 className='blog-post-title'>{RichText.asText(post.title)}</h1>
         <div className='blog-post-author-reveal align-items-center ml-3'>
@@ -61,7 +75,7 @@ export default function Post ({ post, postsYouMayLike }) {
       </section>
       <section>
         <h2 className='text-center'>About the Author</h2>
-        <ProfileDeckCard title={post.author.name} about={post.author.about} imgurl={post.author.picture.url} imgalt={post.author.picture.alt} id={post.author._meta.id} sub_head='Author' />
+        <ProfilePostCard title={post.author.name} about={post.author.about} imgurl={post.author.picture.url} imgalt={post.author.picture.alt} id={post.author._meta.id} sub_head='Author' />
       </section>
 
       <h2>Posts You May Like</h2>

@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 
 export default function ProfileBanner ({ name, about, imgurl }) {
   return (

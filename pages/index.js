@@ -9,12 +9,12 @@ export default function BlogHome ({ preview, allBlogs, allHogs }) {
   return (
     <Layout>
       <Head>
-        <title>Student Journalist Gouncil - GCT</title>
+        <title>Student Journalist Gouncil - GCT | Student Media Body of GCT, Coimbatore</title>
         <meta charset='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
         <meta
           name='Keywords'
-          content='Government College of Technology, GCT, Coimbatore, SJC, Student Journalist Council, Student Journalist Council-GCT, SJCGCT, Aperture, Humans of GCT, ABC Channel, GCT News, GCT Updates'
+          content='Government College of Technology, GCT, Coimbatore, SJC, Student Journalist Council, Student Journalist Council - GCT, SJCGCT, Aperture, Humans of GCT, ABC Channel, GCT News, GCT Updates'
         />
         <meta
           name='Description'
