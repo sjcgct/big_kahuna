@@ -43,7 +43,7 @@ export default function ApertureCard ({ title, url, description }) {
   var src = fliphtmlLink.concat(url).concat(endShot)
   var data_href = fliphtmlLink.concat(url)
   const size = useWindowSize()
-  console.log(size.width)
+  //console.log(size.width)
 
   var screenClass = {}
 

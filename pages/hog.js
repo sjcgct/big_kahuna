@@ -33,7 +33,7 @@ class HogPage extends Component {
       loadedtill: 0,
       loading: false
     }
-    console.log(this.state.loadedtill)
+    // console.log(this.state.loadedtill)
   }
 
   async loadPage (page) {
@@ -61,7 +61,7 @@ class HogPage extends Component {
     apolloClient.query({
       query: this.getHog(cursor, limit)
     }).then(response => {
-      console.log('success')
+      // console.log('success')
       hogs = response.data.allHogs.edges
       curs = response.data.allHogs.pageInfo.endCursor
       hasnext = response.data.allHogs.pageInfo.hasNextPage
@@ -70,14 +70,14 @@ class HogPage extends Component {
       }
       this.setState({ hogs: hogs, cursor: curs, hasnext: hasnext, loading: false })
     }).catch(error => {
-      console.error('error')
+      // console.error('error')
       alert(error)
     })
 
     // alert(this.state.loadedtill+" max")
     for (var i = 0; i < this.state.loadedtill; i++) {
       // alert(this.state.page_arr[i])
-      console.log('hi')
+      // console.log('hi')
     }
   }
 

@@ -25,7 +25,7 @@ class AuthorBlogPage extends Component {
     super(props)
     var page_arr = []
     page_arr[0] = props.cursor
-    console.log(props.blogs);
+    // console.log(props.blogs);
     this.state = {
       activePage: 0,
       total: props.totalCount,
@@ -64,7 +64,7 @@ class AuthorBlogPage extends Component {
     apolloClient.query({
       query: this.getBlogsForAuthor(this.state.id, cursor, this.state.itemsPerPage)
     }).then(response => {
-      console.log('success')
+      // console.log('success')
       blogs = response.data.allBlogss.edges
       curs = response.data.allBlogss.pageInfo.endCursor
       hasnext = response.data.allBlogss.pageInfo.hasNextPage

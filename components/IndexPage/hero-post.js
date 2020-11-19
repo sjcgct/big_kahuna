@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { RichText } from 'prismic-reactjs'
 import Link from 'next/link'
 

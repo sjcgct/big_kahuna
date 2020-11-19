@@ -61,7 +61,7 @@ class PodcostPage extends Component {
     apolloClient.query({
       query: this.getAllPods(cursor, this.state.itemsPerPage)
     }).then(response => {
-      console.log('success')
+      // console.log('success')
       pods = response.data.allPodcasts.edges
       curs = response.data.allPodcasts.pageInfo.endCursor
       hasnext = response.data.allPodcasts.pageInfo.hasNextPage
@@ -70,7 +70,7 @@ class PodcostPage extends Component {
       }
       this.setState({ pods: pods, cursor: curs, hasnext: hasnext, loading: false })
     }).catch(error => {
-      console.error('error')
+      // console.error('error')
       alert(error)
     })
   }
@@ -108,7 +108,7 @@ class PodcostPage extends Component {
 
   iframeDidLoad () {
     this.setState({ isFrameLoading: false })
-    console.log('loaded if')
+    // console.log('loaded if')
   }
 
   render () {
