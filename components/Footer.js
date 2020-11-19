@@ -15,9 +15,9 @@ export default function Footer () {
         <SocialIcon link='https://www.youtube.com/ApertureBroadcastingChannelGCT' icon='youtube' />
       </ul>
       <p>
-        <a className='contact-link' aria_label='email us' href='mailto:sjcgct@gmail.com'>sjcgct@gmail.com</a>
+        <a className='contact-link' aria-label='email us' href='mailto:sjcgct@gmail.com'>sjcgct@gmail.com</a>
         <br />
-        <a className='contact-link' aria_label='Talk to us over phone' href='tel:918667312273'>+91 86673 12273</a>
+        <a className='contact-link' aria-label='Talk to us over phone' href='tel:918667312273'>+91 86673 12273</a>
         <br /><br />
                  Government College of Technology,
         <br />
@@ -25,7 +25,7 @@ export default function Footer () {
         <br />
                  Coimbatore - 13.
         <br />
-        <a className='contact-link' aria_label='Find us on Google Maps' target='blank' href='https://goo.gl/maps/h6gGpcoZDw92'>View on
+        <a className='contact-link' aria-label='Find us on Google Maps' target='blank' href='https://goo.gl/maps/h6gGpcoZDw92'>View on
                  map
         </a>
       </p>
@@ -42,7 +42,7 @@ class SocialIcon extends React.Component {
   render () {
     return (
       <li className='list-inline-item ml-3'>
-        <a href={this.props.link} aria_label={'Follow us on ' + this.props.icon}>
+        <a href={this.props.link} aria-label={'Follow us on ' + this.props.icon}>
           <FontAwesomeIcon icon={['fab', this.props.icon]} size='3x' className='social-icon' />
         </a>
       </li>

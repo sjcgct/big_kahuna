@@ -33,17 +33,17 @@ export default function DeckCard ({ title, imgurl, imgalt, slugurl, profileUrl, 
         <div className='grid-card'>
           <div className='grid-card-image-holder'>
             <Link as={`/${type}/${category_map[postCategory]}/${slugurl}`} href={redirect_blog}>
-              <a aria_label={title}><img className='grid-card-image' src={imgurl} alt={imgalt} /></a>
+              <a aria-label={title}><img className='grid-card-image' src={imgurl} alt={imgalt} /></a>
             </Link>
           </div>
           <div className='grid-card-author-holder'>
             <div className='grid-card-avatar-holder'>
               <Link href={`/profile/${profileUrl}`} passHref>
-                <a aria_label={profilealt}><img className='grid-card-avatar-image' src={profileImgUrl} alt={profilealt} /></a>
+                <a aria-label={profilealt}><img className='grid-card-avatar-image' src={profileImgUrl} alt={profilealt} /></a>
               </Link>
             </div>
             <div className='grid-card-category-holder'>
-              <a aria_label={postCategory} href={'/blogs/' + category_map[postCategory]}>
+              <a aria-label={postCategory} href={'/blogs/' + category_map[postCategory]}>
                 <span className='grid-card-category'>{postCategory}</span>
               </a>
             </div>
@@ -51,7 +51,7 @@ export default function DeckCard ({ title, imgurl, imgalt, slugurl, profileUrl, 
           <div className='grid-card-content-holder'>
             <h3 className='grid-card-title'>
               <Link href={`/${type}/${category_map[postCategory]}/${slugurl}`} passHref>
-                <a aria_label={title}>{title}</a>
+                <a aria-label={title}>{title}</a>
               </Link>
             </h3>
             <span className='grid-card-date'>
@@ -67,13 +67,13 @@ export default function DeckCard ({ title, imgurl, imgalt, slugurl, profileUrl, 
         <div className='grid-card'>
           <div className='grid-card-image-holder'>
             <Link as={`/${type}/${slugurl}`} href={redirect}>
-              <a aria_label={imgalt}><img className='grid-card-image' src={imgurl} alt={imgalt} /></a>
+              <a aria-label={imgalt}><img className='grid-card-image' src={imgurl} alt={imgalt} /></a>
             </Link>
           </div>
           <div className='grid-card-content-holder'>
             <h3 className='grid-card-title'>
               <Link as={`/${type}/${slugurl}`} href={redirect}>
-                <a aria_label={title}>{title}</a>
+                <a aria-label={title}>{title}</a>
               </Link>
             </h3>
             <span className='grid-card-date'>

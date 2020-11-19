@@ -39,7 +39,7 @@ export default function Post ({ post, postsYouMayLike }) {
         <h1 className='blog-post-title'>{RichText.asText(post.title)}</h1>
         <div className='blog-post-author-reveal align-items-center ml-3'>
           <Link href={`/profile/${post.author._meta.id}`} passHref>
-            <a className='profile-thumb-link'>
+            <a className='profile-thumb-link' aria-label={post.author.name}>
               <img className='blogpost-author-thumb' src={post.author.picture.url} alt={post.author.picture.alt} />
               <span className='blogpost-author-name'>{post.author.name}</span>
               <span className='text-muted blog-post-date'>{parseDate(post.date)}</span>

@@ -12,8 +12,8 @@ class NavBar extends Component {
       <div className='container'>
         <Navbar className='navbar' expand='lg'>
           <Navbar.Brand href='/'>
-            <a href='/'>
-              <img src='/public/search.svg' style={{ width: 50, marginTop: -7, marginLeft: -5 }} />
+            <a href='/' aria-label='logo'>
+              <img src='/search.svg' style={{ width: 50, marginTop: -7, marginLeft: -5 }} />
             </a>
           </Navbar.Brand>
 
@@ -24,29 +24,29 @@ class NavBar extends Component {
             <Nav className='mr-auto'>
 
               <Link href='/' passHref>
-                <Nav.Link aria_label='Home'>Home</Nav.Link>
+                <Nav.Link aria-label='Home'>Home</Nav.Link>
               </Link>
 
               <Link href='/blogs/[category]' as='/blogs/recent' passHref>
-                <Nav.Link aria_label='Blog'>Blog</Nav.Link>
+                <Nav.Link aria-label='Blog'>Blog</Nav.Link>
               </Link>
 
               <Link href='/hog' passHref>
-                <Nav.Link aria_label='Humans of GCT'>Humans of GCT</Nav.Link>
+                <Nav.Link aria-label='Humans of GCT'>Humans of GCT</Nav.Link>
               </Link>
 
               <Link href='/aperture' passHref>
-                <Nav.Link aria_label='Aperture Newsletter'>Aperture Newsletter</Nav.Link>
+                <Nav.Link aria-label='Aperture Newsletter'>Aperture Newsletter</Nav.Link>
               </Link>
 
               <Link href='/podcast' passHref>
-                <Nav.Link aria_label='Podcast'>Podcast</Nav.Link>
+                <Nav.Link aria-label='Podcast'>Podcast</Nav.Link>
               </Link>
 
-              <Nav.Link href='https://www.youtube.com/ApertureBroadcastingChannelGCT' aria_label='ABC Channel'>ABC Channel</Nav.Link>
+              <Nav.Link href='https://www.youtube.com/ApertureBroadcastingChannelGCT' aria-label='ABC Channel'>ABC Channel</Nav.Link>
 
               <Link href='/about' passHref>
-                <Nav.Link aria_label='About'>About</Nav.Link>
+                <Nav.Link aria-label='About'>About</Nav.Link>
               </Link>
 
             </Nav>
