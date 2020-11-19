@@ -11,6 +11,7 @@ import ApolloClient from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
 import IconButton from '../../components/IconButton'
+import Head from 'next/head'
 
 
 var name_map={
@@ -114,6 +115,19 @@ class BlogPage extends Component {
   render () {
     return (
       <Layout>
+        <Head>
+        <title>Aperture Newsletter | Student Journalist Gouncil - GCT</title>
+          <meta charset='utf-8' />
+          <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
+          <meta
+            name='Keywords'
+            content='Government College of Technology, GCT, Student Journalist Council, Student Journalist Council-GCT, Aperture, Aperture Newsletter, GCT Magazine, Student Magazine of GCT'
+          />
+          <meta
+            name='Description'
+            content='Student media body of Government College of Technology, Coimbatore. We are the face of Journalism and Photography inside the campus. We cover news happening inside the campus. We also publish the official student newsletter of the campus, Aperture.'
+          />
+        </Head>
         <CategoryNavBar category={this.state.categoryName}/>
         {this.state.blogs && (
           <Deck

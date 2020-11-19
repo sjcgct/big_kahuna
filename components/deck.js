@@ -29,7 +29,7 @@ export default function Deck ({ cards, type }) {
       profileId = post.author._meta.id
     } else if (type === 'hog') {
       image = post.featured_image.homethumb.url
-      imagealt = post.featured_image.thumbnail.alt
+      imagealt = post.featured_image.homethumb.alt
       date = post.date
     }
 

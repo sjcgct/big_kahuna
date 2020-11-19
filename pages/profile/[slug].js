@@ -10,6 +10,7 @@ import Loading from 'react-simple-loading'
 import ProfileBanner from '../../components/ProfilePage/profileBanner'
 import ProfileDeck from '../../components/profileDeck'
 import IconButton from '../../components/IconButton'
+import Head from 'next/head'
 
 const apolloClient = new ApolloClient({
   link: PrismicLink({
@@ -97,7 +98,6 @@ class AuthorBlogPage extends Component {
     if (this.state.loading) {
       return (
         <Layout>
-
           <ProfileBanner name={this.state.name} imgurl={this.state.imgurl} imgalt={this.state.imgalt} about={this.state.about} />
 
           <Loading
@@ -110,6 +110,19 @@ class AuthorBlogPage extends Component {
     }
     return (
       <Layout>
+        <Head>
+          <title>{this.state.name + ' | Student Journalist Council - GCT'}</title>
+          <meta charset='utf-8' />
+          <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
+          <meta
+            name='Keywords'
+            content='Government College of Technology, GCT, Student Journalist Council, Student Journalist Council-GCT, Podcast, GCT Podcast'
+          />
+          <meta
+            name='Description'
+            content={this.state.about}
+          />
+        </Head>
 
         <ProfileBanner name={this.state.name} imgurl={this.state.imgurl} imgalt={this.state.imgalt} about={this.state.about} />
 
@@ -120,8 +133,8 @@ class AuthorBlogPage extends Component {
           />
         )}
 
-      <IconButton text="Previous" next={false} isHidden={this.state.activePage === 0} onClick={() => this.prevPage()}> </IconButton>
-      <IconButton text="Next" next={true} isHidden={!this.state.hasnext} onClick={() => this.nextPage()}> </IconButton>
+        <IconButton text="Previous" next={false} isHidden={this.state.activePage === 0} onClick={() => this.prevPage()}> </IconButton>
+        <IconButton text="Next" next={true} isHidden={!this.state.hasnext} onClick={() => this.nextPage()}> </IconButton>
 
       </Layout>
 

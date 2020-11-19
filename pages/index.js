@@ -10,6 +10,16 @@ export default function BlogHome ({ preview, allBlogs, allHogs }) {
     <Layout>
       <Head>
         <title>Student Journalist Gouncil - GCT</title>
+        <meta charset='utf-8' />
+        <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
+        <meta
+          name='Keywords'
+          content='Government College of Technology, GCT, Coimbatore, SJC, Student Journalist Council, Student Journalist Council-GCT, SJCGCT, Aperture, Humans of GCT, ABC Channel, GCT News, GCT Updates'
+        />
+        <meta
+          name='Description'
+          content='Student media body of Government College of Technology, Coimbatore. We are the face of Journalism and Photography inside the campus. We cover news happening inside the campus. We also publish the official student newsletter of the campus, Aperture.'
+        />
       </Head>
 
       <div className='home-blog-section'>
