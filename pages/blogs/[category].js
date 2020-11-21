@@ -116,7 +116,7 @@ class BlogPage extends Component {
     return (
       <Layout>
         <Head>
-        <title>Blog | Student Journalist Gouncil - GCT</title>
+          <title>Blog | Student Journalist Gouncil - GCT</title>
           <meta charset='utf-8' />
           <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
           <meta
@@ -136,8 +136,8 @@ class BlogPage extends Component {
           />
         )}
 
-      <IconButton text="Previous" next={false} isHidden={this.state.activePage === 0} onClick={() => this.prevPage()}> </IconButton>
-      <IconButton text="Next" next={true} isHidden={!this.state.hasnext} onClick={() => this.nextPage()}> </IconButton>
+        <IconButton text="Previous" next={false} isHidden={this.state.activePage === 0} onClick={() => this.prevPage()}> </IconButton>
+        <IconButton text="Next" next={true} isHidden={!this.state.hasnext} onClick={() => this.nextPage()}> </IconButton>
 
       </Layout>
 
@@ -179,9 +179,10 @@ export async function getStaticPaths() {
       { params: { category: 'scitech'} },
       { params: { category: 'alumspace'} },
       { params: { category: 'openpage'} },
+      { params: { category: 'campus-buzz'} },
       { params: { category: 'tete'} },
       { params: { category: 'recent'} }
-     ],
-   fallback: true // fallback is set to false because we already know the slugs ahead of time
- }  
+    ],
+    fallback: true // fallback is set to false because we already know the slugs ahead of time
+  }  
 }
