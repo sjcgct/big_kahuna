@@ -5,7 +5,6 @@ import Layout from '../../../components/Layout'
 import Deck from '../../../components/deck'
 import ProfilePostCard from '../../../components/profileDeckCard'
 import Link from 'next/link'
-import dynamic from 'next/dynamic'
 import SharePanel from '../../../components/sharePanel'
 import Head from 'next/head'
 

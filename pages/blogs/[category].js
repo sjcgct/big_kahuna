@@ -15,11 +15,12 @@ import Head from 'next/head'
 
 
 var name_map={
-  celluloid: 'Celluloid',
-  scitech: 'SciTech',
-  alumspace: 'AlumSpace',
-  openpage: 'Open Page',
-  tete: 'Tete-a-Tete with Interns' 
+  'celluloid': 'Celluloid',
+  'scitech': 'SciTech',
+  'alumspace': 'AlumSpace',
+  'openpage': 'Open Page',
+  'tete': 'Tete-a-Tete with Interns',
+  'campus-pulse':'Campus Pulse'
 }
 
 const apolloClient = new ApolloClient({
