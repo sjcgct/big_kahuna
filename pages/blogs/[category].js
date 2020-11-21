@@ -179,7 +179,7 @@ export async function getStaticPaths() {
       { params: { category: 'scitech'} },
       { params: { category: 'alumspace'} },
       { params: { category: 'openpage'} },
-      { params: { category: 'campus-buzz'} },
+      { params: { category: 'campus-pulse'} },
       { params: { category: 'tete'} },
       { params: { category: 'recent'} }
     ],
