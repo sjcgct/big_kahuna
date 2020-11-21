@@ -19,7 +19,8 @@ var name_map={
   scitech: 'SciTech',
   alumspace: 'AlumSpace',
   openpage: 'Open Page',
-  tete: 'Tete-a-Tete with Interns' 
+  tete: 'Tete-a-Tete with Interns',
+  campus-pulse: 'Campus Pulse'
 }
 
 const apolloClient = new ApolloClient({
