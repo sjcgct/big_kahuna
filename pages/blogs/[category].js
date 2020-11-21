@@ -116,7 +116,7 @@ class BlogPage extends Component {
     return (
       <Layout>
         <Head>
-        <title>Aperture Newsletter | Student Journalist Gouncil - GCT</title>
+        <title>Blog | Student Journalist Gouncil - GCT</title>
           <meta charset='utf-8' />
           <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
           <meta
