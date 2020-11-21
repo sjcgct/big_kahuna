@@ -20,7 +20,7 @@ var name_map={
   alumspace: 'AlumSpace',
   openpage: 'Open Page',
   tete: 'Tete-a-Tete with Interns',
-  campus-pulse: 'Campus Pulse'
+  campuspulse: 'Campus Pulse'
 }
 
 const apolloClient = new ApolloClient({
@@ -180,7 +180,7 @@ export async function getStaticPaths() {
       { params: { category: 'scitech'} },
       { params: { category: 'alumspace'} },
       { params: { category: 'openpage'} },
-      { params: { category: 'campus-pulse'} },
+      { params: { category: 'campus-buzz'} },
       { params: { category: 'tete'} },
       { params: { category: 'recent'} }
     ],
