@@ -49,20 +49,36 @@ export default function Post ({ post, postsYouMayLike }) {
         />
       </Head>
       <section>
-        <h1 className='blog-post-title'>{RichText.asText(post.title)}</h1>
-        <div className='blog-post-author-reveal align-items-center ml-3'>
-          <Link href={`/profile/${post.author._meta.id}`} passHref>
-            <a className='profile-thumb-link' aria-label={post.author.name}>
-              <img className='blogpost-author-thumb' src={post.author.picture.url} alt={post.author.picture.alt} />
-              <span className='blogpost-author-name'>{post.author.name}</span>
+        <header className='blog-header'>
+          <h1 className='blog-post-title'>{RichText.asText(post.title)}</h1>
+          <p className='blog-post-author-reveal'>
+            <Link href={`/profile/${post.author._meta.id}`} passHref>
+              <a className='profile-thumb-link' aria-label={post.author.name}>                 
+                <span className='blogpost-author-name'>{post.author.name}</span>
+              </a>
+            </Link>
+            <span className='blog-post-date'>{parseDate(post.date)}</span>
+          </p>
+          {/* <div className='post-share-tray'>
+              <SharePanel url={post.author.picture.url} caption={RichText.asText(post.title)} />
+            </div> */}
+        </header>
+        {/* <div className='row'>
+          <div className='blog-header justify-content-center'>
+            <h1 className='blog-post-title justify-content-center'>{RichText.asText(post.title)}</h1>
+            <p className='blog-post-author-reveal align-items-center ml-3 justify-content-center'>
+              <Link href={`/profile/${post.author._meta.id}`} passHref>
+                <a className='profile-thumb-link' aria-label={post.author.name}>                 
+                  <span className='blogpost-author-name'>{post.author.name}</span>
+                </a>
+              </Link>
               <span className='text-muted blog-post-date'>{parseDate(post.date)}</span>
-            </a>
-          </Link>
-        </div>
-
-        <div className='post-share-tray'>
-          <SharePanel url={post.author.picture.url} caption={RichText.asText(post.title)} />
-        </div>
+            </p>
+            <div className='post-share-tray justify-content-center'>
+              <SharePanel url={post.author.picture.url} caption={RichText.asText(post.title)} />
+            </div>
+          </div>
+        </div> */}
 
         <div className='sm-12 featured-img-holder'>
           <img src={post.featured_image.hero.url} className='card-img featured-img' width='1200' height='600' alt = {post.featured_image.hero.alt}/>
@@ -71,11 +87,16 @@ export default function Post ({ post, postsYouMayLike }) {
         <div className='blog-container'>
           {htmlcontent}
         </div>
+        <div className='post-share-tray'>
+      <SharePanel url={post.author.picture.url} caption={RichText.asText(post.title)} />
+      </div>
       </section>
+
       <section>
         <h2 className='text-center'>About the Author</h2>
         <ProfileDeckCard title={post.author.name} about={post.author.about} imgurl={post.author.picture.url} imgalt={post.author.picture.alt} id={post.author._meta.id} sub_head='Author' type='profile'/>
       </section>
+      
 
       <h2>Posts You May Like</h2>
       {postsYouMayLike && (

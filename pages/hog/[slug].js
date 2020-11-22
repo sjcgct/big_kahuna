@@ -24,16 +24,23 @@ export default function Post ({ post, morePosts }) {
       </Head>
       <section>
         <h4 className='page-name'>Humans of GCT</h4>
-        <h1 className='blog-post-title text-center'>{RichText.asText(post.title)}</h1>        
+
+        <header className='blog-header'>
+          <h1 className='blog-post-title'>{RichText.asText(post.title)}</h1>
+          <p className='blog-post-author-reveal'>
+            <span className='blogpost-author-name'>{'- ' + post.name + '.'}</span>
+            
+          </p>
+          {/* <div className='post-share-tray'>
+              <SharePanel url={post.author.picture.url} caption={RichText.asText(post.title)} />
+            </div> */}
+        </header>        
         <div className='hog-container'>
           <div className='row hog-featured-img-holder'>
-            <img src={post.featured_image.url} className='hog-featured-img mb-5' alt={post.featured_image.alt}/>
+            <img src={post.featured_image.url} className='hog-featured-img' alt={post.featured_image.alt}/>
           </div>
           <div className='mb-3'>
             <p className='text-justify'>{RichText.render(post.story)}</p>
-            <span className='human'>
-              {'- ' + post.name + '.'}
-            </span>
           </div>
           <div className='post-share-tray'>
             <SharePanel url={post.featured_image.url} caption={RichText.asText(post.title)} />

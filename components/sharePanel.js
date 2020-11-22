@@ -21,7 +21,8 @@ class SharePanel extends Component {
 
   render () {
     return (
-      <div className='ml-3'>
+      <div>
+        <span className='share-button'>Share: </span>
         <FacebookShareButton
           url={this.state.url}
           quote={this.state.caption}
