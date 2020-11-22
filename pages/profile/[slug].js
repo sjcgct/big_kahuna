@@ -130,9 +130,16 @@ class AuthorBlogPage extends Component {
             type='blog'
           />
         )}
+        
+        <button hidden={this.state.activePage === 0} onClick={() => this.prevPage()}>
+         Previous
+        </button>
 
-        <IconButton text="Previous" next={false} isHidden={this.state.activePage === 0} onClick={() => this.prevPage()}> </IconButton>
-        <IconButton text="Next" next={true} isHidden={!this.state.hasnext} onClick={() => this.nextPage()}> </IconButton>
+        <p> </p>
+
+        <button hidden={!this.state.hasnext} onClick={() => this.nextPage()}>
+          Next
+        </button>
 
       </Layout>
 

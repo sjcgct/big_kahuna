@@ -18,6 +18,11 @@ class About extends Component {
 
   render () {
     var post=this.state.post;
+    var htmlcontent=post.body.forEach((value)=>{
+        console.log("printing");
+        console.log(value);
+        console.log(value.type);
+    })
     var htmlcontent=post[0];
     return (
       <Layout>
