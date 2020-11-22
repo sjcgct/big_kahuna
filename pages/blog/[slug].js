@@ -1,11 +1,11 @@
 import React from 'react'
 import { RichText, Elements } from 'prismic-reactjs'
-import { getBlogsWithSlug, getBlogsWithSameCategory } from '../../../prismic-configuration'
-import Layout from '../../../components/Layout'
-import Deck from '../../../components/deck'
-import ProfilePostCard from '../../../components/profileDeckCard'
+import { getBlogsWithSlug, getBlogsWithSameCategory } from '../../prismic-configuration'
+import Layout from '../../components/Layout'
+import Deck from '../../components/deck'
+import ProfileDeckCard from '../../components/profileDeckCard'
 import Link from 'next/link'
-import SharePanel from '../../../components/sharePanel'
+import SharePanel from '../../components/sharePanel'
 import Head from 'next/head'
 
 export default function Post ({ post, postsYouMayLike }) {
@@ -74,14 +74,14 @@ export default function Post ({ post, postsYouMayLike }) {
       </section>
       <section>
         <h2 className='text-center'>About the Author</h2>
-        <ProfilePostCard title={post.author.name} about={post.author.about} imgurl={post.author.picture.url} imgalt={post.author.picture.alt} id={post.author._meta.id} sub_head='Author' />
+        <ProfileDeckCard title={post.author.name} about={post.author.about} imgurl={post.author.picture.url} imgalt={post.author.picture.alt} id={post.author._meta.id} sub_head='Author' type='profile'/>
       </section>
 
       <h2>Posts You May Like</h2>
       {postsYouMayLike && (
         <Deck
           cards={postsYouMayLike}
-          type='blogs'
+          type='blog'
         />
       )}
     </Layout>

@@ -8,18 +8,14 @@ export default function DeckCard ({ title, imgurl, imgalt, slugurl, profileUrl, 
   }
 
   var category_map = {
-    Celluloid: 'celluloid',
-    SciTech: 'scitech',
-    AlumSpace: 'alumspace',
+    'Celluloid': 'celluloid',
+    'SciTech': 'scitech',
+    'AlumSpace': 'alumspace',
     'Open Page': 'openpage',
-    'Tete-a-Tete with Interns': 'tete-a-tete'
+    'Tete-a-Tete with Interns': 'tete',
+    'Campus Pulse':'campus-pulse'
   }
-
-  var redirect_blog = {
-    pathname: `/${type}/${category_map[postCategory]}/[slug]`,
-    state: { slug: slugurl }
-  }
-
+  
   var parseDate = function (date) {
     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
     var year_month_date = date.split('-')
@@ -27,12 +23,12 @@ export default function DeckCard ({ title, imgurl, imgalt, slugurl, profileUrl, 
     return month + ' ' + year_month_date[2] + ',' + year_month_date[0]
   }
 
-  if (type === 'blogs') {
+  if (type === 'blog') {
     return (
       <div className='mb-4 col-md-6 col-lg-3'>
         <div className='grid-card'>
           <div className='grid-card-image-holder'>
-            <Link as={`/${type}/${category_map[postCategory]}/${slugurl}`} href={redirect_blog}>
+            <Link as={`/${type}/${slugurl}`} href={redirect}>
               <a aria-label={title}><img className='grid-card-image' src={imgurl} alt={imgalt} /></a>
             </Link>
           </div>
@@ -50,7 +46,7 @@ export default function DeckCard ({ title, imgurl, imgalt, slugurl, profileUrl, 
           </div>
           <div className='grid-card-content-holder'>
             <h3 className='grid-card-title'>
-              <Link href={`/${type}/${category_map[postCategory]}/${slugurl}`} passHref>
+              <Link href={`/${type}/${slugurl}`} passHref>
                 <a aria-label={title}>{title}</a>
               </Link>
             </h3>

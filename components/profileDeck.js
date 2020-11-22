@@ -21,15 +21,13 @@ export default function ProfileDeck ({ cards, type }) {
     var smallDescription = ''
     var image = ''
     var date = ''
-    var category = ''
-    if (type === 'blogs') {
+    if (type === 'blog') {
       smallDescription = post.excerpt
-      category = post.category.name
       image = post.featured_image.thumbnail.url
       date = parseDate(post.date)
     }
-    // console.log(date)
-    deckcards[j] = <ProfileDeckCard title={RichText.asText(post.title)} about={smallDescription} imgurl={image} id={post._meta.uid} sub_head={date} category={category} />
+
+    deckcards[j] = <ProfileDeckCard title={RichText.asText(post.title)} about={smallDescription} imgurl={image} id={post._meta.uid} sub_head={date} type={type} />
   }
 
   return (

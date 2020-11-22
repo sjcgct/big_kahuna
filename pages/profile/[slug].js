@@ -25,7 +25,6 @@ class AuthorBlogPage extends Component {
     super(props)
     var page_arr = []
     page_arr[0] = props.cursor
-    // console.log(props.blogs);
     this.state = {
       activePage: 0,
       total: props.totalCount,
@@ -45,7 +44,6 @@ class AuthorBlogPage extends Component {
   }
 
   async loadPage (page) {
-    // console.log(this.getBlogForNextOrPrevPage(action,cursor,limit));
     var cursor = this.state.cursor
 
     var blogs = ''
@@ -129,7 +127,7 @@ class AuthorBlogPage extends Component {
         {this.state.blogs && (
           <ProfileDeck
             cards={this.state.blogs}
-            type='blogs'
+            type='blog'
           />
         )}
 
