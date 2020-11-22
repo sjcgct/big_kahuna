@@ -136,9 +136,20 @@ class BlogPage extends Component {
             type='blog'
           />
         )}
+        
+ 
+        {/* <IconButton text="Previous" next={false} isHidden={this.state.activePage === 0} onClick={() => this.prevPage()}> </IconButton>
+        <IconButton text="Next" next={true} isHidden={!this.state.hasnext} onClick={() => this.nextPage()}> </IconButton> */}
 
-        <IconButton text="Previous" next={false} isHidden={this.state.activePage === 0} onClick={() => this.prevPage()}> </IconButton>
-        <IconButton text="Next" next={true} isHidden={!this.state.hasnext} onClick={() => this.nextPage()}> </IconButton>
+        <button hidden={this.state.activePage === 0} onClick={() => this.prevPage()}>
+         Previous
+        </button>
+
+        <p> </p>
+
+        <button hidden={!this.state.hasnext} onClick={() => this.nextPage()}>
+          Next
+        </button>
 
       </Layout>
 
@@ -184,6 +195,6 @@ export async function getStaticPaths() {
       { params: { category: 'tete'} },
       { params: { category: 'recent'} }
     ],
-    fallback: true // fallback is set to false because we already know the slugs ahead of time
+    fallback: true 
   }  
 }

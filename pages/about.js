@@ -1,41 +1,28 @@
+import { tr } from 'date-fns/locale';
 import React, { Component } from 'react'
 import Layout from '../components/Layout'
-import Head from 'next/head'
+import YearPagination from '../components/YearPagination'
+import {getAllTeams} from '../prismic-configuration'
+
 
 class About extends Component {
+  constructor(props){
+    super(props);
+    var total_pages=props.years.length;
+    this.state={
+        years:props.years,
+        year:props.current_year,
+        total_pages:total_pages,
+        current_page:0
+    }
+  }
+
   render () {
     return (
       <Layout>
-        <div className='row'>
-          <div className='mx-auto'>
-            <a href='/blog' className='about-pagination-previous'>&lt;</a>
-            <span>2014-15</span>
-            <a href='/blog' className='about-pagination-next'>&gt;</a>
-            <style jsx>{`
-          .about-pagination-previous {
-            
-            margin-left: 5px;
-            vertical-align: bottom;
-            display: inline-block;
-            margin-left: 5px;
-            font-size: 22px;
-            line-height: 23px;
-            font-weight: 100;
-          }
-          .about-pagination-next {
-            
-            margin-left: 5px;
-            vertical-align: bottom;
-            display: inline-block;
-            margin-left: 5px;
-            font-size: 22px;
-            line-height: 23px;
-            font-weight: 100;
-          }
-          `}
-            </style>
-          </div>
-        </div>
+         
+        <YearPagination year={this.state.year} years={this.state.years}></YearPagination>
+          
       </Layout>
 
     )
@@ -43,3 +30,19 @@ class About extends Component {
 }
 
 export default About
+
+export async function getStaticProps ({ preview = false, previewData }) {
+  const teams = await getAllTeams();
+  var edges=teams.edges;
+  
+  var years=[]
+  for (var i=0;i<edges.length;i++){
+    years[i]=edges[i].node.year;
+  }
+  var current_year=years[0];
+  console.log(current_year);
+  return {
+    props: { years,current_year},
+    revalidate: 1
+  }
+}

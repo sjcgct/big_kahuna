@@ -125,9 +125,16 @@ class AperturePage extends Component {
             cards={this.state.apertures}
           />
         )}
+        
+        <button hidden={this.state.activePage === 0} onClick={() => this.prevPage()}>
+         Previous
+        </button>
 
-        <IconButton text='Previous' next={false} isHidden={this.state.activePage === 0} onClick={() => this.prevPage()}> </IconButton>
-        <IconButton text='Next' next isHidden={!this.state.hasnext} onClick={() => this.nextPage()}> </IconButton>
+        <p> </p>
+
+        <button hidden={!this.state.hasnext} onClick={() => this.nextPage()}>
+          Next
+        </button>
 
       </Layout>
 

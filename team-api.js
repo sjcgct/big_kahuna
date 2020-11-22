@@ -20,6 +20,19 @@ export const queryByYear = ({ year}) => {
          edges{
           node{
             year
+            _meta {
+              id
+            }
+            body{
+              ... on TeamBodySubTeam{
+                type
+                primary {
+                  subTeam
+                  memberList
+                }
+                label
+              }
+            }
           }
         }
     }

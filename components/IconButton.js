@@ -18,13 +18,8 @@ class IconButton extends Component {
 
   render () {
     return (
-      <button
-        className='btn btn-lg'
-        hidden={this.state.isHidden}
-        onClick={this.state.onClick}
-      >
+      <button hidden={this.state.isHidden} onClick={this.state.onClick}>
         {this.state.text}
-        <i class={this.state.style} />
       </button>
 
     // <a
