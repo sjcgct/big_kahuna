@@ -321,71 +321,48 @@ footer small{
   bottom: 0;
   left: 0;
 }
+.pagination-container{
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.pagination{
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+  height: 40px;
+  font-size: 14px;
+  line-height: 40px;
+  position: relative;
+}
+.previous-container {
+  width: 100px;
+}
+.button {
+  display: inline-block;
+  font-weight: 600;
+  margin: 0px;
+  padding: 0px;
+  background-color: transparent;
+  border: none;
+  appearance: none;
+  box-shadow: none;
+}
+.button:focus{
+  outline:none;
+}
+.next-container {
+  width: 100px;
+  text-align: right;
+}
+.button:not(:disabled) {
+  cursor:  pointer;
+}
                                                      /*Blog grid pages*/
-/*Search*/
-
-@media (min-width: 768px){
-  .search-container {
-    width: 80%;
-    margin-left: auto !important ;
-    margin-right: auto !important ;
-  }
-
-  .search-bar-holder {
-    margin:0 auto;
-    border-radius:30px;
-    border:1px solid #dcdcdc;
-    margin:0 auto;
-    width:67%;
-  }
-  .search-icon {
-    right: -10px;
-  }
-  .searchbar {
-    width: 90%;
-  }
-}
-
-@media (max-width: 768px){
-  .search-bar-holder {
-    margin:0 auto;
-    border-radius:30px;
-    border:1px solid #dcdcdc;
-    margin:0 auto;
-    width: 80%;
-  }
-
-  .searchbar {
-    width:80%;
-  }
-  .search-icon {
-    right: -10px;
-  }
-}
-
-
-
-.search-bar-holder:hover{
-  box-shadow: 1px 1px 8px 1px #dcdcdc;
-}
-
-.search-bar-holder:focus-within{
-  box-shadow: 1px 1px 8px 1px #dcdcdc;
-}
-
-.searchbar {
-  height:45px;
-  border:none;
-  font-size:16px;
-  outline: none; 
-}
-
-.search-icon{
-  height:20px;
-  position:relative;
-  top:-3px;
-}
-
                                                      /*Blog Post pages*/
 
 /*Blog Title*/

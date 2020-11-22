@@ -141,7 +141,7 @@ class HogPage extends Component {
           type='hog'
         />
 
-        <button hidden={this.state.activePage === 0} onClick={() => this.prevPage()}>
+        {/* <button hidden={this.state.activePage === 0} onClick={() => this.prevPage()}>
          Previous
         </button>
 
@@ -149,7 +149,20 @@ class HogPage extends Component {
 
         <button hidden={!this.state.hasnext} onClick={() => this.nextPage()}>
           Next
-        </button>
+        </button> */}
+
+        <div className='pagination'>
+          <div className='previous-container'>
+            <button className='button' hidden={this.state.activePage === 0} onClick={() => this.prevPage()}>
+              Previous
+            </button>
+          </div>
+          <div className='next-container'>
+            <button className='button' hidden={!this.state.hasnext} onClick={() => this.nextPage()}>
+              Next
+            </button>
+          </div>
+        </div>
 
       </Layout>
 
