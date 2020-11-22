@@ -14,6 +14,28 @@ a:hover {
   box-shadow: none;
   border: none;
 }
+.nav-link {
+  color: #05386b !important;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 12pt;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+
+  .nav-link:hover {
+    color: #edf5e1!important;
+  }
+
+
+@media (hover: none){
+  .nav-link:active {
+    color: #edf5e1!important;
+  }
+}
+.navbar-toggler-icon {
+  color: #05386b !important;
+}
 
                                                             /*Common Components */
 
@@ -169,7 +191,7 @@ a:hover {
 
 /*Footer section begins*/
 footer {
-    background: #FF9999;
+    background: #5cdb95;
     min-height: 250px;
     flex-shrink: 0;
     padding: 5% 5% 100px;
@@ -181,13 +203,16 @@ footer small{
     position: absolute;
     bottom: 30px;
   }
-  
+
+  footer p, small{
+    color: #edf5e1
+  }
   footer p a{
     display: inline-block;
     margin-top: 8px;
     font-weight: 500;
     font-size: 1.1rem;
-    color: #000000;
+    color: #edf5e1;
   }
   
   footer p a.contact-link {
@@ -195,7 +220,7 @@ footer small{
   }
   
   footer p a.contact-link:hover {
-    color: inherit;
+    color: #05386b;
     border-bottom: 1px solid rgba(0,0,0,.2);
     text-decoration:none; 
     transition: 0.1s;
@@ -206,7 +231,7 @@ footer small{
   }
 
   footer .social-icon{
-    color: #000000;
+    color: #edf5e1;
   }
 
 /*Footer section ends*/
@@ -351,16 +376,27 @@ footer small{
   border: none;
   appearance: none;
   box-shadow: none;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
 }
-.button:focus{
-  outline:none;
-}
+
 .next-container {
   width: 100px;
   text-align: right;
 }
 .button:not(:disabled) {
   cursor:  pointer;
+}
+@media (hover: hover) and (pointer: fine) {
+  .button:hover {
+    font-size: 15px;
+  }
+}
+
+@media (hover: none){
+  .button:active {
+    font-size: 15px;
+  }
 }
                                                      /*Blog grid pages*/
                                                      /*Blog Post pages*/
@@ -906,7 +942,7 @@ p.hog-container{
   }
 
   .nav-bg {
-    background-color: #FF9999;
+    background-color: #5cdb95;
   }
 
   .navbar-brand {
