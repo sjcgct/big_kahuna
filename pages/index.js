@@ -23,7 +23,10 @@ export default function BlogHome ({ preview, allBlogs, allHogs }) {
       </Head>
 
       <div className='home-blog-section'>
-        <h2>Blog</h2>
+        <div className='heading'>
+          <h2>Blog</h2>
+        </div>
+
         {morePosts && (
           <Deck
             cards={morePosts}
@@ -33,7 +36,9 @@ export default function BlogHome ({ preview, allBlogs, allHogs }) {
       </div>
 
       <section className='home-hog-section'>
-        <h2>Humans of GCT</h2>
+        <div className='heading'>
+          <h2>Humans of GCT</h2>
+        </div>
 
         {allHogs && (
           <Deck

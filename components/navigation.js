@@ -17,36 +17,36 @@ class NavBar extends Component {
             </a>
           </Navbar.Brand>
 
-          <Navbar.Toggle aria-controls='basic-navbar-nav' />
+          <Navbar.Toggle className='navbar-toggler' aria-controls='basic-navbar-nav' />
 
           <Navbar.Collapse id='basic-navbar-nav'>
 
             <Nav className='mr-auto'>
 
               <Link href='/' passHref>
-                <Nav.Link aria-label='Home'>Home</Nav.Link>
+                <Nav.Link className='nav-blink' aria-label='Home'>Home</Nav.Link>
               </Link>
 
               <Link href='/blogs/[category]' as='/blogs/recent' passHref>
-                <Nav.Link aria-label='Blog'>Blog</Nav.Link>
+                <Nav.Link className='nav-blink' aria-label='Blog'>Blog</Nav.Link>
               </Link>
 
               <Link href='/hog' passHref>
-                <Nav.Link aria-label='Humans of GCT'>Humans of GCT</Nav.Link>
+                <Nav.Link className='nav-blink' aria-label='Humans of GCT'>Humans of GCT</Nav.Link>
               </Link>
 
               <Link href='/aperture' passHref>
-                <Nav.Link aria-label='Aperture Newsletter'>Aperture Newsletter</Nav.Link>
+                <Nav.Link className='nav-blink' aria-label='Aperture Newsletter'>Aperture Newsletter</Nav.Link>
               </Link>
 
               <Link href='/podcast' passHref>
-                <Nav.Link aria-label='Podcast'>Podcast</Nav.Link>
+                <Nav.Link className='nav-blink' aria-label='Podcast'>Podcast</Nav.Link>
               </Link>
 
-              <Nav.Link href='https://www.youtube.com/ApertureBroadcastingChannelGCT' aria-label='ABC Channel'>ABC Channel</Nav.Link>
+              <Nav.Link className='nav-blink' href='https://www.youtube.com/ApertureBroadcastingChannelGCT' aria-label='ABC Channel'>ABC Channel</Nav.Link>
 
               <Link href='/team/[year]' as='/blogs/2019-20' passHref>
-                <Nav.Link aria-label='About'>About</Nav.Link>
+                <Nav.Link className='nav-blink' aria-label='About'>About</Nav.Link>
               </Link>
 
             </Nav>

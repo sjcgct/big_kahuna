@@ -9,12 +9,8 @@ a:hover {
 }
 
 /*Navigation Bar*/
-.navbar-toggler:focus {
-  outline: none;
-  box-shadow: none;
-  border: none;
-}
-.nav-link {
+
+.nav-blink {
   color: #05386b !important;
   text-transform: uppercase;
   font-weight: 800;
@@ -23,24 +19,32 @@ a:hover {
   transition: 0.2s ease;
 }
 
-  .nav-link:hover {
+  .nav-blink:hover {
     color: #edf5e1!important;
   }
 
 
 @media (hover: none){
-  .nav-link:active {
+  .nav-blink:active {
     color: #edf5e1!important;
   }
 }
 .navbar-toggler-icon {
   color: #05386b !important;
 }
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
 
                                                             /*Common Components */
-
-/*Layout*/
-
+.heading, .category-heading {
+  font-size: 26px;
+  line-height: 34px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
 
 /*Grid Card*/
 .grid-card {
@@ -103,7 +107,7 @@ a:hover {
   margin-left: 12.5px;
   margin-right: 12.5px;
   text-align: center;
-  background-color: #FF9999;
+  background-color: #edf5e1;
   border-radius: 50%; 
   overflow: hidden;
 }
@@ -136,16 +140,17 @@ a:hover {
   color: #7b8994;
   -webkit-transition: 0.35s;
   transition: 0.35s;
+  font-weight: 600;
 }
 
 @media (hover: hover) and (pointer: fine) {
 .grid-card-category-holder a:hover {
-  color: #ff9999;
+  color: #5cdb95;
  }
 }
 @media (hover: none) {
   .grid-card-category-holder a:active {
-    color: #ff9999;
+    color:#5cdb95;
    }
 }
 
@@ -174,19 +179,20 @@ a:hover {
 
 @media (hover: hover) and (pointer: fine) {
 .grid-card-title a:hover{
-  color: #FF9999;
+  color: #05386b;
  }
 }
 @media (hover: none) {
   .grid-card-title a:active{
-    color: #FF9999;
+    color: #05386b;
    }
 }
 
 
 .grid-card-date {
-  color: #7b8994;
+  color: #5cdb95;
   font-size: 12px;
+  font-weight: 600;
 }
 
 /*Footer section begins*/
@@ -239,10 +245,6 @@ footer small{
 /*Homepage*/
 .home-blog-section, .home-hog-section {
   background-color: #fff;
-  border-style: solid;
-  border-radius: 0.25rem;
-  border-width: 5px 0 0 0;
-  border-top-color: #FF9999;
 }
 .home-blog-section {
   margin-top: 3rem;
@@ -251,101 +253,7 @@ footer small{
   margin-top: 1.5rem;
 }
 /*Humans of GCT Page begins*/
-.poster{
-  transform: rotate(0.5deg);
-  padding: 7%;
-  position: relative;
-  box-sizing: border-box;
-  background-color: white;
-  box-shadow: 0 3px 12px alpha(black,.2);
-  filter: saturate(70%) contrast(85%);
-}
 
-.hog-tile-img{
-  width: 100%;
-  display: block;
-  z-index: 1;
-}
-
-.poster:before,
-.poster:after {
-  content: '';
-  width: 100%;
-  left: 0;
-  position: absolute;
-}
-
-.poster:before {
-  height: 4%;
-  bottom: -4%;
-  background-repeat: no-repeat;
-  background-image: linear-gradient(177deg, rgba(0,0,0,0.22) 10%, transparent 50%), linear-gradient(-177deg, rgba(0,0,0,0.22) 10%, transparent 50%);
-  background-size: 49% 100%;
-  background-position: 2% 0, 98% 0;
-}
-
-
-
-
-
-.card-footer {
-      border: 0;
-      width:100%;
-      background-color: rgba(0, 0, 0, 0);
-      border-bottom: 0;
-  }
-
-@font-face {
-    font-family: 'SjcTitle'; /*a name to be used later*/
-    src: url('libel-suit-rg.ttf'); /*URL to font*/
-}
-
-@font-face {
-  font-family: 'SjcNormal'; /*a name to be used later*/
-  src: url('OpenSans-Regular.ttf'); /*URL to font*/
-}
-
-.card-title{
-    font-family: "SjcTitle" !important;
-    font-size: 25px;
-    font-weight: bold;
-    color: #537479;
-}
-
-.card-text{
-  font-family: "SjcNormal" !important;
-  font-size: 15px;
-  color: #f06262;
-}
-
-.post-card .entry-thumb-overlay:hover {
-  opacity: 0.14;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=14)";
-  -moz-opacity: 0.14;
-  -khtml-opacity: 0.14;
-}
-
-.post-card:not(.big) .entry-thumb-overlay {
-  bottom: -2.5rem;
-}
-.post-card .entry-thumb-overlay {
-  background-color: #fff;
-  opacity: 0;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  -moz-opacity: 0;
-  -khtml-opacity: 0;
-  -webkit-transition: opacity .4s ease;
-  -o-transition: opacity .4s ease;
-  transition: opacity .4s ease;
-}
-.entry-thumb-overlay {
-  position: absolute;
-  z-index: 101;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
 .pagination-container{
   width: 100%;
   padding-left: 20px;

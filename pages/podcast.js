@@ -151,6 +151,10 @@ class PodcostPage extends Component {
             content='Student media body of Government College of Technology, Coimbatore. We are the face of Journalism and Photography inside the campus. We cover news happening inside the campus. We also publish the official student newsletter of the campus, Aperture.'
           />
         </Head>
+        <div className='heading'>
+          <h2>Podcast</h2>
+        </div>
+
         <div className='container'>
           <div className='row'>
             {templateHTML}

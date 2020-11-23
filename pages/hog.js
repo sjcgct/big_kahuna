@@ -135,7 +135,9 @@ class HogPage extends Component {
             content='Student media body of Government College of Technology, Coimbatore. We are the face of Journalism and Photography inside the campus. We cover news happening inside the campus. We also publish the official student newsletter of the campus, Aperture.'
           />
         </Head>
-
+        <div className='heading'>
+          <h2>Humans of GCT</h2>
+        </div>
         <Deck
           cards={this.state.hogs}
           type='hog'

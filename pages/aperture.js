@@ -120,12 +120,16 @@ class AperturePage extends Component {
           <script src='//static.fliphtml5.com/web/js/plugin/LightBox/js/fliphtml5-light-box-api-min.js' />
         </Head>
 
+        <div className='heading'>
+          <h2>Aperture Newsletter</h2>
+        </div>
+
         {this.state.apertures && (
           <ApertureDeck
             cards={this.state.apertures}
           />
         )}
-        
+
         <button hidden={this.state.activePage === 0} onClick={() => this.prevPage()}>
          Previous
         </button>
