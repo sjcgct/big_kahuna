@@ -10,7 +10,7 @@ a:hover {
 
 /*Navigation Bar*/
 
-.nav-blink {
+.nav-link {
   color: #05386b !important;
   text-transform: uppercase;
   font-weight: 800;
@@ -19,13 +19,13 @@ a:hover {
   transition: 0.2s ease;
 }
 
-  .nav-blink:hover {
+  .nav-link:hover {
     color: #edf5e1!important;
   }
 
 
 @media (hover: none){
-  .nav-blink:active {
+  .nav-link:active {
     color: #edf5e1!important;
   }
 }
