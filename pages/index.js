@@ -15,10 +15,13 @@ export default function BlogHome ({ preview, allBlogs, allHogs, allAbcs }) {
   var subVideos = []
   for (var j = 1; j < 4; j++) {
     var subVideo = videoArray[j].node
-    var subVideoLink = `http://img.youtube.com/vi/${subVideo.unique_id}/maxresdefault.jpg`
+    var subVideoImageLink = `http://img.youtube.com/vi/${subVideo.unique_id}/maxresdefault.jpg`
+    var subVideoLink = `https://www.youtube.com/watch?v=${subVideo.unique_id}`
     subVideos[j] =
       <li>
-        <img className='img-fluid my-1' src={subVideoLink} alt={subVideo.video_title} />
+        <a href={subVideoLink} target='_blank' aria-label={subVideo.title}>
+          <img className='img-fluid my-1' src={subVideoImageLink} alt={subVideo.video_title} />
+        </a>
       </li>
   }
 
