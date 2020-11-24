@@ -60,14 +60,14 @@ export default function BlogHome ({ preview, allBlogs, allHogs }) {
               <ReactPlayer controls url='https://www.youtube.com/embed/7sDY4m8KNLc' />
             </div>
           </div>
-          <ul className='my-auto d-none d-md-block col-md-3 col-lg-3 col-xl-3'>
-            <li>
+          <ul className='my-auto video-thumb d-none d-md-block col-md-3 col-lg-3 col-xl-3'>
+            <li className=''>
               <img className='img-fluid my-1' src='https://img.youtube.com/vi/7sDY4m8KNLc/maxresdefault.jpg' alt='hi' />
             </li>
-            <li>
+            <li className=''>
               <img className='img-fluid my-1' src='https://img.youtube.com/vi/XVxvYrjdwLA/maxresdefault.jpg' alt='hi' />
             </li>
-            <li>
+            <li className=''>
               <img className='img-fluid my-1' src='https://img.youtube.com/vi/XVxvYrjdwLA/maxresdefault.jpg' alt='hi' />
             </li>
           </ul>
