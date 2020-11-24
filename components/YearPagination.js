@@ -74,7 +74,28 @@ class YearPagination extends Component{
           <a hidden={this.state.hide_prev} href={`/team/${this.state.prev_year}`} className='about-pagination-previous'>&lt;</a>
           <span>{this.state.year}</span>
           <a hidden={this.state.hide_next} href={`/team/${this.state.next_year}`} className='about-pagination-next'>&gt;</a>
-          <style jsx>{pagination_style}
+          <style jsx>{`
+                        .about-pagination-previous {
+                          
+                          margin-left: 5px;
+                          vertical-align: bottom;
+                          display: inline-block;
+                          margin-left: 5px;
+                          font-size: 22px;
+                          line-height: 23px;
+                          font-weight: 100;
+                        }
+                        .about-pagination-next {
+                          
+                          margin-left: 5px;
+                          vertical-align: bottom;
+                          display: inline-block;
+                          margin-left: 5px;
+                          font-size: 22px;
+                          line-height: 23px;
+                          font-weight: 100;
+                        }
+                        `}
           </style>
         </div>
         </div>
