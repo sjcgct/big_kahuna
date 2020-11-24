@@ -5,7 +5,8 @@ import { queryHOGwithSlug, queryAllHOGs } from './hog-api'
 import { queryAllPostsByAuthor } from './author-api'
 import { queryAllPodCasts } from './podcast-api'
 import { queryAllApertures } from './aperture-api'
-import { queryAllTeams , queryByYear } from './team-api'
+import { queryAllTeams, queryByYear } from './team-api'
+import { queryAllVideosForHome } from './video-api'
 
 const REPOSITORY = process.env.PRISMIC_REPOSITORY_NAME
 const REF_API_URL = `https://${REPOSITORY}.prismic.io/api/v2`
@@ -117,7 +118,13 @@ export async function getAllTeams () {
 }
 
 export async function getByYear (year) {
-  const query = queryByYear({year})
+  const query = queryByYear({ year })
   const data = await fetchAPI(query)
   return data.allTeams.edges
+}
+
+export async function getAllVideosForHome () {
+  const query = queryAllVideosForHome()
+  const data = await fetchAPI(query)
+  return data.allAbcs
 }

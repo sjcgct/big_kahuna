@@ -1,12 +1,27 @@
 import Head from 'next/head'
 import React from 'react'
-import { getAllBlogsForHome, getAllHogsForHome } from '../prismic-configuration'
+import { getAllBlogsForHome, getAllHogsForHome, getAllVideosForHome } from '../prismic-configuration'
 import Layout from '../components/Layout'
 import ReactPlayer from 'react-player'
 import Deck from '../components/deck'
 
-export default function BlogHome ({ preview, allBlogs, allHogs }) {
+export default function BlogHome ({ preview, allBlogs, allHogs, allAbcs }) {
   const morePosts = allBlogs
+
+  var videoArray = allAbcs
+  var mainVideo = allAbcs[0].node
+  var mainVideoLink = `https://www.youtube.com/embed/${mainVideo.unique_id}`
+
+  var subVideos = []
+  for (var j = 1; j < 4; j++) {
+    var subVideo = videoArray[j].node
+    var subVideoLink = `http://img.youtube.com/vi/${subVideo.unique_id}/maxresdefault.jpg`
+    subVideos[j] =
+      <li>
+        <img className='img-fluid my-1' src={subVideoLink} alt={subVideo.video_title} />
+      </li>
+  }
+
   return (
     <Layout>
       <Head>
@@ -47,32 +62,25 @@ export default function BlogHome ({ preview, allBlogs, allHogs }) {
           />
         )}
       </section>
-
       <section className='home-abc-section'>
         <div className='heading'>
           <h2>ABC Channel</h2>
         </div>
 
         <div className='row'>
-          <div className='col-12 col-md-9 col-lg-9 col-xl-9'>
+          <div className='col-12 col-md-9'>
             <div className='iframe-container'>
-              {/* <iframe width='100%' height='auto' src='https://www.youtube.com/embed/7sDY4m8KNLc' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen /> */}
-              <ReactPlayer controls url='https://www.youtube.com/embed/7sDY4m8KNLc' />
+              {
+                mainVideo && (
+                  <ReactPlayer controls url={mainVideoLink} />
+                )
+              }
             </div>
           </div>
           <ul className='my-auto video-thumb d-none d-md-block col-md-3 col-lg-3 col-xl-3'>
-            <li className=''>
-              <img className='img-fluid my-1' src='https://img.youtube.com/vi/7sDY4m8KNLc/maxresdefault.jpg' alt='hi' />
-            </li>
-            <li className=''>
-              <img className='img-fluid my-1' src='https://img.youtube.com/vi/XVxvYrjdwLA/maxresdefault.jpg' alt='hi' />
-            </li>
-            <li className=''>
-              <img className='img-fluid my-1' src='https://img.youtube.com/vi/XVxvYrjdwLA/maxresdefault.jpg' alt='hi' />
-            </li>
+            {subVideos}
           </ul>
         </div>
-
       </section>
     </Layout>
   )
@@ -81,10 +89,12 @@ export default function BlogHome ({ preview, allBlogs, allHogs }) {
 export async function getStaticProps ({ preview = false, previewData }) {
   const blogs = await getAllBlogsForHome(' ', 8)
   const hogs = await getAllHogsForHome(' ', 8)
+  const abcs = await getAllVideosForHome()
   var allBlogs = blogs.edges
+  var allAbcs = abcs.edges
   var allHogs = hogs.edges
   return {
-    props: { preview, allBlogs, allHogs },
+    props: { preview, allBlogs, allHogs, allAbcs },
     revalidate: 1
   }
 }
