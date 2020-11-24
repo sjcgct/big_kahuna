@@ -59,26 +59,7 @@ export default function Post ({ post, postsYouMayLike }) {
             </Link>
             <span className='blog-post-date'>{parseDate(post.date)}</span>
           </p>
-          {/* <div className='post-share-tray'>
-              <SharePanel url={post.author.picture.url} caption={RichText.asText(post.title)} />
-            </div> */}
         </header>
-        {/* <div className='row'>
-          <div className='blog-header justify-content-center'>
-            <h1 className='blog-post-title justify-content-center'>{RichText.asText(post.title)}</h1>
-            <p className='blog-post-author-reveal align-items-center ml-3 justify-content-center'>
-              <Link href={`/profile/${post.author._meta.id}`} passHref>
-                <a className='profile-thumb-link' aria-label={post.author.name}>                 
-                  <span className='blogpost-author-name'>{post.author.name}</span>
-                </a>
-              </Link>
-              <span className='text-muted blog-post-date'>{parseDate(post.date)}</span>
-            </p>
-            <div className='post-share-tray justify-content-center'>
-              <SharePanel url={post.author.picture.url} caption={RichText.asText(post.title)} />
-            </div>
-          </div>
-        </div> */}
 
         <div className='sm-12 featured-img-holder'>
           <img src={post.featured_image.hero.url} className='card-img featured-img' width='1200' height='600' alt = {post.featured_image.hero.alt}/>
@@ -88,7 +69,7 @@ export default function Post ({ post, postsYouMayLike }) {
           {htmlcontent}
         </div>
         <div className='post-share-tray'>
-      <SharePanel url={post.author.picture.url} caption={RichText.asText(post.title)} />
+      <SharePanel url={"sjcgct.in/blog/"+post._meta.uid} caption={RichText.asText(post.title)} />
       </div>
       </section>
 

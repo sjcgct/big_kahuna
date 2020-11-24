@@ -43,7 +43,7 @@ export default function Post ({ post, morePosts }) {
             <p className='text-justify'>{RichText.render(post.story)}</p>
           </div>
           <div className='post-share-tray'>
-            <SharePanel url={post.featured_image.url} caption={RichText.asText(post.title)} />
+            <SharePanel url={"sjcgct.in/hog/"+post._meta.uid} caption={RichText.asText(post.title)} />
           </div>
         </div>
       </section>

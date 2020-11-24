@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Layout from '../../components/Layout'
 import YearPagination from '../../components/YearPagination'
 import {getAllTeams, getByYear} from '../../prismic-configuration'
-import { RichText } from 'prismic-reactjs'
+import {RichText} from 'prismic-reactjs';
 
 class About extends Component {
   constructor(props){
@@ -18,12 +18,21 @@ class About extends Component {
 
   render () {
     var post=this.state.post;
-    var htmlcontent=post.body.forEach((value)=>{
-        console.log("printing");
-        console.log(value);
-        console.log(value.type);
+    var htmlcontent=[];
+    post.body.forEach((value)=>{
+      try{
+        htmlcontent.push(<br></br>);
+        var subTeam=value.primary.subTeam;
+        var members=value.primary.memberList;
+        var memberList=members[0].text.split(",");
+        htmlcontent.push(<h1 className='blog-post-title'>{RichText.asText(subTeam)}</h1>);
+        memberList.forEach(member=>{
+          htmlcontent.push(<blockquote> {member} </blockquote>);
+        })
+      }
+      catch(e){}
     })
-    var htmlcontent=post[0];
+    
     return (
       <Layout>
 
@@ -43,7 +52,6 @@ export default About
 
 export async function getServerSideProps ({ params}) {
   const current_year=params.year;
-  console.log(current_year);
   const teams = await getAllTeams();
   var edges=teams.edges;
   var years=[]
