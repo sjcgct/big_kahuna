@@ -2,6 +2,7 @@ import Head from 'next/head'
 import React from 'react'
 import { getAllBlogsForHome, getAllHogsForHome } from '../prismic-configuration'
 import Layout from '../components/Layout'
+import ReactPlayer from 'react-player'
 import Deck from '../components/deck'
 
 export default function BlogHome ({ preview, allBlogs, allHogs }) {
@@ -39,13 +40,39 @@ export default function BlogHome ({ preview, allBlogs, allHogs }) {
         <div className='heading'>
           <h2>Humans of GCT</h2>
         </div>
-
         {allHogs && (
           <Deck
             cards={allHogs}
             type='hog'
           />
         )}
+      </section>
+
+      <section className='home-abc-section'>
+        <div className='heading'>
+          <h2>ABC Channel</h2>
+        </div>
+
+        <div className='row'>
+          <div className='col-12 col-md-9 col-lg-9 col-xl-9'>
+            <div className='iframe-container'>
+              {/* <iframe width='100%' height='auto' src='https://www.youtube.com/embed/7sDY4m8KNLc' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen /> */}
+              <ReactPlayer controls url='https://www.youtube.com/embed/7sDY4m8KNLc' />
+            </div>
+          </div>
+          <ul className='my-auto d-none d-md-block col-md-3 col-lg-3 col-xl-3'>
+            <li>
+              <img className='img-fluid my-1' src='https://img.youtube.com/vi/7sDY4m8KNLc/maxresdefault.jpg' alt='hi' />
+            </li>
+            <li>
+              <img className='img-fluid my-1' src='https://img.youtube.com/vi/XVxvYrjdwLA/maxresdefault.jpg' alt='hi' />
+            </li>
+            <li>
+              <img className='img-fluid my-1' src='https://img.youtube.com/vi/XVxvYrjdwLA/maxresdefault.jpg' alt='hi' />
+            </li>
+          </ul>
+        </div>
+
       </section>
     </Layout>
   )
