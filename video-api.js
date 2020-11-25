@@ -2,7 +2,7 @@
 export const queryAllVideosForHome = () => {
   const query = `
   {
-    allAbcs(sortBy:published_date_DESC,first:1){
+    allAbcs(sortBy:published_date_DESC) {
         edges{
          node{
             video_title
