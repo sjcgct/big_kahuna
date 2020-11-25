@@ -1,12 +1,13 @@
 import { RichText } from 'prismic-reactjs'
 import React from 'react'
-import { getHogWithSlug, getAllHogsForHome } from '../../prismic-configuration'
+import { getHogWithSlug, getAllHogsForHome, getDisclaimer } from '../../prismic-configuration'
 import Layout from '../../components/Layout'
 import Deck from '../../components/deck'
 import SharePanel from '../../components/sharePanel'
 import Head from 'next/head'
 
-export default function Post ({ post, morePosts }) {
+
+export default function Post ({ post, morePosts, disclaimerText }) {
   return (
     <Layout>
       <Head>
@@ -23,18 +24,12 @@ export default function Post ({ post, morePosts }) {
         />
       </Head>
       <section>
-        <h4 className='page-name'>Humans of GCT</h4>
-
         <header className='blog-header'>
           <h1 className='blog-post-title'>{RichText.asText(post.title)}</h1>
           <p className='blog-post-author-reveal'>
             <span className='blogpost-author-name'>{'- ' + post.name + '.'}</span>
-            
           </p>
-          {/* <div className='post-share-tray'>
-              <SharePanel url={post.author.picture.url} caption={RichText.asText(post.title)} />
-            </div> */}
-        </header>        
+        </header>
         <div className='hog-container'>
           <div className='row hog-featured-img-holder'>
             <img src={post.featured_image.url} className='hog-featured-img' alt={post.featured_image.alt}/>
@@ -42,10 +37,16 @@ export default function Post ({ post, morePosts }) {
           <div className='mb-3'>
             <p className='text-justify'>{RichText.render(post.story)}</p>
           </div>
-          <div className='post-share-tray'>
-            <SharePanel url={"sjcgct.in/hog/"+post._meta.uid} caption={RichText.asText(post.title)} />
-          </div>
+
+          <section className='disclaimer-quote'>
+            {RichText.render(disclaimerText)}
+          </section>
         </div>
+
+        <div className='post-share-tray'>
+          <SharePanel url={`sjcgct.in/hog/+${post._meta.uid}`} caption={RichText.asText(post.title)} />
+        </div>
+
       </section>
 
       <h2>More Posts</h2>
@@ -66,7 +67,10 @@ export async function getServerSideProps ({ params, previewData }) {
   const post = fetchedpost[0].node
   const posts = await getAllHogsForHome(' ', 4)
   var morePosts = posts.edges
+  const disclaimer = await getDisclaimer()
+  var disclaimerText = disclaimer.edges[0].node.disclaimer_text
+
   return {
-    props: { post, morePosts }
+    props: { post, morePosts, disclaimerText }
   }
 }

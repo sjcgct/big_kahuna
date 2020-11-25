@@ -42,6 +42,7 @@ class SharePanel extends Component {
 
         <LinkedinShareButton
           url={this.state.url}
+          title={this.state.caption}
           className='share-button'
         >
           <LinkedinIcon size={40} round />

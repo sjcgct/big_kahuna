@@ -7,6 +7,7 @@ import { queryAllPodCasts } from './podcast-api'
 import { queryAllApertures } from './aperture-api'
 import { queryAllTeams, queryByYear } from './team-api'
 import { queryAllVideosForHome } from './video-api'
+import { queryDisclaimer } from './disclaimer-api'
 
 const REPOSITORY = process.env.PRISMIC_REPOSITORY_NAME
 const REF_API_URL = `https://${REPOSITORY}.prismic.io/api/v2`
@@ -127,4 +128,11 @@ export async function getAllVideosForHome () {
   const query = queryAllVideosForHome()
   const data = await fetchAPI(query)
   return data.allAbcs
+}
+
+// Non-repeatable content
+export async function getDisclaimer () {
+  const query = queryDisclaimer()
+  const data = await fetchAPI(query)
+  return data.allDisclaimers
 }

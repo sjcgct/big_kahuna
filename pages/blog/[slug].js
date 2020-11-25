@@ -1,6 +1,6 @@
 import React from 'react'
 import { RichText, Elements } from 'prismic-reactjs'
-import { getBlogsWithSlug, getBlogsWithSameCategory } from '../../prismic-configuration'
+import { getBlogsWithSlug, getBlogsWithSameCategory, getDisclaimer } from '../../prismic-configuration'
 import Layout from '../../components/Layout'
 import Deck from '../../components/deck'
 import ProfileDeckCard from '../../components/profileDeckCard'
@@ -8,7 +8,7 @@ import Link from 'next/link'
 import SharePanel from '../../components/sharePanel'
 import Head from 'next/head'
 
-export default function Post ({ post, postsYouMayLike }) {
+export default function Post ({ post, postsYouMayLike, disclaimerText }) {
   var parseDate = function (date) {
     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
     var year_month_date = date.split('-')
@@ -67,7 +67,12 @@ export default function Post ({ post, postsYouMayLike }) {
 
         <div className='blog-container'>
           {htmlcontent}
+
+          <section className='disclaimer-quote'>
+            {RichText.render(disclaimerText)}
+          </section>
         </div>
+        
         <div className='post-share-tray'>
       <SharePanel url={"sjcgct.in/blog/"+post._meta.uid} caption={RichText.asText(post.title)} />
       </div>
@@ -97,7 +102,9 @@ export async function getServerSideProps ({ params, previewData }) {
   const categoryId = post.category._meta.id
   var postsYouMayLike = await getBlogsWithSameCategory(categoryId, 4)
   postsYouMayLike = postsYouMayLike.edges
+  const disclaimer = await getDisclaimer()
+  var disclaimerText = disclaimer.edges[0].node.disclaimer_text
   return {
-    props: { post, postsYouMayLike }
+    props: { post, postsYouMayLike, disclaimerText }
   }
 }

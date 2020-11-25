@@ -403,6 +403,20 @@ footer small{
 a.profile-thumb-link:hover {
   text-decoration: none;
 }
+.disclaimer-quote {
+  font-size: 1.25em;
+	width: 100%;
+	font-style: italic;
+	color: #555555;
+	padding: 0em 10px 0em 15px;
+	border-left: 6px solid #05386b;
+	line-height: 1.6;
+	position: relative;
+	background: #ffffff;
+  border-radius: 4px;
+  margin-bottom: 3rem;
+  margin-top: 5rem;
+}
 
 blockquote {
 	font-size: 1.25em;
@@ -412,7 +426,7 @@ blockquote {
 	font-style: italic;
 	color: #555555;
 	padding: 1.2em 30px 1.2em 75px;
-	border-left: 6px solid lightgray;
+	border-left: 6px solid #5cdb95;
 	line-height: 1.6;
 	position: relative;
 	background: ghostwhite;

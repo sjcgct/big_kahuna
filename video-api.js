@@ -1,4 +1,3 @@
-
 export const queryAllVideosForHome = () => {
   const query = `
   {
