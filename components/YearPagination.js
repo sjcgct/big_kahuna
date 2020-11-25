@@ -1,30 +1,5 @@
 const { Component } = require("react");
 
-
-
-const pagination_style=`
-.about-pagination-previous {
-  
-  margin-left: 5px;
-  vertical-align: bottom;
-  display: inline-block;
-  margin-left: 5px;
-  font-size: 22px;
-  line-height: 23px;
-  font-weight: 100;
-}
-.about-pagination-next {
-  
-  margin-left: 5px;
-  vertical-align: bottom;
-  display: inline-block;
-  margin-left: 5px;
-  font-size: 22px;
-  line-height: 23px;
-  font-weight: 100;
-}
-`
-
 class YearPagination extends Component{
    constructor(props){
        super(props);
