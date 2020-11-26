@@ -30,7 +30,7 @@ export default function Post ({ post, postsYouMayLike, disclaimerText }) {
       if (slice.type === 'image') {
         return <>
           <img src={slice.primary.image.url} alt={slice.primary.image.alt} />
-          <p className='image-description'>{RichText.render(slice.primary.imageDescription)}</p>
+          <p className='image-description'>{RichText.asText(slice.primary.imageDescription)}</p>
         </>
       }
     })
@@ -39,7 +39,7 @@ export default function Post ({ post, postsYouMayLike, disclaimerText }) {
     <Layout>
       <Head>
         <title>{RichText.asText(post.title) + ' | Student Journalist Council - GCT'}</title>
-        <meta charset='utf-8' />
+        <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
         <meta
           name='Keywords'
