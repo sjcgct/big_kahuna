@@ -15,7 +15,7 @@ export default function BlogHome ({ preview, allBlogs, allHogs, allAbcs }) {
   var subVideos = []
   for (var j = 1; j < 4; j++) {
     var subVideo = videoArray[j].node
-    var subVideoImageLink = `http://img.youtube.com/vi/${subVideo.unique_id}/maxresdefault.jpg`
+    var subVideoImageLink = `https://img.youtube.com/vi/${subVideo.unique_id}/maxresdefault.jpg`
     var subVideoLink = `https://www.youtube.com/watch?v=${subVideo.unique_id}`
     subVideos[j] =
       <li>
