@@ -447,13 +447,17 @@ p.hog-container{
   margin-bottom: 0rem;
 }
 
-.blog-container .image-description {
+.image-description {
+  margin-top: 5px!important;
+}
+.image-description p {
+  margin-top: 5px!important;
   font-style: italic;
   font-weight: 500;
   font-size: 0.95rem;
   color: #888888	;
   display: block;
-  text-align: center;
+  text-align: center!important;
 }
 .share-button {
   margin-right: 15px;

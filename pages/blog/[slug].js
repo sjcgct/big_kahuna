@@ -28,11 +28,13 @@ export default function Post ({ post, postsYouMayLike, disclaimerText }) {
         return RichText.render(slice.primary.paragraph)
       }
       if (slice.type === 'image') {
-        return <img src={slice.primary.image.url} alt={slice.primary.image.alt} />
+        return <>
+          <img src={slice.primary.image.url} alt={slice.primary.image.alt} />
+          <p className='image-description'>{RichText.render(slice.primary.imageDescription)}</p>
+        </>
       }
     })
   }
-
   return (
     <Layout>
       <Head>
@@ -53,7 +55,7 @@ export default function Post ({ post, postsYouMayLike, disclaimerText }) {
           <h1 className='blog-post-title'>{RichText.asText(post.title)}</h1>
           <p className='blog-post-author-reveal'>
             <Link href={`/profile/${post.author._meta.id}`} passHref>
-              <a className='profile-thumb-link' aria-label={post.author.name}>                 
+              <a className='profile-thumb-link' aria-label={post.author.name}>
                 <span className='blogpost-author-name'>{post.author.name}</span>
               </a>
             </Link>
@@ -72,17 +74,16 @@ export default function Post ({ post, postsYouMayLike, disclaimerText }) {
             {RichText.render(disclaimerText)}
           </section>
         </div>
-        
+
         <div className='post-share-tray'>
-      <SharePanel url={"sjcgct.in/blog/"+post._meta.uid} caption={RichText.asText(post.title)} />
-      </div>
+          <SharePanel url={'sjcgct.in/blog/' + post._meta.uid} caption={RichText.asText(post.title)} />
+        </div>
       </section>
 
       <section>
         <h2 className='text-center'>About the Author</h2>
         <ProfileDeckCard title={post.author.name} about={post.author.about} imgurl={post.author.picture.url} imgalt={post.author.picture.alt} id={post.author._meta.id} sub_head='Author' type='profile'/>
       </section>
-      
 
       <h2>Posts You May Like</h2>
       {postsYouMayLike && (
