@@ -18,45 +18,28 @@ class About extends Component {
 
   render () {
     var post = this.state.post
-    // var htmlcontent = []
-    // post.body.forEach((value) => {
-    //   try {
-    //     htmlcontent.push(<br></br>)
-    //     var subTeam = value.primary.subTeam
-    //     var members = value.primary.memberList
-    //     var memberList = members[0].text.split(',')
-    //     htmlcontent.push(<h1 className='blog-post-title'>{RichText.asText(subTeam)}</h1>)
-    //     memberList.forEach(member => {
-    //       htmlcontent.push(<blockquote> {member} </blockquote>)
-    //     })
-    //   } catch (e) {}
-    // })
-
     var htmlcontent = []
     post.body.forEach((value) => {
       try {
+        // htmlcontent.push(<img src={post.teampicture.url} />)
         htmlcontent.push(RichText.render(value.primary.subTeam))
         htmlcontent.push(RichText.render(value.primary.memberList))
       } catch (e) {}
     })
-    // var htmltitle
-    // htmltitle = post.body.map(slice => {
-    //   if (slice.type === 'sub-team') {
-    //     return RichText.render(slice.primary.subTeam)
-    //   }
-    // })
-    // var htmlcontent
-    // htmlcontent = post.body.map(slice => {
-    //   if (slice.type === 'sub-team') {
-    //     return RichText.render(slice.primary.memberList)
-    //   }
-    // })
 
     return (
       <Layout>
 
         <div className='blog-container'>
+          <div className='year-header'>
+            <h3 className='text-center'>Team {this.state.year}</h3>
+          </div>
+          <div className='team-image-holder'>
+          <img className='team-image' src='https://source.unsplash.com/random/3000x2000' alt = 'alt ok?' />
+          </div>
+          <div className='team-container'>
           {htmlcontent}
+          </div>
         </div>
 
         <YearPagination year={this.state.year} years={this.state.years}></YearPagination>

@@ -8,6 +8,7 @@ import Link from 'next/link'
 import SharePanel from '../../components/sharePanel'
 import Head from 'next/head'
 
+
 export default function Post ({ post, postsYouMayLike, disclaimerText }) {
   var parseDate = function (date) {
     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
@@ -77,6 +78,7 @@ export default function Post ({ post, postsYouMayLike, disclaimerText }) {
 
         <div className='post-share-tray'>
           <SharePanel url={'sjcgct.in/blog/' + post._meta.uid} caption={RichText.asText(post.title)} />
+          
         </div>
       </section>
 

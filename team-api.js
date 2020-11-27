@@ -1,10 +1,11 @@
-export const queryAllTeams = ( ) => {
+export const queryAllTeams = () => {
   const query =
     `{
       allTeams{
            edges{
             node{
               year
+              teampicture
             }
           }
       }
@@ -13,13 +14,14 @@ export const queryAllTeams = ( ) => {
   return query
 }
 
-export const queryByYear = ({ year}) => {
+export const queryByYear = ({ year }) => {
   const query = `
   {
     allTeams(where:{year:"${year}"}){
          edges{
           node{
             year
+            teampicture
             _meta {
               id
             }

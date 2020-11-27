@@ -449,6 +449,7 @@ p.hog-container{
 
 .image-description {
   margin-top: 5px!important;
+  margin-bottom: 5px!important;
   font-style: italic;
   font-weight: 400;
   font-size: 0.9rem;
@@ -533,8 +534,8 @@ p.hog-container{
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .blog-header {
-    margin-top: 40px;
-    margin-bottom: 48px;
+    margin-top: 48px;
+    margin-bottom: 40px;
   }
   .blog-post-title {
     font-size: 36px;
@@ -902,26 +903,6 @@ p.hog-container{
     padding: 7px 14px;
    }
 
-
-.centered-content {
-  margin-top:auto;
-  margin-bottom:auto;
-  text-align:center;
-}
-
-.pdfframe{
-  width:670px;
-  height:455px;
-  margin:auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.pdfpage{
-  box-shadow: 10px 10px 63px 0px rgba(0,0,0,0.75);
-}
-
 /*Aperture Page*/
 .newsletters .aperture-card{
   border: none;
@@ -942,6 +923,7 @@ p.hog-container{
   height: auto;
   position: absolute;
 }
+
 /*link thingy test ok*/
 .link { 
   color: #000000;
@@ -951,4 +933,54 @@ p.hog-container{
 .active-link{
   color: #2757b1;
   margin: 10px; 
+}
+
+/*team page */
+
+.team-image-holder {
+  width: 100%;
+  padding-bottom: calc(100% * 2 / 3);
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.team-image-holder .team-image {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  box-shadow: 0 5px 10px rgba(0,0,0,.12);
+}
+
+.team-container p{
+  margin-left: 0px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.team-container h4{
+  margin-left: 0px;
+  margin-top: 30px;
+  margin-bottom: 5px;
+}
+
+@media screen and (max-width: 767px){
+  .year-header {
+    margin-top: 32px;
+    margin-bottom: 16px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) { 
+  .year-header {
+    margin-top: 48px;
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (min-width: 992px){
+.year-header {
+  margin-top: 48px;
+  margin-bottom: 40px;
+}
 }

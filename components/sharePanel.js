@@ -40,13 +40,15 @@ class SharePanel extends Component {
           <WhatsappIcon size={40} round />
         </WhatsappShareButton>
 
-        <LinkedinShareButton
+        {/* <LinkedinShareButton
           url={this.state.url}
           title={this.state.caption}
           className='share-button'
-        >
+        > */}
+        {/* <a href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURI(this.state.url)}&title=${encodeURI(this.state.caption)}`}>
           <LinkedinIcon size={40} round />
-        </LinkedinShareButton>
+        </a> */}
+        {/* </LinkedinShareButton> */}
 
         <TwitterShareButton
           url={this.state.url}
