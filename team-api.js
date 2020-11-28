@@ -1,7 +1,7 @@
 export const queryAllTeams = () => {
   const query =
     `{
-      allTeams{
+      allTeams(sortBy:year_DESC){
            edges{
             node{
               year

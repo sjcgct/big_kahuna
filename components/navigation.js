@@ -45,7 +45,7 @@ class NavBar extends Component {
 
               <Nav.Link href='https://www.youtube.com/ApertureBroadcastingChannelGCT' aria-label='ABC Channel'>ABC Channel</Nav.Link>
 
-              <Link href='/team/[year]' as='/team/2019-20' passHref>
+              <Link href='/team/[year]' as='/team/current-team' passHref>
                 <Nav.Link aria-label='Team'>Team</Nav.Link>
               </Link>
 

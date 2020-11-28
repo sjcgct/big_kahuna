@@ -21,7 +21,6 @@ class About extends Component {
     var htmlcontent = []
     post.body.forEach((value) => {
       try {
-        // htmlcontent.push(<img src={post.teampicture.url} />)
         htmlcontent.push(RichText.render(value.primary.subTeam))
         htmlcontent.push(RichText.render(value.primary.memberList))
       } catch (e) {}
@@ -55,14 +54,19 @@ class About extends Component {
 export default About
 
 export async function getServerSideProps ({ params }) {
-  const current_year = params.year
+
+  
   const teams = await getAllTeams()
   var edges = teams.edges
   var years = []
   for (var i = 0; i < edges.length; i++) {
     years[i] = edges[i].node.year
   }
-
+  var current_year=years[0];
+  if(params.year !== 'current-team'){
+    current_year = params.year;
+  }
+ 
   const fetchedpost = await getByYear(current_year)
   const post = fetchedpost[0].node
 
