@@ -2,9 +2,15 @@ import React from 'react'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { RichText, Elements } from 'prismic-reactjs'
+import { getFooter } from '../prismic-configuration'
 library.add(fab)
+// {
+export default function Footer ({ footerEmail, footerContact }) {
+  var email = footerEmail
+  var contact = footerContact
+  console.log(contact)
 
-export default function Footer () {
   return (
     <footer className='mt-2'>
       <ul className='list-inline social-icon-list'>
@@ -15,9 +21,9 @@ export default function Footer () {
         <SocialIcon link='https://www.youtube.com/ApertureBroadcastingChannelGCT' icon='youtube' />
       </ul>
       <p>
-        <a className='contact-link' aria-label='email us' href='mailto:sjcgct@gmail.com'>sjcgct@gmail.com</a>
+        <a className='contact-link' aria-label='email us' href='hi'>{RichText.render(email)}</a>
         <br />
-        <a className='contact-link' aria-label='Talk to us over phone' href='tel:918667312273'>+91 86673 12273</a>
+        <a className='contact-link' aria-label='Talk to us over phone' href='ok'>{RichText.render(contact)}</a>
         <br /><br />
                  Government College of Technology,
         <br />
@@ -47,5 +53,17 @@ class SocialIcon extends React.Component {
         </a>
       </li>
     )
+  }
+}
+
+export async function getStaticProps () {
+  const footer = await getFooter()
+  console.log(JSON.stringify(footer))
+  var footerEmail = footer.edges[0].node.email
+  var footerContact = footer.edges[0].node.contact_number
+  console.log(footerEmail.text)
+
+  return {
+    props: { footerEmail, footerContact }
   }
 }
