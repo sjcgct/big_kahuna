@@ -241,6 +241,12 @@ footer small{
     font-size: 1.1rem;
     color: #edf5e1;
   }
+  footer small a{
+    display: inline-block;
+    margin-top: 8px;
+    color: #edf5e1;
+    border-bottom: 1px solid rgba(0,0,0,.2);
+  }
   
   footer p a.contact-link {
     border-bottom: 1px dotted rgba(0, 0, 0, 0.1);
@@ -250,6 +256,12 @@ footer small{
     color: #05386b;
     border-bottom: 1px solid rgba(0,0,0,.2);
     text-decoration:none; 
+    transition: 0.1s;
+  }
+
+  footer small a:hover {
+    text-decoration:none; 
+    color: #05386b;
     transition: 0.1s;
   }
   

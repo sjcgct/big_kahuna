@@ -8,6 +8,7 @@ library.add(fab)
 
 export default function Footer () {
   console.log(RichText.asText(ID), NO)
+
   return (
     <footer className='mt-2'>
       <ul className='list-inline social-icon-list'>
@@ -18,9 +19,9 @@ export default function Footer () {
         <SocialIcon link='https://www.youtube.com/ApertureBroadcastingChannelGCT' icon='youtube' />
       </ul>
       <p>
-        <a className='contact-link' aria-label='email us' href='hi'>{RichText.asText(ID)}</a>
+        <a className='contact-link' aria-label='email us' href='hi'>YEs</a>
         <br />
-        <a className='contact-link' aria-label='Talk to us over phone' href='ok'>{RichText.asText(NO)}</a>
+        <a className='contact-link' aria-label='Talk to us over phone' href='ok'>No</a>
         <br /><br />
                  Government College of Technology,
         <br />
@@ -33,9 +34,9 @@ export default function Footer () {
         </a>
       </p>
       <small>
-                © Twenty20. Student Journalist Council - GCT
+           © {(new Date().getFullYear())}. Student Journalist Council - GCT
         <br />
-                Project Big Hanukkah Build Alpha
+        <a aria-label='Github Repo' className='contact-link' href='https://github.com/sjcgct/big_kahuna' target='blank'>Project Big Kahuna</a>
       </small>
     </footer>
   )
