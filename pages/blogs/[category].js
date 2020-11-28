@@ -18,7 +18,7 @@ var name_map = {
   scitech: 'SciTech',
   alumspace: 'AlumSpace',
   openpage: 'Open Page',
-  tete: 'Tete-a-Tete with Interns',
+  internview: 'InternView',
   'campus-pulse': 'Campus Pulse'
 }
 
@@ -188,7 +188,7 @@ export async function getStaticPaths () {
       { params: { category: 'alumspace' } },
       { params: { category: 'openpage' } },
       { params: { category: 'campus-pulse' } },
-      { params: { category: 'tete' } },
+      { params: { category: 'internview' } },
       { params: { category: 'recent' } }
     ],
     fallback: true

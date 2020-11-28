@@ -10,7 +10,7 @@ class CategoryNavBar extends Component {
       scitech: 'link',
       alumspace: 'link',
       openpage: 'link',
-      tete: 'link',
+      internview: 'link',
       recent: 'link',
       'campus-pulse': 'link'
     }
@@ -38,7 +38,7 @@ class CategoryNavBar extends Component {
             <a className={this.state.active_map.celluloid} href='/blogs/celluloid' aria_label='Celluloid'> Celluloid </a>
             <a className={this.state.active_map.scitech} href='/blogs/scitech' aria_label='Scitech'> Scitech </a>
             <a className={this.state.active_map.alumspace} href='/blogs/alumspace' aria_label='Alumspace'> Alumspace </a>
-            <a className={this.state.active_map.tete} href='/blogs/tete' aria_label='Tete'> Tete </a>
+            <a className={this.state.active_map.internview} href='/blogs/internview' aria_label='Internview'> InternView </a>
 
           </Nav>
         </Navbar.Collapse>
