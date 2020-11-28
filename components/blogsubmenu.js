@@ -36,8 +36,8 @@ class CategoryNavBar extends Component {
             <a className={this.state.active_map.openpage} href='/blogs/openpage' aria_label='Open Page'> Open Page </a>
             <a className={this.state.active_map['campus-pulse']} href='/blogs/campus-pulse' aria_label='Campus Pulse'> Campus Pulse </a>
             <a className={this.state.active_map.montage} href='/blogs/montage' aria_label='Montage'> Montage </a>
-            <a className={this.state.active_map.scitech} href='/blogs/scitech' aria_label='Scitech'> Scitech </a>
-            <a className={this.state.active_map.alumspace} href='/blogs/alumspace' aria_label='Alumspace'> Alumspace </a>
+            <a className={this.state.active_map.scitech} href='/blogs/scitech' aria_label='Scitech'> SciTech </a>
+            <a className={this.state.active_map.alumspace} href='/blogs/alumspace' aria_label='Alumspace'> AlumSpace </a>
             <a className={this.state.active_map.internview} href='/blogs/internview' aria_label='Internview'> InternView </a>
 
           </Nav>
