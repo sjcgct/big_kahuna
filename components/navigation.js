@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import Link from 'next/link'
 
 class NavBar extends Component {
-1111  render () {
+  render () {
     var redirect = {
       pathname: '/blogs/[slug]',
       state: { slug: 'recent' }
