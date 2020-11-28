@@ -1,13 +1,53 @@
-import React from 'react'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { RichText, Elements } from 'prismic-reactjs'
-import { ID, NO } from '../foo'
+import { RichText} from 'prismic-reactjs'
+import ApolloClient from 'apollo-client'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import { PrismicLink } from 'apollo-link-prismic'
+import gql from 'graphql-tag'
+import React, { useState,useEffect } from 'react';
 library.add(fab)
 
+const apolloClient = new ApolloClient({
+  link: PrismicLink({
+    uri: 'https://sjcgctrepo.prismic.io/graphql',
+    accessToken: process.env.PRISMIC_TOKEN
+  }),
+  cache: new InMemoryCache()
+})
+
+function getFooter () {
+  const query = gql`
+          {
+              allFooters {
+                edges {
+                  node {
+                    contact_number
+                    email
+                  }
+                }
+              }
+          }
+          `
+  return query
+}
+
 export default function Footer () {
-  console.log(ID, NO)
+  const [email, setEmail] = useState([]);
+  const [phone, setPhoneNo] = useState([]);
+
+  useEffect(() => {
+      apolloClient.query({
+        query: getFooter()
+      }).then(response => {
+        var email = response.data.allFooters.edges[0].node.email
+        var contact = response.data.allFooters.edges[0].node.contact_number
+        setEmail(email[0].text);
+        setPhoneNo(contact[0].text);
+      }).catch(error => {
+        console.log(error);
+      })}, []);
 
   return (
     <footer className='mt-2'>
@@ -19,9 +59,9 @@ export default function Footer () {
         <SocialIcon link='https://www.youtube.com/ApertureBroadcastingChannelGCT' icon='youtube' />
       </ul>
       <p>
-        <a className='contact-link' aria-label='email us' href='hi'>YEs</a>
+  <a className='contact-link' aria-label='email us' >{email}</a>
         <br />
-        <a className='contact-link' aria-label='Talk to us over phone' href='ok'>No</a>
+      <a className='contact-link' aria-label='Talk to us over phone' >{phone}</a>
         <br /><br />
                  Government College of Technology,
         <br />
@@ -53,18 +93,3 @@ class SocialIcon extends React.Component {
     )
   }
 }
-
-async function getMail () {
-  const footer_email = await RichText.asText(ID)
-  return footer_email
-}
-// export async function getServerSideProps () {
-//   const footer = await getFooter()
-//   var footerEmail = footer.edges[0].node.email
-//   var footerContact = footer.edges[0].node.contact_number
-//   console.log(footerEmail.text)
-
-//   return {
-//     props: { footerEmail, footerContact }
-//   }
-// }

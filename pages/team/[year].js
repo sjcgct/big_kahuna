@@ -27,6 +27,8 @@ class About extends Component {
       } catch (e) {}
     })
 
+    var team_image=post.teampicture.url;
+
     return (
       <Layout>
 
@@ -35,7 +37,7 @@ class About extends Component {
             <h3 className='text-center'>Team {this.state.year}</h3>
           </div>
           <div className='team-image-holder'>
-          <img className='team-image' src='https://source.unsplash.com/random/3000x2000' alt = 'alt ok?' />
+          <img className='team-image' src={team_image} alt = 'alt ok?' />
           </div>
           <div className='team-container'>
           {htmlcontent}
