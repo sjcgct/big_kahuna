@@ -69,7 +69,7 @@ export default function Footer () {
         <br />
                  Coimbatore - 13.
         <br />
-        <a className='contact-link' aria-label='Find us on Google Maps' target='blank' href='https://goo.gl/maps/h6gGpcoZDw92'>View on
+        <a className='contact-link' aria-label='Find us on Google Maps' target='blank' href='https://goo.gl/maps/NX5hqshxhPgoLzZD9'>View on
                  map
         </a>
       </p>
