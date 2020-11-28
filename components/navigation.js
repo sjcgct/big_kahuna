@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import Link from 'next/link'
 
 class NavBar extends Component {
-  render () {
+1111  render () {
     var redirect = {
       pathname: '/blogs/[slug]',
       state: { slug: 'recent' }
@@ -46,7 +46,7 @@ class NavBar extends Component {
               <Nav.Link href='https://www.youtube.com/ApertureBroadcastingChannelGCT' aria-label='ABC Channel'>ABC Channel</Nav.Link>
 
               <Link href='/team/[year]' as='/team/2019-20' passHref>
-                <Nav.Link aria-label='About'>About</Nav.Link>
+                <Nav.Link aria-label='Team'>Team</Nav.Link>
               </Link>
 
             </Nav>
