@@ -14,7 +14,7 @@ import IconButton from '../../components/IconButton'
 import Head from 'next/head'
 
 var name_map = {
-  celluloid: 'Celluloid',
+  montage: 'Montage',
   scitech: 'SciTech',
   alumspace: 'AlumSpace',
   openpage: 'Open Page',
@@ -183,7 +183,7 @@ export async function getStaticProps ({ params }) {
 export async function getStaticPaths () {
   return {
     paths: [
-      { params: { category: 'celluloid' } },
+      { params: { category: 'montage' } },
       { params: { category: 'scitech' } },
       { params: { category: 'alumspace' } },
       { params: { category: 'openpage' } },
