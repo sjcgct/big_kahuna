@@ -343,6 +343,10 @@ footer small{
     font-size: 15px;
   }
 }
+
+.pagination button:focus {
+  outline: none;
+}
                                                      /*Blog grid pages*/
                                                      /*Blog Post pages*/
 
@@ -943,7 +947,7 @@ p.hog-container{
 }
 
 .active-link{
-  color: #2757b1;
+  color: #5cdb95;
   margin: 10px; 
 }
 

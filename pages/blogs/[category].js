@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { getAllBlogsForHome } from '../../prismic-configuration'
-import { getCategoryIdByName, getBlogsWithSameCategory } from '../../prismic-configuration'
-import { queryBlogsWithSameCategory } from '../../blog-api'
-import { queryAllBlogsForHome } from '../../blog-api'
+import { getAllBlogsForHome, getCategoryIdByName, getBlogsWithSameCategory } from '../../prismic-configuration'
+
+import { queryBlogsWithSameCategory, queryAllBlogsForHome } from '../../blog-api'
+
 import Layout from '../../components/Layout'
 import CategoryNavBar from '../../components/blogsubmenu'
 import Deck from '../../components/deck'
@@ -13,14 +13,13 @@ import gql from 'graphql-tag'
 import IconButton from '../../components/IconButton'
 import Head from 'next/head'
 
-
-var name_map={
-  'celluloid': 'Celluloid',
-  'scitech': 'SciTech',
-  'alumspace': 'AlumSpace',
-  'openpage': 'Open Page',
-  'tete': 'Tete-a-Tete with Interns',
-  'campus-pulse':'Campus Pulse'
+var name_map = {
+  celluloid: 'Celluloid',
+  scitech: 'SciTech',
+  alumspace: 'AlumSpace',
+  openpage: 'Open Page',
+  tete: 'Tete-a-Tete with Interns',
+  'campus-pulse': 'Campus Pulse'
 }
 
 const apolloClient = new ApolloClient({
@@ -32,15 +31,14 @@ const apolloClient = new ApolloClient({
 })
 
 class BlogPage extends Component {
-  
   constructor (props) {
     super(props)
     var page_arr = []
     page_arr[0] = props.cursor
-    
+
     this.state = {
-      categoryId:props.categoryId,
-      categoryName:props.categoryName,
+      categoryId: props.categoryId,
+      categoryName: props.categoryName,
       activePage: 0,
       total: props.totalCount,
       blogs: props.blogs,
@@ -56,7 +54,7 @@ class BlogPage extends Component {
   async loadPage (page) {
     var cursor = this.state.cursor
     var limit = 12
-     
+
     var blogs = ''
     var curs = ''
     var hasnext = ''
@@ -70,12 +68,11 @@ class BlogPage extends Component {
       this.state.loadedtill = this.state.loadedtill + 1
     }
     this.setState({ loading: true })
-    var query_str='';
-    if(this.state.categoryId ==='recent'){
-      query_str=this.getBlogForNextOrPrevPageForRecent (cursor, limit);
-    }
-    else{
-      query_str=this.getBlogForNextOrPrevPageForCategory(this.state.categoryId,cursor, limit);
+    var query_str = ''
+    if (this.state.categoryId === 'recent') {
+      query_str = this.getBlogForNextOrPrevPageForRecent(cursor, limit)
+    } else {
+      query_str = this.getBlogForNextOrPrevPageForCategory(this.state.categoryId, cursor, limit)
     }
     apolloClient.query({
       query: query_str
@@ -96,7 +93,7 @@ class BlogPage extends Component {
     const query = gql`${queryAllBlogsForHome({ lastPostCursor, limitation })}`
     return query
   }
-  
+
   getBlogForNextOrPrevPageForCategory (categoryId, lastPostCursor, limitation) {
     const query = gql`${queryBlogsWithSameCategory({ categoryId, lastPostCursor, limitation })}`
     return query
@@ -161,14 +158,13 @@ class BlogPage extends Component {
 export default BlogPage
 
 export async function getStaticProps ({ params }) {
-  var category=params.category;
-  var categoryId;
-  var posts;
-  if(category==='recent'){
-    var categoryId='recent'
+  var category = params.category
+  var categoryId
+  var posts
+  if (category === 'recent') {
+    var categoryId = 'recent'
     posts = await getAllBlogsForHome(' ', 12)
-  }
-  else {
+  } else {
     var categories = await getCategoryIdByName(name_map[category])
     var post = categories[0].node
     categoryId = post._meta.id
@@ -178,24 +174,23 @@ export async function getStaticProps ({ params }) {
   var cursor = posts.pageInfo.endCursor
   var totalCount = posts.totalCount
   var hasnext = posts.pageInfo.hasNextPage
-  var categoryName=category
+  var categoryName = category
   return {
-    props: { blogs, cursor, totalCount, hasnext , categoryId,categoryName}
+    props: { blogs, cursor, totalCount, hasnext, categoryId, categoryName }
   }
 }
 
-export async function getStaticPaths() {
-
+export async function getStaticPaths () {
   return {
     paths: [
-      { params: { category: 'celluloid'} },
-      { params: { category: 'scitech'} },
-      { params: { category: 'alumspace'} },
-      { params: { category: 'openpage'} },
-      { params: { category: 'campus-pulse'} },
-      { params: { category: 'tete'} },
-      { params: { category: 'recent'} }
+      { params: { category: 'celluloid' } },
+      { params: { category: 'scitech' } },
+      { params: { category: 'alumspace' } },
+      { params: { category: 'openpage' } },
+      { params: { category: 'campus-pulse' } },
+      { params: { category: 'tete' } },
+      { params: { category: 'recent' } }
     ],
-    fallback: true 
-  }  
+    fallback: true
+  }
 }

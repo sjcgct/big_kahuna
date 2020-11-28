@@ -7,7 +7,7 @@ import { ID, NO } from '../foo'
 library.add(fab)
 
 export default function Footer () {
-  console.log(RichText.asText(ID), NO)
+  console.log(ID, NO)
 
   return (
     <footer className='mt-2'>

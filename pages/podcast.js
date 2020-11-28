@@ -159,10 +159,21 @@ class PodcostPage extends Component {
           <div className='row'>
             {templateHTML}
           </div>
-        </div>
 
-        <IconButton text='Previous' next={false} isHidden={this.state.activePage === 0} onClick={() => this.prevPage()}> </IconButton>
-        <IconButton text='Next' next isHidden={!this.state.hasnext} onClick={() => this.nextPage()}> </IconButton>
+          <div className='pagination'>
+            <div className='previous-container'>
+              <button className='button' hidden={this.state.activePage === 0} onClick={() => this.prevPage()}>
+              Previous
+              </button>
+            </div>
+            <div className='next-container'>
+              <button className='button' hidden={!this.state.hasnext} onClick={() => this.nextPage()}>
+              Next
+              </button>
+            </div>
+          </div>
+
+        </div>
 
       </Layout>
 
