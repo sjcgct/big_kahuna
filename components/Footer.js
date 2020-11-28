@@ -3,14 +3,11 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { RichText, Elements } from 'prismic-reactjs'
-import { getFooter } from '../prismic-configuration'
+import { ID, NO } from '../foo'
 library.add(fab)
-// {
-export default function Footer ({ footerEmail, footerContact }) {
-  var email = footerEmail
-  var contact = footerContact
-  console.log(contact)
 
+export default function Footer () {
+  console.log(RichText.asText(ID), NO)
   return (
     <footer className='mt-2'>
       <ul className='list-inline social-icon-list'>
@@ -21,9 +18,9 @@ export default function Footer ({ footerEmail, footerContact }) {
         <SocialIcon link='https://www.youtube.com/ApertureBroadcastingChannelGCT' icon='youtube' />
       </ul>
       <p>
-        <a className='contact-link' aria-label='email us' href='hi'>{RichText.render(email)}</a>
+        <a className='contact-link' aria-label='email us' href='hi'>{RichText.asText(ID)}</a>
         <br />
-        <a className='contact-link' aria-label='Talk to us over phone' href='ok'>{RichText.render(contact)}</a>
+        <a className='contact-link' aria-label='Talk to us over phone' href='ok'>{RichText.asText(NO)}</a>
         <br /><br />
                  Government College of Technology,
         <br />
@@ -56,14 +53,17 @@ class SocialIcon extends React.Component {
   }
 }
 
-export async function getStaticProps () {
-  const footer = await getFooter()
-  console.log(JSON.stringify(footer))
-  var footerEmail = footer.edges[0].node.email
-  var footerContact = footer.edges[0].node.contact_number
-  console.log(footerEmail.text)
-
-  return {
-    props: { footerEmail, footerContact }
-  }
+async function getMail () {
+  const footer_email = await RichText.asText(ID)
+  return footer_email
 }
+// export async function getServerSideProps () {
+//   const footer = await getFooter()
+//   var footerEmail = footer.edges[0].node.email
+//   var footerContact = footer.edges[0].node.contact_number
+//   console.log(footerEmail.text)
+
+//   return {
+//     props: { footerEmail, footerContact }
+//   }
+// }

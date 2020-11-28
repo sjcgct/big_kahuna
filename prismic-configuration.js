@@ -8,7 +8,6 @@ import { queryAllApertures } from './aperture-api'
 import { queryAllTeams, queryByYear } from './team-api'
 import { queryAllVideosForHome } from './video-api'
 import { queryDisclaimer } from './disclaimer-api'
-import { queryFooter } from './footer-api'
 
 const REPOSITORY = process.env.PRISMIC_REPOSITORY_NAME
 const REF_API_URL = `https://${REPOSITORY}.prismic.io/api/v2`
@@ -136,10 +135,4 @@ export async function getDisclaimer () {
   const query = queryDisclaimer()
   const data = await fetchAPI(query)
   return data.allDisclaimers
-}
-
-export async function getFooter () {
-  const query = queryFooter()
-  const data = await fetchAPI(query)
-  return data.allFooters
 }
