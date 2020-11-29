@@ -4,11 +4,9 @@ import ProfileDeckCard from './profileDeckCard'
 import { RichText } from 'prismic-reactjs'
 
 var parseDate = function (date) {
-  // console.log(date)
   var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
   var year_month_date = date.split('-')
   var month = months[parseInt(year_month_date[1]) - 1]
-  // console.log(year_month_date)
   return month + ' ' + year_month_date[2] + ',' + year_month_date[0]
 }
 export default function ProfileDeck ({ cards, type }) {

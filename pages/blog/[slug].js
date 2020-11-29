@@ -103,8 +103,12 @@ export async function getServerSideProps ({ params, previewData }) {
   const fetchedpost = await getBlogsWithSlug(slugurl)
   const post = fetchedpost[0].node
   const categoryId = post.category._meta.id
-  var postsYouMayLike = await getBlogsWithSameCategory(categoryId, 4)
+  var postsYouMayLike = await getBlogsWithSameCategory(categoryId, 5)
   postsYouMayLike = postsYouMayLike.edges
+  postsYouMayLike=postsYouMayLike.filter((post)=>{
+    return post.node._meta.uid !== slugurl;
+  })
+  if(postsYouMayLike.length==5) postsYouMayLike.length=4;
   const disclaimer = await getDisclaimer()
   var disclaimerText = disclaimer.edges[0].node.disclaimer_text
   return {

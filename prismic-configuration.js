@@ -31,7 +31,6 @@ export const PrismicClient = Prismic.client(REF_API_URL, {
 
 async function fetchAPI (query, { variables } = {}) {
   const prismicAPI = await PrismicClient.getApi()
-  console.log(`${prismicAPI}`)
   const res = await fetch(
       `${GRAPHQL_API_URL}?query=${query}&variables=${JSON.stringify(variables)}`,
       {
@@ -46,13 +45,11 @@ async function fetchAPI (query, { variables } = {}) {
   )
 
   if (res.status !== 200) {
-    console.log(await res.text())
     throw new Error('Failed to fetch API')
   }
 
   const json = await res.json()
   if (json.errors) {
-    console.error(json.errors)
     throw new Error('Failed to fetch API')
   }
   return json.data

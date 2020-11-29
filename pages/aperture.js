@@ -57,7 +57,6 @@ class AperturePage extends Component {
     apolloClient.query({
       query: this.getAllApertures(cursor, this.state.itemsPerPage)
     }).then(response => {
-      // console.log('success')
       apertures = response.data.allAperturess.edges
       curs = response.data.allAperturess.pageInfo.endCursor
       hasnext = response.data.allAperturess.pageInfo.hasNextPage
@@ -152,7 +151,7 @@ class AperturePage extends Component {
 export default AperturePage
 
 export async function getStaticProps () {
-  var itemsPerPage = 4
+  var itemsPerPage = 8
   var apertureResponse = await getAllApertures(' ', itemsPerPage)
   var apertures = apertureResponse.edges
   var cursor = apertureResponse.pageInfo.endCursor

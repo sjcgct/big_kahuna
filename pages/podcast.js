@@ -39,29 +39,24 @@ class PodcostPage extends Component {
   }
 
   async loadPage (page) {
-    // console.log(this.getBlogForNextOrPrevPage(action,cursor,limit));
     var cursor = this.state.cursor
 
     var pods = ''
     var curs = ''
     var hasnext = ''
     this.state.activePage = page
-    // alert(this.state.activePage)
 
     var shallWeStore = true
     if (this.state.loadedtill >= page) {
-      // alert("alread loaded")
       shallWeStore = false
       cursor = this.state.page_arr[page - 1]
     } else {
-      // alert("newly loading")
       this.state.loadedtill = this.state.loadedtill + 1
     }
     this.setState({ loading: true })
     apolloClient.query({
       query: this.getAllPods(cursor, this.state.itemsPerPage)
     }).then(response => {
-      // console.log('success')
       pods = response.data.allPodcasts.edges
       curs = response.data.allPodcasts.pageInfo.endCursor
       hasnext = response.data.allPodcasts.pageInfo.hasNextPage
@@ -70,7 +65,6 @@ class PodcostPage extends Component {
       }
       this.setState({ pods: pods, cursor: curs, hasnext: hasnext, loading: false })
     }).catch(error => {
-      // console.error('error')
       alert(error)
     })
   }
@@ -108,7 +102,6 @@ class PodcostPage extends Component {
 
   iframeDidLoad () {
     this.setState({ isFrameLoading: false })
-    // console.log('loaded if')
   }
 
   render () {

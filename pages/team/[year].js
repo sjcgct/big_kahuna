@@ -21,11 +21,12 @@ class About extends Component {
     var htmlcontent = []
     post.body.forEach((value) => {
       try {
-        // htmlcontent.push(<img src={post.teampicture.url} />)
         htmlcontent.push(RichText.render(value.primary.subTeam))
         htmlcontent.push(RichText.render(value.primary.memberList))
       } catch (e) {}
     })
+
+    var team_image=post.teampicture.url;
 
     return (
       <Layout>
@@ -35,7 +36,7 @@ class About extends Component {
             <h3 className='text-center'>Team {this.state.year}</h3>
           </div>
           <div className='team-image-holder'>
-          <img className='team-image' src='https://source.unsplash.com/random/3000x2000' alt = 'alt ok?' />
+          <img className='team-image' src={team_image} alt = 'alt ok?' />
           </div>
           <div className='team-container'>
           {htmlcontent}
@@ -53,14 +54,19 @@ class About extends Component {
 export default About
 
 export async function getServerSideProps ({ params }) {
-  const current_year = params.year
+
+  
   const teams = await getAllTeams()
   var edges = teams.edges
   var years = []
   for (var i = 0; i < edges.length; i++) {
     years[i] = edges[i].node.year
   }
-
+  var current_year=years[0];
+  if(params.year !== 'current-team'){
+    current_year = params.year;
+  }
+ 
   const fetchedpost = await getByYear(current_year)
   const post = fetchedpost[0].node
 

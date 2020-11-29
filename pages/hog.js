@@ -33,11 +33,9 @@ class HogPage extends Component {
       loadedtill: 0,
       loading: false
     }
-    // console.log(this.state.loadedtill)
   }
 
   async loadPage (page) {
-    // console.log(this.getBlogForNextOrPrevPage(action,cursor,limit));
     var cursor = this.state.cursor
     var limit = 12
 
@@ -45,15 +43,12 @@ class HogPage extends Component {
     var curs = ''
     var hasnext = ''
     this.state.activePage = page
-    // alert(this.state.activePage)
 
     var shallWeStore = true
     if (this.state.loadedtill >= page) {
-      // alert("alread loaded")
       shallWeStore = false
       cursor = this.state.page_arr[page - 1]
     } else {
-      // alert("newly loading")
       this.state.loadedtill = this.state.loadedtill + 1
     }
 
@@ -61,7 +56,6 @@ class HogPage extends Component {
     apolloClient.query({
       query: this.getHog(cursor, limit)
     }).then(response => {
-      // console.log('success')
       hogs = response.data.allHogs.edges
       curs = response.data.allHogs.pageInfo.endCursor
       hasnext = response.data.allHogs.pageInfo.hasNextPage
@@ -70,15 +64,9 @@ class HogPage extends Component {
       }
       this.setState({ hogs: hogs, cursor: curs, hasnext: hasnext, loading: false })
     }).catch(error => {
-      // console.error('error')
       alert(error)
     })
 
-    // alert(this.state.loadedtill+" max")
-    for (var i = 0; i < this.state.loadedtill; i++) {
-      // alert(this.state.page_arr[i])
-      // console.log('hi')
-    }
   }
 
   getHog (lastPostCursor, limitation) {
