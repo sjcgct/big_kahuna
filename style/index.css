@@ -1011,7 +1011,7 @@ p.hog-container{
 }
 
 .navbar-link-active {
-  color: #ffffff!important;
+  color: /*#fff*/ #edf5e1!important;
   text-transform: uppercase;
   font-weight: 800;
   font-size: 12pt;
