@@ -62,7 +62,6 @@ class AuthorBlogPage extends Component {
     apolloClient.query({
       query: this.getBlogsForAuthor(this.state.id, cursor, this.state.itemsPerPage)
     }).then(response => {
-      // console.log('success')
       blogs = response.data.allBlogss.edges
       curs = response.data.allBlogss.pageInfo.endCursor
       hasnext = response.data.allBlogss.pageInfo.hasNextPage

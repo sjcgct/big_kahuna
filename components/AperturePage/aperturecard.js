@@ -13,11 +13,8 @@ function useWindowSize () {
   })
 
   useEffect(() => {
-    // only execute all the code below in client side
     if (typeof window !== 'undefined') {
-      // Handler to call on window resize
       function handleResize () {
-        // Set window width/height to state
         setWindowSize({
           width: window.innerWidth,
           height: window.innerHeight
@@ -43,7 +40,6 @@ export default function ApertureCard ({ title, url, description }) {
   var src = fliphtmlLink.concat(url).concat(endShot)
   var data_href = fliphtmlLink.concat(url)
   const size = useWindowSize()
-  //console.log(size.width)
 
   var screenClass = {}
 

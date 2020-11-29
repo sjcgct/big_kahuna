@@ -65,8 +65,12 @@ export async function getServerSideProps ({ params, previewData }) {
   var slugurl = params.slug
   const fetchedpost = await getHogWithSlug(slugurl)
   const post = fetchedpost[0].node
-  const posts = await getAllHogsForHome(' ', 4)
+  const posts = await getAllHogsForHome(' ', 5)
   var morePosts = posts.edges
+  morePosts=morePosts.filter((post)=>{
+    return post.node._meta.uid !== slugurl;
+  })
+  if(morePosts.length==5) morePosts.length=4;
   const disclaimer = await getDisclaimer()
   var disclaimerText = disclaimer.edges[0].node.disclaimer_text
 

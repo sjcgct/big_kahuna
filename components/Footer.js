@@ -46,7 +46,6 @@ export default function Footer () {
         setEmail(email[0].text);
         setPhoneNo(contact[0].text);
       }).catch(error => {
-        console.log(error);
       })}, []);
 
   return (
