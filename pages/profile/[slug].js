@@ -94,7 +94,7 @@ class AuthorBlogPage extends Component {
   render () {
     if (this.state.loading) {
       return (
-        <Layout>
+        <Layout menu={'blog'}>
           <ProfileBanner name={this.state.name} imgurl={this.state.imgurl} imgalt={this.state.imgalt} about={this.state.about} />
 
           <Loading
@@ -106,7 +106,7 @@ class AuthorBlogPage extends Component {
       )
     }
     return (
-      <Layout>
+      <Layout menu={'blog'}>
         <Head>
           <title>{this.state.name + ' | Student Journalist Council - GCT'}</title>
           <meta charset='utf-8' />

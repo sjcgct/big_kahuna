@@ -109,7 +109,7 @@ class HogPage extends Component {
 
   render () {
     return (
-      <Layout>
+      <Layout menu={'hog'}>
         <Head>
           <title>Humans of GCT | Student Journalist Gouncil - GCT</title>
           <meta charset='utf-8' />

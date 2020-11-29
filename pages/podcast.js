@@ -120,7 +120,7 @@ class PodcostPage extends Component {
 
     if (this.state.loading) {
       return (
-        <Layout>
+        <Layout menu={'podcast'}>
           <Loading
             color='firebrick'
             stroke='10px'
@@ -130,7 +130,7 @@ class PodcostPage extends Component {
       )
     }
     return (
-      <Layout>
+      <Layout menu={'podcast'}>
         <Head>
           <title>Podcast | Student Journalist Gouncil - GCT</title>
           <meta charset='utf-8' />

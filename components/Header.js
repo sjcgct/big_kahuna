@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import NavBar from './navigation'
-const Header = () => (
+const Header = (props) => (
   <div className='nav-bg'>
-    <NavBar />
+    <NavBar menu={props.menu}/>
   </div>
 
 )

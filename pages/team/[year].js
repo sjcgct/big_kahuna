@@ -29,7 +29,7 @@ class About extends Component {
     var team_image=post.teampicture.url;
 
     return (
-      <Layout>
+      <Layout menu={'team'}>
 
         <div className='blog-container'>
           <div className='year-header'>

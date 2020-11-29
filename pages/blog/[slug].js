@@ -37,7 +37,7 @@ export default function Post ({ post, postsYouMayLike, disclaimerText }) {
     })
   }
   return (
-    <Layout>
+    <Layout menu={'blog'}>
       <Head>
         <title>{RichText.asText(post.title) + ' | Student Journalist Council - GCT'}</title>
         <meta charSet='utf-8' />

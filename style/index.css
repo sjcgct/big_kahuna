@@ -41,14 +41,6 @@ a:hover {
   color: #edf5e1;
   fill: currentColor;
 }
-.nav-link {
-  color: #05386b!important;
-  text-transform: uppercase;
-  font-weight: 800;
-  font-size: 12pt;
-  -webkit-transition: 0.2s ease;
-  transition: 0.2s ease;
-}
 
   .nav-link:hover {
     color: #edf5e1!important;
@@ -1009,4 +1001,20 @@ p.hog-container{
   margin-top: 48px;
   margin-bottom: 40px;
 }
+}
+
+.navbar-link-active {
+  color: #ffffff!important;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 12pt;
+
+}
+.navbar-link {
+  color: #05386b!important;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 12pt;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
 }

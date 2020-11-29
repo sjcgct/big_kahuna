@@ -26,7 +26,7 @@ export default function BlogHome ({ preview, allBlogs, allHogs, allAbcs }) {
   }
 
   return (
-    <Layout>
+    <Layout menu={'home'}>
       <Head>
         <title>Student Journalist Gouncil - GCT | Student Media Body of GCT, Coimbatore</title>
         <meta charSet='utf-8' />

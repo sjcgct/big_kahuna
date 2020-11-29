@@ -112,7 +112,7 @@ class BlogPage extends Component {
 
   render () {
     return (
-      <Layout>
+      <Layout menu={'blog'}>
         <Head>
           <title>Blog | Student Journalist Gouncil - GCT</title>
           <meta charset='utf-8' />

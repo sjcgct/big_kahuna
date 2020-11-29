@@ -6,7 +6,7 @@ const Layout = props => {
   return (
     // eslint-disable-next-line react/react-in-jsx-scope
     <div className='layout'>
-      <Header />
+      <Header menu={props.menu}/>
       <div className='container'>
 
         <div>

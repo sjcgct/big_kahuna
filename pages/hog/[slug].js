@@ -9,7 +9,7 @@ import Head from 'next/head'
 
 export default function Post ({ post, morePosts, disclaimerText }) {
   return (
-    <Layout>
+    <Layout menu={'hog'}>
       <Head>
         <title>{RichText.asText(post.title) + ' | Humans of GCT'}</title>
         <meta charSet='utf-8' />
