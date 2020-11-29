@@ -2,11 +2,6 @@ import React from 'react'
 import Link from 'next/link'
 
 export default function DeckCard ({ title, imgurl, imgalt, slugurl, profileUrl, profileImgUrl, profilealt, postDate, postCategory, type }) {
-  var redirect = {
-    pathname: `/${type}/[slug]`,
-    state: { slug: slugurl }
-  }
-
   var category_map = {
     'Celluloid': 'celluloid',
     'SciTech': 'scitech',
@@ -28,7 +23,7 @@ export default function DeckCard ({ title, imgurl, imgalt, slugurl, profileUrl, 
       <div className='mb-4 col-md-6 col-lg-3'>
         <div className='grid-card'>
           <div className='grid-card-image-holder'>
-            <Link as={`/${type}/${slugurl}`} href={redirect}>
+            <Link as={`/${type}/${slugurl}`} href={'/blog/[slug]'}>
               <a aria-label={title}><img className='grid-card-image' src={imgurl} alt={imgalt} /></a>
             </Link>
           </div>
@@ -62,13 +57,13 @@ export default function DeckCard ({ title, imgurl, imgalt, slugurl, profileUrl, 
       <div className='mb-4 col-md-6 col-lg-3'>
         <div className='grid-card'>
           <div className='grid-card-image-holder'>
-            <Link as={`/${type}/${slugurl}`} href={redirect}>
+            <Link as={`/${type}/${slugurl}`} href={'/hog/[slug]'}>
               <a aria-label={imgalt}><img className='grid-card-image' src={imgurl} alt={imgalt} /></a>
             </Link>
           </div>
           <div className='grid-card-content-holder'>
             <h3 className='grid-card-title'>
-              <Link as={`/${type}/${slugurl}`} href={redirect}>
+              <Link as={`/${type}/${slugurl}`} href={'/hog/[slug]'}>
                 <a aria-label={title}>{title}</a>
               </Link>
             </h3>
