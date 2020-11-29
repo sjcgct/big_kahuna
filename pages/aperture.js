@@ -151,7 +151,7 @@ class AperturePage extends Component {
 export default AperturePage
 
 export async function getStaticProps () {
-  var itemsPerPage = 4
+  var itemsPerPage = 8
   var apertureResponse = await getAllApertures(' ', itemsPerPage)
   var apertures = apertureResponse.edges
   var cursor = apertureResponse.pageInfo.endCursor
