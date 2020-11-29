@@ -31,6 +31,17 @@ a:hover {
 
 /*Navigation Bar*/
 
+.navbar-brand-holder {
+  margin-right: 3rem;
+}
+
+.navbar-brand-image {
+  width: 60px;
+  height: auto;
+  color: #edf5e1;
+  fill: currentColor;
+}
+
 .nav-link {
   color: #05386b !important;
   text-transform: uppercase;

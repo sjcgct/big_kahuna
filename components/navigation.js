@@ -11,9 +11,9 @@ class NavBar extends Component {
     return (
       <div className='container'>
         <Navbar className='navbar' expand='lg'>
-          <Navbar.Brand href='/'>
+          <Navbar.Brand className='navbar-brand-holder' href='/'>
             <a href='/' aria-label='logo'>
-              <img src='/search.svg' style={{ width: 50, marginTop: -7, marginLeft: -5 }} />
+              <img alt='logo' className='navbar-brand-image' src='/sjc.svg' />
             </a>
           </Navbar.Brand>
 
