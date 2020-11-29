@@ -59,9 +59,9 @@ export default function Footer () {
         <SocialIcon link='https://www.youtube.com/ApertureBroadcastingChannelGCT' icon='youtube' />
       </ul>
       <p>
-        <a className='contact-link' aria-label='email us' href={`mailto:${email}`}>{email}</a>
+        <a className='contact-link' aria-label='email us' rel='noopener noreferrer' target='_blank' href={`mailto:${email}`}>{email}</a>
         <br />
-        <a className='contact-link' aria-label='Talk to us over phone' href={`tel:${phone}`}>{phone}</a>
+        <a className='contact-link' aria-label='Talk to us over phone' rel='noopener noreferrer' target='_blank' href={`tel:${phone}`}>{phone}</a>
         <br /><br />
                  Government College of Technology,
         <br />

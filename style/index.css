@@ -982,6 +982,12 @@ p.hog-container{
   margin-bottom: 5px;
 }
 
+.year-name {
+  display: inline-block;
+  margin-bottom: 0;
+  line-height: 0;
+}
+
 @media screen and (max-width: 767px){
   .year-header {
     margin-top: 32px;
@@ -1000,6 +1006,7 @@ p.hog-container{
 .year-header {
   margin-top: 48px;
   margin-bottom: 40px;
+
 }
 }
 
@@ -1018,3 +1025,4 @@ p.hog-container{
   -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
 }
+

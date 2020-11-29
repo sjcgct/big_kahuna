@@ -45,30 +45,30 @@ class YearPagination extends Component {
   render () {
     return (
       <div className='row'>
-        <div className='mx-auto'>
-          <a hidden={this.state.hide_prev} href={`/team/${this.state.prev_year}`} className='about-pagination-previous'>&lt;</a>
-          <span>{this.state.year}</span>
-          <a hidden={this.state.hide_next} href={`/team/${this.state.next_year}`} className='about-pagination-next'>&gt;</a>
+        <div className='mx-auto year-header'>
+          <a className='team-page-vector-previous-link' hidden={this.state.hide_prev} href={`/team/${this.state.prev_year}`}>
+            <img className='team-page-vector' src='/previous1.svg' />
+          </a>
+          <h3 className='year-name'>Team {this.state.year}</h3>
+          <a className='team-page-vector-next-link' hidden={this.state.hide_next} href={`/team/${this.state.next_year}`}>
+            <img className='team-page-vector' src='/next1.svg' />
+          </a>
           <style jsx>{`
-                        .about-pagination-previous {
-                          
-                          margin-left: 5px;
-                          vertical-align: bottom;
-                          display: inline-block;
-                          margin-left: 5px;
-                          font-size: 22px;
-                          line-height: 23px;
-                          font-weight: 100;
+                        .team-page-vector {
+                          width: 24px;
+                          height: 24px;
+                          display: inline;    
+                          margin-bottom: 12px;
+                          color:  #5cdb95;
+                          fill: currentColor;
                         }
-                        .about-pagination-next {
-                          
-                          margin-left: 5px;
-                          vertical-align: bottom;
-                          display: inline-block;
-                          margin-left: 5px;
-                          font-size: 22px;
-                          line-height: 23px;
-                          font-weight: 100;
+
+                        .team-page-vector-next-link {
+                          margin-left: 15px;
+                        }
+                        
+                        .team-page-vector-previous-link {
+                          margin-right: 15px;
                         }
                         `}
           </style>

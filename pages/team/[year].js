@@ -26,24 +26,22 @@ class About extends Component {
       } catch (e) {}
     })
 
-    var team_image=post.teampicture.url;
+    var team_image = post.teampicture.url
 
     return (
       <Layout menu={'team'}>
+        <YearPagination year={this.state.year} years={this.state.years}></YearPagination>
 
         <div className='blog-container'>
-          <div className='year-header'>
-            <h3 className='text-center'>Team {this.state.year}</h3>
-          </div>
+
           <div className='team-image-holder'>
-          <img className='team-image' src={team_image} alt = 'alt ok?' />
+            <img className='team-image' src={team_image} alt = 'alt ok?' />
           </div>
           <div className='team-container'>
-          {htmlcontent}
+            {htmlcontent}
           </div>
         </div>
 
-        <YearPagination year={this.state.year} years={this.state.years}></YearPagination>
 
       </Layout>
 
@@ -54,19 +52,17 @@ class About extends Component {
 export default About
 
 export async function getServerSideProps ({ params }) {
-
-  
   const teams = await getAllTeams()
   var edges = teams.edges
   var years = []
   for (var i = 0; i < edges.length; i++) {
     years[i] = edges[i].node.year
   }
-  var current_year=years[0];
-  if(params.year !== 'current-team'){
-    current_year = params.year;
+  var current_year = years[0]
+  if (params.year !== 'current-team') {
+    current_year = params.year
   }
- 
+
   const fetchedpost = await getByYear(current_year)
   const post = fetchedpost[0].node
 
