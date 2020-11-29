@@ -41,9 +41,8 @@ a:hover {
   color: #edf5e1;
   fill: currentColor;
 }
-
 .nav-link {
-  color: #05386b !important;
+  color: #05386b!important;
   text-transform: uppercase;
   font-weight: 800;
   font-size: 12pt;

@@ -1,12 +1,12 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { RichText} from 'prismic-reactjs'
+import { RichText } from 'prismic-reactjs'
 import ApolloClient from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { PrismicLink } from 'apollo-link-prismic'
 import gql from 'graphql-tag'
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 library.add(fab)
 
 const apolloClient = new ApolloClient({
@@ -34,19 +34,20 @@ function getFooter () {
 }
 
 export default function Footer () {
-  const [email, setEmail] = useState([]);
-  const [phone, setPhoneNo] = useState([]);
+  const [email, setEmail] = useState([])
+  const [phone, setPhoneNo] = useState([])
 
   useEffect(() => {
-      apolloClient.query({
-        query: getFooter()
-      }).then(response => {
-        var email = response.data.allFooters.edges[0].node.email
-        var contact = response.data.allFooters.edges[0].node.contact_number
-        setEmail(email[0].text);
-        setPhoneNo(contact[0].text);
-      }).catch(error => {
-      })}, []);
+    apolloClient.query({
+      query: getFooter()
+    }).then(response => {
+      var email = response.data.allFooters.edges[0].node.email
+      var contact = response.data.allFooters.edges[0].node.contact_number
+      setEmail(email[0].text)
+      setPhoneNo(contact[0].text)
+    }).catch(error => {
+    })
+  }, [])
 
   return (
     <footer className='mt-2'>
@@ -58,9 +59,9 @@ export default function Footer () {
         <SocialIcon link='https://www.youtube.com/ApertureBroadcastingChannelGCT' icon='youtube' />
       </ul>
       <p>
-  <a className='contact-link' aria-label='email us' >{email}</a>
+        <a className='contact-link' aria-label='email us' href={`mailto:${email}`}>{email}</a>
         <br />
-      <a className='contact-link' aria-label='Talk to us over phone' >{phone}</a>
+        <a className='contact-link' aria-label='Talk to us over phone' href={`tel:${phone}`}>{phone}</a>
         <br /><br />
                  Government College of Technology,
         <br />
