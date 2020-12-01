@@ -110,7 +110,7 @@ class AperturePage extends Component {
           <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
           <meta
             name='Keywords'
-            content='Government College of Technology, GCT, Student Journalist Council, Student Journalist Council - GCT, Aperture, Aperture Newsletter, GCT Magazine, Student Magazine of GCT'
+            content='Government College of Technology, GCT, Student Media Body, Student Journalist Council, Student Journalist Council - GCT, Aperture, Aperture Newsletter, GCT Magazine, Student Magazine of GCT'
           />
           <meta
             name='Description'

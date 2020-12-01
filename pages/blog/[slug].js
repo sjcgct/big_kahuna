@@ -44,7 +44,7 @@ export default function Post ({ post, postsYouMayLike, disclaimerText }) {
         <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
         <meta
           name='Keywords'
-          content={RichText.asText(post.title) + ', ' + post.author.name + ', Government College of Technology, GCT, Coimbatore, SJC, Student Journalist Council, Student Journalist Council-GCT, SJCGCT, Aperture, Humans of GCT, ABC Channel, GCT News, GCT Updates'}
+          content={RichText.asText(post.title) + ', ' + post.author.name + ', Government College of Technology, Student Media Body, GCT, Coimbatore, SJC, Student Journalist Council, Student Journalist Council-GCT, SJCGCT, Aperture, Humans of GCT, ABC Channel, GCT News, GCT Updates'}
         />
         <meta
           name='Description'

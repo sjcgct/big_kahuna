@@ -37,7 +37,7 @@ class About extends Component {
           <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
           <meta
             name='Keywords'
-            content='Government College of Technology, GCT, Coimbatore, SJC, Student Journalist Council, Student Journalist Council - GCT, SJCGCT, Aperture, Humans of GCT, ABC Channel, GCT News, GCT Updates'
+            content='Government College of Technology, GCT, Student Media Body, Coimbatore, SJC, Student Journalist Council, Student Journalist Council - GCT, SJCGCT, Aperture, Humans of GCT, ABC Channel, GCT News, GCT Updates'
           />
           <meta
             name='Description'
