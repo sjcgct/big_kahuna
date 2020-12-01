@@ -19,14 +19,14 @@ export default function BlogHome ({ preview, allBlogs, allHogs, allAbcs }) {
     var subVideoLink = `https://www.youtube.com/watch?v=${subVideo.unique_id}`
     subVideos[j] =
       <li>
-        <a href={subVideoLink} target='_blank' aria-label={subVideo.title}>
+        <a href={subVideoLink} rel='noopener noreferrer' target='_blank' aria-label={subVideo.title}>
           <img className='img-fluid my-1' src={subVideoImageLink} alt={subVideo.video_title} />
         </a>
       </li>
   }
 
   return (
-    <Layout menu={'home'}>
+    <Layout menu='home'>
       <Head>
         <title>Student Journalist Gouncil - GCT | Student Media Body of GCT, Coimbatore</title>
         <meta charSet='utf-8' />
@@ -37,8 +37,13 @@ export default function BlogHome ({ preview, allBlogs, allHogs, allAbcs }) {
         />
         <meta
           name='Description'
-          content='Student media body of Government College of Technology, Coimbatore. We are the face of Journalism and Photography inside the campus. We cover news happening inside the campus. We also publish the official student newsletter of the campus, Aperture.'
+          content='
+          Student Journalist Council-GCT is the Student Media Body of Government College of Technology, Coimbatore. It covers and reports the
+           various events and activities happening inside the campus.  It also steers "Humans of GCT", a storytelling project and publishes the student newsletter "Aperture".
+          '
         />
+        <meta name='robots' content='index, follow' />
+        <link rel='canonical' href='https://www.sjcgct.in/' />
       </Head>
 
       <div className='home-blog-section'>

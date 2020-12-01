@@ -114,13 +114,13 @@ class PodcostPage extends Component {
 
       templateHTML[i] =
         <div className='col-sm-12 mt-1 mb-3'>
-          <iframe src={episode_link} height='110%' width='100%' frameborder='0' scrolling='no' />
+          <iframe src={episode_link} height='110%' width='100%' frameBorder='0' scrolling='no' />
         </div>
     }
 
     if (this.state.loading) {
       return (
-        <Layout menu={'podcast'}>
+        <Layout menu='podcast'>
           <Loading
             color='firebrick'
             stroke='10px'
@@ -130,7 +130,7 @@ class PodcostPage extends Component {
       )
     }
     return (
-      <Layout menu={'podcast'}>
+      <Layout menu='podcast'>
         <Head>
           <title>Podcast | Student Journalist Gouncil - GCT</title>
           <meta charset='utf-8' />
@@ -141,8 +141,13 @@ class PodcostPage extends Component {
           />
           <meta
             name='Description'
-            content='Student media body of Government College of Technology, Coimbatore. We are the face of Journalism and Photography inside the campus. We cover news happening inside the campus. We also publish the official student newsletter of the campus, Aperture.'
+            content='
+          Student Journalist Council-GCT is the Student Media Body of Government College of Technology, Coimbatore. It covers and reports the
+           various events and activities happening inside the campus.  It also steers "Humans of GCT", a storytelling project and publishes the student newsletter "Aperture".
+          '
           />
+          <link rel='canonical' href='https://www.sjcgct.in/podcast' />
+          <meta name='robots' content='index, follow' />
         </Head>
         <div className='heading'>
           <h2>Podcast</h2>

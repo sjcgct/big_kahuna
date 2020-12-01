@@ -6,7 +6,6 @@ import Deck from '../../components/deck'
 import SharePanel from '../../components/sharePanel'
 import Head from 'next/head'
 
-
 export default function Post ({ post, morePosts, disclaimerText }) {
   return (
     <Layout menu={'hog'}>
@@ -20,14 +19,15 @@ export default function Post ({ post, morePosts, disclaimerText }) {
         />
         <meta
           name='Description'
-          content={RichText.asText(post.title) + ', a story published in Humans of GCT by Student Journalist Council - GCT.'}
+          content={`${RichText.asText(post.title)}, a story published in Humans of GCT by Student Journalist Council - GCT.`}
         />
+        <meta name='robots' content='index, follow' />
       </Head>
       <section>
         <header className='blog-header'>
           <h1 className='blog-post-title'>{RichText.asText(post.title)}</h1>
           <p className='blog-post-author-reveal'>
-            <span className='blogpost-author-name'>{'- ' + post.name + '.'}</span>
+            <span className='blogpost-author-name'>{`-${post.name}.`}</span>
           </p>
         </header>
         <div className='hog-container'>
@@ -67,10 +67,10 @@ export async function getServerSideProps ({ params, previewData }) {
   const post = fetchedpost[0].node
   const posts = await getAllHogsForHome(' ', 5)
   var morePosts = posts.edges
-  morePosts=morePosts.filter((post)=>{
-    return post.node._meta.uid !== slugurl;
+  morePosts = morePosts.filter((post) => {
+    return post.node._meta.uid !== slugurl
   })
-  if(morePosts.length==5) morePosts.length=4;
+  if (morePosts.length === 5) morePosts.length = 4
   const disclaimer = await getDisclaimer()
   var disclaimerText = disclaimer.edges[0].node.disclaimer_text
 

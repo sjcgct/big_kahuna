@@ -44,12 +44,13 @@ export default function Post ({ post, postsYouMayLike, disclaimerText }) {
         <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
         <meta
           name='Keywords'
-          content={RichText.asText(post.title) + ' ' + post.author.name + ' Government College of Technology, GCT, Coimbatore, SJC, Student Journalist Council, Student Journalist Council-GCT, SJCGCT, Aperture, Humans of GCT, ABC Channel, GCT News, GCT Updates'}
+          content={RichText.asText(post.title) + ', ' + post.author.name + ', Government College of Technology, GCT, Coimbatore, SJC, Student Journalist Council, Student Journalist Council-GCT, SJCGCT, Aperture, Humans of GCT, ABC Channel, GCT News, GCT Updates'}
         />
         <meta
           name='Description'
-          content={RichText.asText(post.title) + ', an article written by ' + post.author.name + ', published by Student Journalist Council - GCT.'}
+          content={`${RichText.asText(post.title)}, an article written by ${post.author.name}, published by the Student Journalist Council - GCT.`}
         />
+        <meta name="robots" content= "index, follow" />
       </Head>
       <section>
         <header className='blog-header'>

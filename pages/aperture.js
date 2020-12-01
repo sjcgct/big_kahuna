@@ -103,7 +103,7 @@ class AperturePage extends Component {
 
   render () {
     return (
-      <Layout menu={'aperture'}>
+      <Layout menu='aperture'>
         <Head>
           <title>Aperture Newsletter | Student Journalist Gouncil - GCT</title>
           <meta charset='utf-8' />
@@ -114,8 +114,13 @@ class AperturePage extends Component {
           />
           <meta
             name='Description'
-            content='Student media body of Government College of Technology, Coimbatore. We are the face of Journalism and Photography inside the campus. We cover news happening inside the campus. We also publish the official student newsletter of the campus, Aperture.'
+            content='
+           Student Journalist Council-GCT is the Student Media Body of Government College of Technology, Coimbatore. It covers and reports the
+           various events and activities happening inside the campus.  It also steers "Humans of GCT", a storytelling project and publishes the student newsletter "Aperture".
+          '
           />
+          <link rel='canonical' href='https://www.sjcgct.in/aperture' />
+          <meta name='robots' content='index, follow' />
           <script src='//static.fliphtml5.com/web/js/plugin/LightBox/js/fliphtml5-light-box-api-min.js' />
         </Head>
 

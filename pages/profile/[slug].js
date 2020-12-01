@@ -119,6 +119,7 @@ class AuthorBlogPage extends Component {
             name='Description'
             content={this.state.about}
           />
+          <meta name="robots" content= "index, follow" />
         </Head>
 
         <ProfileBanner name={this.state.name} imgurl={this.state.imgurl} imgalt={this.state.imgalt} about={this.state.about} />

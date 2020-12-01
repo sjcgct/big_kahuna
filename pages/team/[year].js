@@ -3,6 +3,7 @@ import Layout from '../../components/Layout'
 import YearPagination from '../../components/YearPagination'
 import { getAllTeams, getByYear } from '../../prismic-configuration'
 import { RichText } from 'prismic-reactjs'
+import Head from 'next/head'
 
 class About extends Component {
   constructor (props) {
@@ -30,6 +31,23 @@ class About extends Component {
 
     return (
       <Layout menu={'team'}>
+        <Head>
+          <title>Student Journalist Gouncil - GCT | Student Media Body of GCT, Coimbatore</title>
+          <meta charSet='utf-8' />
+          <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
+          <meta
+            name='Keywords'
+            content='Government College of Technology, GCT, Coimbatore, SJC, Student Journalist Council, Student Journalist Council - GCT, SJCGCT, Aperture, Humans of GCT, ABC Channel, GCT News, GCT Updates'
+          />
+          <meta
+            name='Description'
+            content='
+          Student Journalist Council-GCT is the Student Media Body of Government College of Technology, Coimbatore. It covers and reports the
+           various events and activities happening inside the campus.  It also steers "Humans of GCT", a storytelling project and publishes the student newsletter "Aperture".
+          '
+          />
+          <meta name='robots' content='index, follow' />
+        </Head>
         <YearPagination year={this.state.year} years={this.state.years}></YearPagination>
 
         <div className='blog-container'>
@@ -41,7 +59,6 @@ class About extends Component {
             {htmlcontent}
           </div>
         </div>
-
 
       </Layout>
 
