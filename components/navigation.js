@@ -52,7 +52,7 @@ class NavBar extends Component {
               </Link>
 
               <Link href='/aperture' passHref>
-                <Nav.Link className={`${this.state.style_map.aperture} mx-auto`} target='_blank' aria-label='Aperture Newsletter'>Aperture Newsletter</Nav.Link>
+                <Nav.Link className={`${this.state.style_map.aperture} mx-auto`} aria-label='Aperture Newsletter'>Aperture Newsletter</Nav.Link>
               </Link>
 
               <Link href='/podcast' passHref>
