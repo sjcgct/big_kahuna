@@ -280,6 +280,8 @@ footer small{
   footer .social-icon{
     /* color: #edf5e1; */
     color: #000;
+    width: 50px;
+    height: 50px;
   }
 
 /*Footer section ends*/
@@ -1033,4 +1035,3 @@ p.hog-container{
   -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
 }
-

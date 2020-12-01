@@ -56,7 +56,6 @@ export default function Footer () {
         <SocialIcon link='"https://www.instagram.com/sjcgct/"' icon='instagram-square' />
         <SocialIcon link='https://www.twitter.com/sjcgct' icon='twitter-square' />
         <SocialIcon link='https://www.linkedin.com/company/sjcgct' icon='linkedin' />
-        <SocialIcon link='https://www.youtube.com/ApertureBroadcastingChannelGCT' icon='youtube' />
       </ul>
       <p>
         <a className='contact-link' aria-label='email us' rel='noopener noreferrer' target='_blank' href={`mailto:${email}`}>{email}</a>
