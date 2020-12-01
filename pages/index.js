@@ -76,18 +76,18 @@ export default function BlogHome ({ preview, allBlogs, allHogs, allAbcs }) {
         </div>
 
         <div className='row'>
-          <div className='col-12'>
+          <div className='col-sm-12'>
             <div className='iframe-container'>
               {
                 mainVideo && (
-                  <ReactPlayer controls url={mainVideoLink} />
+                  <ReactPlayer width='100%' height='auto' controls url={mainVideoLink} />
                 )
               }
             </div>
           </div>
-          {/* <ul className='my-auto video-thumb d-none d-md-block col-md-3 col-lg-3 col-xl-3'>
+          <ul className='my-auto video-thumb d-none d-md-block col-md-3 col-lg-3 col-xl-3'>
             {subVideos}
-          </ul> */}
+          </ul>
         </div>
       </section>
     </Layout>
