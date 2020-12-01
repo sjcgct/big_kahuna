@@ -76,7 +76,7 @@ export default function BlogHome ({ preview, allBlogs, allHogs, allAbcs }) {
         </div>
 
         <div className='row'>
-          <div className='col-12 col-md-9'>
+          <div className='col-12'>
             <div className='iframe-container'>
               {
                 mainVideo && (
@@ -85,9 +85,9 @@ export default function BlogHome ({ preview, allBlogs, allHogs, allAbcs }) {
               }
             </div>
           </div>
-          <ul className='my-auto video-thumb d-none d-md-block col-md-3 col-lg-3 col-xl-3'>
+          {/* <ul className='my-auto video-thumb d-none d-md-block col-md-3 col-lg-3 col-xl-3'>
             {subVideos}
-          </ul>
+          </ul> */}
         </div>
       </section>
     </Layout>
