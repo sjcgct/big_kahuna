@@ -46,18 +46,17 @@ export default function BlogHome ({ preview, allBlogs, allHogs, allAbcs }) {
         <link rel='canonical' href='https://www.sjcgct.in/' />
       </Head>
 
-      <div className='home-blog-section'>
+      <section className='home-blog-section'>
         <div className='heading'>
           <h2>Blog</h2>
         </div>
-
         {morePosts && (
           <Deck
             cards={morePosts}
             type='blog'
           />
         )}
-      </div>
+      </section>
 
       <section className='home-hog-section'>
         <div className='heading'>
@@ -70,11 +69,11 @@ export default function BlogHome ({ preview, allBlogs, allHogs, allAbcs }) {
           />
         )}
       </section>
+
       <section className='home-abc-section'>
         <div className='heading'>
           <h2>ABC Channel</h2>
         </div>
-
         <div className='row'>
           <div className='col-sm-12 col-md-9'>
             <div className='iframe-container'>
@@ -90,6 +89,7 @@ export default function BlogHome ({ preview, allBlogs, allHogs, allAbcs }) {
           </ul>
         </div>
       </section>
+
     </Layout>
   )
 }

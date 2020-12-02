@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import Button from '@material-ui/core/Button'
 
 class IconButton extends Component {
   constructor (props) {
@@ -21,24 +20,6 @@ class IconButton extends Component {
       <button hidden={this.state.isHidden} onClick={this.state.onClick}>
         {this.state.text}
       </button>
-
-    // <a
-    //       hidden={this.state.isHidden}
-    //       onClick={this.state.onClick}
-    //       class="btn btn-lg btn-danger">
-    //         <span class="glyphicon glyphicon-arrow-right"></span> {this.state.text}</a>
-
-    // <Button
-    // style={{
-    //   color: "#e04f62",
-    // }}
-    // size="large"
-    // hidden={this.state.isHidden}
-    // onClick={this.state.onClick}
-    // startIcon={this.state.icon}
-    // >
-    //   {this.state.text}
-    // </Button>
     )
   }
 }

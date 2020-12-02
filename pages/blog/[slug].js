@@ -8,7 +8,6 @@ import Link from 'next/link'
 import SharePanel from '../../components/sharePanel'
 import Head from 'next/head'
 
-
 export default function Post ({ post, postsYouMayLike, disclaimerText }) {
   var parseDate = function (date) {
     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
@@ -79,7 +78,7 @@ export default function Post ({ post, postsYouMayLike, disclaimerText }) {
 
         <div className='post-share-tray'>
           <SharePanel url={'sjcgct.in/blog/' + post._meta.uid} caption={RichText.asText(post.title)} />
-          
+
         </div>
       </section>
 
@@ -106,10 +105,10 @@ export async function getServerSideProps ({ params, previewData }) {
   const categoryId = post.category._meta.id
   var postsYouMayLike = await getBlogsWithSameCategory(categoryId, 5)
   postsYouMayLike = postsYouMayLike.edges
-  postsYouMayLike=postsYouMayLike.filter((post)=>{
-    return post.node._meta.uid !== slugurl;
+  postsYouMayLike = postsYouMayLike.filter((post) => {
+    return post.node._meta.uid !== slugurl
   })
-  if(postsYouMayLike.length==5) postsYouMayLike.length=4;
+  if (postsYouMayLike.length === 5) postsYouMayLike.length = 4
   const disclaimer = await getDisclaimer()
   var disclaimerText = disclaimer.edges[0].node.disclaimer_text
   return {

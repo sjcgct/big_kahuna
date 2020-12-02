@@ -149,6 +149,7 @@ class PodcostPage extends Component {
           <link rel='canonical' href='https://www.sjcgct.in/podcast' />
           <meta name='robots' content='index, follow' />
         </Head>
+
         <div className='heading'>
           <h2>Podcast</h2>
         </div>

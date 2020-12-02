@@ -1,7 +1,7 @@
 export const queryAllApertures = ({ cursor, limit }) => {
   const query =
       `{
-        allAperturess(after:"${cursor}",first:${limit}) {
+        allAperturess(sortBy: date_DESC,after:"${cursor}",first:${limit}) {
           totalCount
           pageInfo {
             hasNextPage

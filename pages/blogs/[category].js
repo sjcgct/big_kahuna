@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { getAllBlogsForHome, getCategoryIdByName, getBlogsWithSameCategory } from '../../prismic-configuration'
-
 import { queryBlogsWithSameCategory, queryAllBlogsForHome } from '../../blog-api'
-
 import Layout from '../../components/Layout'
 import CategoryNavBar from '../../components/blogsubmenu'
 import Deck from '../../components/deck'
@@ -119,7 +117,7 @@ class BlogPage extends Component {
           <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
           <meta
             name='Keywords'
-            content='Government College of Technology, GCT, Student Journalist Council, Student Journalist Council-GCT, Aperture, Aperture Newsletter, GCT Magazine, Student Magazine of GCT'
+            content='Government College of Technology, GCT, Student Journalist Council, Student Media Body, Student Journalist Council-GCT, Aperture, Aperture Newsletter, GCT Magazine, Student Magazine of GCT'
           />
           <meta
             name='Description'
@@ -137,8 +135,6 @@ class BlogPage extends Component {
             type='blog'
           />
         )}
-        {/* <IconButton text="Previous" next={false} isHidden={this.state.activePage === 0} onClick={() => this.prevPage()}> </IconButton>
-        <IconButton text="Next" next={true} isHidden={!this.state.hasnext} onClick={() => this.nextPage()}> </IconButton> */}
 
         <div className='pagination'>
           <div className='previous-container'>

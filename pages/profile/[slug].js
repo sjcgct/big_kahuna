@@ -92,19 +92,6 @@ class AuthorBlogPage extends Component {
   }
 
   render () {
-    if (this.state.loading) {
-      return (
-        <Layout menu={'blog'}>
-          <ProfileBanner name={this.state.name} imgurl={this.state.imgurl} imgalt={this.state.imgalt} about={this.state.about} />
-
-          <Loading
-            color='firebrick'
-            stroke='10px'
-            size='100px'
-          />
-        </Layout>
-      )
-    }
     return (
       <Layout menu={'blog'}>
         <Head>
@@ -131,15 +118,18 @@ class AuthorBlogPage extends Component {
           />
         )}
         
-        <button hidden={this.state.activePage === 0} onClick={() => this.prevPage()}>
-         Previous
-        </button>
-
-        <p> </p>
-
-        <button hidden={!this.state.hasnext} onClick={() => this.nextPage()}>
-          Next
-        </button>
+        <div className='pagination'>
+          <div className='previous-container'>
+            <button className='button' hidden={this.state.activePage === 0} onClick={() => this.prevPage()}>
+              Previous
+            </button>
+          </div>
+          <div className='next-container'>
+            <button className='button' hidden={!this.state.hasnext} onClick={() => this.nextPage()}>
+              Next
+            </button>
+          </div>
+        </div>
 
       </Layout>
 

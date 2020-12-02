@@ -48,7 +48,7 @@ class About extends Component {
           />
           <meta name='robots' content='index, follow' />
         </Head>
-        <YearPagination year={this.state.year} years={this.state.years}></YearPagination>
+        <YearPagination year={this.state.year} years={this.state.years} />
 
         <div className='blog-container'>
 
@@ -75,7 +75,7 @@ export async function getServerSideProps ({ params }) {
   for (var i = 0; i < edges.length; i++) {
     years[i] = edges[i].node.year
   }
-  var current_year = years[i-1]
+  var current_year = years[i - 1]
   if (params.year !== 'current-team') {
     current_year = params.year
   }

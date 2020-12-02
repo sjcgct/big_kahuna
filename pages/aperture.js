@@ -133,6 +133,7 @@ class AperturePage extends Component {
             cards={this.state.apertures}
           />
         )}
+
         <div className='pagination-container'>
           <div className='pagination'>
             <div className='previous-container'>

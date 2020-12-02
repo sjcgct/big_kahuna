@@ -65,8 +65,8 @@ export default function ApertureCard ({ title, url, description }) {
             />
           </div>
           <div className='card-body'>
-            <h3 className='card-title text-center mb-1'>{title}</h3>
-            <p className='text-center'> {description} </p>
+            <h3 className='card-title aperture-card-title text-center mb-1'>{title}</h3>
+            <p className='text-center aperture-card-description'> {description} </p>
           </div>
 
         </div>
