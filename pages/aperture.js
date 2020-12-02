@@ -7,7 +7,6 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import gql from 'graphql-tag'
 import Head from 'next/head'
 import ApertureDeck from '../components/AperturePage/aperturedeck'
-import IconButton from '../components/IconButton'
 
 const apolloClient = new ApolloClient({
   link: PrismicLink({
@@ -103,7 +102,7 @@ class AperturePage extends Component {
 
   render () {
     return (
-      <Layout menu='aperture'>
+      <Layout menu='aperture' logo='/aperture-black.svg'>
         <Head>
           <title>Aperture Newsletter | Student Journalist Gouncil - GCT</title>
           <meta charset='utf-8' />
