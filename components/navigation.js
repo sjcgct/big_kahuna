@@ -5,7 +5,7 @@ import Link from 'next/link'
 class NavBar extends Component {
   constructor (props) {
     super(props)
-    var logo='/sjc.svg'
+    var logo = '/sjc.svg'
     var style_map = {
       blog: 'navbar-link',
       hog: 'navbar-link',
@@ -17,14 +17,13 @@ class NavBar extends Component {
     }
 
     style_map[props.menu] = 'navbar-link-active'
-    if('logo' in props) {
-      if(props.logo===undefined) {logo='/sjc.svg';}
-      else{logo=props.logo;}
+    if ('logo' in props) {
+      if (props.logo === undefined) { logo = '/sjc.svg'} else { logo = props.logo}
     }
     this.state = {
       menu: props.menu,
       style_map: style_map,
-      logo:logo
+      logo: logo
     }
   }
 
@@ -42,7 +41,7 @@ class NavBar extends Component {
 
           <Navbar.Collapse id='basic-navbar-nav'>
 
-            <Nav className='w-100'>
+            <Nav className='w-100 row'>
 
               <Link href='/' passHref>
                 <Nav.Link className={`${this.state.style_map.home} mx-auto`} aria-label='Home'>Home</Nav.Link>
