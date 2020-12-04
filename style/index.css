@@ -10,7 +10,7 @@ h1, h2, h4, h5, h6, .navbar, footer {
   font-weight: 400;
 } 
 
-.blog-container, .hog-container {
+.blog-container, .hog-container, .profile-bio, .profile-post-description {
   font-family: 'Roboto', sans-serif;
 }
 
