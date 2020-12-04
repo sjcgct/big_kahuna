@@ -85,7 +85,7 @@ class SocialIcon extends React.Component {
   render () {
     return (
       <li className='list-inline-item ml-3'>
-        <a href={this.props.link} rel='noopener noreferrer' aria-label={'Follow us on ' + this.props.icon}>
+        <a href={this.props.link} target='_blank' rel='noopener noreferrer' aria-label={'Follow us on ' + this.props.icon}>
           <FontAwesomeIcon icon={['fab', this.props.icon]} size='3x' className='social-icon' />
         </a>
       </li>
