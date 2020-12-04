@@ -102,7 +102,7 @@ class AperturePage extends Component {
 
   render () {
     return (
-      <Layout menu='aperture' logo='/aperture-black.svg'>
+      <Layout menu='aperture'>
         <Head>
           <title>Aperture Newsletter | Student Journalist Gouncil - GCT</title>
           <meta charset='utf-8' />

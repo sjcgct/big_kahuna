@@ -17,9 +17,6 @@ class NavBar extends Component {
     }
 
     style_map[props.menu] = 'navbar-link-active'
-    if ('logo' in props) {
-      if (props.logo === undefined) { logo = '/sjc.svg'} else { logo = props.logo}
-    }
     this.state = {
       menu: props.menu,
       style_map: style_map,
