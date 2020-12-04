@@ -76,10 +76,10 @@ export default function BlogHome ({ preview, allBlogs, allHogs, allAbcs }) {
         </div>
         <div className='row'>
           <div className='col-sm-12 col-md-9'>
-            <div className='iframe-container'>
+            <div className='player-wrapper'>
               {
                 mainVideo && (
-                  <ReactPlayer width='100%' height='auto' controls url={mainVideoLink} />
+                  <ReactPlayer className='react-player' url={mainVideoLink} width='100%' height='100%' />
                 )
               }
             </div>
