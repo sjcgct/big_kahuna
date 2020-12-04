@@ -53,7 +53,7 @@ export default function Footer () {
     <footer className='mt-2'>
       <ul className='list-inline social-icon-list'>
         <SocialIcon link='https://www.facebook.com/sjcgct' icon='facebook-square' />
-        <SocialIcon link='"https://www.instagram.com/sjcgct/"' icon='instagram-square' />
+        <SocialIcon link='https://www.instagram.com/sjcgct/' icon='instagram-square' />
         <SocialIcon link='https://www.twitter.com/sjcgct' icon='twitter-square' />
         <SocialIcon link='https://www.linkedin.com/company/sjcgct' icon='linkedin' />
       </ul>
