@@ -49,7 +49,7 @@ class YearPagination extends Component {
           <a className='team-page-vector-previous-link' hidden={this.state.hide_prev} href={`/team/${this.state.prev_year}`}>
             <img className='team-page-vector' src='/previous1.svg' />
           </a>
-          <h3 className='year-name'>Team {this.state.year}</h3>
+          <h2 className='year-name'>Team {this.state.year}</h2>
           <a className='team-page-vector-next-link' hidden={this.state.hide_next} href={`/team/${this.state.next_year}`}>
             <img className='team-page-vector' src='/next1.svg' />
           </a>

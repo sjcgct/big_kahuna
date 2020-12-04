@@ -68,7 +68,7 @@ export default function Post ({ post, postsYouMayLike, disclaimerText }) {
           <img src={post.featured_image.hero.url} className='card-img featured-img' width='1200' height='600' alt = {post.featured_image.hero.alt}/>
         </div>
 
-        <div className='blog-container'>
+        <div className='blog-container' lang={post.lang}>
           {htmlcontent}
 
           <section className='disclaimer-quote'>

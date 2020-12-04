@@ -1,6 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@400;700&family=Open+Sans:ital,wght@0,300;0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 @import './bootstrap.css';
 
-                                                             /*Common Components*/
+                                                             /*Common Components*/   
+
+
+h1, h2, h4, h5, h6, .navbar, footer {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+} 
+
+.blog-container, .hog-container {
+  font-family: 'Roboto', sans-serif;
+}
+
+.blog-container:lang(en) {
+  font-family: 'Roboto', sans-serif;
+}
+
+.blog-container:lang(ta) {
+  font-family: 'Arima Madurai', cursive;
+}
+
+h3, .grid-card-date, .grid-card-category,.disclaimer-quote, blockquote {
+  font-family: 'Source Sans Pro', sans-serif;
+} 
 
 a {
   text-decoration: none;
@@ -21,6 +45,10 @@ a:hover {
   height: auto;
   color: #edf5e1;
   fill: currentColor;
+}
+
+.navbar .nav-link {
+  font-weight: 400!important;
 }
 
 .nav-link:hover {
@@ -339,7 +367,9 @@ footer .social-icon{
 }
 
 .grid-card-category {
-  font-size: 14px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
 }
 
 .grid-card-content-holder {
@@ -353,7 +383,7 @@ footer .social-icon{
 }
 
 .grid-card-title a{
-  font-weight: 500;
+  font-weight: 700;
   padding-bottom: 5px;
   color: #333;
   letter-spacing: -.05em;
@@ -375,8 +405,9 @@ footer .social-icon{
 
 .grid-card-date {
   color: #5cdb95;
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
 }
 
 
@@ -515,7 +546,6 @@ blockquote {
 	font-size: 1.25em;
 	width: 80%;
 	margin: 3rem auto;
-	font-family: Open Sans;
 	font-style: italic;
 	color: #555555;
 	padding: 1.2em 30px 1.2em 75px;
@@ -573,6 +603,8 @@ p.hog-container{
 
   .blog-container {
     margin-bottom: 24px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   .blog-post-title {
@@ -588,6 +620,14 @@ p.hog-container{
   }
 
   .blog-container p{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 18px;
+    line-height: 32px;
+    text-align: justify;
+  }
+
+  .blog-container li{
     margin-top: 1rem;
     margin-bottom: 1rem;
     font-size: 18px;
@@ -664,6 +704,14 @@ p.hog-container{
     text-align: justify;
   }
 
+  .blog-container li{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 18px;
+    line-height: 32px;
+    text-align: justify;
+  }
+
   .blog-container em{
     margin-top: 1.25rem;
     margin-bottom: 1.25rem;
@@ -723,6 +771,14 @@ p.hog-container{
   .blog-container p{
     margin-top: 1.75rem;
     margin-bottom: 1.75rem;
+    font-size: 18px;
+    line-height: 32px;
+    text-align: justify;
+  }
+
+  .blog-container li{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     font-size: 18px;
     line-height: 32px;
     text-align: justify;
