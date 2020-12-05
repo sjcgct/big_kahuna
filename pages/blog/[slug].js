@@ -51,6 +51,8 @@ export default function Post ({ post, postsYouMayLike, disclaimerText }) {
         />
         <meta name="robots" content= "index, follow" />
       </Head>
+      <div id="fb-root"></div>
+
       <section>
         <header className='blog-header'>
           <h1 className='blog-post-title'>{RichText.asText(post.title)}</h1>
@@ -74,12 +76,17 @@ export default function Post ({ post, postsYouMayLike, disclaimerText }) {
           <section className='disclaimer-quote'>
             {RichText.render(disclaimerText)}
           </section>
+
+        </div>
+
+        <div className='comments-section'>
+          <div className="fb-comments" data-href={`https://www.sjcgct.in/blog/${post._meta.uid}`} data-numposts="" data-width="" />
         </div>
 
         <div className='post-share-tray'>
           <SharePanel url={'sjcgct.in/blog/' + post._meta.uid} caption={RichText.asText(post.title)} />
-
         </div>
+
       </section>
 
       <section>

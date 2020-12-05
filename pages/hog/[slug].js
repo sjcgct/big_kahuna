@@ -41,6 +41,10 @@ export default function Post ({ post, morePosts, disclaimerText }) {
           <section className='disclaimer-quote'>
             {RichText.render(disclaimerText)}
           </section>
+
+          <div className='comments-section'>
+            <div className="fb-comments" data-href={`https://www.sjcgct.in/hog/${post._meta.uid}`} data-numposts="" data-width="" />
+          </div>
         </div>
 
         <div className='post-share-tray'>

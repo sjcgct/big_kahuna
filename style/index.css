@@ -463,6 +463,21 @@ footer .social-icon{
   margin-bottom: 3rem;
 }
 
+.comments-section {
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+}
+
+.fb-comments {
+  margin-right: auto!important;
+  margin-left: auto!important;
+}
+
 .blog-post-title {
   font-weight: 600;
   line-height: 1;
@@ -987,6 +1002,7 @@ p.hog-container{
 .profile-post-card-container {
   width: 45rem;
   height: auto;
+  margin-bottom: 3rem;
 }
 
 .profile-post-card {
