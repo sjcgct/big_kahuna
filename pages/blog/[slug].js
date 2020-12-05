@@ -7,6 +7,8 @@ import ProfileDeckCard from '../../components/profileDeckCard'
 import Link from 'next/link'
 import SharePanel from '../../components/sharePanel'
 import Head from 'next/head'
+import { FacebookProvider, Comments } from 'react-facebook'
+
 
 export default function Post ({ post, postsYouMayLike, disclaimerText }) {
   var parseDate = function (date) {
@@ -80,7 +82,9 @@ export default function Post ({ post, postsYouMayLike, disclaimerText }) {
         </div>
 
         <div className='comments-section'>
-          <div className="fb-comments" data-href={`https://www.sjcgct.in/blog/${post._meta.uid}`} data-numposts="" data-width="" />
+          <FacebookProvider appId='1049032935614467'>
+            <Comments href={`http://localhost:3000/${post._meta.uid}`} />
+          </FacebookProvider>
         </div>
 
         <div className='post-share-tray'>

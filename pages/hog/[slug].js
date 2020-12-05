@@ -1,10 +1,11 @@
 import { RichText } from 'prismic-reactjs'
-import React from 'react'
+import React, { Component } from 'react'
 import { getHogWithSlug, getAllHogsForHome, getDisclaimer } from '../../prismic-configuration'
 import Layout from '../../components/Layout'
 import Deck from '../../components/deck'
 import SharePanel from '../../components/sharePanel'
 import Head from 'next/head'
+import { FacebookProvider, Comments } from 'react-facebook'
 
 export default function Post ({ post, morePosts, disclaimerText }) {
   return (
@@ -43,7 +44,10 @@ export default function Post ({ post, morePosts, disclaimerText }) {
           </section>
 
           <div className='comments-section'>
-            <div className="fb-comments" data-href={`https://www.sjcgct.in/hog/${post._meta.uid}`} data-numposts="" data-width="" />
+
+            <FacebookProvider appId='1049032935614467'>
+              <Comments href={`http://localhost:3000/${post._meta.uid}`} />
+            </FacebookProvider>
           </div>
         </div>
 
