@@ -20,7 +20,7 @@ export default function BlogHome ({ preview, allBlogs, allHogs, allAbcs }) {
     subVideos[j] =
       <li>
         <a href={subVideoLink} rel='noopener noreferrer' target='_blank' aria-label={subVideo.title}>
-          <img className='img-fluid my-1' src={subVideoImageLink} alt={subVideo.video_title} />
+          <img className='img-fluid my-1' src={subVideoImageLink} alt={subVideo.video_title} loading='lazy' />
         </a>
       </li>
   }
