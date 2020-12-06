@@ -2,7 +2,7 @@ import Head from 'next/head'
 import React from 'react'
 import { getAllBlogsForHome, getAllHogsForHome, getAllVideosForHome } from '../prismic-configuration'
 import Layout from '../components/Layout'
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player/youtube'
 import Deck from '../components/deck'
 
 export default function BlogHome ({ preview, allBlogs, allHogs, allAbcs }) {
