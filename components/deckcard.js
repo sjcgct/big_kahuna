@@ -3,14 +3,14 @@ import Link from 'next/link'
 
 export default function DeckCard ({ title, imgurl, imgalt, slugurl, profileUrl, profileImgUrl, profilealt, postDate, postCategory, type }) {
   var category_map = {
-    'Celluloid': 'celluloid',
-    'SciTech': 'scitech',
-    'AlumSpace': 'alumspace',
+    Celluloid: 'celluloid',
+    SciTech: 'scitech',
+    AlumSpace: 'alumspace',
     'Open Page': 'openpage',
     'Tete-a-Tete with Interns': 'tete',
-    'Campus Pulse':'campus-pulse'
+    'Campus Pulse': 'campus-pulse'
   }
-  
+
   var parseDate = function (date) {
     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
     var year_month_date = date.split('-')
@@ -23,8 +23,8 @@ export default function DeckCard ({ title, imgurl, imgalt, slugurl, profileUrl, 
       <div className='mb-4 col-md-6 col-lg-3'>
         <div className='grid-card'>
           <div className='grid-card-image-holder'>
-            <Link as={`/${type}/${slugurl}`} href={'/blog/[slug]'}>
-              <a aria-label={title}><img className='grid-card-image' src={imgurl} alt={imgalt} /></a>
+            <Link as={`/${type}/${slugurl}`} href="/blog/[slug]">
+              <a aria-label={title}><img className='grid-card-image' loading='lazy' src={imgurl} alt={imgalt} /></a>
             </Link>
           </div>
           <div className='grid-card-author-holder'>
@@ -57,13 +57,13 @@ export default function DeckCard ({ title, imgurl, imgalt, slugurl, profileUrl, 
       <div className='mb-4 col-md-6 col-lg-3'>
         <div className='grid-card'>
           <div className='grid-card-image-holder'>
-            <Link as={`/${type}/${slugurl}`} href={'/hog/[slug]'}>
+            <Link as={`/${type}/${slugurl}`} href="/hog/[slug]">
               <a aria-label={imgalt}><img className='grid-card-image' src={imgurl} alt={imgalt} /></a>
             </Link>
           </div>
           <div className='grid-card-content-holder'>
             <h3 className='grid-card-title'>
-              <Link as={`/${type}/${slugurl}`} href={'/hog/[slug]'}>
+              <Link as={`/${type}/${slugurl}`} href="/hog/[slug]">
                 <a aria-label={title}>{title}</a>
               </Link>
             </h3>
