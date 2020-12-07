@@ -1,5 +1,6 @@
+/* eslint-disable no-inner-declarations */
 import Head from 'next/head'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { getAllBlogsForHome, getAllHogsForHome, getAllVideosForHome } from '../prismic-configuration'
 import Layout from '../components/Layout'
 import ReactPlayer from 'react-player/youtube'
@@ -15,7 +16,12 @@ export default function BlogHome ({ preview, allBlogs, allHogs, allAbcs }) {
   var subVideos = []
   for (var j = 1; j < 4; j++) {
     var subVideo = videoArray[j].node
-    var subVideoImageLink = `https://img.youtube.com/vi/${subVideo.unique_id}/maxresdefault.jpg`
+    const size = useWindowSize()
+    if (size.width > 767) {
+      var subVideoImageLink = `https://img.youtube.com/vi/${subVideo.unique_id}/maxresdefault.jpg`
+    } else {
+      var subVideoImageLink = ''
+    }
     var subVideoLink = `https://www.youtube.com/watch?v=${subVideo.unique_id}`
     subVideos[j] =
       <li>
@@ -105,4 +111,35 @@ export async function getStaticProps ({ preview = false, previewData }) {
     props: { preview, allBlogs, allHogs, allAbcs },
     revalidate: 1
   }
+}
+
+// Hook
+function useWindowSize () {
+  // Initialize state with undefined width/height so server and client renders match
+  // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+  var [windowSize, setWindowSize] = useState({
+    width: undefined,
+    height: undefined
+  })
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      function handleResize () {
+        setWindowSize({
+          width: window.innerWidth,
+          height: window.innerHeight
+        })
+      }
+
+      // Add event listener
+      window.addEventListener('resize', handleResize)
+
+      // Call handler right away so state gets updated with initial window size
+      handleResize()
+
+      // Remove event listener on cleanup
+      return () => window.removeEventListener('resize', handleResize)
+    }
+  }, []) // Empty array ensures that effect is only run on mount
+  return windowSize
 }

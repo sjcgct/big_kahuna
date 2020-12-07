@@ -1,7 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable no-inner-declarations */
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
 
 // Hook
 function useWindowSize () {
