@@ -85,7 +85,7 @@ export default function BlogHome ({ preview, allBlogs, allHogs, allAbcs }) {
             <div className='player-wrapper'>
               {
                 mainVideo && (
-                  <ReactPlayer className='react-player' url={mainVideoLink} width='100%' height='100%' />
+                  <ReactPlayer rel='preconnect' className='react-player' url={mainVideoLink} width='100%' height='100%' />
                 )
               }
             </div>

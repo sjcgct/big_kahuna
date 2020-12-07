@@ -16,12 +16,6 @@ const Layout = props => {
         </div>
       </div>
       <Footer />
-      {/* <MessengerCustomerChat
-        pageId='1384942788394818'
-        appId='1049032935614467'
-        themeColor='#5CDB95'
-        minimized={false}
-      /> */}
     </div>
   )
 }
