@@ -176,7 +176,8 @@ export async function getStaticProps ({ params }) {
   var hasnext = posts.pageInfo.hasNextPage
   var categoryName = category
   return {
-    props: { blogs, cursor, totalCount, hasnext, categoryId, categoryName }
+    props: { blogs, cursor, totalCount, hasnext, categoryId, categoryName },
+    revalidate: 1
   }
 }
 
