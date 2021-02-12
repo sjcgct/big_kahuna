@@ -75,6 +75,8 @@ export default function Footer () {
       <small>
            © {(new Date().getFullYear())}. Student Journalist Council - GCT
         <br />
+        The Student media body of Government College of Technology, Coimbatore.
+        <br />
         <a aria-label='Github Repo' className='contact-link' href='https://github.com/sjcgct/big_kahuna' target='blank'>Project Big Kahuna</a>
       </small>
     </footer>
