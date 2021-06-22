@@ -3,7 +3,6 @@ import Head from 'next/head'
 import React, { useState, useEffect } from 'react'
 import { getAllBlogsForHome, getAllHogsForHome, getAllVideosForHome } from '../prismic-configuration'
 import Layout from '../components/Layout'
-import ReactPlayer from 'react-player/youtube'
 import Deck from '../components/deck'
 
 export default function BlogHome ({ preview, allBlogs, allHogs, allAbcs }) {
@@ -12,6 +11,7 @@ export default function BlogHome ({ preview, allBlogs, allHogs, allAbcs }) {
   var videoArray = allAbcs
   var mainVideo = allAbcs[0].node
   var mainVideoLink = `https://www.youtube.com/embed/${mainVideo.unique_id}`
+  var mainVideoImageLink = `https://img.youtube.com/vi/${mainVideo.unique_id}/hqdefault.jpg`
 
   var subVideos = []
   for (var j = 1; j < 4; j++) {
@@ -84,8 +84,19 @@ export default function BlogHome ({ preview, allBlogs, allHogs, allAbcs }) {
           <div className='col-sm-12 col-md-9'>
             <div className='player-wrapper'>
               {
+                
                 mainVideo && (
-                  <ReactPlayer rel='preconnect' className='react-player' url={mainVideoLink} width='100%' height='100%' />
+                  <iframe className='react-player'
+
+  src={mainVideoImageLink}
+  srcDoc={`<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=${mainVideoLink}><img src=${mainVideoImageLink} alt='Aperture Broadcasting Channel Featured Video'><span>▶</span></a>`}
+  frameBorder="0"
+  width="100%"
+  height="100%"
+  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+  title="The Dark Knight Rises: What Went Wrong? – Wisecrack Edition"
+></iframe>
                 )
               }
             </div>
