@@ -60,7 +60,7 @@ class NavBar extends Component {
                 <Nav.Link className={`${this.state.style_map.podcast} mx-auto`} aria-label='Podcast'>Podcast</Nav.Link>
               </Link> */}
 
-              <Nav.Link href='https://www.youtube.com/ApertureBroadcastingChannelGCT' rel='noopener noreferrer' target='_blank' className={`${this.state.style_map.abc} mx-auto`} aria-label='ABC Channel'>ABC Channel</Nav.Link>
+              <Nav.Link href='https://www.youtube.com/c/sjcgct' rel='noopener noreferrer' target='_blank' className={`${this.state.style_map.abc} mx-auto`} aria-label='ABC Channel'>ABC Channel</Nav.Link>
 
               <Link href='/team/[year]' as='/team/current-team' passHref>
                 <Nav.Link className={`${this.state.style_map.team} mx-auto`} aria-label='Team'>Team</Nav.Link>
